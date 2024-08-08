@@ -1,6 +1,6 @@
 # AF Benchmarking
 
-Contains scripts used at the AF for benchmarking. The jobs run every six hours with the aid of crontabs.
+Contains scripts used at the AF for benchmarking. The jobs run every six hours with the aid of cron.
 
 ## Types of jobs:
 The jobs used to benchmark run either interactively or as batch jobs.
