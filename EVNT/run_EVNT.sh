@@ -26,9 +26,9 @@ seed=1001
 
 Gen_tf.py --ecmEnergy=13000.0 --jobConfig=$configdir  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}
 
-mkdir -p $output_dir
+mkdir -p ${output_dir}
 
 
-mv log.* ${outputdir}
-mv *.generate ${outputdir}
-mv evnt.* ${outputdir}
+mv log.* ${output_dir}
+mv *.generate ${output_dir}
+mv evnt.* ${output_dir}
