@@ -10,7 +10,22 @@ echo "Wookiee13" | voms-proxy-init -voms atlas
 
 lsetup "rucio -w"
 
+curr_time=$(date +"%Y.%m.%dT%H")
 
-curr_time=$(date +"%Y.%m.%dT%H.%M.%S")
+if [ $HOME = "/home/$USER" ]
+then
+  output_dir="/data/$USER/benchmarks/$curr_time/Rucio/"
+elif [ $HOME = "/sdf/home/s/$USER" ]
+then
+  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/Rucio/"
+elif [ $HOME = "/usatlas/u/$USER"]
+then 
+  output_dir = "/usatlas/workarea/$USER/benchmarks/$curr_time/Rucio"
+fi
 
-rucio download --rses AGLT2_LOCALGROUPDISK mc23_13p6TeV:mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.DAOD_PHYSLITE.e8532_e8528_s4162_s4114_r14622_r14663_p6026_tid37222410_00 2>&1 | tee /data/selbor/Rucio/$curr_time.log
+mkdir -p ${output_dir}
+
+rucio download --rses AGLT2_LOCALGROUPDISK mc23_13p6TeV:mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.DAOD_PHYSLITE.e8532_e8528_s4162_s4114_r14622_r14663_p6026_tid37222410_00 2>&1 | tee $output_dir/rucio.log
+
+hostname >> $output_dir/rucio.log
+du mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.    DAOD_PHYSLITE.e8532_e8528_s4162_s4114_r14622_r14663_p6026_tid37222410_00/ >> $output_dir/rucio.log

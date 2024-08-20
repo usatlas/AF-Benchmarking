@@ -1,18 +1,25 @@
 #!/bin/bash
+curr_date=$(date +"%Y.%m.%dT%H")
 
-configdir=$PWD/100xxx/100001
+if [ $HOME = "/home/$USER"]
+then
+  export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+  inputdir="/data/selbor/TRUTH3_StaticDir/"
+  outputdir="/data/selbor/benchmarks/$curr_date/TRUTH3"
+elif [ $HOME = "/sdf/home/s/$USER"]
+then
+  inputdir="/sdf/home/s/selbor/AF-Benchmarking/TRUTH3"
+  outputdir="/sdf/data/atlas/u/$USER/benchmarks/$curr_date/TRUTH3"
 
-export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
 asetup Athena,24.0.53,here
-
-inputdir="/data/selbor/TRUTH3_StaticDir/"
-seed=1001
-
 
 Derivation_tf.py --CA True --inputEVNTFile ${inputdir}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
 
 
-outputdir="/home/selbor/benchmarks/benchmark_TRUTH/100xxx/100001/"
 mkdir -p ${outputdir}
-cp -a * ${outputdir}
+
+mv log.EVNTtoDAOD ${outputdir}
+mv log.Derivation ${outputdir}
+
+#mv /data/selbor/TRUTH3/* ${outputdir}
