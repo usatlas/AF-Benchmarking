@@ -1,10 +1,8 @@
 #!/bin/bash
 
 configdir=$PWD/100xxx/100001
-
-mkdir -p $configdir
-cp /data/selbor/ReqFiles/mc* $configdir
-cp /data/selbor/ReqFiles/SUSY_*.py $configdir
+cp /AF-Benchmarking/EVNT/mc* $configdir
+cp /AF-Benchmarking/EVNT/SUSY_*.py $configdir
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
@@ -14,7 +12,22 @@ seed=1001
 
 Gen_tf.py --ecmEnergy=13000.0 --jobConfig=$configdir  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}
 
-outputdir="/home/selbor/benchmarks/benchmark_EVNT/100xxx/100001/"
-mkdir -p ${outputdir}
-cp -a * ${outputdir}
+curr_time=$(date +"%Y.%m.%dT%H")
 
+if [ $HOME = "/home/$USER" ]
+then
+  output_dir="/data/$USER/benchmarks/$curr_time/EVNT/"
+elif [ $HOME = "/sdf/home/s/$USER" ]
+then
+  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT/"
+elif [ $HOME = "/usatlas/u/$USER" ]
+then 
+  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
+fi
+
+mkdir -p ${output_dir}
+
+
+mv log.* ${outputdir}
+mv *.generate ${outputdir}
+mv /data/selbor/EVNT/* ${outputdir}
