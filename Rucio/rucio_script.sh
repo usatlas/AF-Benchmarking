@@ -20,7 +20,7 @@ then
   output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/Rucio/"
 elif [ $HOME = "/usatlas/u/$USER" ]
 then 
-  output_dir = "/usatlas/workarea/$USER/benchmarks/$curr_time/Rucio"
+  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/Rucio"
 fi
 
 mkdir -p ${output_dir}
