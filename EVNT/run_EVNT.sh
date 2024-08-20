@@ -6,13 +6,13 @@ cp /AF-Benchmarking/EVNT/SUSY_*.py $configdir
 
 curr_time=$(date +"%Y.%m.%dT%H")
 
-if [ $HOME = "/home/$USER" ]
+if [[ $HOME = "/home/$USER" ]]
 then
   output_dir="/data/$USER/benchmarks/$curr_time/EVNT/"
-elif [ $HOME = "/sdf/home/s/$USER" ]
+elif [[ $HOME = "/sdf/home/s/$USER" ]]
 then
   output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT/"
-elif [ $HOME = "/usatlas/u/$USER" ]
+elif [[ $HOME = "/usatlas/u/$USER" ]]
 then 
   output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
 fi
