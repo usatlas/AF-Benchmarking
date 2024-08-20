@@ -18,7 +18,7 @@ then
 elif [ $HOME = "/sdf/home/s/$USER" ]
 then
   output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/Rucio/"
-elif [ $HOME = "/usatlas/u/$USER"]
+elif [ $HOME = "/usatlas/u/$USER" ]
 then 
   output_dir = "/usatlas/workarea/$USER/benchmarks/$curr_time/Rucio"
 fi
