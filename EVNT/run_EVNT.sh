@@ -1,8 +1,8 @@
 #!/bin/bash
 
 configdir=$PWD/100xxx/100001
-cp /AF-Benchmarking/EVNT/mc* $configdir
-cp /AF-Benchmarking/EVNT/SUSY_*.py $configdir
+cp /AF-Benchmarking/EVNT/mc.MGPy8EG_A14N23LO_MET_25_N2_100_N1_80_WB.py$configdir
+cp /AF-Benchmarking/EVNT/SUSY_Radiative_Decays_JO.py $configdir
 
 curr_time=$(date +"%Y.%m.%dT%H")
 
