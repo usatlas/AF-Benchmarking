@@ -1,34 +1,43 @@
+
 #!/bin/bash
 
-configdir=$PWD/100xxx/100001
-cp ~/AF-Benchmarking/EVNT/mc.MGPy8EG_A14N23LO_MET_25_N2_100_N1_80_WB.py $configdir
-cp ~/AF-Benchmarking/EVNT/SUSY_Radiative_Decays_JO.py $configdir
-
 curr_time=$(date +"%Y.%m.%dT%H")
-
-if [[ $HOME = "/home/$USER" ]]
+# checks the home directory to determine the AF
+# /home/$USER is for UC
+if [[ $1 == "/home/$USER" ]]
 then
   output_dir="/data/$USER/benchmarks/$curr_time/EVNT/"
-elif [[ $HOME = "/sdf/home/s/$USER" ]]
+# /sdf/home/s/$USER is for SLAC
+elif [[ $1 == "/sdf/home/s/$USER" ]]
 then
-  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT/"
-elif [[ $HOME = "/usatlas/u/$USER" ]]
-then 
+  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT"
+# /usatlas/u/$USER is for BNL
+elif [[ $1 == "/usatlas/u/$USER" ]]
+then
+  #working_dir="/usatlas/workarea/jroblesgo/"
+  configdir=/usatlas/u/$USER/AF-Benchmarking/EVNT/
   output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
 fi
 
-
-export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
-asetup AthGeneration,23.6.34,here
-
 seed=1001
-
-Gen_tf.py --ecmEnergy=13000.0 --jobConfig=$configdir  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}
+echo ${configdir}
+# Checks the input parameter; BNL & SLAC
+if [[ $2 == "c" ]]
+then
+  export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -b -c el9 -r "asetup AthGeneration,23.6.34,here && \
+  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${configdir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}"
+  elif [[ $2 == "n" ]]
+  then
+    export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+    source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+    asetup AthGeneration,23.6.34,here
+    Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${configdir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}
+fi
 
 mkdir -p ${output_dir}
-
 
 mv log.* ${output_dir}
 mv *.generate ${output_dir}
 mv evnt.* ${output_dir}
+
