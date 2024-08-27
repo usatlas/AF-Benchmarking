@@ -75,6 +75,6 @@ main() {
   done
 }
 
-main('${#}')
+main "${@:-}"
 
 
