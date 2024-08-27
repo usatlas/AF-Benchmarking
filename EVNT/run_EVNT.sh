@@ -47,7 +47,7 @@ main() {
   elif [[ -d /data ]]
   then
     local  output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
-    local  config_dir="$PWD/100xxx/100001"
+    local  config_dir="/data/selbor/evnt/100xxx/100001/"
     local  OScontainer="centos 7"
   fi
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
