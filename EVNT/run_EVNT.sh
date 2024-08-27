@@ -14,7 +14,6 @@ EOF
 ## 2 -- config_dir
 ## 3 -- Seed
 Container(){
-  export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -b -c ${1} -r "asetup AthGeneration,23.6.34,here && \
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${2}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${3}"
 }
@@ -23,8 +22,7 @@ Container(){
 ## 1 -- config_dir
 ## 2 -- Seed
 Batch(){
-  export atlas_local_root_base=/cvmfs/atlas.cern.ch/repo/ATLASlocalRootBase
-  source ${atlas_local_root_base}/user/atlasLocalSetup.sh
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
   asetup AthGeneration,23.6.34,here
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${1}  --outputEVNTfile=evnt.root --maxEvents=10000 --randomSeed=${2}
 }
@@ -52,7 +50,7 @@ main() {
     local  config_dir="$PWD/100xxx/100001"
     local  OScontainer="centos 7"
   fi
-
+  export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   while [[ "${#}" -gt 0 ]]; do
     case "${1}" in 
       -c|--container)
