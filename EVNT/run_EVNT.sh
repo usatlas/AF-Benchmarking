@@ -44,6 +44,8 @@ main() {
     local  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
     local  config_dir="/srv/EVNTFiles/100xxx/100001/"
     local  OScontainer="el9"
+    export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+    Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /data ]]
   then
     local  output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
