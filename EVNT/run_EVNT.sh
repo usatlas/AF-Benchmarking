@@ -70,7 +70,9 @@ main() {
         mv *.generate ${output_dir}
         mv evnt.* ${output_dir}
         exit
-    done
+        ;;
+    esac
+  done
 }
 
 main('${#}')
