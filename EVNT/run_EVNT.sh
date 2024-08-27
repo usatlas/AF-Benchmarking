@@ -14,6 +14,7 @@ EOF
 ## 2 -- config_dir
 ## 3 -- Seed
 Container(){
+  export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -b -c ${1} -r "asetup AthGeneration,23.6.34,here && \
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${2}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${3}"
 }
@@ -22,6 +23,7 @@ Container(){
 ## 1 -- config_dir
 ## 2 -- Seed
 Batch(){
+  export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
   asetup AthGeneration,23.6.34,here
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${1}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${2}
@@ -39,6 +41,7 @@ main() {
     local  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT"
     local  config_dir=""
     local  OScontainer="el9"
+    Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /usatlas ]]
   then
     local  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
@@ -51,30 +54,14 @@ main() {
     local  output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
     local  config_dir="/data/selbor/evnt/100xxx/100001/"
     local  OScontainer="centos 7"
+    Batch ${config_dir} ${seed}
   fi
-  export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-  while [[ "${#}" -gt 0 ]]; do
-    case "${1}" in 
-      -c|--container)
-        Container ${OScontainer} ${config_dir} ${seed}
-        mkdir -p ${output_dir}
-        mv log.* ${output_dir}
-        mv *.generate ${output_dir}
-        mv evnt.* ${output_dir}
-        exit
-        ;;
-      -b|--batch)
-        Batch ${config_dir} ${seed}
-        mkdir -p ${output_dir}
-        mv log.* ${output_dir}
-        mv *.generate ${output_dir}
-        mv evnt.* ${output_dir}
-        exit
-        ;;
-    esac
-  done
-}
+  mkdir -p ${output_dir}
+  mv log.* ${output_dir}
+  mv *.generate ${output_dir}
+  mv evnt.* ${output_dir}
+ }
 
-main "${@:-}"
+main
 
 
