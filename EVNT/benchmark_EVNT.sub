@@ -4,7 +4,8 @@ Output = /data/selbor/EVNT/$(Cluster).$(Process).out
 Error = /data/selbor/EVNT/$(Cluster).$(Process).err
 Log = /data/selbor/EVNT/$(Cluster).$(Process).log
 
-Executable = /home/selbor/benchmarks/EVNT/run_EVNT.sh
+Executable = /home/selbor/AF-Benchmarking/EVNT/run_EVNT.sh
+Parameter = b
 
 
 request_memory = 3GB
