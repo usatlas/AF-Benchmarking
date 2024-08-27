@@ -23,10 +23,10 @@ Container(){
 ## 1 -- config_dir
 ## 2 -- Seed
 Batch(){
-  export atlas_local_root_base=/cvmfs/atlas.cern.ch/repo/atlaslocalrootbase
-  source ${atlas_local_root_base}/user/atlaslocalsetup.sh
+  export atlas_local_root_base=/cvmfs/atlas.cern.ch/repo/ATLASlocalRootBase
+  source ${atlas_local_root_base}/user/atlasLocalSetup.sh
   asetup AthGeneration,23.6.34,here
-  Gen_tf.py --ecmenergy=13000.0 --jobconfig=${1}  --outputevntfile=evnt.root --maxevents=10000 --randomseed=${2}
+  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${1}  --outputEVNTfile=evnt.root --maxEvents=10000 --randomSeed=${2}
 }
 
 
