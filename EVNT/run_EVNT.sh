@@ -25,7 +25,7 @@ Container(){
 Batch(){
   export atlas_local_root_base=/cvmfs/atlas.cern.ch/repo/atlaslocalrootbase
   source ${atlas_local_root_base}/user/atlaslocalsetup.sh
-  asetup athgeneration,23.6.34,here
+  asetup AthGeneration,23.6.34,here
   Gen_tf.py --ecmenergy=13000.0 --jobconfig=${1}  --outputevntfile=evnt.root --maxevents=10000 --randomseed=${2}
 }
 
@@ -44,7 +44,7 @@ main() {
   elif [[ -d /usatlas ]]
   then
     local  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
-    local  config_dir="/srv/EVNTFiles/100xxx/100001"
+    local  config_dir="/srv/EVNTFiles/100xxx/100001/"
     local  OScontainer="el9"
   elif [[ -d /data ]]
   then
