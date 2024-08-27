@@ -56,7 +56,7 @@ main() {
   while [[ "${#}" -gt 0 ]]; do
     case "${1}" in 
       -c|--container)
-        Container() ${OScontainer} ${config_dir} ${seed}
+        Container ${OScontainer} ${config_dir} ${seed}
         mkdir -p ${output_dir}
         mv log.* ${output_dir}
         mv *.generate ${output_dir}
@@ -64,7 +64,7 @@ main() {
         exit
         ;;
       -b|--batch)
-        Batch() ${config_dir} ${seed}
+        Batch ${config_dir} ${seed}
         mkdir -p ${output_dir}
         mv log.* ${output_dir}
         mv *.generate ${output_dir}
