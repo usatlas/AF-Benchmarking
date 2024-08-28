@@ -47,6 +47,7 @@ main() {
     local  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
     local  config_dir="/srv/EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
+    cd /usatlas/workarea/jroblesgo/
     Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /data ]]
   then
