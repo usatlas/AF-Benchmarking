@@ -46,13 +46,13 @@ main() {
   then
     local  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
     local  config_dir="/srv/EVNTFiles/100xxx/100001/"
-    local  OScontainer="el9"
+    local  OScontainer="centos7"
     Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /data ]]
   then
     local  output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
     local  config_dir="/data/selbor/evnt/100xxx/100001/"
-    local  OScontainer="centos 7"
+    local  OScontainer="centos7"
     Batch ${config_dir} ${seed}
   fi
   mkdir -p ${output_dir}
