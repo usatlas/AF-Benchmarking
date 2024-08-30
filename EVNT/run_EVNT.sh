@@ -42,7 +42,14 @@ main() {
     local  config_dir="/sdf/data/atlas/u/$USER/evntFiles/100xxx/100001"
     local  OScontainer="centos7"
     pwd;
-    ls
+    cd /sdf/data/;
+    pwd;
+    ls;
+    cd atlas/;
+    ls;
+    cd u;
+    cd selbor;
+    ls;
     Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /usatlas ]]
   then
