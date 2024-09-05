@@ -51,7 +51,7 @@ main() {
     ## If it doesn't, then copy it from the home directory to the config_dir
     local  config_dir="/scratch/EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
-    Container ${OScontainer} ${config_dir} ${seed}
+    Batch ${config_dir} ${seed}
   elif [[ -d /data ]]
   then
     local  output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
