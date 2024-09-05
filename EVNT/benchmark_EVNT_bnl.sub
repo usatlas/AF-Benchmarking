@@ -3,6 +3,7 @@ Universe = vanilla
 Output = /usatlas/workarea/jroblesgo/benchmarks/EVNT/$(Cluster).$(Process).out
 Error = /usatlas/workarea/jroblesgo/benchmarks/EVNT/$(Cluster).$(Process).err
 Log = /usatlas/workarea/jroblesgo/benchmarks/EVNT/$(Cluster).$(Process).log
+GetEnv = True
 
 Executable = /usatlas/u/jroblesgo/AF-Benchmarking/EVNT/run_EVNT.sh
 
