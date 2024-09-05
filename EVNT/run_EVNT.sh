@@ -25,7 +25,7 @@ Container(){
 Batch(){
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
-  asetup AthGeneration,23.6.34,here
+  asetup AthGeneration,23.6.31,here
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${1}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${2}
 }
 
