@@ -39,7 +39,7 @@ main() {
   # Checks for the home directory
   if [[ -d /sdf ]]; then
     local  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT"
-    local  config_dir="/home/$USER/evntFiles/100xxx/100001"
+    local  config_dir="$HOME/evntFiles/100xxx/100001"
     local  OScontainer="centos7"
     Batch ${config_dir} ${seed}
   elif [[ -d /usatlas ]]
@@ -49,7 +49,7 @@ main() {
     ## Have it check for the existence of /EVNTFiles/
     ## If it exists proceed
     ## If it doesn't, then copy it from the home directory to the config_dir
-    local  config_dir="/scratch/EVNTFiles/100xxx/100001/"
+    local  config_dir="$HOME/EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
     Batch ${config_dir} ${seed}
   elif [[ -d /data ]]
