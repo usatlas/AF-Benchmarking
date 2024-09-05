@@ -45,7 +45,11 @@ main() {
   elif [[ -d /usatlas ]]
   then
     local  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
-    local  config_dir="/srv/EVNTFiles/100xxx/100001/"
+    # I need to change the config_dir to be in scratch:
+    ## Have it check for the existence of /EVNTFiles/
+    ## If it exists proceed
+    ## If it doesn't, then copy it from the home directory to the config_dir
+    local  config_dir="/scratch/EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
     Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /data ]]
