@@ -5,7 +5,8 @@ Error = /usatlas/workarea/jroblesgo/benchmarks/EVNT/$(Cluster).$(Process).err
 Log = /usatlas/workarea/jroblesgo/benchmarks/EVNT/$(Cluster).$(Process).log
 GetEnv = True
 
-Executable = /usatlas/u/jroblesgo/AF-Benchmarking/EVNT/run_EVNT.sh
+Executable = /usatlas/u/jroblesgo/AF-Benchmarking/EVNT/run_hello.sh
+
 
 request_memory = 3G
 
