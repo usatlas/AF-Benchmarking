@@ -1,5 +1,8 @@
 Universe = vanilla
 
+Output = /atlasgpfs01/usatlas/data/jroblesgo/myjob.$(Cluster).$(Process).out
+Error = /atlasgpfs01/usatlas/data/jroblesgo/myjob.$(Cluster).$(Process).err
+Log = /atlasgpfs01/usatlas/data/jroblesgo/testing.txt
 
 Executable = /usatlas/u/jroblesgo/AF-Benchmarking/EVNT/run_hello.sh
 
