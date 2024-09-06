@@ -41,7 +41,7 @@ main() {
     local  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT"
     local  config_dir="$HOME/evntFiles/100xxx/100001"
     local  OScontainer="centos7"
-    Batch ${config_dir} ${seed}
+    Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /usatlas ]]
   then
     local  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
