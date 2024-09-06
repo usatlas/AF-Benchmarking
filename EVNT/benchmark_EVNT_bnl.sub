@@ -7,6 +7,6 @@ GetEnv = True
 
 Executable = /usatlas/u/jroblesgo/AF-Benchmarking/EVNT/run_EVNT.sh
 
-request_memory = 3GB
+request_memory = 3G
 
 Queue 1
