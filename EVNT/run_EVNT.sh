@@ -30,6 +30,7 @@ Batch(){
   pwd
   ls
   asetup AthGeneration,23.6.31,here
+  cd /scratch
   pwd
   ls
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${1}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${2}
