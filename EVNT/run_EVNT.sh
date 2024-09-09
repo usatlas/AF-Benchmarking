@@ -52,7 +52,7 @@ main() {
     local  output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/EVNT"
     local  config_dir="EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
-    Container ${OScontainer} ${config_dir} ${seed}
+    Batch ${config_dir} ${seed}
   elif [[ -d /data ]]
   then
     local  output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
