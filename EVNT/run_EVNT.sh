@@ -49,7 +49,7 @@ main() {
     ## Have it check for the existence of /EVNTFiles/
     ## If it exists proceed
     ## If it doesn't, then copy it from the home directory to the config_dir
-    local  config_dir="/atlasgpfs01/usatlas/data/$USER/EVNTFiles/100xxx/100001/"
+    local  config_dir="$HOME/EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
     Batch ${config_dir} ${seed}
   elif [[ -d /data ]]
