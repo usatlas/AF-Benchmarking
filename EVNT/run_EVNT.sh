@@ -44,12 +44,12 @@ main() {
     Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /usatlas ]]
   then
-    local  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/EVNT"
+    local  output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/EVNT"
     # I need to change the config_dir to be in scratch:
     ## Have it check for the existence of /EVNTFiles/
     ## If it exists proceed
     ## If it doesn't, then copy it from the home directory to the config_dir
-    local  config_dir="$HOME/EVNTFiles/100xxx/100001/"
+    local  config_dir="/atlasgpfs01/usatlas/data/$USER/EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
     Batch ${config_dir} ${seed}
   elif [[ -d /data ]]
