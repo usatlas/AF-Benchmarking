@@ -65,7 +65,7 @@ main() {
   fi
   mkdir -p ${output_dir}
   mv log.* ${output_dir}
-  hostname >> ${output_dir}/log.generate
+  #hostname >> ${output_dir}/log.generate
   mv myjob.* ${output_dir}
   # I still need to get the payload size into the log file.
 }
