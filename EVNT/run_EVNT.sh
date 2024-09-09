@@ -60,9 +60,9 @@ main() {
   mkdir -p ${output_dir}
   mv myjob.* ${output_dir}
   mv log.* ${output_dir}
+  hostname >> ${output_dir}/log.*
+  # I still need to get the payload size into the log file.
 }
 
 # Call the main function
 main
-
-
