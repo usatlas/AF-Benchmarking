@@ -63,9 +63,9 @@ main() {
     Batch ${config_dir} ${seed}
   fi
   mkdir -p ${output_dir}
-  mv myjob.* ${output_dir}
   mv log.* ${output_dir}
-  hostname >> ${output_dir}/log.*
+  hostname >> ${output_dir}/log.generate
+  mv myjob.* ${output_dir}
   # I still need to get the payload size into the log file.
 }
 
