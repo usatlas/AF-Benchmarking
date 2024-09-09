@@ -12,15 +12,14 @@ lsetup "rucio -w"
 
 curr_time=$(date +"%Y.%m.%dT%H")
 
-if [ $HOME = "/home/$USER" ]
-then
-  output_dir="/data/$USER/benchmarks/$curr_time/Rucio/"
-elif [ $HOME = "/sdf/home/s/$USER" ]
-then
+if [[ -d /sdf ]]; then
   output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/Rucio/"
-elif [ $HOME = "/usatlas/u/$USER" ]
+elif [[ -d /usatlas ]]
+then
+  output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/Rucio"
+elif [[ -d /data ]]
 then 
-  output_dir="/usatlas/workarea/$USER/benchmarks/$curr_time/Rucio"
+  output_dir="/data/$USER/benchmarks/$curr_time/Rucio/"
 fi
 
 mkdir -p ${output_dir}
