@@ -45,10 +45,6 @@ main() {
   elif [[ -d /usatlas ]]
   then
     local  output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/EVNT"
-    # I need to change the config_dir to be in scratch:
-    ## Have it check for the existence of /EVNTFiles/
-    ## If it exists proceed
-    ## If it doesn't, then copy it from the home directory to the config_dir
     local  config_dir="EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
     cd /usatlas/workarea/jroblesgo
@@ -61,6 +57,7 @@ main() {
     Batch ${config_dir} ${seed}
   fi
   mkdir -p ${output_dir}
+  mv myjob.* ${output_dir}
   mv log.* ${output_dir}
 }
 
