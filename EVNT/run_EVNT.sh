@@ -61,8 +61,6 @@ main() {
   fi
   mkdir -p ${output_dir}
   mv log.* ${output_dir}
-  mv *.generate ${output_dir}
-  mv evnt.* ${output_dir}
 }
 
 # Call the main function
