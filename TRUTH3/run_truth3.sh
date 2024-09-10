@@ -1,14 +1,25 @@
 #!/bin/bash
-curr_date=$(date +"%Y.%m.%dT%H")
 
-# NTS: The input dir is just the input files; similar to the ones the EVNT Job requires
+### NTS for now the input dir is fine, but in the future change it so that all three jobs aren't fighting for the same input files. ###
 
-# This same block works at SLAC
-# But it doesn't seem to run at BNL
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
-asetup Athena,24.0.53,here
 
-Derivation_tf.py --CA True --inputEVNTFile ${inputdir}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
+# Takes the following parameters:
+## 1 -- The container OS the job will be using
+## 2 -- The input dir for the input files
+Container(){
+  export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${1} -r "asetup AthGeneration,24.0.53,here && \
+    Derivation_tf.py --CA True --inputEVNTFile ${2}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
+}
+
+# Takes the following parameters:
+## 1 -- input_dir; where the input files are located
+Batch(){
+  export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+  asetup Athena,24.0.53,here
+  Derivation_tf.py --CA True --inputEVNTFile ${1}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
+}
 
 main() {
   # Current time used for log file storage
@@ -40,7 +51,8 @@ main() {
   mkdir -p ${output_dir}
   mv myjob.* ${output_dir}
   mv log.* ${output_dir}
-  hostname >> ${output_dir}/log.*
+
+  #hostname >> ${output_dir}/log.*
   # I still need to get the payload size into the log file.
 }
 
