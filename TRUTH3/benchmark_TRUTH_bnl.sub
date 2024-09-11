@@ -6,4 +6,4 @@ Executable = /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/run_truth3.sh
 
 request_memory = 3G
 
-Queue 1ueue 1
+Queue 1
