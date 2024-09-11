@@ -39,7 +39,7 @@ main() {
     local  config_dir="EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
     cd /usatlas/workarea/jroblesgo
-    Batch ${config_dir} ${seed}
+    Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /data ]]
   then
     local  output_dir="/data/selbor/benchmarks/$curr_date/TRUTH3/"
