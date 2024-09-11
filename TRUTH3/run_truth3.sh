@@ -7,7 +7,7 @@
 ## 2 -- The input dir for the input files
 Container(){
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${1} -r "asetup AthGeneration,24.0.53,here && \
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${1} -r "asetup Athena,24.0.53,here && \
     Derivation_tf.py --CA True --inputEVNTFile ${2}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
 }
 
