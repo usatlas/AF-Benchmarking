@@ -2,7 +2,6 @@
 
 ### NTS for now the input dir is fine, but in the future change it so that all three jobs aren't fighting for the same input files. ###
 
-
 # Takes the following parameters:
 ## 1 -- The container OS the job will be using
 ## 2 -- The input dir for the input files
@@ -51,7 +50,7 @@ main() {
   mkdir -p ${output_dir}
   mv myjob.* ${output_dir}
   mv log.* ${output_dir}
-
+  
   #hostname >> ${output_dir}/log.*
   # I still need to get the payload size into the log file.
 }
