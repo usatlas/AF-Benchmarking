@@ -29,8 +29,8 @@ main() {
   # Checks for the home directory
   if [[ -d /sdf ]]; then
     local  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/TRUTH3"
-    local  config_dir=$HOME/evntFiles/100xxx/100001
-    local  OScontainer="centos7"
+    local  config_dir=$HOME/TRUTH3Files/
+    local  OScontainer="el9"
     Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /usatlas ]]
   then
