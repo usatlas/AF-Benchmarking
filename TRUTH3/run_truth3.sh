@@ -31,7 +31,7 @@ main() {
     local  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/TRUTH3"
     local  config_dir=$HOME/TRUTH3Files/
     local  OScontainer="el9"
-    Container ${OScontainer} ${config_dir} ${seed}
+    Batch ${config_dir} ${seed}
   elif [[ -d /usatlas ]]
   then
     # There is a madgraph error; I can just raise a flag and have the process skip that step.
