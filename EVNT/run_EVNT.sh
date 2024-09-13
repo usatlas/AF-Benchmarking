@@ -48,7 +48,7 @@ main() {
     local  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT"
     local  config_dir=$HOME/EVNTFiles/100xxx/100001
     local  OScontainer="centos7"
-    Container ${OScontainer} ${config_dir} ${seed}
+    Batch ${config_dir} ${seed}
   elif [[ -d /usatlas ]]
   then
     # There is a madgraph error; I can just raise a flag and have the process skip that step.
