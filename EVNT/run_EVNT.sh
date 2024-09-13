@@ -46,7 +46,7 @@ main() {
   # Checks for the home directory
   if [[ -d /sdf ]]; then
     local  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT"
-    local  config_dir=$HOME/EVNTFiles/100xxx/100001
+    local  config_dir="$HOME/EVNTFiles/100xxx/100001"
     local  OScontainer="centos7"
     Batch ${config_dir} ${seed}
   elif [[ -d /usatlas ]]
