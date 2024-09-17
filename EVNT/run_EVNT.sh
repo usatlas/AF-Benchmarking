@@ -55,7 +55,7 @@ main() {
     # There is a madgraph error; I can just raise a flag and have the process skip that step.
     local  output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/EVNT"
     local  config_dir="EVNTFiles/100xxx/100001/"
-    local  OScontainer="el9"
+    local  OScontainer="centos7"
     #local  mount="direct/usatlas+u/jrobles/:/srv -B"
     Container ${OScontainer} ${config_dir} ${seed}
   elif [[ -d /data ]]
