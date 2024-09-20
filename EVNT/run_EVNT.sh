@@ -15,7 +15,7 @@ EOF
 ## 3 -- Seed
 Container(){
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${1} -r "cd ${2} asetup AthGeneration,23.6.31,here && \
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${1} -r "pwd ls cd ${2} asetup AthGeneration,23.6.31,here && \
   pwd Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${2}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${3}"
 }
 
@@ -56,7 +56,7 @@ main() {
     local  output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/EVNT"
     local  config_dir="EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
-    local  job_dir="/run/user/$(id -u)"
+    local  job_dir=""
     Container ${OScontainer} ${job_dir} ${config_dir} ${seed}
   elif [[ -d /data ]]
   then
