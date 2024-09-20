@@ -15,7 +15,7 @@ EOF
 ## 3 -- Seed
 Container(){
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${1} -r "pwd ls cd ${2} asetup AthGeneration,23.6.31,here && \
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${1} -r "cd ${2} asetup AthGeneration,23.6.31,here && \
   pwd Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${2}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${3}"
 }
 
