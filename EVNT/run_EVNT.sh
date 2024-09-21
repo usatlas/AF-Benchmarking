@@ -52,7 +52,8 @@ main() {
     Batch ${config_dir} ${seed}
   elif [[ -d /usatlas ]]
   then
-    # There is a madgraph error; I can just raise a flag and have the process skip that step.
+    # Interactively I went into the tmp/jroblesgo/EVNT_job/ and ran all the commands found in the function.
+    # I also decreased the number of events from 10000; it just ended with a runtime error
     local  output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/EVNT"
     local  config_dir="EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
