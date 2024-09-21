@@ -23,22 +23,20 @@ Batch(){
 main() {
   # Current time used for log file storage
   curr_time=$(date +"%Y.%m.%dT%H")
-  # The seed used in the job
-  seed=1001
 
   # Checks for the home directory
   if [[ -d /sdf ]]; then
     local  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/TRUTH3"
     local  config_dir=$HOME/TRUTH3Files/
     local  OScontainer="el9"
-    Batch ${config_dir} ${seed}
+    Container ${OScontainer} ${config_dir}
   elif [[ -d /usatlas ]]
   then
     # There is a madgraph error; I can just raise a flag and have the process skip that step.
     local  output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/TRUTH3"
     local  config_dir="TRUTH3Files/"
     local  OScontainer="el9"
-    Container ${OScontainer} ${config_dir} ${seed}
+    Container ${OScontainer} ${config_dir} 
   elif [[ -d /data ]]
   then
     local  output_dir="/data/selbor/benchmarks/$curr_date/TRUTH3/"
