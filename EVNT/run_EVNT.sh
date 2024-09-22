@@ -62,9 +62,9 @@ main() {
     # Interactively I went into the tmp/jroblesgo/EVNT_job/ and ran all the commands found in the function.
     # I also decreased the number of events from 10000; it just ended with a runtime error
     local  output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/EVNT"
-    local  config_dir="EVNTFiles/100xxx/100001/"
+    local  config_dir="../EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
-    local  job_dir="/tmp/jroblesgo"
+    local  job_dir="/tmp/jroblesgo/EVNT_Job"
     Container_bnl ${OScontainer} ${job_dir} ${config_dir} ${seed}
   elif [[ -d /data ]]
   then
