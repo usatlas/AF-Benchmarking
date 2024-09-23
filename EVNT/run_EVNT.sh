@@ -36,6 +36,14 @@ Batch(){
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${1}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${2}
 }
 
+Batch_uc(){
+  export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+  asetup AthGeneration,23.6.34,here
+  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${1}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${2}
+}
+
+
 
 main() {
   # Current time used for log file storage
@@ -60,6 +68,7 @@ main() {
     Container_bnl ${OScontainer} ${job_dir} ${config_dir} ${seed}
   elif [[ -d /data ]]
   then
+    # UChicago uses the AthGeneration,23.6.34
     local  output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
     local  config_dir="/data/selbor/evnt/100xxx/100001"
     local  OScontainer="centos7"
