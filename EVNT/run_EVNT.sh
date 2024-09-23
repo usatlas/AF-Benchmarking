@@ -61,7 +61,7 @@ main() {
   elif [[ -d /data ]]
   then
     local  output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
-    local  config_dir="/EVNTFiles/100xxx/100001/"
+    local  config_dir="/data/selbor/evnt/100xxx/100001"
     local  OScontainer="centos7"
     #local  OScontainer="el9"
     Batch ${config_dir} ${seed}
