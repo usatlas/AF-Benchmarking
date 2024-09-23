@@ -70,8 +70,8 @@ main() {
   then
     local  output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
     local  config_dir="/EVNTFiles/100xxx/100001/"
-    #local  OScontainer="centos7"
-    local  OScontainer="el9"
+    local  OScontainer="centos7"
+    #local  OScontainer="el9"
     Container ${OScontainer} ${config_dir} ${seed}
   fi
   mkdir -p ${output_dir}
