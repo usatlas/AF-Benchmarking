@@ -30,17 +30,9 @@ Container_bnl(){
 ## 1 -- config_dir
 ## 2 -- Seed
 Batch(){
-  pwd
-  ls
-  df -h
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
-  pwd
-  ls
-  cd /run/user/$(id -u)
   asetup AthGeneration,23.6.31,here
-  pwd
-  ls
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${1}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${2}
 }
 
@@ -72,7 +64,7 @@ main() {
     local  config_dir="/EVNTFiles/100xxx/100001/"
     local  OScontainer="centos7"
     #local  OScontainer="el9"
-    Container ${OScontainer} ${config_dir} ${seed}
+    Batch ${config_dir} ${seed}
   fi
   mkdir -p ${output_dir}
   mv log.* ${output_dir}
