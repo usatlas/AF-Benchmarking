@@ -69,10 +69,11 @@ main() {
   elif [[ -d /data ]]
   then
     local  output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
-    local  config_dir="/data/selbor/evnt/100xxx/100001/"
+    local  config_dir="/EVNTFiles/100xxx/100001/"
+    local job_dir="/tmp/selbor/evnt"
     #local  OScontainer="centos7"
     local  OScontainer="el9"
-    Batch ${config_dir} ${seed}
+    Container ${OScontainer} ${job_dir} ${config_dir} ${seed}
   fi
   mkdir -p ${output_dir}
   mv log.* ${output_dir}
