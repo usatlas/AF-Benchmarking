@@ -73,7 +73,7 @@ main() {
     local  config_dir="/data/selbor/evnt/100xxx/100001"
     local  OScontainer="centos7"
     #local  OScontainer="el9"
-    Batch ${config_dir} ${seed}
+    Container ${OScontainer} ${config_dir} ${seed}
   fi
   mkdir -p ${output_dir}
   mv log.* ${output_dir}
