@@ -15,7 +15,7 @@ EOF
 ## 3 -- Seed
 Container(){
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${1} -r "asetup AthGeneration,23.6.34,here && \
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${1} -r "asetup AthGeneration,23.6.31,here && \
   pwd Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${2}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${3}"
 }
 
@@ -42,8 +42,6 @@ Batch_uc(){
   asetup AthGeneration,23.6.34,here
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${1}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${2}
 }
-
-
 
 main() {
   # Current time used for log file storage
@@ -73,7 +71,7 @@ main() {
     local  config_dir="/data/selbor/evnt/100xxx/100001"
     local  OScontainer="centos7"
     #local  OScontainer="el9"
-    Container ${OScontainer} ${config_dir} ${seed}
+    Batch_uc ${config_dir} ${seed}
   fi
   mkdir -p ${output_dir}
   mv log.* ${output_dir}
