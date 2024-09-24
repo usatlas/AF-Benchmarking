@@ -10,9 +10,6 @@ curr_time=$(date +"%Y.%m.%dT%H")
 seed=1001
 
 
-# Directory where all the output files will be sent to
-output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
-
 # Directory storing the input files
 config_dir="/data/selbor/evnt/100xxx/100001"
 
@@ -21,8 +18,12 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
 asetup AthGeneration,23.6.34,here
 Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}
 
+# Directory where all the output files will be sent to
+output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
+
 mkdir -p ${output_dir}
-mv log.generate ${output_dir}
-hostname >> ${output_dir}/log.generate
+mv *.generate ${output_dir}
 mv myjob.* ${output_dir}
+hostname >> *.generate
+du EVNT.root >> *.generate
 
