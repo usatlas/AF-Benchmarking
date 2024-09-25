@@ -16,7 +16,7 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 
 # Use ALRB_CONT_CMDOPTS to provide bind mount, etc. options 
 
-export ALRB_CONT_CMDOPTS="-B /sdf, /scratch"
+export ALRB_CONT_CMDOPTS="/scratch"
 
 export ALRB_CONT_RUNPAYLOAD="source $HOME/AF-Benchmarking/TRUTH3/run_truth3_slac.sh"
 
