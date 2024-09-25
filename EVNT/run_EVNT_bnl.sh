@@ -14,8 +14,9 @@ OScontainer="centos7"
 job_dir="/tmp/jroblesgo/EVNT_Job"
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup AthGeneration,23.6.31,here &&\
-Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}"
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "cp -r ~/AF-Benchmarking/EVNT/EVNTFiles . &&\
+  asetup AthGeneration,23.6.31,here &&\
+  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}"
 
 # Current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
