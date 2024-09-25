@@ -5,7 +5,7 @@
 seed=1001
 
 # Directory where the input files are stored
-config_dir="../EVNTFiles/100xxx/100001/"
+config_dir="/usatlas/u/jroblesgo/EVNTFiles/100xxx/100001/"
 
 # The OS used in the container
 OScontainer="centos7"
@@ -14,8 +14,7 @@ OScontainer="centos7"
 job_dir="/tmp/jroblesgo/EVNT_Job"
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "cd ${job_dir} &&\
-asetup AthGeneration,23.6.31,here &&\
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup AthGeneration,23.6.31,here &&\
 Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}"
 
 # Current time used for log file storage
