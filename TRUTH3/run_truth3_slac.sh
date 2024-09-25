@@ -1,6 +1,6 @@
 #!/bin/bash
 
-config_dir=$HOME/TRUTH3Files/
+config_dir=TRUTH3Files/
 OScontainer="el9"
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
