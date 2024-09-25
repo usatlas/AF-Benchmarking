@@ -5,7 +5,7 @@
 seed=1001
 
 # Directory where the input files are stored
-config_dir="../EVNTFiles/100xxx/100001/"
+config_dir="EVNTFiles/100xxx/100001/"
 
 # The OS used in the container
 OScontainer="centos7"
