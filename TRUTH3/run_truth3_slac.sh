@@ -11,9 +11,7 @@ curr_time=$(date +"%Y.%m.%dT%H")
 output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/TRUTH3"
 mkdir -p ${output_dir}
 hostname >> log.generate
-du TRUTH3.root >> log.generate
-mv myjob.* ${output_dir}
-mv log.* ${output_dir}
+du DAOD_TRUTH3.TRUTH3.root >> log.generate
 
 
 
