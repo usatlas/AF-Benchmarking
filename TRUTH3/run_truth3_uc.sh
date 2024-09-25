@@ -13,6 +13,8 @@ curr_time=$(date +"%Y.%m.%dT%H")
 
 output_dir="/data/selbor/benchmarks/$curr_date/TRUTH3/"
 mkdir -p ${output_dir}
+hostname >> *.generate
+du TRUTH3.root >> *.generate
 mv myjob.* ${output_dir}
 mv log.* ${output_dir}
  
