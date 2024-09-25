@@ -10,8 +10,8 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "as
 curr_time=$(date +"%Y.%m.%dT%H")
 output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/TRUTH3"
 mkdir -p ${output_dir}
-hostname >> *.generate
-du TRUTH3.root >> *.generate
+hostname >> log.generate
+du TRUTH3.root >> log.generate
 mv myjob.* ${output_dir}
 mv log.* ${output_dir}
 
