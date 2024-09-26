@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-if [[ ${1} == 'b' ]]
+if [[ ${1} == b ]]
 then
   # UChicago uses the AthGeneration,23.6.34
   # Current time used for log file storage
