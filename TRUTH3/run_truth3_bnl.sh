@@ -2,7 +2,7 @@
 
 
 OScontainer="el9"
-config_dir="TRUTH3Files/"
+config_dir="/tmp/jroblesgo/TRUTH3Files/"
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup Athena,24.0.53,here && \
