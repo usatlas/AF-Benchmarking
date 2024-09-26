@@ -5,7 +5,7 @@ if [[ ${1} == 'b' ]]
 then
   # UChicago uses the AthGeneration,23.6.34
   # Current time used for log file storage
-  # curr_time=$(date +"%Y.%m.%dT%H")
+  curr_time=$(date +"%Y.%m.%dT%H")
 
   # The seed used in the job
   seed=1001
