@@ -22,11 +22,13 @@ then
   output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/Rucio"
 elif [[ -d /data ]]
 then 
+  job_dir="/tmp/selbor/RucioJob"
   output_dir="/data/$USER/benchmarks/$curr_time/Rucio/"
 fi
 
 # Makes the dir for the log file (if it doesn't exist)
 mkdir -p ${output_dir}
+cd ${job_dir}
 # Begins the download
 rucio download --rses AGLT2_LOCALGROUPDISK mc23_13p6TeV:mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.DAOD_PHYSLITE.e8532_e8528_s4162_s4114_r14622_r14663_p6026_tid37222410_00 2>&1 | tee $output_dir/rucio.log
 
