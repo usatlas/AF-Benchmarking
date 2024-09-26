@@ -12,8 +12,8 @@ curr_time=$(date +"%Y.%m.%dT%H")
 # There is a madgraph error; I can just raise a flag and have the process skip that step.
 output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/TRUTH3"
 mkdir -p ${output_dir}
-hostname >> *.generate
-du TRUTH3.root >> *.generate
+hostname >> log.generate
+du TRUTH3.root >> log.generate
 mv myjob.* ${output_dir}
 mv log.* ${output_dir}
  
