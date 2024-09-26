@@ -2,10 +2,11 @@
 
 
 OScontainer="el9"
-config_dir="/tmp/jroblesgo/TRUTH3Files/"
+config_dir="TRUTH3Files/"
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup Athena,24.0.53,here && \
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "cp /usatlas/u/jroblesgo/TRUTH3Files . && \ 
+  asetup Athena,24.0.53,here && \
   Derivation_tf.py --CA True --inputEVNTFile ${2}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
 
 curr_time=$(date +"%Y.%m.%dT%H")
