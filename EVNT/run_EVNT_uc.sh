@@ -15,7 +15,8 @@ output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
 
 OS_container="el9"
 
-if [[ ${1} == b ]]
+# Native OS for UC is CentOS7
+if [[ ${1} == n ]]
 then
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
