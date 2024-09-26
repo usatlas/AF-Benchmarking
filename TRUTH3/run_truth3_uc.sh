@@ -21,8 +21,8 @@ then
 fi
 
 mkdir -p ${output_dir}
-hostname >> log.generate
+hostname >> log.Derivation
 du DAOD_TRUTH3.TRUTH3.root >> log.generate
 mv myjob.* ${output_dir}
-mv log.generate ${output_dir}
+mv log.Derivation ${output_dir}
 
