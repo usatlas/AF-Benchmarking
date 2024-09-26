@@ -6,6 +6,7 @@ Error = /data/selbor/TRUTH3/$(Cluster).$(Process).err
 Log = /data/selbor/TRUTH3/$(Cluster).$(Process).log
 
 Executable = /home/selbor/benchmarks/TRUTH3/run_truth3_uc.sh
+Arguments = n
 
 request_memory = 3GB
 request_cpus = 1
