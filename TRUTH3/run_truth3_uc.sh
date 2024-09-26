@@ -3,7 +3,7 @@
 # Current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
 
-output_dir="/data/selbor/benchmarks/$curr_date/TRUTH3/"
+output_dir="/data/selbor/benchmarks/$curr_time/TRUTH3/"
 
 config_dir="/data/selbor/TRUTH3_StaticDir/"
 
