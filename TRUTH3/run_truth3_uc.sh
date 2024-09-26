@@ -5,7 +5,7 @@ curr_time=$(date +"%Y.%m.%dT%H")
 
 output_dir="/data/selbor/benchmarks/$curr_date/TRUTH3/"
 
-config_dir="/data/selbor/evnt/100xxx/100001/"
+config_dir="/data/selbor/TRUTH3_StaticDir"
 
 if [[ ${1} == n ]]
 then 
