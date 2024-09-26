@@ -9,14 +9,14 @@ config_dir="/data/selbor/TRUTH3_StaticDir/"
 
 if [[ ${1} == n ]]
 then
-  job_dir="/data/selbor/TRUTH3Job/native"
+  rm *
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
   asetup Athena,24.0.53,here
   Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
 elif [[ ${1} == c ]]
 then
-  job_dir="/data/selbor/TRUTH3Job/container"
+  rm *
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -m /data:/data - r " asetup Athena,24.0.53,here && \
     Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
