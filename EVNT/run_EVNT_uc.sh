@@ -22,8 +22,9 @@ then
   output_dir="/data/selbor/benchmarks/$curr_date/EVNT/"
 
   mkdir -p ${output_dir}
-  mv *.generate ${output_dir}
+    hostname >> log.generate
+  du EVNT.root >> log.generate
+  mv log.generate ${output_dir}
   mv myjob.* ${output_dir}
-  hostname >> *.generate
-  du EVNT.root >> *.generate
+
 fi
