@@ -3,10 +3,7 @@
 # Native OS for UC is CentOS7
 if [[ ${1} == n ]]
 then
-  # Current time used for log file storage
-  curr_time=$(date +"%Y.%m.%dT%H")
-
-  # The seed used in the job
+    # The seed used in the job
   seed=1001
 
   # Directory storing the input files
@@ -17,9 +14,10 @@ then
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
   asetup AthGeneration,23.6.34,here
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}
+  # Current time used for log file storage
+  curr_time=$(date +"%Y.%m.%dT%H")
   # Directory where all the output files will be sent to
-  output_dir="/data/selbor/benchmarks/$curr_time/EVNT/"
-
+  output_dir="/data/selbor/benchmarks/${curr_time}/EVNT/"
 
   mkdir -p ${output_dir}
   hostname >> log.generate
