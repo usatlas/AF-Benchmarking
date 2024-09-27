@@ -33,7 +33,7 @@ then
   OScontainer="centos7"
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
-  asetup Athena,24.0.53,here
+  asetup AthDerivation,21.2.178.0,here
   Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
 
   curr_time=$(date +"%Y.%m.%dT%H")
