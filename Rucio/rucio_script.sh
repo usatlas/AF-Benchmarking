@@ -13,9 +13,11 @@ curr_time=$(date +"%Y.%m.%dT%H")
 
 # Conditional block determines the AF
 if [[ -d /sdf ]]; then
+  job_dir="/sdf/scratch/users/s/selbor/RucioJob"
   output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/Rucio/"
 elif [[ -d /usatlas ]]
 then
+  job_dir="/atlasgpfs01/usatlas/scratch/jroblesgo/RucioJob"
   output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/Rucio"
 elif [[ -d /data ]]
 then 
