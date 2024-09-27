@@ -1,8 +1,8 @@
 Universe = vanilla
 
-Output = /data/selbor/EVNT/$(Cluster).$(Process).out
-Error = /data/selbor/EVNT/$(Cluster).$(Process).err
-Log = /data/selbor/EVNT/$(Cluster).$(Process).log
+Output = /data/selbor/EVNT/myjob.$(Cluster).$(Process).out
+Error = /data/selbor/EVNT/myjob.$(Cluster).$(Process).err
+Log = /data/selbor/EVNT/myjob.$(Cluster).$(Process).log
 
 Executable = /home/selbor/AF-Benchmarking/EVNT/run_EVNT_uc.sh
 Arguments = n
