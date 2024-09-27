@@ -28,7 +28,6 @@ then
   mkdir -p ${output_dir}
   hostname >> log.Derivation
   du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
-  mv myjob.* ${output_dir}
   mv log.Derivation ${output_dir}
 elif [[ ${1} == c ]]
 then
