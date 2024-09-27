@@ -29,7 +29,7 @@ then
   du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
 elif [[ ${1} == n ]]
 then
-  config_dir="TRUTH3Files/centos7/"
+  config_dir="TRUTH3Files/"
   OScontainer="centos7"
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
