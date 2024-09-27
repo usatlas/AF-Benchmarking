@@ -3,7 +3,7 @@
 
 if [[ ${1} == n ]]
 then
-  config_dir="/sdf/data/atlas/u/selbor/TRUTH3Files/"
+  config_dir="TRUTH3Files/"
   OScontainer="el9"
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup Athena,24.0.53,here && \
