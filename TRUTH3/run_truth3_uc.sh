@@ -17,7 +17,7 @@ then
   mv myjob.* ${output_dir}
   mv log.Derivation ${output_dir}
 
-elif [[ ${1} == ci ]]
+elif [[ ${1} == i ]]
 then
   config_dir="/data/selbor/TRUTH3_StaticDir/"
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -32,7 +32,7 @@ then
   mv myjob.* ${output_dir}
   mv log.Derivation ${output_dir}
 
-elif [[ ${1} == cb ]]
+elif [[ ${1} == c ]]
 then
   config_dir="/data/selbor/TRUTH3_StaticDir/"
   
