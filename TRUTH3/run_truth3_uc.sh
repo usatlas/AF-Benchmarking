@@ -36,7 +36,7 @@ then
   
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -m /data:/data -r "AthDerivation,21.2.178.0,here && \
-    Reco_tf.py --CA True --inputEVNTFile ${config_dir}EVNT_centos.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
+    Reco_tf.py --inputEVNTFile ${config_dir}EVNT_centos_interactive.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3"
   # current time used for log file storage
   curr_time=$(date +"%Y.%m.%dT%H")
   output_dir="/data/selbor/benchmarks/$curr_time/TRUTH3_centos/"
