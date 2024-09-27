@@ -15,6 +15,7 @@ then
   hostname >> log.Derivation
   du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
 elif [[ ${1} == c ]]
+then
   config_dir="TRUTH3Files/"
   OScontainer="centos7"
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
