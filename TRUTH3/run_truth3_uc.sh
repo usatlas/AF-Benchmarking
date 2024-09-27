@@ -6,7 +6,7 @@ then
   config_dir="/data/selbor/TRUTH3_StaticDir/"
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
-  AthDerivation,21.2.178.0,here 
+  asetup Athena,24.0.53,here 
   Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
   # current time used for log file storage
   curr_time=$(date +"%Y.%m.%dT%H")
@@ -21,7 +21,7 @@ then
   config_dir="/data/selbor/TRUTH3_StaticDir/"
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -m /data:/data -r "asetup AthDerivation,21.2.178.0,here && \
-    Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT_centos_interactive.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
+    Reco_tf.py --CA True --inputEVNTFile ${config_dir}EVNT_centos_interactive.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
   # current time used for log file storage
   curr_time=$(date +"%Y.%m.%dT%H")
   output_dir="/data/selbor/benchmarks/$curr_time/TRUTH3_centos_interactive/"
@@ -36,7 +36,7 @@ then
   
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -m /data:/data -r "AthDerivation,21.2.178.0,here && \
-    Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT_centos.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
+    Reco_tf.py --CA True --inputEVNTFile ${config_dir}EVNT_centos.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
   # current time used for log file storage
   curr_time=$(date +"%Y.%m.%dT%H")
   output_dir="/data/selbor/benchmarks/$curr_time/TRUTH3_centos/"
