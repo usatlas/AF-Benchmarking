@@ -41,6 +41,6 @@ then
   du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
 elif [[ ${1} == h ]]
 then
-  hostctl
+cat /etc/os-release
 fi
 
