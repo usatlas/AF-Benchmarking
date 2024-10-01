@@ -39,8 +39,8 @@ then
   curr_time=$(date +"%Y.%m.%dT%H")
   output_dir="/data/selbor/benchmarks/$curr_time/TRUTH3_centos/"
   mkdir -p ${output_dir}
-  hostname >> log.Derivation
-  du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
+  hostname >> log.EVNTtoDAOD
+  du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
   mv log.Derivation ${output_dir}
 elif [[ ${1} == e ]]
 then
