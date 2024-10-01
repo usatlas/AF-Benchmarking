@@ -16,8 +16,9 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 
 # Use ALRB_CONT_CMDOPTS to provide bind mount, etc. options 
 
-#export ALRB_CONT_CMDOPTS="-B /sdf"
+export ALRB_CONT_CMDOPTS="-B /sdf"
 
 export ALRB_CONT_RUNPAYLOAD="source $HOME/AF-Benchmarking/EVNT/run_EVNT_slac.sh e"
+
 
 source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c centos7
