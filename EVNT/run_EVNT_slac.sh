@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ${1}== c ]]
+if [[ ${1} == c ]]
 then
   # Location of input files
   config_dir="EVNTFiles/100xxx/100001/"
