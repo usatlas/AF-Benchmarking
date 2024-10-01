@@ -69,6 +69,4 @@ then
   du EVNT.root >> log.generate
   mv log.generate ${output_dir}
   mv myjob.* ${output_dir}
-
-
 fi
