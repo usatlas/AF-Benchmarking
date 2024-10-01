@@ -21,7 +21,7 @@ then
   # The seed used in the job
   seed=1001
   # Directory storing the input files
-  config_dir="EVNTFile/100xxx/100001/"
+  config_dir="EVNTFiles/100xxx/100001/"
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OS_container} -m /data:/data -r "asetup AthGeneration,23.6.34,here && \
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=100 --randomSeed=${seed}"
