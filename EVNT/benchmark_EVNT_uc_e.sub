@@ -5,7 +5,7 @@ Error = /data/selbor/EVNT/$(Cluster).$(Process).err
 Log = /data/selbor/EVNT/$(Cluster).$(Process).log
 
 Executable = /home/selbor/AF-Benchmarking/EVNT/run_EVNT_uc.sh
-Arguments    = c
+Arguments = e
 
 request_memory = 3GB
 request_cpus = 1
