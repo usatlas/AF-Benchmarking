@@ -20,4 +20,4 @@ export ALRB_CONT_CMDOPTS="-B /sdf"
 
 export ALRB_CONT_RUNPAYLOAD="source $HOME/AF-Benchmarking/TRUTH3/run_truth3_slac.sh h"
 
-source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c el9
+source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c centos7
