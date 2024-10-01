@@ -5,7 +5,7 @@ Output = /data/selbor/TRUTH3/$(Cluster).$(Process).out
 Error = /data/selbor/TRUTH3/$(Cluster).$(Process).err
 Log = /data/selbor/TRUTH3/$(Cluster).$(Process).log
 
-Executable = /home/selbor/benchmarks/TRUTH3/run_truth3_uc.sh
+Executable = /home/selbor/AF-Benchmarking/TRUTH3/run_truth3_uc.sh
 Arguments = c
 
 request_memory = 3GB
