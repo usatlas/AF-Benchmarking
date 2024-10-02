@@ -1,0 +1,13 @@
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/Rucio/rucio_script.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/EVNT/script_EVNT_slac_e.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/EVNT/script_EVNT_slac_c.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/script_TRUTH_slac_c_c.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/script_TRUTH_slac_c_e.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/script_TRUTH_slac_i_e.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/script_TRUTH_slac_i_c.sh
