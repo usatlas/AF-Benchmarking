@@ -13,7 +13,7 @@ then
     Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=100 --randomSeed=${seed}"
       # Current time used for log file storage
       curr_time=$(date +"%Y.%m.%dT%H")
-      output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT_container_centos"
+      output_dir="/sdf/scratch/users/s/selbor/benchmarks/$curr_time/EVNT_container_centos"
       mkdir -p ${output_dir}
       hostname >> log.generate
       du EVNT.root >> log.generate
@@ -31,7 +31,7 @@ then
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=100 --randomSeed=${seed}"
     # Current time used for log file storage
     curr_time=$(date +"%Y.%m.%dT%H")
-    output_dir="/data/selbor/benchmarks/$curr_time/EVNT_container_el/"
+    output_dir="/sdf/scratch/users/s/selbor/benchmarks/$curr_time/EVNT_container_el/"
     mkdir -p ${output_dir}
     hostname >> log.generate
     du EVNT.root >> log.generate
