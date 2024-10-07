@@ -1,3 +1,6 @@
+Universe = vanilla
+
+
 Output = /atlasgpfs01/usatlas/data/jroblesgo/myjob.$(Cluster).$(Process).out
 Error = /atlasgpfs01/usatlas/data/jroblesgo/myjob.$(Cluster).$(Process).err
 Log = /atlasgpfs01/usatlas/data/jroblesgo/myjob.$(Cluster).$(Process).log
@@ -7,3 +10,4 @@ Executable = /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/run_truth3_bnl.sh
 request_memory = 3G
 
 Queue 1
+
