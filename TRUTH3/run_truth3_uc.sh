@@ -25,8 +25,8 @@ then
   curr_time=$(date +"%Y.%m.%dT%H")
   output_dir="/data/selbor/benchmarks/$curr_time/TRUTH3_centos_interactive/"
   mkdir -p ${output_dir}
-  hostname >> log.EVNTtoDAOD
-  du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
+  hostname >> log.Derivation
+  du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
   mv log.EVNTtoDAOD ${output_dir}
 elif [[ ${1} == c ]]
 then
@@ -41,7 +41,7 @@ then
   mkdir -p ${output_dir}
   hostname >> log.EVNTtoDAOD
   du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
-  mv log.Derivation ${output_dir}
+  mv log.EVNTtoDAOD ${output_dir}
 elif [[ ${1} == e ]]
 then
   config_dir="/data/selbor/TRUTH3_StaticDir/"
