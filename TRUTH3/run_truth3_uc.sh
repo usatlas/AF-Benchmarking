@@ -25,8 +25,8 @@ then
   curr_time=$(date +"%Y.%m.%dT%H")
   output_dir="/data/selbor/benchmarks/$curr_time/TRUTH3_centos_interactive/"
   mkdir -p ${output_dir}
-  hostname >> log.Derivation
-  du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
+  hostname >> log.EVNTtoDAOD
+  du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
   mv log.EVNTtoDAOD ${output_dir}
 elif [[ ${1} == c ]]
 then
