@@ -12,9 +12,9 @@ then
   curr_time=$(date +"%Y.%m.%dT%H")
   output_dir="/data/selbor/benchmarks/$curr_time/TRUTH3"
   mkdir -p ${output_dir}
-  hostname >> log.EVNTtoDAOD
-  du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
-  mv log.EVNTtoDAOD ${output_dir}
+  hostname >> log.Derivation
+  du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
+  mv log.Derivation ${output_dir}
 elif [[ ${1} == i ]]
 then
   config_dir="/data/selbor/TRUTH3_StaticDir/"
