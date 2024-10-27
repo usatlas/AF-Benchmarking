@@ -4,7 +4,7 @@ Output = /data/selbor/EVNT/$(Cluster).$(Process).out
 Error = /data/selbor/EVNT/$(Cluster).$(Process).err
 Log = /data/selbor/EVNT/$(Cluster).$(Process).log
 
-Executable = /home/selbor/AF-Benchmarking/EVNT/run_evnt_el9_batch.sh
+Executable = /home/selbor/AF-Benchmarking/EVNT/UC/run_evnt_el9_batch.sh
 
 request_memory = 3GB
 request_cpus = 1
