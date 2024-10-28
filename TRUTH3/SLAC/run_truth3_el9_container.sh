@@ -3,7 +3,7 @@
 
 curr_time=$(date +"%Y.%m.%dT%H")
 
-config_dir="/sdf/home/s/selbor/TRUTH3Files/el9/"
+config_dir="/home/selbor/TRUTH3Files/el9/"
 OScontainer="el9"
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup Athena,24.0.53,here && \
