@@ -3,11 +3,11 @@
 
 curr_time=$(date +"%Y.%m.%dT%H")
 
-config_dir="TRUTH3Files/"
+config_dir="TRUTH3Files/centos_interactive"
 OScontainer="centos7"
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup AthDerivation,21.2.178.0,here && \
-  Reco_tf.py --inputEVNTFile ${config_dir}EVNT_centos7_interactive.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3"
+  Reco_tf.py --inputEVNTFile ${config_dir}EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3"
 
 
 output_dir="/sdf/scratch/users/s/selbor/benchmarks/$curr_time/TRUTH3_centos7_container_interactive"
