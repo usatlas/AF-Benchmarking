@@ -3,7 +3,7 @@
 
 curr_time=$(date +"%Y.%m.%dT%H")
 
-config_dir="TRUTH3Files/centos7/"
+config_dir="/sdf/home/s/selbor/TRUTH3Files/centos7/"
 OScontainer="centos7"
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup AthDerivation,21.2.178.0,here && \
