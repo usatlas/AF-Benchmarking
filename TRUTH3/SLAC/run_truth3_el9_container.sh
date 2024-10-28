@@ -12,6 +12,6 @@ Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT.root --outputDAODFi
 
 output_dir="/sdf/scratch/users/s/selbor/benchmarks/$curr_time/TRUTH3_el9_container"
 mkdir -p ${output_dir}
-hostname >> log.EVNTtoDAOD
-du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
-mv log.EVNTtoDAOD ${output_dir}
+hostname >> log.Derivation
+du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
+mv log.Derivation ${output_dir}
