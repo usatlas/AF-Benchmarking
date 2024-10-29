@@ -17,7 +17,7 @@ curr_time=$(date +"%Y.%m.%dT%H")
 # If the directory exists run the commands in the block
 if [[ -d /sdf ]]; then
   job_dir="/sdf/scratch/users/s/selbor/RucioJob"
-  output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/Rucio/"
+  output_dir="/sdf/home/s/selbor/benchmarks/$curr_time/Rucio/"
 elif [[ -d /usatlas ]]
 then
   job_dir="/atlasgpfs01/usatlas/scratch/jroblesgo/RucioJob"
