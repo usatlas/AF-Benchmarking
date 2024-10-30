@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # this portion is done to ignore warnings from coffea for now
 from __future__ import annotations
 
