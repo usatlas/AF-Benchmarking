@@ -8,7 +8,7 @@ asetup Athena,24.0.53,here && \
 Derivation_tf.py --CA True --inputEVNTFile /srv/TRUTH3Files/el9_interactive/EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
 
 curr_time=$(date +"%Y.%m.%dT%H")
-output_die="/sdf/home/s/selbor/benchmarks/${curr_time}/TRUTH3_el9_container_interactive"
+output_dir="/sdf/home/s/selbor/benchmarks/${curr_time}/TRUTH3_el9_container_interactive"
 mkdir -p ${output_dir}
 hostname >> log.Derivation
 du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
