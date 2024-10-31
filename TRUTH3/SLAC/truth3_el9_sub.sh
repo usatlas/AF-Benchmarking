@@ -12,7 +12,7 @@
 #SBATCH --time=0-00:30:00
 
 
-export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase 
+#export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase 
 
 # Use ALRB_CONT_CMDOPTS to provide bind mount, etc. options 
 
