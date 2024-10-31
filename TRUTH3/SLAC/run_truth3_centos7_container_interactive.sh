@@ -8,7 +8,7 @@ asetup AthDerivation,21.2.178.0,here && \
 
 
 curr_time=$(date +"%Y.%m.%dT%H")
-output_dir="/home/selbor/benchmarks/${curr_time}/TRUTH3_centos7_container_interactive"
+output_dir="/sdf/home/s/selbor/benchmarks/${curr_time}/TRUTH3_centos7_container_interactive"
 mkdir -p ${output_dir}
 hostname >> log.EVNTtoDAOD
 du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
