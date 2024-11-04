@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /data/selbor/TRUTH3Job/container_interactive
+cd /data/selbor/TRUTH3Job/centos_interactive
 
 rm *
 
