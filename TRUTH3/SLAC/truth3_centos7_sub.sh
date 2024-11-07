@@ -15,7 +15,7 @@
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase 
 
 # Use ALRB_CONT_CMDOPTS to provide bind mount, etc. options
-export ALRB_CONT_CMDOPTS="-B /sdf"
+export ALRB_CONT_CMDOPTS="-B /sdf,/fs"
 
 export ALRB_CONT_RUNPAYLOAD="source $HOME/AF-Benchmarking/TRUTH3/SLAC/run_truth3_centos7_container.sh"
 
