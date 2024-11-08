@@ -2,7 +2,7 @@
 #
 #SBATCH --account=atlas:usatlas
 #SBATCH --partition=ampere
-#SBATCH --gpus a100:1
+#SBATCH --gpus a100:0
 #SBATCH --job-name=truth3_batch
 #SBATCH --output=output-%j.txt
 #SBATCH --error=output-%j.txt

@@ -2,7 +2,7 @@
 #
 #SBATCH --account=atlas:usatlas
 #SBATCH --partition=ampere
-#SBATCH --gpus a100:1
+#SBATCH --gpus a100:0
 #SBATCH --job-name=evnt_batch_el9
 #SBATCH --output=output-%j.txt
 #SBATCH --error=output-%j.txt
@@ -11,6 +11,7 @@
 #SBATCH --mem-per-cpu=4g
 #SBATCH --time=0-02:00:00
 
+unset KRB5CCNAME
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase 
 
