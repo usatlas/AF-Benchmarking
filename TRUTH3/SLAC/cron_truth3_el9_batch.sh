@@ -1,5 +1,7 @@
 #!/bin/bash
 
+roh
+
 cd /sdf/scratch/users/s/selbor/TRUTH3Job/container_el
 
 rm -r *
