@@ -41,4 +41,4 @@ rucio download --rses AGLT2_LOCALGROUPDISK mc23_13p6TeV:mc23_13p6TeV.700866.Sh_2
 # Gets and appends the host machine's name to the log file
 hostname >> $output_dir/rucio.log
 # Gets and appends the download size to the log file
-du mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.DAOD_PHYSLITE.e8532_e8528_s4162_s4114_r14622_r14663_p6026_tid37222410_00/ >> $output_dir/rucio.log
+du mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.DAOD_PHYSLITE.e8532_e8528_s4162_s4114_r14622_r14663_p6491/ >> $output_dir/rucio.log
