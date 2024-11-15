@@ -1,5 +1,5 @@
 #!/bin/bash
-ssh iana"
+ssh iana "
 
 cd /sdf/scratch/users/s/selbor/TRUTH3Job/container_centos
 
