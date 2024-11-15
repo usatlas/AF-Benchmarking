@@ -1,13 +1,9 @@
-0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/Rucio/rucio_script.sh
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/SLAC/cron_truth3_el9_batch.sh
 
-0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/EVNT/script_EVNT_slac_e.sh
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/SLAC/cron_truth3_centos7_batch.sh
 
-0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/EVNT/script_EVNT_slac_c.sh
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/EVNT/SLAC/cron_evnt_el9.sh
 
-0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/script_TRUTH_slac_c_c.sh
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/EVNT/SLAC/cron_evnt_centos7.sh
 
-0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/script_TRUTH_slac_c_e.sh
-
-0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/script_TRUTH_slac_i_e.sh
-
-0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/script_TRUTH_slac_i_c.sh
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/Rucio/cron_rucio_slac.sh
