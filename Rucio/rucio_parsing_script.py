@@ -1,6 +1,7 @@
 import datetime as dt
 import os
 import json
+from datetime import timezone
 
 '''
 Set the following:
@@ -11,7 +12,7 @@ Set the following:
 
 
 # Setting the directory where all of the dated directories are stored
-testing_dir=r""
+testing_dir=r"/Users/selbor/Work/benchmarks"
 
 # From the sorted directories within testing_dir
 ## create a list containing the paths
@@ -69,6 +70,7 @@ def parsing_function(element_from_list_of_full_path):
         submit_date_time_object = dt.datetime(int(submit_date_time[0][0:4]), int(submit_date_time[0][5:7]), int(submit_date_time[0][8:10]), int(submit_date_time[1][0:2]), int(submit_date_time[1][3:5]), int(submit_date_time[1][6:8]))
         exit_date_time_object = dt.datetime(int(exit_date_time[0][0:4]), int(exit_date_time[0][5:7]), int(exit_date_time[0][8:10]), int(exit_date_time[1][0:2]), int(exit_date_time[1][3:5]), int(exit_date_time[1][6:8]))
         run_time = int((exit_date_time_object - submit_date_time_object).total_seconds())
+        submit_date_time_object = submit_date_time_object.replace(tzinfo=timezone.utc)
     else:
         print("ERROR -- FILE WAS NOT OPENED")
     f.close()
@@ -98,7 +100,7 @@ def makes_json_instances(list_of_dics):
     return list_of_jsons
 
 def bookkeeping_data(list_of_jsons):
-    python_script_dir = r""
+    python_script_dir = r"/Users/selbor/Work/env/"
     if 'rucio_sent.txt' in os.listdir(python_script_dir):
         instances_not_in_file = []
         f = open('rucio_sent.txt', 'r')
@@ -121,7 +123,7 @@ def bookkeeping_data(list_of_jsons):
     return diff_set
 
 def append_new_data(diff_set):
-    python_script_dir = r""
+    python_script_dir = r"/Users/selbor/Work/env/"
     f = open('rucio_sent.txt', 'a')
     if f:
         for item in diff_set:
