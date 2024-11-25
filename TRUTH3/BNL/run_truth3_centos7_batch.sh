@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Config Dir Needed
-config_dir="TRUTH3Files/centos/"
+config_dir="TRUTH3Files/"
 
 # Sets up the ATLAS Environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
