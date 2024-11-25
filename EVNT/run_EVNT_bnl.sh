@@ -29,6 +29,6 @@ mv log.generate ${output_dir}
 hostname >> ${output_dir}/log.generate
 mv myjob.* ${output_dir}
 # I still need to get the payload size into the log file.
-hostname >> *.generate
-du EVNT.root >> *.generate
+hostname >> log.generate
+du EVNT.root >> log.generate
 
