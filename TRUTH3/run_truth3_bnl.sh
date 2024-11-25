@@ -10,7 +10,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "as
 
 curr_time=$(date +"%Y.%m.%dT%H")
 # There is a madgraph error; I can just raise a flag and have the process skip that step.
-output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/TRUTH3"
+output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/TRUTH3_el9_batch"
 mkdir -p ${output_dir}
 hostname >> log.generate
 du TRUTH3.root >> log.generate
