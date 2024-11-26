@@ -8,7 +8,7 @@ seed=1001
 config_dir="EVNTFiles/100xxx/100001/"
 
 # The OS used in the container
-OScontainer="el9"
+OScontainer="centos7"
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "cp -r ~/AF-Benchmarking/EVNT/EVNTFiles . &&\
