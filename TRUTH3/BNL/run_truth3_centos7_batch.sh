@@ -17,7 +17,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "cp -r ~/T
 # current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
 
-output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/TRUTH3_centos7_batch"
+output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/TRUTH3_centos7_batch"
 mkdir -p $output_dir
 #hostname >> log.EVNTtoDAOD
 #du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
