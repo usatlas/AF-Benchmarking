@@ -26,4 +26,4 @@ mkdir -p $output_dir
 mv log.EVNTtoDAOD $output_dir
 
 # Removes everything; cleans the working directory
-rm -r *
+#rm -r *
