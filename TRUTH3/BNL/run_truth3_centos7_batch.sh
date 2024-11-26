@@ -20,8 +20,8 @@ curr_time=$(date +"%Y.%m.%dT%H")
 # There is a madgraph error; I can just raise a flag and have the process skip that step.
 output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/TRUTH3_centos7_batch"
 mkdir -p ${output_dir}
-hostname >> log.EVNTtoDAOD
-du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
+#hostname >> log.EVNTtoDAOD
+#du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
 # Moves the log file to the output directory
 mv log.EVNTtoDAOD ${output_dir}
 
