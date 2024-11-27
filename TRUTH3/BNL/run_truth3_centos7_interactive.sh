@@ -23,3 +23,6 @@ hostname >> log.EVNTtoDAOD
 du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
 # Moves the log file to the output directory
 mv log.EVNTtoDAOD ${output_dir}
+
+# Cleans the working directory
+rm *
