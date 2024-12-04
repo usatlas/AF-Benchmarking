@@ -29,5 +29,3 @@ du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
 # Moves the log file to the output directory
 mv log.Derivation ${output_dir}
 
-# Cleans the working directory
-rm *

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Config Dir Needed
-config_dir="TRUTH3Files/"
 
 # Sets up the ATLAS Environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -23,5 +21,3 @@ du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
 # Moves the log file to the output directory
 mv log.EVNTtoDAOD ${output_dir}
 
-# Removes non-dir items in the working directory
-rm *
