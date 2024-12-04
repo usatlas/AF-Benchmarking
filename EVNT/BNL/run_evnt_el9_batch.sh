@@ -10,6 +10,10 @@ config_dir="EVNTFiles/100xxx/100001/"
 # The OS used in the container
 OScontainer="el9"
 
+# Sets up the container:
+## -c : used to make a container followed by the OS we want to use
+## -m : mounts a specific directory
+## -r : precedes the commands we want to run within the container
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "cp -r ~/AF-Benchmarking/EVNT/EVNTFiles . &&\
   asetup AthGeneration,23.6.34,here &&\
@@ -21,9 +25,10 @@ curr_time=$(date +"%Y.%m.%dT%H")
 # Output directory
 output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/EVNT_el9_batch"
 
+# Creates the output directory
 mkdir -p ${output_dir}
-hostname >> ${output_dir}/log.generate
-mv myjob.* ${output_dir}
+# Obtains and appends the host name and payload size to the log file
 hostname >> log.generate
 du EVNT.root >> log.generate
+# Moves the log file to the output directory
 mv log.generate ${output_dir}
