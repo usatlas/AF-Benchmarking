@@ -17,7 +17,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup Athena
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory
-output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/TRUTH3_el9_batch"
+output_dir="/atlasgpfs01/usatlas/data/${USER}/benchmarks/$curr_time/TRUTH3_el9_batch"
 
 # Creates the output directory
 mkdir -p ${output_dir}
