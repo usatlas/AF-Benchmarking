@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Defines the directory where the input files are stored
-config_dir="/data/selbor/TRUTH3_StaticDir/"
+config_dir="/data/$USER/TRUTH3_StaticDir/"
 
 # Defines the OS the container will have
 OScontainer="el9"
@@ -20,7 +20,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -m /da
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory
-output_dir="/data/selbor/benchmarks/$curr_time/TRUTH3_el9_container_interactive"
+output_dir="/data/$USER/benchmarks/$curr_time/TRUTH3_el9_container_interactive"
 
 # Creates the output directory
 mkdir -p ${output_dir}
