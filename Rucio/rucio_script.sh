@@ -28,6 +28,11 @@ elif [[ -d /data ]]
 then
   job_dir="/tmp/$USER/RucioJob"
   output_dir="/data/$USER/benchmarks/$curr_time/Rucio/"
+elif [[-d /pscratch ]]
+  user_name=$USER
+  first_letter=${user_name:0:1}
+  job_dir="/pscratch/sd/$first_letter/$USER/RucioJob/"
+  output_dir="/global/homes/$first_letter/$USER/benchmarks/$curr_time/Rucio"
 fi
 
 # Makes the dir for the log file (if it doesn't exist)
