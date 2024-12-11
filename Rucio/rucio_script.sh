@@ -28,7 +28,7 @@ elif [[ -d /data ]]
 then
   job_dir="/tmp/$USER/RucioJob"
   output_dir="/data/$USER/benchmarks/$curr_time/Rucio/"
-elif [[-d /pscratch ]]
+elif [[ -d /pscratch ]]
 then
   user_name=$USER
   first_letter=${user_name:0:1}
