@@ -23,7 +23,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "cp
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Output directory
-output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/EVNT_el9_batch"
+output_dir="/atlasgpfs01/usatlas/data/$USER/benchmarks/$curr_time/EVNT_el9_batch"
 
 # Creates the output directory
 mkdir -p ${output_dir}
