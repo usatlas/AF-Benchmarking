@@ -6,7 +6,7 @@ OS_container="centos7"
 seed=1001
 
 # Directory storing the input files
-config_dir="/data/selbor/evnt_centos/100xxx/100001"
+config_dir="/data/$USER/evnt_centos/100xxx/100001"
 
 # Creates the ATLAS Environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -22,7 +22,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -m /data:/dat
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines and makes the output directory
-output_dir="/data/selbor/benchmarks/$curr_time/EVNT_contained_centos7/"
+output_dir="/data/$USER/benchmarks/$curr_time/EVNT_contained_centos7/"
 mkdir -p ${output_dir}
 
 # Appends the hostname and payload size to the log files
