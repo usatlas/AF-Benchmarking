@@ -9,6 +9,8 @@
 #SBATCH --mail-user=jprobles@ucsc.edu
 #SBATCH --mail-type=ALL
 #SBATCH -t 1:0:0
+#SBATCH --mem=4GB
+
 
 # OpenMP settings:
 export OMP_NUM_THREADS=1
