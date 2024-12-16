@@ -8,6 +8,8 @@
 #SBATCH -J truth3_centos7
 #SBATCH --mail-user=jprobles@ucsc.edu
 #SBATCH --mail-type=ALL
+#SBATCH --cpus-per-task=128
+#SBATCH --constraint=cpu
 #SBATCH -t 1:0:0
 #SBATCH --mem=4GB
 
