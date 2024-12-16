@@ -7,6 +7,8 @@
 #SBATCH -q regular
 #SBATCH -J truth3_el9
 #SBATCH --mail-user=jprobles@ucsc.edu
+#SBATCH --cpus-per-task=128
+#SBATCH --constraint=cpu
 #SBATCH --mail-type=ALL
 #SBATCH -t 1:0:0
 #SBATCH --mem=4GB
