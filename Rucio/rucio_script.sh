@@ -31,11 +31,11 @@ native_el9 () {
   cat $HOME/pass.txt | voms-proxy-init -voms atlas
   lsetup "rucio -w"
 
-  mkdir -p ${3} &&\
-  cd ${2} &&\
-  rm -r ${3}/ &&\
-  rucio download --rses AGLT2_LOCALGROUPDISK ${3}  2>&1 | tee rucio.log &&\
-  hostname >> rucio.log &&\
+  mkdir -p ${3}
+  cd ${2}
+  rm -r ${3}/
+  rucio download --rses AGLT2_LOCALGROUPDISK ${3}  2>&1 | tee rucio.log
+  hostname >> rucio.log
   du ${3}/ >> rucio.log
   mv rucio.log ${1}
 }
