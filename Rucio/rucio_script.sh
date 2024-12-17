@@ -65,7 +65,7 @@ elif [[ -d /pscratch ]]
 then
   user_name=$USER
   first_letter=${user_name:0:1}
-  job_dir="/pscratch/sd/$first_letter/$USER/RucioJob/"
+  job_dir="/home/$USER/RucioJob/"
   output_dir="/home/$USER/benchmarks/$curr_time/Rucio"
   container_el9 ${output_dir} ${job_dir} ${download_ID}
 fi
