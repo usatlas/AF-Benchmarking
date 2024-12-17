@@ -56,7 +56,7 @@ then
   container_el9 ${output_dir} ${job_dir} ${download_ID}
 elif [[ -d /data ]]
 then
-  job_dir="/tmp/$USER/RucioJob"
+  job_dir="/data/$USER/RucioJob"
   output_dir="/data/$USER/benchmarks/$curr_time/Rucio/"
   native_el9 ${output_dir} ${job_dir} ${download_ID}
 elif [[ -d /pscratch ]]
