@@ -10,7 +10,7 @@ container_el9 (){
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "lsetup emi && \
     cat $HOME/pass.txt | voms-proxy-init -voms atlas && \
     lsetup rucio -w &&\
-    mkdir -p ${3} &&\
+    mkdir -p ${1} &&\
     cd ${2} &&\
     rm -r ${3}/ &&\
     rucio download --rses AGLT2_LOCALGROUPDISK ${3}  2>&1 | tee rucio.log &&\
@@ -31,7 +31,7 @@ native_el9 () {
   cat $HOME/pass.txt | voms-proxy-init -voms atlas
   lsetup "rucio -w"
 
-  mkdir -p ${3}
+  mkdir -p ${1}
   cd ${2}
   rm -r ${3}/
   rucio download --rses AGLT2_LOCALGROUPDISK ${3}  2>&1 | tee rucio.log
