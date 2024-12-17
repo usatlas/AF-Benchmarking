@@ -8,7 +8,7 @@ container_el9 (){
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   export ALRB_localConfigDir=$HOME/localConfig
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "lsetup emi && \
-    cat $HOME/pass.txt | voms-proxy-init -voms atlas && \
+    echo Wookiee13 | voms-proxy-init -voms atlas && \
     lsetup rucio -w &&\
     mkdir -p ${1} &&\
     cd ${2} &&\
