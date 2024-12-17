@@ -13,9 +13,10 @@ container_el9 (){
     mkdir -p ${3} &&\
     cd ${2} &&\
     rm -r ${3}/ &&\
-    rucio download --rses AGLT2_LOCALGROUPDISK ${3}  2>&1 | tee ${1}rucio.log &&\
-    hostname >> ${1}/rucio.log &&\
-    du ${3}/ >> ${1}/rucio.log"
+    rucio download --rses AGLT2_LOCALGROUPDISK ${3}  2>&1 | tee rucio.log &&\
+    hostname >> rucio.log &&\
+    du ${3}/ >> rucio.log
+    mv rucio.log ${1}"
 }
 
 native_el9 () {
@@ -33,9 +34,10 @@ native_el9 () {
   mkdir -p ${3} &&\
   cd ${2} &&\
   rm -r ${3}/ &&\
-  rucio download --rses AGLT2_LOCALGROUPDISK ${3}  2>&1 | tee ${1}rucio.log &&\
-  hostname >> ${1}/rucio.log &&\
-  du ${3}/ >> ${1}/rucio.log
+  rucio download --rses AGLT2_LOCALGROUPDISK ${3}  2>&1 | tee rucio.log &&\
+  hostname >> rucio.log &&\
+  du ${3}/ >> rucio.log
+  mv rucio.log ${1}
 }
 
 # Gets the current time
