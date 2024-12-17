@@ -66,7 +66,7 @@ then
   user_name=$USER
   first_letter=${user_name:0:1}
   job_dir="/pscratch/sd/$first_letter/$USER/RucioJob/"
-  output_dir="$HOME/benchmarks/$curr_time/Rucio"
+  output_dir="/home/$USER/benchmarks/$curr_time/Rucio"
   container_el9 ${output_dir} ${job_dir} ${download_ID}
 fi
 
