@@ -10,7 +10,7 @@ container_el9 (){
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "export RUCIO_ACCOUNT=jroblesg && \
     lsetup rucio &&\
     echo $HOME &&\
-    ls /home/s/selbor/ &&\
+    ls /home/selbor/ &&\
     ls $HOME &&\
     cat $HOME/pass.txt &&\
     cat $HOME/pass.txt | voms-proxy-init -voms atlas && \
