@@ -33,6 +33,7 @@ native_el9 () {
   mkdir -p ${3} &&\
   cd ${2} &&\
   rm -r ${3}/ &&\
+  touch ${1}/rucio.log &&\
   rucio download --rses AGLT2_LOCALGROUPDISK ${3}  2>&1 | tee ${1}/rucio.log &&\
   hostname >> ${1}/rucio.log &&\
   du ${3}/ >> ${1}/rucio.log
