@@ -10,7 +10,7 @@
 #SBATCH --constraint=cpu
 #SBATCH --mail-type=ALL
 #SBATCH -t 1:0:0
-#SBATCH --mem=4GB
+#SBATCH --mem=4G
 
 
 # OpenMP settings:
