@@ -6,7 +6,6 @@
 #SBATCH -C cpu
 #SBATCH -q regular
 #SBATCH -J evnt_centos7
-#SBATCH --mail-user=jprobles@ucsc.edu
 #SBATCH --cpus-per-task=1
 #SBATCH --constraint=cpu
 #SBATCH --mail-type=ALL
