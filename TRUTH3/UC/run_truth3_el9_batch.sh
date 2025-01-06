@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Defines the directory where the input files are stored
-config_dir="/data/$USER/TRUTH3_StaticDir/"
+config_dir="/data/$(whoami)/TRUTH3_StaticDir/"
 
 # Sets up the environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -17,7 +17,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data:/data -r
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory
-output_dir="/data/$USER/benchmarks/$curr_time/TRUTH3_el9_container"
+output_dir="/data/$(whoami)/benchmarks/$curr_time/TRUTH3_el9_container"
 
 # Creates the output directory
 mkdir -p ${output_dir}
