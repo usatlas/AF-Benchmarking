@@ -1,0 +1,13 @@
+Universe = vanilla
+
+
+Output = /data/selbor/MWE/MWE.$(Cluster).$(Process).out
+Error = /data/selbor/MWE/MWE.$(Cluster).$(Process).err
+Log = /data/selbor/MWE/MWE.$(Cluster).$(Process).log
+
+Executable = /home/selbor/AF-Benchmarking/MWE/UC/mwe_truth3.sh
+
+request_memory = 3GB
+request_cpus = 1
+
+Queue 1
