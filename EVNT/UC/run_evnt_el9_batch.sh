@@ -7,7 +7,7 @@ OS_container="el9"
 seed=1001
 
 # Directory storing the input files
-config_dir="/data/$USER/evnt_el9/100xxx/100001"
+config_dir="/data/$(whoami)/evnt_el9/100xxx/100001"
 
 # Setting up the working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -23,7 +23,7 @@ Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.r
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines and makes the output directory
-output_dir="/data/$USER/benchmarks/$curr_time/EVNT_contained_el9/"
+output_dir="/data/$(whoami)/benchmarks/$curr_time/EVNT_contained_el9/"
 mkdir -p ${output_dir}
 
 # Obtains and appends the host name and payload size to the log file
