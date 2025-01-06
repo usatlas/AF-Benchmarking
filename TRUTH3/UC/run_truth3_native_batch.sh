@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Input files are stored here
-config_dir="/data/$USER/TRUTH3_StaticDir/"
+config_dir="/data/$(whoami)/TRUTH3_StaticDir/"
 
 # Sets up our environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -15,7 +15,7 @@ Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT.root --outputDAODFi
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory
-output_dir="/data/$USER/benchmarks/$curr_time/TRUTH3"
+output_dir="/data/$(whoami)/benchmarks/$curr_time/TRUTH3"
 
 # Creates the output directory
 mkdir -p ${output_dir}
