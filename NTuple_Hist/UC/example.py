@@ -9,6 +9,7 @@ import hist.dask as had
 import matplotlib.pyplot as plt
 from coffea import processor
 from coffea.nanoevents import NanoEventsFactory
+#from coffea.nanoevents.methods import vector
 from distributed import Client
 
 from light_roast.schema import LightRoastSchema
@@ -47,11 +48,11 @@ class MyProcessor(processor.ProcessorABC):
 if __name__ == "__main__":
     client = Client()
 
-    fname = "./user.bhodkins.38118418._000001.ANALYSIS.root"
+    fname = "/data/maclwong/Ben_Bkg_Samples/08_06_2024/user.bhodkins.700402.Wmunugamma.mc20d.2024-08-06_ANALYSIS.root/user.bhodkins.40769933._000006.ANALYSIS.root"
     events = NanoEventsFactory.from_root(
         {fname: "analysis"},
         schemaclass=LightRoastSchema,
-        metadata={"dataset": "700352.Zqqgamma.mc20d.2024-04-12"},
+        metadata={"dataset": "700402.Wmunugamma.2024-08-06"},
     ).events()
 
     p = MyProcessor()
