@@ -6,7 +6,7 @@ OS_container="centos7"
 seed=1001
 
 # Directory storing the input files
-config_dir="evnt_centos/100xxx/100001"
+config_dir="evnt_centos7/100xxx/100001"
 cp -r $HOME/evnt_centos/ .
 # Creates the ATLAS Environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
