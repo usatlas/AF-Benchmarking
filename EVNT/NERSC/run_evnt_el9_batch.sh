@@ -8,6 +8,8 @@ seed=1001
 
 # Directory storing the input files
 config_dir="evnt_el9/100xxx/100001"
+
+cd $SCRATCH/EVNT/el9/
 cp -r $HOME/evnt_el9/ .
 # Setting up the working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
