@@ -3,6 +3,9 @@
 
 # Defines the OS the container will have
 OScontainer="centos7"
+job_dir="$SCRATCH/TRUTH3/el9/"
+mkdir -p ${job_dir}
+cd ${job_dir}
 cp ~/AF-Benchmarking/TRUTH3/EVNT.root .
 # Sets up the working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -31,3 +34,5 @@ du DAOD_TRUTH3.TRUTH3.root >> log.EVNTtoDAOD
 
 # Moves the log file to the output directory
 mv log.EVNTtoDAOD ${output_dir}
+
+rm *
