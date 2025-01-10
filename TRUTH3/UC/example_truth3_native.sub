@@ -5,7 +5,7 @@ Output = $DATA/example_truth3_native.$(Cluster).$(Process).out
 Error = $DATA/example_truth3_native.$(Cluster).$(Process).err
 Log = $DATA/example_truth3_native.$(Cluster).$(Process).log
 
-Executable = /home/$(whoami)/AF-Benchmarking/TRUTH3/UC/run_truth3_native_batch.sh
+Executable = $(HOME)/AF-Benchmarking/TRUTH3/UC/run_truth3_native_batch.sh
 
 request_memory = 3GB
 request_cpus = 1
