@@ -1,22 +1,10 @@
-#!/bin/bash
+#/bin/bash
 
 # Input files are stored here
 input_file_dir="$HOME/AF-Benchmarking/TRUTH3/"
 
-# Where we want the job to execute from
-job_dir="TRUTH3_native/"
-
-# Changes into $DATA directory
-cd $DATA/
-
-# Makes the directory we want the job to execute from
-mkdir -p ${job_dir}
-
-# Goes into the desired directory
-cd ${job_dir}
-
 # Copies the input files to the desired directory
-cp ${config_dir}/EVNT.root .
+cp ${input_file_dir}/EVNT.root .
 
 # Sets up our environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
