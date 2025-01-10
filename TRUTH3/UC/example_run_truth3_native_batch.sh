@@ -4,7 +4,10 @@
 input_file_dir="$HOME/AF-Benchmarking/TRUTH3/"
 
 # Where we want the job to execute from
-job_dir="$DATA/TRUTH3_native"
+job_dir="TRUTH3_native/"
+
+# Changes into $DATA directory
+cd $DATA/
 
 # Makes the directory we want the job to execute from
 mkdir -p ${job_dir}
