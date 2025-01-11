@@ -16,3 +16,5 @@ asetup Athena,24.0.53,here
 # Initiates process with input file EVNT.root and output TRUTH3.root
 Derivation_tf.py --CA True --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
 
+# Obtains and appends the host machine to the log file
+hostname >> log.Derivation
