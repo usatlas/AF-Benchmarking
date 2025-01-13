@@ -17,7 +17,7 @@ Said jobs can either run interactively or in the batch system.
 ## Batch System
 To execute jobs within the batch system you'll need both a submission file and a executable file. The submission file will give the batch system information about your job; where the job script is located and the requested resources. The executable file will contain the code we want the host to run; your code. Below you can find examples to help you get started at the Tier 3 AFs.
 
-- ### UChicago
+### UChicago
 
 Consider the following example using a TRUTH3 job to highlight uses of the batch system at UChicago.
 
