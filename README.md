@@ -1,6 +1,11 @@
 # AF Benchmarking
 
-Contains benchmarking scripts used at the Tier 3 Analysis Facilities; [UChicago](https://github.com/usatlas/AF-Benchmarking?tab=readme-ov-file#uchicago), SLAC, and BNL. It also contains scripts used at NERSC.
+Contains benchmarking scripts used at the Tier 3 Analysis Facilities:
+- [UChicago](https://github.com/usatlas/AF-Benchmarking?tab=readme-ov-file#uchicago)
+- SLAC
+- BNL
+
+It now contains scripts used at NERSC.
 
 
 ## Types of jobs:
