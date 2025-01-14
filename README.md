@@ -7,9 +7,6 @@ Contains benchmarking scripts used at the Tier 3 Analysis Facilities:
 
 It now contains scripts used at NERSC.
 
-
-## Types of jobs:
-
 The jobs used for benchmarking are the of the following type:
 
 - EVNT Generation
