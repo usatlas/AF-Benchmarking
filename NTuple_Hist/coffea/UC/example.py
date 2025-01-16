@@ -13,7 +13,6 @@ from coffea.nanoevents import NanoEventsFactory
 from distributed import Client
 from datetime import datetime
 
-
 warnings.filterwarnings("ignore", module="coffea.*")
 
 
@@ -48,11 +47,15 @@ class MyProcessor(processor.ProcessorABC):
 if __name__ == "__main__":
     # Gets the current time
     start_time = datetime.now()
+    print(start_time)
 
     client = Client()
 
     # Input file goes in here; requires absolute path
-    fname = "/data/maclwong/Ben_Bkg_Samples/08_06_2024/user.bhodkins.700402.Wmunugamma.mc20d.2024-08-06_ANALYSIS.root/user.bhodkins.40769933._000006.ANALYSIS.root"
+
+    client = Client()
+
+    fname = "/data/selbor/ntuple_hist/coffea_fw/user.bhodkins.40769933._000006.ANALYSIS.root"
     events = NanoEventsFactory.from_root(
         {fname: "analysis"},
         schemaclass=NtupleSchema,
@@ -73,4 +76,5 @@ if __name__ == "__main__":
 
     # Gets the current time
     end_time = datetime.now()
+    print(end_time)
 
