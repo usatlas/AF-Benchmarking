@@ -11,7 +11,7 @@ cd ${work_dir}
 
 source ../bin/activate
 
-python3 example.py 2>&1 | "coffea_hist.log"
+python3 example.py 2>&1 | tee coffea_hist.log
 
 log_file_dir="$DATA/benchmarks/${curr_time}/Coffea_Hist/"
 
