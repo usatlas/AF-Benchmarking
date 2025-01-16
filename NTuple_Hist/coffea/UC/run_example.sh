@@ -11,7 +11,15 @@ cd ${work_dir}
 
 source ../bin/activate
 
+start_time=$date
+
+$start_time >> coffea_hist.log
+
 python3 example.py 2>&1 | tee coffea_hist.log
+
+end_time=$date
+
+$end_time >> coffea_hist.log
 
 log_file_dir="$DATA/benchmarks/${curr_time}/Coffea_Hist/"
 
