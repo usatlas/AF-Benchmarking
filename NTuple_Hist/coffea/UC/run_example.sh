@@ -25,6 +25,8 @@ hostname >> coffea_hist.log
 
 du ntuple_cfw.pdf >> coffea_hist.log
 
+rm ntuple_cfw.pdf
+
 log_file_dir="/data/$(whoami)/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p ${log_file_dir}
