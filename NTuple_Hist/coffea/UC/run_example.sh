@@ -21,6 +21,8 @@ end_time=$date
 
 $end_time >> coffea_hist.log
 
+hostname >> coffea_hist.log
+
 log_file_dir="/data/$(whoami)/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p ${log_file_dir}
