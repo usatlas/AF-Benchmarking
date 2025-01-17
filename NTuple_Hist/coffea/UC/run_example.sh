@@ -5,7 +5,7 @@
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Working directory
-work_dir="$DATA/ntuple_hist/coffea_fw/"
+work_dir="/data/$(whoami)/ntuple_hist/coffea_fw/"
 
 cd ${work_dir}
 
@@ -21,7 +21,7 @@ end_time=$date
 
 $end_time >> coffea_hist.log
 
-log_file_dir="$DATA/benchmarks/${curr_time}/Coffea_Hist/"
+log_file_dir="/data/$(whoami)/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p ${log_file_dir}
 
