@@ -2,8 +2,8 @@
 
 Contains benchmarking scripts used at the Tier 3 Analysis Facilities:
 - [UChicago](https://github.com/usatlas/AF-Benchmarking?tab=readme-ov-file#uchicago)
-- SLAC
-- BNL
+- [SLAC](https://github.com/usatlas/AF-Benchmarking#slac)
+- [BNL](https://github.com/usatlas/AF-Benchmarking#bnl)
 
 It now contains scripts used at NERSC.
 
