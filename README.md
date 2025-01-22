@@ -75,7 +75,7 @@ Queue 1
 
 When working at SLAC, the jobs submitted must be containerized. The example below outlines how to do this using a TRUTH3 job running in EL9 container.
 
-*TRUTH3 Executable File*
+[*TRUTH3 Executable File*](https://github.com/usatlas/AF-Benchmarking/blob/main/ExampleFiles/SLAC/example_truth3_executable.sh)
 
 ```bash
 #!/bin/bash
@@ -95,7 +95,7 @@ Derivation_tf.py --CA True --inputEVNTFile /srv/TRUTH3Files/el9/EVNT.root --outp
 # Appends the host-name to the end of the log file
 hostname >> log.Derivation
 ```
-*TRUTH3 Submission File*
+[*TRUTH3 Submission File*](https://github.com/usatlas/AF-Benchmarking/blob/main/ExampleFiles/SLAC/example_truth3_submission.sub)
 
 ```bash
 #!/bin/bash
@@ -126,7 +126,7 @@ source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c el9
 
 ### BNL
 
-*TRUTH3 Executable File*
+[*TRUTH3 Executable File*](https://github.com/usatlas/AF-Benchmarking/blob/main/ExampleFiles/BNL/example_truth3_executable.sh)
 
 ```bash
 #!/bin/bash
@@ -148,7 +148,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup Athena
 hostname >> log.Derivation
 ```
 
-*TRUTH3 Submission File*
+[*TRUTH3 Submission File*](https://github.com/usatlas/AF-Benchmarking/blob/main/ExampleFiles/BNL/example_truth3_submission.sub)
 
 ```bash
 Universe = vanilla
