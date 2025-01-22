@@ -16,6 +16,8 @@ The jobs used for benchmarking are the of the following type:
 
 Said jobs can either run interactively or in the batch system.
 
+For more information on the Tier 3 AFs check out the documentation, [here](https://usatlas.readthedocs.io/projects/af-docs/en/latest/).
+
 ## Batch System
 To execute jobs within the batch system you'll need both a submission file and a executable file. The submission file will give the batch system information about your job; where the job script is located and the requested resources. The executable file will contain the code we want the host to run; your code. Below you can find examples to help you get started at the Tier 3 AFs.
 
