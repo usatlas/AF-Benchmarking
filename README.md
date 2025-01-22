@@ -25,7 +25,7 @@ The following sections display submission and executable files that can be used 
 
 ### UChicago
 
-*TRUTH3 Executable File*
+[*TRUTH3 Executable File*](https://github.com/usatlas/AF-Benchmarking/blob/main/ExampleFiles/UC/example_truth3_executable.sh)
 ```bash
 #!/bin/bash
 
@@ -52,7 +52,7 @@ hostname >> log.Derivation
 
 ```
 
-*TRUTH3 Submission File*
+[*TRUTH3 Submission File*](https://github.com/usatlas/AF-Benchmarking/blob/main/ExampleFiles/UC/example_truth3_submission.sub)
 ```bash
 Universe = vanilla
 
