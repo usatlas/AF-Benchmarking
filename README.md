@@ -16,7 +16,7 @@ The jobs used for benchmarking are the of the following type:
 
 Said jobs can either run interactively or in the batch system.
 
-For more information on the Tier 3 AFs check out the documentation, [here](https://usatlas.readthedocs.io/projects/af-docs/en/latest/).
+For more information on the Tier 3 AFs check out the read-the-docs page, [here](https://usatlas.readthedocs.io/projects/af-docs/en/latest/).
 
 ## Batch System
 To execute jobs within the batch system you'll need both a submission file and a executable file. The submission file will give the batch system information about your job; where the job script is located and the requested resources. The executable file will contain the code we want the host to run; your code. Below you can find examples to help you get started at the Tier 3 AFs.
@@ -29,13 +29,14 @@ Consider the following example using a TRUTH3 job to highlight uses of the batch
 ```bash
 #!/bin/bash
 
-# Input/large files should always be stored in the /data/$USER directory
+# Input/large files should be stored in the /data/$USER directory
 # Change <username> to your username
 inputFile_dir="/data/<username>/TRUTH3_Native_input_file/"
 
-# Creates the 
+# Creates the file directory
 mkdir -p ${inputFile_dir}
 
+# Moves input files to the input file directory
 cp ~/AF-Benchmarking/TRUTH3/EVNT.root ${inputFile_dir}
 
 # Sets up our environment
@@ -71,3 +72,12 @@ request_cpus = 1
 Queue 1
 ```
 
+### SLAC
+
+
+
+
+
+
+
+### BNL
