@@ -12,4 +12,4 @@ lsetup "rucio -w"
 # Any v2 file should work
 #rucio list-rules --account gstark
 
-rucio download --rses MWT2_UC_LOCALGROUPDISK user.bhodkins:user.bhodkins.data2018_AllYear.v2.0_ANALYSIS.root
+rucio download --rses MWT2_UC_LOCALGROUPDISK user.bhodkins:user.bhodkins.data2018_AllYear.v2.0_ANALYSIS.root/user.bhodkins.42164748._000288.ANALYSIS.root
