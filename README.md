@@ -21,7 +21,12 @@ For more information on the Tier 3 AFs check out the read-the-docs page, [here](
 ## Batch System
 To execute jobs within the batch system you'll need both a submission file and a executable file. The submission file will give the batch system information about your job; where the job script is located and the requested resources. The executable file will contain the code we want the host to run; your code. Below you can find examples to help you get started at the Tier 3 AFs.
 
-The following sections display submission and executable files that can be used at the respective analysis facilities.
+The following sections display submission and executable files that can be used at the respective analysis facilities. This assumes you've acquired your accounts. If you have not done so, follow the instructions outlines [here](https://usatlas.readthedocs.io/projects/af-docs/en/latest/UserOnboarding/account/).
+
+After logging into the desired AF, obtain the directory by following these steps:
+```bash
+git clone https://github.com/usatlas/AF-Benchmarking.git AF-Benchmarking
+```
 
 ### UChicago
 
