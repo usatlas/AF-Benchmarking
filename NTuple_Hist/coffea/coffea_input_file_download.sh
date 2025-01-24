@@ -8,8 +8,5 @@ lsetup emi
 cat $HOME/pass.txt | voms-proxy-init -voms atlas
 lsetup "rucio -w"
 
-# Lists all files gstark has available for download
-# Any v2 file should work
-#rucio list-rules --account gstark
-
-rucio download --rses MWT2_UC_LOCALGROUPDISK user.bhodkins:user.bhodkins.data2018_AllYear.v2.0_ANALYSIS.root/user.bhodkins.42164748._000288.ANALYSIS.root
+# File to use: user.bhodkins.42164748._000288.ANALYSIS.root
+rucio download --rses MWT2_UC_LOCALGROUPDISK user.bhodkins:user.bhodkins.data2018_AllYear.v2.0_ANALYSIS.root
