@@ -1,6 +1,6 @@
 #!/bin/bash
 ssh iana "
-cd /data/$(whoami)/ntuple_parse/env/
+cd /sdf/home/s/selbor/parsing/env/
 
 source bin/activate
 
