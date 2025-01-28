@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Run this in a container
+
 cd /atlasgpfs01/usatlas/scratch/jroblesgo/ntuple/coffea
 
 setupATLAS
