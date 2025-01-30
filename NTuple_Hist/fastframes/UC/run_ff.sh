@@ -6,8 +6,9 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
 
 # Sets up root and boost
 asetup StatAnalysis,0.5.0
-
-# Sets up rucio
+# Sets up emi
+lsetup emi
+# Gives certificate credentials
 cat $HOME/pass.txt | voms-proxy-init -voms atlas
 
 lsetup "rucio -w"
