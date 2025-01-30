@@ -9,6 +9,7 @@ asetup StatAnalysis,0.5.0
 
 # Sets up rucio
 cat $HOME/pass.txt | voms-proxy-init -voms atlas
+
 lsetup "rucio -w"
 
 cd $DATA/ntuple_hist/FastFrames/
