@@ -14,4 +14,4 @@ lsetup "rucio -w"
 cd $DATA/ntuple_hist/FastFrames/
 
 # Set output path as $HOME due to permission issues
-cat $HOME/ff_local_GD.txt | python3 produce_metadata_files.py --grid_datasets ../input/rucio_input.txt  --sum_weights_histo user.bhodkins:user.bhodkins.700402.Wmunugamma.mc20a.v2.0_hist --output_path $HOME/
+cat $HOME/ff_local_GD.txt | python3 python/produce_metadata_files.py --grid_datasets ../input/rucio_input.txt  --sum_weights_histo user.bhodkins:user.bhodkins.700402.Wmunugamma.mc20a.v2.0_hist --output_path $HOME/
