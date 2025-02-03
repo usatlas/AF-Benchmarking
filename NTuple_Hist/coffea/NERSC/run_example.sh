@@ -8,5 +8,5 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "lsetup 'python 3.9.21-x86_64-centos7' &&\
 
-  python3 ~/home/AF-Benchmarking/NTuple_Hist/coffea/NERSC/example.py
+  python3 ~/AF-Benchmarking/NTuple_Hist/coffea/NERSC/example.py
 "
