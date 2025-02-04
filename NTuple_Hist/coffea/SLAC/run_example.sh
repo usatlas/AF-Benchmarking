@@ -25,7 +25,7 @@ hostname >> coffea_hist.log
 
 du ntuple_cfw.pdf >> coffea_hist.log
 
-#rm ntuple_cfw.pdf
+rm ntuple_cfw.pdf
 
 log_file_dir="/sdf/home/s/selbor/benchmarks/${curr_time}/Coffea_Hist/"
 
