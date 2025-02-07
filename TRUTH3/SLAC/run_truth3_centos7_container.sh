@@ -4,6 +4,8 @@
 # Defines the OS wanted for the container
 OScontainer="centos7"
 
+cp /sdf/data/atlas/u/$USER/TRUTH3Files/EVNT.root /sdf/data/atlas/u/$USER/TRUTH3Job/container_el/
+
 # Initializes the container with the OS defined in the previous line
 ## -c : used to make a container followed by the OS we want to use
 ## -m : mounts a specific directory
@@ -16,7 +18,7 @@ asetup AthDerivation,21.2.178.0,here && \
 # Defines the current time
 curr_time=$(date +"%Y.%m.%dT%H")
 # Defines the output directory where the log file will be stored
-output_dir="/home/$USER/benchmarks/${curr_time}/TRUTH3_centos7_container"
+output_dir="/sdf/data/atlas/u/$USER/benchmarks/${curr_time}/TRUTH3_centos7_container"
 # Creates the output directory
 mkdir -p ${output_dir}
 # Appends the host-name to the end of the log file
