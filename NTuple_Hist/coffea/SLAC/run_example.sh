@@ -9,8 +9,6 @@ work_dir="/sdf/data/atlas/u/selbor/Ntuple_Hist/coffea"
 
 cd ${work_dir}
 
-source ../bin/activate
-
 start_time=$date
 
 $start_time >> coffea_hist.log
@@ -20,6 +18,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "lsetup 'pytho
   python3 /sdf/data/atlas/u/selbor/AF-Benchmarking/NTuple_Hist/coffea/SLAC/example.py
 
 "
+
 end_time=$date
 
 $end_time >> coffea_hist.log
