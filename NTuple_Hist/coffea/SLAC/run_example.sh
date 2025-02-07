@@ -15,8 +15,11 @@ start_time=$date
 
 $start_time >> coffea_hist.log
 
-python3 /sdf/data/atlas/u/selbor/AF-Benchmarking/NTuple_Hist/coffea/SLAC/example.py
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "lsetup 'python 3.9.21-x86_64-el9' &&\
+  python3 /sdf/data/atlas/u/selbor/AF-Benchmarking/NTuple_Hist/coffea/SLAC/example.py
 
+"
 end_time=$date
 
 $end_time >> coffea_hist.log
