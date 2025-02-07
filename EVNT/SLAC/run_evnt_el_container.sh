@@ -1,27 +1,21 @@
 #!/bin/bash
 
-# UChicago uses the AthGeneration,23.6.34
-OS_container="el9"
-
 # The seed used in the job
 seed=1001
 
 # Directory storing the input files
 config_dir="EVNTFiles/100xxx/100001/"
 
-# Sets up the container:
-## -c : used to make a container followed by the OS we want to use
-## -m : mounts a specific directory
-## -r : precedes the commands we want to run within the container
-export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OS_container} -r "cp -r ~/EVNTFiles/ . && \
-asetup AthGeneration,23.6.34,here && \
-Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}"
+# Copies input files dir to the working dir
+cp -r /sdf/data/atlas/u/$USER/EVNTFiles/ .
+
+asetup AthGeneration,23.6.34,here
+Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}
 
 # Current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
 # Defines the output directory
-output_dir="/home/$USER/benchmarks/$curr_time/EVNT_container_el/"
+output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT_container_el/"
 # Creates the output directory
 mkdir -p ${output_dir}
 # Obtains and appends the host name and payload size to the log file
