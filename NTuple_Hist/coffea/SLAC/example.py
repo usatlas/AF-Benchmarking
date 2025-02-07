@@ -1,4 +1,4 @@
-# this portion is done to ignore warnings from coffea for now
+#this portion is done to ignore warnings from coffea for now
 from __future__ import annotations
 
 import warnings
@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
     client = Client()
 
-    fname = "/sdf/scratch/users/s/selbor/Ntuple_Hist/coffea/user.bhodkins.data2018_AllYear.v2.0_ANALYSIS.root/user.bhodkins.42164748._000288.ANALYSIS.root"
+    fname = "/sdf/data/atlas/u/selbor/Ntuple_Hist/coffea/user.bhodkins.data2018_AllYear.v2.0_ANALYSIS.root/user.bhodkins.42164748._000288.ANALYSIS.root"
     events = NanoEventsFactory.from_root(
         {fname: "analysis"},
         schemaclass=NtupleSchema,
