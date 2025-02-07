@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp -r /sdf/data/atlas/u/$USER/TRUTH3Job/EVNT.root .
+cp -r /sdf/data/atlas/u/$USER/TRUTH3Files/EVNT.root .
 asetup Athena,24.0.53,here
 Derivation_tf.py --CA True --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
 
