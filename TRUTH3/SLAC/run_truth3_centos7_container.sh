@@ -1,10 +1,7 @@
 #!/bin/bash
 
-
-cp /sdf/data/atlas/u/$USER/TRUTH3Files/EVNT.root /sdf/data/atlas/u/$USER/TRUTH3Job/container_centos/
-
 asetup AthDerivation,21.2.178.0,here
-Reco_tf.py --inputEVNTFile TRUTH3Files/centos7/EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3
+Reco_tf.py --inputEVNTFile /sdf/data/atlas/u/$USER/TRUTH3Files/centos7/EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3
 
 # Defines the current time
 curr_time=$(date +"%Y.%m.%dT%H")
