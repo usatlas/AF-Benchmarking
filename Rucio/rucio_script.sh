@@ -30,7 +30,6 @@ native_el9 () {
   lsetup emi
   cat $HOME/pass.txt | voms-proxy-init -voms atlas
   lsetup "rucio -w"
-
   mkdir -p ${1}
   cd ${2}
   rm -r ${3}/
