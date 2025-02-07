@@ -1,19 +1,10 @@
 #!/bin/bash
 
 
-# Defines the OS wanted for the container
-OScontainer="centos7"
+cp /sdf/data/atlas/u/$USER/TRUTH3Files/EVNT.root /sdf/data/atlas/u/$USER/TRUTH3Job/container_centos/
 
-cp /sdf/data/atlas/u/$USER/TRUTH3Files/EVNT.root /sdf/data/atlas/u/$USER/TRUTH3Job/container_el/
-
-# Initializes the container with the OS defined in the previous line
-## -c : used to make a container followed by the OS we want to use
-## -m : mounts a specific directory
-## -r : precedes the commands we want to run within the container
-export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "cp -r /home/$USER/TRUTH3Files/ . && \
-asetup AthDerivation,21.2.178.0,here && \
-  Reco_tf.py --inputEVNTFile TRUTH3Files/centos7/EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3"
+asetup AthDerivation,21.2.178.0,here
+Reco_tf.py --inputEVNTFile TRUTH3Files/centos7/EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3
 
 # Defines the current time
 curr_time=$(date +"%Y.%m.%dT%H")
