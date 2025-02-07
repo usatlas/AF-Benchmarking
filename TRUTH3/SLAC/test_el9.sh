@@ -2,7 +2,7 @@
 
 cp -r /home/$USER/TRUTH3Files/ . 
 asetup Athena,24.0.53,here
-Derivation_tf.py --CA True --inputEVNTFile /srv/TRUTH3Files/el9/EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
+Derivation_tf.py --CA True --inputEVNTFile /sdf/data/atlas/u/selbor/TRUTH3Files/EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
 
 # Defines the current time
 curr_time=$(date +"%Y.%m.%dT%H")
