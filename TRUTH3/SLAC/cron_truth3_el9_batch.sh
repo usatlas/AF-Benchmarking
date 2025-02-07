@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ssh iana "
-cd /sdf/scratch/users/s/selbor/TRUTH3Job/container_el
+cd /sdf/data/atlas/u/selbor/TRUTH3Job/container_el
 
 rm -r *
 
