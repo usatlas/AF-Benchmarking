@@ -1,6 +1,6 @@
 #!/bin/bash
 config_dir="EVNTFiles/100xxx/100001/"
-cp -r /sdf/data/atlas/u/$USER/EVNTFiles .
+cp -r /sdf/scratch/atlas/$USER/EVNTFiles .
 
 asetup AthGeneration,23.6.31,here
 
@@ -14,7 +14,7 @@ Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir} --outputEVNTFile=EVNT.ro
 # Current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
 # Defines the output directory
-output_dir="/sdf/data/atlas/u/$USER/benchmarks/$curr_time/EVNT_container_centos"
+output_dir="/sdf/scratch/atlas/$USER/benchmarks/$curr_time/EVNT_container_centos"
 # Creates the output directory
 mkdir -p ${output_dir}
 # Obtains and appends the host name and payload size to the log file
