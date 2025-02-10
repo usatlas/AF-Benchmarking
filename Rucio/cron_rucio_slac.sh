@@ -1,5 +1,5 @@
 #! /bin/bash
 
 ssh iana "
-srun /sdf/data/atlas/u/selbor/AF-Benchmarking/Rucio/rucio_script.sh
+srun /sdf/scratch/atlas/selbor/AF-Benchmarking/Rucio/rucio_script.sh
 "
