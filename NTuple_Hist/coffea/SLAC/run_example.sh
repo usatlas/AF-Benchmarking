@@ -15,7 +15,7 @@ start_time=$date
 
 $start_time >> coffea_hist.log
 
-python3 example.py >> coffea_hist.log
+python3 ../../AF-Benchmarking/NTuple_Hist/coffea/SLAC/example.py >> coffea_hist.log
 
 end_time=$date
 
