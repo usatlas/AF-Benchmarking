@@ -5,7 +5,7 @@
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Working directory
-work_dir="/sdf/data/atlas/u/selbor/Ntuple_Hist/coffea"
+work_dir="/sdf/scratch/atlas/selbor/Ntuple_Hist/coffea"
 
 cd ${work_dir}
 
@@ -27,7 +27,7 @@ du ntuple_cfw.pdf >> coffea_hist.log
 
 rm ntuple_cfw.pdf
 
-log_file_dir="/sdf/data/atlas/u/selbor/benchmarks/${curr_time}/Coffea_Hist/"
+log_file_dir="/sdf/scratch/atlas/selbor/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p ${log_file_dir}
 

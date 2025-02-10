@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
     client = Client()
 
-    fname = "/sdf/data/atlas/u/selbor/Ntuple_Hist/coffea/user.bhodkins.data2018_AllYear.v2.0_ANALYSIS.root/user.bhodkins.42164748._000288.ANALYSIS.root"
+    fname = "/sdf/scratch/atlas/selbor/Ntuple_Hist/coffea/user.bhodkins.data2018_AllYear.v2.0_ANALYSIS.root/user.bhodkins.42164748._000288.ANALYSIS.root"
     events = NanoEventsFactory.from_root(
         {fname: "analysis"},
         schemaclass=NtupleSchema,
