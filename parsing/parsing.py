@@ -77,7 +77,3 @@ class Parsing_Class:
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
-
-
-if __name__ == '__main__':
-
