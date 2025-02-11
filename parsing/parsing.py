@@ -97,7 +97,7 @@ class Parsing_Class:
             
                 # Grabs the start and end date-time lines; splits them at various characters and grabs first element
                 start_time_line = file_lines[2].split('\x1b[32;1m')[1].split(',')[0]
-                end_time_line = file_lines[N-12].split('\x1b[32;1m')[1].split(',')[0]
+                end_time_line = file_lines[N-14].split('\x1b[32;1m')[1].split(',')[0]
 
                 # Creates the date_time objects
                 start_date_time = dt.datetime(int(start_time_line.split(' ')[0][0:4]), int(start_time_line.split(' ')[0][5:7]), int(start_time_line.split(' ')[0][8:10]), int(start_time_line.split(' ')[1][0:2]), int(start_time_line.split(' ')[1][3:5]), int(start_time_line.split(' ')[1][6:8]))
