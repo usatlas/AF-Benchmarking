@@ -78,3 +78,13 @@ class Parsing_Class:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
 
+    def json_instances(self, dic_list):
+        list_of_jsons =[]
+        for dics in dic_list:
+            list_of_jsons.append(json.dumps(dic))
+        return list_of_jsons
+
+
+
+
+
