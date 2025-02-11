@@ -43,7 +43,7 @@ class Parsing_Class:
                 host_name = (file_lines[N-2])
 
                 # Obtains the payload size; splits the line at "\t" and grabs first element
-                payload_size = (file_lines[N-1]).split("\t")[0]
+                payload_size = int((file_lines[N-1]).split("\t")[0])
             
                 # Grabs the start and end date-time lines; splits them at various characters and grabs first element
                 start_time_line = file_lines[sti].split('\x1b[32;1m')[1].split(',')[0]
