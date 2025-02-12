@@ -8,9 +8,10 @@ import traceback
 class Parsing_Class:
     # Shared qualities among all objects created with this class
     af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}
-    job_dictionary = {'Rucio': 'Rucio Download'}
+    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch"}
     dic_keys = ["cluster", "testType", "submitTime", "queueTime", "runTime", "payloadSize", "status", "host"]
     benchmarks_dir_dic = {"uc": "/data/selbor/rucio_parse/metrics_env/", "slac": None, "bnl": None}
+    months_dic = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06", "Jul": "07", "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"}
 
     # Constructor
     def __init__(self, site_dir, job_name, log_name, site, script_dir):
@@ -90,27 +91,71 @@ class Parsing_Class:
     def parsing_truth3(self, l, os_used="native", container=False, batch=False):
         with open(l, 'r') as f:
             if f:
-                file_lines = f.read()splitlines()
+                file_lines = f.read().splitlines()
                 N = len(file_lines)
+                # Splits the first line and gets hour:min:sec
+                start_time_line_list = file_lines[0].split(" ")
+                submit_time_list = start_time_line_list[5].split(":")
+                start_time_list = start_time_line_list[0].split(":")
+                # Obtains year,month,day from first line list
+                year = int(start_time_line_list[7])
+                month = int(self.months_dic[start_time_line_list[2]])
+                day = int(start_time_line_list[4])
+                # Creates submit and start datetime objects
+                submit_time_datetime_object = dt.datetime(year, month, day, int(submit_time_list[0]), int(submit_time_list[1]), int(submit_time_list[2]))
+                start_time_datetime_object = dt.datetime(year, month, day, int(start_time_list[0]), int(start_time_list[1]), int(start_time_list[2]))
+                start_date_time_timestamp = int((start_time_datetime_object.timestamp())*1e3)
+                # Obtains the queue time
+                queue_time = int((start_time_datetime_object - submit_time_datetime_object).total_seconds())
+                end_time_line_list = file_lines[N-3].split(" ")
+                end_time_list = end_time_line_list[0].split(":")
+                end_time_datetime_object = dt.datetime(year, month, day, int(end_time_list[0]), int(end_time_list[1]), int(end_time_list[2]))
+                # Obtains the run time
+                run_time = int((end_time_datetime_object - start_time_datetime_object).total_seconds())
+                # Obtains the exit code from the last line
+                if "0:" in end_time_line_list:
+                    exit_code = int(0)
+                else:
+                    exit_code = int(1)
+                # Obtains host name
+                host_name = file_lines[N-2].split("\t")[0]
+                # Obtains payload size
+                payload_size = int(file_lines[N-1].split("\t")[0])
+                
+                # Creates a dictionary with predetermined keys
+                dic = dict.fromkeys(self.dic_keys)
+                # Assigns values to the keys
+                dic[self.dic_keys[0]] = self.af_dictionary[self.site]
+                dic[self.dic_keys[1]] = self.job_dictionary[self.job_name]
+                dic[self.dic_keys[2]] = start_date_time_timestamp
+                dic[self.dic_keys[3]] = queue_time
+                dic[self.dic_keys[4]] = run_time
+                dic[self.dic_keys[5]] = payload_size
+                dic[self.dic_keys[6]] = exit_code
+                dic[self.dic_keys[7]] = host_name
+            else:
+                print("ERROR -- FILE WAS NOT OPENED")
+        return dic
+ 
 
-'''
-The following functions deal with the data once it has been parsed and stored in the respective dictionaries.
+        '''
+        The following functions deal with the data once it has been parsed and stored in the respective dictionaries.
+        json_instances:
+        - List input containing dictionaries
+        - Elements are made into json instances
+        - A list consisting of json instances is returned
 
-json_instances:
-    - List input containing dictionaries
-    - Elements are made into json instances
-    - A list consisting of json instances is returned
+        bookkeeping_data:
+        - Inputs are list of json instances from the previous function and a txt file
+        - The contents of the txt file are inserted into an empty list
+        - The newly created list and the list of jsons are converted to sets
+        - The old_entries_set is then subtracted from the json set yielding the new entries
+        - The new entries set is then returned
 
-bookkeeping_data:
-    - Inputs are list of json instances from the previous function and a txt file
-    - The contents of the txt file are inserted into an empty list
-    - The newly created list and the list of jsons are converted to sets
-    - The old_entries_set is then subtracted from the json set yielding the new entries
-    - The new entries set is then returned
+        append_new_data:
+        - The elements of the newly created new_entries_set are appended to the old_entries txt file
+        '''
 
-append_new_data:
-    - The elements of the newly created new_entries_set are appended to the old_entries txt file
-'''
     def json_instances(self, dic_list):
         # For-loop that will return a list of json instances
         list_of_jsons =[]
@@ -144,3 +189,22 @@ append_new_data:
                     f.write(item + "\n")
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
+
+
+if __name__=="__main__":
+    path_to_logs=r'/Users/selbor/Juan/SCIPP-ATLAS/testing'
+    job_name="TRUTH3"
+    log_file_name="log.Derivation"
+    af_site="uc"
+    truth3_native_parsing=Parsing_Class(path_to_logs, job_name, log_file_name, af_site, "/Users/selbor/Juan/GitStuff/AF-Benchmarking/parsing")
+    benchmark_paths = truth3_native_parsing.benchmark_path()
+    full_path_list = truth3_native_parsing.full_path_function(benchmark_paths)
+
+    list_dics=[]
+    for l in full_path_list:
+        try:
+            list_dics.append(truth3_native_parsing.parsing_truth3(l, batch=True))
+        except Exception as e:
+            print(traceback.format_exc)
+    print(list_dics)
+
