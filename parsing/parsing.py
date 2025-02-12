@@ -88,19 +88,19 @@ class Parsing_Class:
         return dic
     
     # Parses TRUTH3
-    def parsing_truth3(self, l, os_used="native", container=False, batch=False):
+    def parsing_truth3(self, l, os_used="native", container=False, batch=False, year_index=7, day_index=4, submit_time_index=5):
         with open(l, 'r') as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
                 # Splits the first line and gets hour:min:sec
                 start_time_line_list = file_lines[0].split(" ")
-                submit_time_list = start_time_line_list[5].split(":")
+                submit_time_list = start_time_line_list[submit_time_index].split(":")
                 start_time_list = start_time_line_list[0].split(":")
                 # Obtains year,month,day from first line list
-                year = int(start_time_line_list[7])
+                year = int(start_time_line_list[year_index])
                 month = int(self.months_dic[start_time_line_list[2]])
-                day = int(start_time_line_list[4])
+                day = int(start_time_line_list[day_index])
                 # Creates submit and start datetime objects
                 submit_time_datetime_object = dt.datetime(year, month, day, int(submit_time_list[0]), int(submit_time_list[1]), int(submit_time_list[2]))
                 start_time_datetime_object = dt.datetime(year, month, day, int(start_time_list[0]), int(start_time_list[1]), int(start_time_list[2]))
@@ -121,7 +121,6 @@ class Parsing_Class:
                 host_name = file_lines[N-2].split("\t")[0]
                 # Obtains payload size
                 payload_size = int(file_lines[N-1].split("\t")[0])
-                
                 # Creates a dictionary with predetermined keys
                 dic = dict.fromkeys(self.dic_keys)
                 # Assigns values to the keys
@@ -192,7 +191,7 @@ class Parsing_Class:
 
 
 if __name__=="__main__":
-    path_to_logs=r'/Users/selbor/Juan/SCIPP-ATLAS/testing'
+    path_to_logs=r'/data/selbor/benchmarks/'
     job_name="TRUTH3"
     log_file_name="log.Derivation"
     af_site="uc"
@@ -204,7 +203,11 @@ if __name__=="__main__":
     for l in full_path_list:
         try:
             list_dics.append(truth3_native_parsing.parsing_truth3(l, batch=True))
+        except IndexError:
+            list_dics.append(truth3_native_parsing.parsing_truth3(l, batch=True, year_index=6, day_index=3, submit_time_index=4))
+        except FileNotFoundError:
+            pass
         except Exception as e:
-            print(traceback.format_exc)
-    print(list_dics)
+            print(l + "\n")
+            print(traceback.format_exc())
 
