@@ -6,20 +6,26 @@ import os
 import traceback
 
 class Parsing_Class:
+    # Shared qualities among all objects created with this class
     af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}
     job_dictionary = {'Rucio': 'Rucio Download'}
     dic_keys = ["cluster", "testType", "submitTime", "queueTime", "runTime", "payloadSize", "status", "host"]
-    
-    def __init__(self, site_dir, job_name, log_name, site):
+    benchmarks_dir_dic = {"uc": "/data/selbor/rucio_parse/metrics_env/", "slac": None, "bnl": None}
+
+    # Constructor
+    def __init__(self, site_dir, job_name, log_name, site, script_dir):
         self.site_dir = site_dir
         self.job_name = job_name
         self.log_name = log_name
         self.site = site
+        self.script_dir = script_dir
     
+    # Obtains the paths and writes a list
     def benchmark_path(self):
         benchmark_paths = [os.path.join(self.site_dir, i) for i in sorted(os.listdir(self.site_dir))]
         return benchmark_paths
     
+    # Obtains and appends absolute paths for the log files
     def full_path_function(self, benchmark_paths):
         full_path_list = []
         for i in benchmark_paths:
@@ -28,6 +34,8 @@ class Parsing_Class:
                 full_path_list.append(os.path.join(dir_with_job_name, self.log_name))
         return full_path_list
 
+    # Parses rucio.log
+    # sti and eti are default cases, can be shifted if there are errors
     def parsing_rucio(self, l, sti=0, eti=12):
         with open(l,'r') as f:
             if f:
@@ -77,14 +85,62 @@ class Parsing_Class:
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
+    
+    # Parses TRUTH3
+    def parsing_truth3(self, l, os_used="native", container=False, batch=False):
+        with open(l, 'r') as f:
+            if f:
+                file_lines = f.read()splitlines()
+                N = len(file_lines)
 
+'''
+The following functions deal with the data once it has been parsed and stored in the respective dictionaries.
+
+json_instances:
+    - List input containing dictionaries
+    - Elements are made into json instances
+    - A list consisting of json instances is returned
+
+bookkeeping_data:
+    - Inputs are list of json instances from the previous function and a txt file
+    - The contents of the txt file are inserted into an empty list
+    - The newly created list and the list of jsons are converted to sets
+    - The old_entries_set is then subtracted from the json set yielding the new entries
+    - The new entries set is then returned
+
+append_new_data:
+    - The elements of the newly created new_entries_set are appended to the old_entries txt file
+'''
     def json_instances(self, dic_list):
+        # For-loop that will return a list of json instances
         list_of_jsons =[]
         for dic in dic_list:
             list_of_jsons.append(json.dumps(dic))
         return list_of_jsons
 
+    def bookkeeping_data(self, list_of_jsons, old_entries):
+        # Checks for the existence of the old_entries txt file in the specified directory
+        if old_entries in os.listdir(self.benchmarks_dir_dic[self.site]):
+            # Elements of the old_entries.txt file are appended to a list
+            old_entries_list = []
+            with open(old_entries, 'r') as f:
+                if f:
+                    lines_in_file = f.readlines()
+                    for lines in lines_in_file:
+                        lines_in_file.append(lines.split("\n")[0])
+                # Converts lists into sets
+                old_entries_set = set(old_entries_list)
+                all_entries_set = set(list_of_jsons)
+                # The difference in sets will be the new entries that will be sent
+                new_entries_set = all_entries_set - old_entries_set
+        else:
+            print("FILE DOES NOT EXIST")
+        return new_entries_set
 
-
-
-
+    def append_new_data(self, old_entries, new_entries_set):
+        with open(old_entries, 'a') as f:
+            if f:
+                for item in new_entries_set:
+                    f.write(item + "\n")
+            else:
+                print("ERROR -- FILE WAS NOT OPENED")
