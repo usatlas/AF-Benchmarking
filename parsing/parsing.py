@@ -126,7 +126,6 @@ class Parsing_Class:
                 # Obtains the exit code from the last line
                 if os_used=="centos":
                     end_line_list = file_lines[N-4].split(" ")
-                print(end_time_line_list)
                 if "0:" in end_line_list:
                     exit_code = int(0)
                 else:
