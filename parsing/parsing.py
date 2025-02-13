@@ -8,7 +8,7 @@ import traceback
 class Parsing_Class:
     # Shared qualities among all objects created with this class
     af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}
-    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch"}
+    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea"}
     dic_keys = ["cluster", "testType", "submitTime", "queueTime", "runTime", "payloadSize", "status", "host"]
     benchmarks_dir_dic = {"uc": "/data/selbor/rucio_parse/metrics_env/", "slac": None, "bnl": None}
     months_dic = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06", "Jul": "07", "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"}
@@ -211,8 +211,58 @@ class Parsing_Class:
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
-
-
+    
+    def parsing_ntuple_c(self, l):
+        with open(l, 'r') as f:
+            if f:
+                file_lines = f.read().splitlines()
+                N = len(file_lines)
+                # Extracts start date time information
+                start_date_time_line_list = file_lines[11].split(" ")
+                start_date_list = start_date_time_line_list[0].split("-")
+                year = int(start_date_list[0])
+                start_month = int(start_date_list[1])
+                start_day = int(start_date_list[2])
+                start_time_list = start_date_time_line_list[1].split(":")
+                start_hour = int(start_time_list[0])
+                start_min = int(start_time_list[1])
+                start_sec = int(start_time_list[2][0:2])
+                # Creates the date time object
+                start_datetime_object = dt.datetime(year, start_month, start_day, start_hour, start_min, start_sec)
+                # Obtains time stamp from the date time object
+                start_date_time_timestamp = int(start_datetime_object.replace(tzinfo=timezone.utc).timestamp()*1e3)
+                # Extracts end date time information
+                end_date_time_line_list = file_lines[N-3].split(" ")
+                end_date_list = end_date_time_line_list[0].split("-")
+                year = int(end_date_list[0])
+                end_month = int(end_date_list[1])
+                end_day = int(end_date_list[2])
+                end_time_list = end_date_time_line_list[1].split(":")
+                end_hour = int(end_time_list[0])
+                end_min = int(end_time_list[1])
+                end_sec = int(end_time_list[2][0:2])
+                # Creates the end date time object
+                end_datetime_object = dt.datetime(year, end_month, end_day, end_hour, end_min, end_sec)
+                run_time = int((end_datetime_object - start_datetime_object).total_seconds())
+                host_name = file_lines[N-2]
+                payload_size = int(0)
+                exit_code = int(0)
+                queue_time = int(0)
+                # Creates a dictionary with predetermined keys
+                dic = dict.fromkeys(self.dic_keys)
+                # Assigns values to the keys
+                dic[self.dic_keys[0]] = self.af_dictionary[self.site]
+                dic[self.dic_keys[1]] = self.job_dictionary[self.job_name]
+                dic[self.dic_keys[2]] = start_date_time_timestamp
+                dic[self.dic_keys[3]] = queue_time
+                dic[self.dic_keys[4]] = run_time
+                dic[self.dic_keys[5]] = payload_size
+                dic[self.dic_keys[6]] = exit_code
+                dic[self.dic_keys[7]] = host_name
+            else:
+                print("ERROR -- FILE WAS NOT OPENED")
+        return dic
+ 
         '''
         The following functions deal with the data once it has been parsed and stored in the respective dictionaries.
         json_instances:
@@ -267,26 +317,18 @@ class Parsing_Class:
 
 
 if __name__=="__main__":
-    path_to_logs=r'/data/selbor/benchmarks/'
-    job_name="EVNT"
-    log_file_name="log.generate"
+    path_to_logs=r'/Users/selbor/Juan/SCIPP-ATLAS/testing/'
+    job_name="Coffea_Hist"
+    log_file_name="coffea_hist.log"
     af_site="uc"
-    evnt_native_parsing=Parsing_Class(path_to_logs, job_name, log_file_name, af_site, "/Users/selbor/Juan/GitStuff/AF-Benchmarking/parsing")
-    benchmark_paths = evnt_native_parsing.benchmark_path()
-    full_path_list = evnt_native_parsing.full_path_function(benchmark_paths)
+    coffea_parsing=Parsing_Class(path_to_logs, job_name, log_file_name, af_site, "/Users/selbor/Juan/GitStuff/AF-Benchmarking/parsing")
+    benchmark_paths = coffea_parsing.benchmark_path()
+    full_path_list = coffea_parsing.full_path_function(benchmark_paths)
 
     list_dics=[]
     for l in full_path_list:
         try:
-            list_dics.append(evnt_native_parsing.parsing_evnt(l, batch=True))
-        except IndexError:
-            try:
-                list_dics.append(evnt_native_parsing.parsing_evnt(l, batch=True, year_index=6, day_index=3, submit_time_index=4))
-            except IndexError:
-                list_dics.append(evnt_native_parsing.parsing_evnt_uc_e1(l, batch=True))
-            except Exception as e:
-                print(l + "\n")
-                print(traceback.format_exc())
+            list_dics.append(coffea_parsing.parsing_ntuple_c(l))
         except Exception as e:
             print(l + "\n")
             print(traceback.format_exc())
