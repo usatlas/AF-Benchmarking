@@ -7,10 +7,21 @@ import traceback
 
 class Parsing_Class:
     # Shared qualities among all objects created with this class
+
+    # Dictionary used to obtain AF script is running at
     af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}
+
+    # Dictionary used to obtain job string recognized by ElasticSearch
     job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea"}
+    
+    # Dictionary keys that are used to create dictionaries with no values
     dic_keys = ["cluster", "testType", "submitTime", "queueTime", "runTime", "payloadSize", "status", "host"]
+    
+    # Dictionary storing the directory where the script directories are located at sites
+    ## UPDATE: Need to include SLAC and BNL ##
     benchmarks_dir_dic = {"uc": "/data/selbor/rucio_parse/metrics_env/", "slac": None, "bnl": None}
+    
+    # Dictionary that contains months mapped to numbers; used when parsing EVNT and TRUTH3 log files
     months_dic = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06", "Jul": "07", "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"}
 
     # Constructor
