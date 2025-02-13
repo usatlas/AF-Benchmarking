@@ -211,14 +211,15 @@ class Parsing_Class:
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
-    
-    def parsing_ntuple_c(self, l):
+   
+   # Seems like the first line index varies; 7, 11,..,
+    def parsing_ntuple_c(self, l, fli=7):
         with open(l, 'r') as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
                 # Extracts start date time information
-                start_date_time_line_list = file_lines[11].split(" ")
+                start_date_time_line_list = file_lines[fli].split(" ")
                 start_date_list = start_date_time_line_list[0].split("-")
                 year = int(start_date_list[0])
                 start_month = int(start_date_list[1])
@@ -247,6 +248,45 @@ class Parsing_Class:
                 host_name = file_lines[N-2]
                 payload_size = int(0)
                 exit_code = int(0)
+                queue_time = int(0)
+                # Creates a dictionary with predetermined keys
+                dic = dict.fromkeys(self.dic_keys)
+                # Assigns values to the keys
+                dic[self.dic_keys[0]] = self.af_dictionary[self.site]
+                dic[self.dic_keys[1]] = self.job_dictionary[self.job_name]
+                dic[self.dic_keys[2]] = start_date_time_timestamp
+                dic[self.dic_keys[3]] = queue_time
+                dic[self.dic_keys[4]] = run_time
+                dic[self.dic_keys[5]] = payload_size
+                dic[self.dic_keys[6]] = exit_code
+                dic[self.dic_keys[7]] = host_name
+            else:
+                print("ERROR -- FILE WAS NOT OPENED")
+        return dic
+
+    def parsing_ntuple_c_e1(self, l):
+        with open(l, 'r') as f:
+            if f:
+                file_lines = f.read().splitlines()
+                N = len(file_lines)
+                # Extracts start date time information
+                start_date_time_line_list = l.split("/")
+                date_time_string = start_date_time_line_list[4]
+                date_string = date_time_string.split("T")[0]
+                start_hour = int(date_time_string.split("T")[1])
+                year = int(date_string[0:4])
+                start_month = int(date_string[5:7])
+                start_day = int(date_string[8:10])
+                start_min = int(0)
+                start_sec = int(0)
+                # Creates the date time object
+                start_datetime_object = dt.datetime(year, start_month, start_day, start_hour, start_min, start_sec)
+                # Obtains time stamp from the date time object
+                start_date_time_timestamp = int(start_datetime_object.replace(tzinfo=timezone.utc).timestamp()*1e3)
+                run_time = int(0)
+                host_name = file_lines[N-1]
+                payload_size = int(0)
+                exit_code = int(1)
                 queue_time = int(0)
                 # Creates a dictionary with predetermined keys
                 dic = dict.fromkeys(self.dic_keys)
@@ -317,7 +357,8 @@ class Parsing_Class:
 
 
 if __name__=="__main__":
-    path_to_logs=r'/Users/selbor/Juan/SCIPP-ATLAS/testing/'
+    # Coffea Job requires me to change the index depending on the error
+    path_to_logs=r'/data/selbor/benchmarks'
     job_name="Coffea_Hist"
     log_file_name="coffea_hist.log"
     af_site="uc"
@@ -328,8 +369,14 @@ if __name__=="__main__":
     list_dics=[]
     for l in full_path_list:
         try:
-            list_dics.append(coffea_parsing.parsing_ntuple_c(l))
+            list_dics.append(coffea_parsing.parsing_ntuple_c(l, fli=7))
+        except IndexError:
+            list_dics.append(coffea_parsing.parsing_ntuple_c(l, fli=11))
+        except ValueError:
+            try:
+                list_dics.append(coffea_parsing.parsing_ntuple_c(l, fli=11))
+            except IndexError:
+                list_dics.append(coffea_parsing.parsing_ntuple_c_e1(l))
         except Exception as e:
             print(l + "\n")
             print(traceback.format_exc())
-    print(list_dics)
