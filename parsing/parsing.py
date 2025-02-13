@@ -12,7 +12,7 @@ class Parsing_Class:
     af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}
 
     # Dictionary used to obtain job string recognized by ElasticSearch
-    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea"}
+    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea", "TRUTH3_centos": "truth3-centos-container-batch"}
     
     # Dictionary keys that are used to create dictionaries with no values
     dic_keys = ["cluster", "testType", "submitTime", "queueTime", "runTime", "payloadSize", "status", "host"]
@@ -124,7 +124,10 @@ class Parsing_Class:
                 # Obtains the run time
                 run_time = int((end_time_datetime_object - start_time_datetime_object).total_seconds())
                 # Obtains the exit code from the last line
-                if "0:" in end_time_line_list:
+                if os_used=="centos":
+                    end_line_list = file_lines[N-4].split(" ")
+                print(end_time_line_list)
+                if "0:" in end_line_list:
                     exit_code = int(0)
                 else:
                     exit_code = int(1)
@@ -369,25 +372,20 @@ class Parsing_Class:
 
 if __name__=="__main__":
     # Coffea Job requires me to change the index depending on the error
-    path_to_logs=r'/data/selbor/benchmarks'
-    job_name="Coffea_Hist"
-    log_file_name="coffea_hist.log"
+    path_to_logs=r'/Users/selbor/Juan/SCIPP-ATLAS/testing/'
+    job_name="TRUTH3_centos"
+    log_file_name="log.EVNTtoDAOD"
     af_site="uc"
-    coffea_parsing=Parsing_Class(path_to_logs, job_name, log_file_name, af_site, "/Users/selbor/Juan/GitStuff/AF-Benchmarking/parsing")
-    benchmark_paths = coffea_parsing.benchmark_path()
-    full_path_list = coffea_parsing.full_path_function(benchmark_paths)
+    parsing=Parsing_Class(path_to_logs, job_name, log_file_name, af_site, "/Users/selbor/Juan/GitStuff/AF-Benchmarking/parsing")
+    benchmark_paths = parsing.benchmark_path()
+    full_path_list = parsing.full_path_function(benchmark_paths)
 
     list_dics=[]
     for l in full_path_list:
         try:
-            list_dics.append(coffea_parsing.parsing_ntuple_c(l, fli=7))
-        except IndexError:
-            list_dics.append(coffea_parsing.parsing_ntuple_c(l, fli=11))
-        except ValueError:
-            try:
-                list_dics.append(coffea_parsing.parsing_ntuple_c(l, fli=11))
-            except IndexError:
-                list_dics.append(coffea_parsing.parsing_ntuple_c_e1(l))
+            list_dics.append(parsing.parsing_truth3(l, os_used="centos", container=True, batch=True))
         except Exception as e:
             print(l + "\n")
             print(traceback.format_exc())
+
+    print(list_dics)
