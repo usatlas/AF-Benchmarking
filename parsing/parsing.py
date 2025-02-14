@@ -47,7 +47,7 @@ class Parsing_Class:
 
     # Parses rucio.log
     # sti and eti are default cases, can be shifted if there are errors
-    def parsing_rucio(self, l, sti=0, eti=12):
+    def parsing_rucio(self, l, sti=0, eti=12, psi=1):
         with open(l,'r') as f:
             if f:
                 file_lines = f.read().splitlines()
@@ -62,7 +62,11 @@ class Parsing_Class:
                 host_name = (file_lines[N-2])
 
                 # Obtains the payload size; splits the line at "\t" and grabs first element
-                payload_size = int((file_lines[N-1]).split("\t")[0])
+                try:
+                    payload_size = int((file_lines[N-psi]).split("\t")[0])
+                except ValueError:
+                    payload_size = int(0)
+                    host_name = file_lines[N-1]
             
                 # Grabs the start and end date-time lines; splits them at various characters and grabs first element
                 start_time_line = file_lines[sti].split('\x1b[32;1m')[1].split(',')[0]
