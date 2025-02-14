@@ -25,12 +25,11 @@ class Parsing_Class:
     months_dic = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06", "Jul": "07", "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"}
 
     # Constructor
-    def __init__(self, site_dir, job_name, log_name, site, script_dir):
+    def __init__(self, site_dir, job_name, log_name, site):
         self.site_dir = site_dir
         self.job_name = job_name
         self.log_name = log_name
         self.site = site
-        self.script_dir = script_dir
     
     # Obtains the paths and writes a list
     def benchmark_path(self):
@@ -401,77 +400,4 @@ class Parsing_Class:
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
- 
-        '''
-        The following functions deal with the data once it has been parsed and stored in the respective dictionaries.
-        json_instances:
-        - List input containing dictionaries
-        - Elements are made into json instances
-        - A list consisting of json instances is returned
 
-        bookkeeping_data:
-        - Inputs are list of json instances from the previous function and a txt file
-        - The contents of the txt file are inserted into an empty list
-        - The newly created list and the list of jsons are converted to sets
-        - The old_entries_set is then subtracted from the json set yielding the new entries
-        - The new entries set is then returned
-
-        append_new_data:
-        - The elements of the newly created new_entries_set are appended to the old_entries txt file
-        '''
-
-    def json_instances(self, dic_list):
-        # For-loop that will return a list of json instances
-        list_of_jsons =[]
-        for dic in dic_list:
-            list_of_jsons.append(json.dumps(dic))
-        return list_of_jsons
-
-    def bookkeeping_data(self, list_of_jsons, old_entries):
-        # Checks for the existence of the old_entries txt file in the specified directory
-        if old_entries in os.listdir(self.benchmarks_dir_dic[self.site]):
-            # Elements of the old_entries.txt file are appended to a list
-            old_entries_list = []
-            with open(old_entries, 'r') as f:
-                if f:
-                    lines_in_file = f.readlines()
-                    for lines in lines_in_file:
-                        lines_in_file.append(lines.split("\n")[0])
-                # Converts lists into sets
-                old_entries_set = set(old_entries_list)
-                all_entries_set = set(list_of_jsons)
-                # The difference in sets will be the new entries that will be sent
-                new_entries_set = all_entries_set - old_entries_set
-        else:
-            print("FILE DOES NOT EXIST")
-        return new_entries_set
-
-    def append_new_data(self, old_entries, new_entries_set):
-        with open(old_entries, 'a') as f:
-            if f:
-                for item in new_entries_set:
-                    f.write(item + "\n")
-            else:
-                print("ERROR -- FILE WAS NOT OPENED")
-
-
-if __name__=="__main__":
-    # Coffea Job requires me to change the index depending on the error
-    path_to_logs=r'/data/selbor/benchmarks/'
-    job_name="TRUTH3_centos_interactive"
-    log_file_name="log.EVNTtoDAOD"
-    af_site="uc"
-    parsing=Parsing_Class(path_to_logs, job_name, log_file_name, af_site, "/Users/selbor/Juan/GitStuff/AF-Benchmarking/parsing")
-    benchmark_paths = parsing.benchmark_path()
-    full_path_list = parsing.full_path_function(benchmark_paths)
-
-    list_dics=[]
-    for l in full_path_list:
-        try:
-            list_dics.append(parsing.parsing_truth3_interactive(l, os_used="centos", container=True, batch=False))
-        except IndexError:
-            list_dics.append(parsing.parsing_truth3_interactive(l,os_used="centos", container=True, batch=False, year_index=6, day_index=3, submit_time_index=4))
-        except FileNotFoundError:
-            pass
-        except Exception as e:
-            print(l + "\n")
