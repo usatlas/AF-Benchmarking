@@ -12,7 +12,7 @@ class Parsing_Class:
     af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}
 
     # Dictionary used to obtain job string recognized by ElasticSearch
-    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea", "TRUTH3_centos": "truth3-centos-container-batch", "TRUTH3_el9_container": "truth3-el9-container-batch", "EVNT_contained_el9": "EVNT-el9-container-batch"}
+    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea", "TRUTH3_centos": "truth3-centos-container-batch", "TRUTH3_el9_container": "truth3-el9-container-batch", "TRUTH3_centos_interactive": "truth3-centos-container-interactive" }
     
     # Dictionary keys that are used to create dictionaries with no values
     dic_keys = ["cluster", "testType", "submitTime", "queueTime", "runTime", "payloadSize", "status", "host"]
@@ -167,6 +167,8 @@ class Parsing_Class:
                 start_sec= int(0)
                 start_datetime_object = dt.datetime(start_year, start_month, start_day, start_hour, start_min, start_sec)
                 start_date_timestamp = int(start_datetime_object.timestamp()*1e3)
+                # Creates a dictionary with predetermined keys
+                dic = dict.fromkeys(self.dic_keys)
                 # Assigns values to the keys
                 dic[self.dic_keys[0]] = self.af_dictionary[self.site]
                 dic[self.dic_keys[1]] = self.job_dictionary[self.job_name]
@@ -179,7 +181,56 @@ class Parsing_Class:
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
-
+    
+    def parsing_truth3_interactive(self, l, os_used="native", container=False, batch=False, year_index=7, day_index=4, submit_time_index=5):
+        with open(l, 'r') as f:
+            if f:
+                file_lines = f.read().splitlines()
+                N = len(file_lines)
+                # Splits the first line and gets hour:min:sec
+                start_time_line_list = file_lines[0].split(" ")
+                submit_time_list = start_time_line_list[submit_time_index].split(":")
+                start_time_list = start_time_line_list[0].split(":")
+                # Obtains year,month,day from first line list
+                year = int(start_time_line_list[year_index])
+                month = int(self.months_dic[start_time_line_list[2]])
+                day = int(start_time_line_list[day_index])
+                # Creates submit and start datetime objects
+                submit_time_datetime_object = dt.datetime(year, month, day, int(submit_time_list[0]), int(submit_time_list[1]), int(submit_time_list[2]))
+                start_time_datetime_object = dt.datetime(year, month, day, int(start_time_list[0]), int(start_time_list[1]), int(start_time_list[2]))
+                start_date_time_timestamp = int((start_time_datetime_object.replace(tzinfo=timezone.utc).timestamp())*1e3)
+                # Obtains the queue time
+                queue_time = int((start_time_datetime_object - submit_time_datetime_object).total_seconds())
+                payload_line_list = file_lines[N-1].split("\t")
+                if "DAOD_TRUTH3.TRUTH3.root" in payload_line_list:
+                    payload_size = int(payload_line_list[0])
+                    end_time_string = file_lines[N-3].split(" ")[0]
+                    exit_code = int(0)
+                else:
+                    end_time_string = file_lines[N-1].split(" ")[0]
+                    payload_size = int(0)
+                    exit_code = int(1)
+                end_datetime_object=dt.datetime(year, month, day, int(end_time_string[0:2]), int(end_time_string[3:5]), int(end_time_string[6:8]))
+                run_time = int((end_datetime_object - start_time_datetime_object).total_seconds())
+                host_name_line = file_lines[N-2].split(" ")
+                if "login01.af.uchicago.edu" in host_name_line:
+                    host_name = host_name_line[0]
+                else:
+                    host_name = "login01.af.uchicago.edu"
+                # Creates a dictionary with predetermined keys
+                dic = dict.fromkeys(self.dic_keys)
+                # Assigns values to the keys
+                dic[self.dic_keys[0]] = self.af_dictionary[self.site]
+                dic[self.dic_keys[1]] = self.job_dictionary[self.job_name]
+                dic[self.dic_keys[2]] = start_date_time_timestamp
+                dic[self.dic_keys[3]] = queue_time
+                dic[self.dic_keys[4]] = run_time
+                dic[self.dic_keys[5]] = payload_size
+                dic[self.dic_keys[6]] = exit_code
+                dic[self.dic_keys[7]] = host_name
+            else:
+                print("ERROR -- FILE WAS NOT OPENED")
+        return dic
 
 
     def parsing_evnt(self, l, os_used="native", container=False, batch=False, day_index=4, submit_time_index=5, year_index=7):
@@ -407,8 +458,8 @@ class Parsing_Class:
 if __name__=="__main__":
     # Coffea Job requires me to change the index depending on the error
     path_to_logs=r'/data/selbor/benchmarks/'
-    job_name="TRUTH3_el9_container"
-    log_file_name="log.Derivation"
+    job_name="TRUTH3_centos_interactive"
+    log_file_name="log.EVNTtoDAOD"
     af_site="uc"
     parsing=Parsing_Class(path_to_logs, job_name, log_file_name, af_site, "/Users/selbor/Juan/GitStuff/AF-Benchmarking/parsing")
     benchmark_paths = parsing.benchmark_path()
@@ -417,15 +468,10 @@ if __name__=="__main__":
     list_dics=[]
     for l in full_path_list:
         try:
-            list_dics.append(parsing.parsing_truth3(l, os_used="el", container=True, batch=True))
+            list_dics.append(parsing.parsing_truth3_interactive(l, os_used="centos", container=True, batch=False))
         except IndexError:
-            try:
-                list_dics.append(parsing.parsing_truth3(l,os_used="el", container=True, batch=True, year_index=6, day_index=3, submit_time_index=4))
-            except IndexError:
-                list_dics.append(parsing.parsing_truth3_e1(l, os_used="el", container=True, batch=True))
+            list_dics.append(parsing.parsing_truth3_interactive(l,os_used="centos", container=True, batch=False, year_index=6, day_index=3, submit_time_index=4))
         except FileNotFoundError:
             pass
         except Exception as e:
             print(l + "\n")
-            print(traceback.format_exc())
-
