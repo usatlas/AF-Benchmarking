@@ -12,7 +12,7 @@ class Parsing_Class:
     af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}
 
     # Dictionary used to obtain job string recognized by ElasticSearch
-    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea", "TRUTH3_centos": "truth3-centos-container-batch"}
+    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea", "TRUTH3_centos": "truth3-centos-container-batch", "TRUTH3_el9_container": "truth3-el9-container-batch" }
     
     # Dictionary keys that are used to create dictionaries with no values
     dic_keys = ["cluster", "testType", "submitTime", "queueTime", "runTime", "payloadSize", "status", "host"]
@@ -126,6 +126,9 @@ class Parsing_Class:
                 # Obtains the exit code from the last line
                 if os_used=="centos":
                     end_line_list = file_lines[N-4].split(" ")
+                elif os_used=="el":
+                    end_line_list = file_lines[N-3].split(" ")
+                
                 if "0:" in end_line_list:
                     exit_code = int(0)
                 else:
@@ -148,6 +151,36 @@ class Parsing_Class:
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
+
+    def parsing_truth3_e1(self, l, os_used="native", container=False, batch=False):
+        with open(l, 'r') as f:
+            if f:
+                file_lines = f.read().splitlines()
+                N = len(file_lines)
+                dic = dict.fromkeys(self.dic_keys)
+                date_time_string = (l.split("/"))[4]
+                start_year = int(date_time_string[0:4])
+                start_month = int(date_time_string[5:7])
+                start_day = int(date_time_string[8:10])
+                start_hour = int(date_time_string[11:13])
+                start_min = int(0)
+                start_sec= int(0)
+                start_datetime_object = dt.datetime(start_year, start_month, start_day, start_hour, start_min, start_sec)
+                start_date_timestamp = int(start_datetime_object.timestamp()*1e3)
+                # Assigns values to the keys
+                dic[self.dic_keys[0]] = self.af_dictionary[self.site]
+                dic[self.dic_keys[1]] = self.job_dictionary[self.job_name]
+                dic[self.dic_keys[2]] = start_date_timestamp
+                dic[self.dic_keys[3]] = int(0)
+                dic[self.dic_keys[4]] = int(0)
+                dic[self.dic_keys[5]] = int(0)
+                dic[self.dic_keys[6]] = int(1)
+                dic[self.dic_keys[7]] = file_lines[0]
+            else:
+                print("ERROR -- FILE WAS NOT OPENED")
+        return dic
+
+
 
     def parsing_evnt(self, l, os_used="native", container=False, batch=False, day_index=4, submit_time_index=5, year_index=7):
         with open(l, 'r') as f:
@@ -196,6 +229,8 @@ class Parsing_Class:
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
+
+
     def parsing_evnt_uc_e1(self, l, os_used="native", container=False, batch=False):
         with open(l, 'r') as f:
             if f:
@@ -371,9 +406,9 @@ class Parsing_Class:
 
 if __name__=="__main__":
     # Coffea Job requires me to change the index depending on the error
-    path_to_logs=r'/Users/selbor/Juan/SCIPP-ATLAS/testing/'
-    job_name="TRUTH3_centos"
-    log_file_name="log.EVNTtoDAOD"
+    path_to_logs=r'/data/selbor/benchmarks/'
+    job_name="TRUTH3_el9_container"
+    log_file_name="log.Derivation"
     af_site="uc"
     parsing=Parsing_Class(path_to_logs, job_name, log_file_name, af_site, "/Users/selbor/Juan/GitStuff/AF-Benchmarking/parsing")
     benchmark_paths = parsing.benchmark_path()
@@ -382,9 +417,15 @@ if __name__=="__main__":
     list_dics=[]
     for l in full_path_list:
         try:
-            list_dics.append(parsing.parsing_truth3(l, os_used="centos", container=True, batch=True))
+            list_dics.append(parsing.parsing_truth3(l, os_used="el", container=True, batch=True))
+        except IndexError:
+            try:
+                list_dics.append(parsing.parsing_truth3(l,os_used="el", container=True, batch=True, year_index=6, day_index=3, submit_time_index=4))
+            except IndexError:
+                list_dics.append(parsing.parsing_truth3_e1(l, os_used="el", container=True, batch=True))
+        except FileNotFoundError:
+            pass
         except Exception as e:
             print(l + "\n")
             print(traceback.format_exc())
 
-    print(list_dics)
