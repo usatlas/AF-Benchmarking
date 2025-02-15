@@ -1,6 +1,7 @@
 from parsing import Parsing_Class
 import json
 import os
+from elasticsearch import Elasticsearch
 
 class Data_Handling(Parsing_Class):
     def __init__(self, site_dir, job_name, log_name, site, script_dir):
@@ -51,6 +52,25 @@ class Data_Handling(Parsing_Class):
         else:
             print("FILE DOES NOT EXIST")
         return new_entries_set
+
+    def sending_data_to_ES(self, list_of_jsons, new_entries_set):
+        es = Elasticsearch(
+                [{'host':"atlas-kibana.mwt2.org", 'port': 9200, 'scheme': "https"}],
+                basic_auth=("username", "password")
+                )
+        try:
+            response = es.info()
+            success = True
+        except Exception as e:
+            success = False
+            print(e)
+        if success:
+            for i in list_of_jsons:
+                if i in new_entries_set:
+                    es.index(
+                        index="af_benchmarks",
+                        document=i
+                        )
 
     def append_new_data(self, old_entries, new_entries_set):
         with open(old_entries, 'a') as f:
