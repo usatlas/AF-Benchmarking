@@ -1,5 +1,6 @@
 from parsing import Parsing_Class
 import json
+import os
 
 class Data_Handling(Parsing_Class):
     def __init__(self, site_dir, job_name, log_name, site, script_dir):
@@ -41,7 +42,7 @@ class Data_Handling(Parsing_Class):
                 if f:
                     lines_in_file = f.readlines()
                     for lines in lines_in_file:
-                        lines_in_file.append(lines.split("\n")[0])
+                        old_entries_list.append(lines.split("\n")[0])
                         # Converts lists into sets
             old_entries_set = set(old_entries_list)
             all_entries_set = set(list_of_jsons)
