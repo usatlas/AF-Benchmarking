@@ -1,5 +1,5 @@
 #!/bin/bash
 ssh iana "
-cd /sdf/scratch/atlas/selbor/EVNTJob/container_centos
+cd /sdf/home/s/selbor/EVNTJob/container_centos
 rm *
-sbatch /sdf/scratch/atlas/selbor/AF-Benchmarking/EVNT/SLAC/evnt_centos7_sub.sh"
+sbatch /sdf/data/atlas/u/selbor/AF-Benchmarking/EVNT/SLAC/evnt_centos7_sub.sh"
