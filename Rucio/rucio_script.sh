@@ -47,7 +47,7 @@ download_ID="mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.DAOD_PHYSLITE.e8532_
 if [[ -d /sdf ]]; then
   user_name=$USER
   first_letter=${user_name:0:1}
-  job_dir="/sdf/data/atlas/u/$user_name/RucioJob"
+  job_dir="/sdf/home/$first_letter/$user_name/RucioJob"
   output_dir="/sdf/home/$first_letter/$user_name/benchmarks/$curr_time/Rucio/"
   container_el9 ${output_dir} ${job_dir} ${download_ID}
 elif [[ -d /usatlas ]]
