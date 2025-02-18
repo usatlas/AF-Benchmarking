@@ -8,7 +8,8 @@ Derivation_tf.py --CA True --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.roo
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory where the log file will be stored
-first_letter=${USER:0:1}
+username=$USER
+first_letter=${username:0:1}
 output_dir="/sdf/home/$first_letter/$USER/benchmarks/${curr_time}/TRUTH3_el9_container"
 
 # Creates the output directory

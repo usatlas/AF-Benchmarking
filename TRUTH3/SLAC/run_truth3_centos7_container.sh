@@ -1,7 +1,9 @@
 #!/bin/bash
 
 
-cp /sdf/scratch/atlas/$USER/TRUTH3Files/EVNT.root .
+
+cp -r /sdf/data/atlas/u/$USER/AF-Benchmarking/TRUTH3/EVNT.root .
+
 
 asetup AthDerivation,21.2.178.0,here
 Reco_tf.py --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3
@@ -9,7 +11,9 @@ Reco_tf.py --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --reductionCon
 # Defines the current time
 curr_time=$(date +"%Y.%m.%dT%H")
 # Defines the output directory where the log file will be stored
-output_dir="/sdf/scratch/atlas/$USER/benchmarks/${curr_time}/TRUTH3_centos7_container"
+username=$USER
+first_letter=${username:0:1}
+output_dir="/sdf/home/$first_letter/$USER/benchmarks/${curr_time}/TRUTH3_centos7_container"
 # Creates the output directory
 mkdir -p ${output_dir}
 # Appends the host-name to the end of the log file
