@@ -1,6 +1,10 @@
 #!/bin/bash
 
-cp -r /sdf/data/atlas/u/$USER/AF-Benchmarking/TRUTH3/EVNT.root .
+
+username=$USER
+first_letter=${username:0:1}
+
+cp -r /sdf/home/$first_letter/$USER/AF-Benchmarking/TRUTH3/EVNT.root .
 asetup Athena,24.0.53,here
 Derivation_tf.py --CA True --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
 
@@ -8,8 +12,6 @@ Derivation_tf.py --CA True --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.roo
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory where the log file will be stored
-username=$USER
-first_letter=${username:0:1}
 output_dir="/sdf/home/$first_letter/$USER/benchmarks/${curr_time}/TRUTH3_el9_container"
 
 # Creates the output directory
