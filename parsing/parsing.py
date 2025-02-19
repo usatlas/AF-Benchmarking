@@ -126,12 +126,15 @@ class Parsing_Class:
                 end_time_datetime_object = dt.datetime(year, month, day, int(end_time_list[0]), int(end_time_list[1]), int(end_time_list[2]))
                 # Obtains the run time
                 run_time = int((end_time_datetime_object - start_time_datetime_object).total_seconds())
-                # Obtains the exit code from the last line
+                
+                # Gives the last line in the log file, without hostname or payload size
                 if os_used=="centos":
                     end_line_list = file_lines[N-4].split(" ")
                 elif os_used=="el":
                     end_line_list = file_lines[N-3].split(" ")
-                
+                elif os_used=="native":
+                    end_line_list = file_lines[N-3].split(" ")
+                # Checks the exit code
                 if "0:" in end_line_list:
                     exit_code = int(0)
                 else:
