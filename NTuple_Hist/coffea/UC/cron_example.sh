@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cd /data/$(whoami)/ntuple_parse/env/
+source /data/selbor/ntuple_parse/env/bin/activate
 
-source bin/activate
+cd /data/selbor/parsing_jobs
 
-python3 ntuple_coffea_parsing_script.py
+python3 ntuple_coffea.py
 
 deactivate
