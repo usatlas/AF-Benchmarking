@@ -15,7 +15,7 @@ start_time=$date
 
 $start_time >> coffea_hist.log
 
-python3 /sdf/home/s/selbor/AF-Benchmarking/NTuple_Hist/coffea/SLAC/example.py >> coffea_hist.log
+python3 /sdf/home/s/selbor/AF-Benchmarking/NTuple_Hist/coffea/SLAC/example.py 2>&1 | tee coffea_hist.log
 
 end_time=$date
 
