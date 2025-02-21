@@ -12,7 +12,7 @@ class Parsing_Class:
     af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}
 
     # Dictionary used to obtain job string recognized by ElasticSearch
-    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea", "TRUTH3_centos": "truth3-centos-container-batch", "TRUTH3_el9_container": "truth3-el9-container-batch", "TRUTH3_centos_interactive": "truth3-centos-container-interactive", "TRUTH3_interactive": "truth3-interactive", "EVNT_contained_el9":"EVNT-el9-container-batch", "EVNT_contained_centos7": "EVNT-centos7-container-batch", "EVNT_container_el":"EVNT-el9-container-batch", "EVNT_container_centos":"EVNT-centos7-container-batch", "TRUTH3_el9_container":"truth3-el9-container-batch", "TRUTH3_centos7_container":"truth3-centos-container-batch"}
+    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea", "TRUTH3_centos": "truth3-centos-container-batch", "TRUTH3_el9_container": "truth3-el9-container-batch", "TRUTH3_centos_interactive": "truth3-centos-container-interactive", "TRUTH3_interactive": "truth3-interactive", "EVNT_contained_el9":"EVNT-el9-container-batch", "EVNT_contained_centos7": "EVNT-centos7-container-batch"}
     
     # Dictionary keys that are used to create dictionaries with no values
     dic_keys = ["cluster", "testType", "submitTime", "queueTime", "runTime", "payloadSize", "status", "host"]
@@ -408,3 +408,42 @@ class Parsing_Class:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
 
+    def parsing_ntuple_c_e2(self, l, fli=7):
+        with open(l, 'r') as f:
+            if f:
+                file_lines = f.read().splitlines()
+                N = len(file_lines)
+                # Extracts start date time information
+                start_date_time_line_list = file_lines[fli].split(" ")
+                start_date_list = start_date_time_line_list[0].split("-")
+                year = int(start_date_list[0])
+                start_month = int(start_date_list[1])
+                start_day = int(start_date_list[2])
+                start_time_list = start_date_time_line_list[1].split(":")
+                start_hour = int(start_time_list[0])
+                start_min = int(start_time_list[1])
+                start_sec = int(start_time_list[2][0:2])
+                # Creates the date time object
+                start_datetime_object = dt.datetime(year, start_month, start_day, start_hour, start_min, start_sec)
+                # Obtains time stamp from the date time object
+                start_date_time_timestamp = int(start_datetime_object.replace(tzinfo=timezone.utc).timestamp()*1e3)
+                queue_time=int(0)
+                if "AssertionError" in file_lines[N-2]:
+                    exit_code=int(1)
+                    host_name=file_lines[N-1]
+                    run_time=int(0)
+                    payload_size=int(0)
+                # Creates a dictionary with predetermined keys
+                dic = dict.fromkeys(self.dic_keys)
+                # Assigns values to the keys
+                dic[self.dic_keys[0]] = self.af_dictionary[self.site]
+                dic[self.dic_keys[1]] = self.job_dictionary[self.job_name]
+                dic[self.dic_keys[2]] = start_date_time_timestamp
+                dic[self.dic_keys[3]] = queue_time
+                dic[self.dic_keys[4]] = run_time
+                dic[self.dic_keys[5]] = payload_size
+                dic[self.dic_keys[6]] = exit_code
+                dic[self.dic_keys[7]] = host_name
+            else:
+                print("ERROR -- FILE WAS NOT OPENED")
+        return dic
