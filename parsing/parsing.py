@@ -12,7 +12,7 @@ class Parsing_Class:
     af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}
 
     # Dictionary used to obtain job string recognized by ElasticSearch
-    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea", "TRUTH3_centos": "truth3-centos-container-batch", "TRUTH3_el9_container": "truth3-el9-container-batch", "TRUTH3_centos_interactive": "truth3-centos-container-interactive", "TRUTH3_interactive": "truth3-interactive", "EVNT_contained_el9":"EVNT-el9-container-batch", "EVNT_contained_centos7": "EVNT-centos7-container-batch", "TRUTH3_el9_container_interactive":"truth3-el9-container-interactive"}
+    job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea", "TRUTH3_centos": "truth3-centos-container-batch", "TRUTH3_el9_container": "truth3-el9-container-batch", "TRUTH3_centos_interactive": "truth3-centos-container-interactive", "TRUTH3_interactive": "truth3-interactive", "EVNT_contained_el9":"EVNT-el9-container-batch", "EVNT_contained_centos7": "EVNT-centos7-container-batch", "TRUTH3_el9_container_interactive":"truth3-el9-container-interactive", "EVNT_container_el":"EVNT-el9-container-batch", "EVNT_container_centos":"EVNT-centos7-container-batch", "TRUTH3_centos7_container":"truth3-centos-container-batch" }
     
     # Dictionary keys that are used to create dictionaries with no values
     dic_keys = ["cluster", "testType", "submitTime", "queueTime", "runTime", "payloadSize", "status", "host"]
@@ -163,7 +163,6 @@ class Parsing_Class:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
-                dic = dict.fromkeys(self.dic_keys)
                 date_time_string = (l.split("/"))[4]
                 start_year = int(date_time_string[0:4])
                 start_month = int(date_time_string[5:7])
@@ -187,6 +186,37 @@ class Parsing_Class:
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
+
+    def parsing_truth3_slac_e1(self, l, os_used="native", container=False, batch=False):
+        with open(l, 'r') as f:
+            if f:
+                file_lines = f.read().splitlines()
+                N = len(file_lines)
+                host_name=file_lines[0]
+                payload_size=file_lines[1].split("\t")[0]
+                submit_string=l.split("/")[6]
+                year=int(submit_string[0:4])
+                month=int(submit_string[5:7])
+                day=int(submit_string[8:10])
+                hour=int(submit_string[11:13])
+                start_datetime_object = dt.datetime(year, month, day, hour, 0, 0)
+                start_date_time_timestamp = int(start_datetime_object.replace(tzinfo=timezone.utc).timestamp()*1e3)
+                # Creates a dictionary with predetermined keys
+                dic = dict.fromkeys(self.dic_keys)
+                # Assigns values to the keys
+                dic[self.dic_keys[0]] = self.af_dictionary[self.site]
+                dic[self.dic_keys[1]] = self.job_dictionary[self.job_name]
+                dic[self.dic_keys[2]] = start_date_time_timestamp
+                dic[self.dic_keys[3]] = int(0)
+                dic[self.dic_keys[4]] = int(0)
+                dic[self.dic_keys[5]] = int(payload_size)
+                dic[self.dic_keys[6]] = int(1)
+                dic[self.dic_keys[7]] = host_name
+            else:
+                print("ERROR -- FILE WAS NOT OPENED")
+        return dic
+
+
     
     def parsing_truth3_interactive(self, l, os_used="native", container=False, batch=False, year_index=7, day_index=4, submit_time_index=5):
         with open(l, 'r') as f:
@@ -316,8 +346,69 @@ class Parsing_Class:
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
-   
-   # Seems like the first line index varies; 7, 11,..,
+
+
+    def parsing_evnt_slac_e1(self, l, os_used="native", container=False, batch=False):
+        with open(l, 'r') as f:
+            if f:
+                file_lines = f.read().splitlines()
+                N=len(file_lines)
+                host_name=file_lines[0]
+                payload_size=file_lines[1].split("\t")[0]
+                submit_string=l.split("/")[6]
+                year=int(submit_string[0:4])
+                month=int(submit_string[5:7])
+                day=int(submit_string[8:10])
+                hour=int(submit_string[11:13])
+                start_datetime_object = dt.datetime(year, month, day, hour, 0, 0)
+                start_date_time_timestamp = int(start_datetime_object.replace(tzinfo=timezone.utc).timestamp()*1e3)
+                # Creates a dictionary with predetermined keys
+                dic = dict.fromkeys(self.dic_keys)
+                # Assigns values to the keys
+                dic[self.dic_keys[0]] = self.af_dictionary[self.site]
+                dic[self.dic_keys[1]] = self.job_dictionary[self.job_name]
+                dic[self.dic_keys[2]] = start_date_time_timestamp
+                dic[self.dic_keys[3]] = int(0)
+                dic[self.dic_keys[4]] = int(0)
+                dic[self.dic_keys[5]] = int(payload_size)
+                dic[self.dic_keys[6]] = int(1)
+                dic[self.dic_keys[7]] = host_name
+            else:
+                print("ERROR -- FILE WAS NOT OPENED")
+        return dic 
+
+
+    def parsing_evnt_slac_e2(self, l, os_used="native", container=False, batch=False):
+        with open(l, 'r') as f:
+            if f:
+                file_lines = f.read().splitlines()
+                N=len(file_lines)
+                host_name=file_lines[0]
+                submit_string=l.split("/")[6]
+                year=int(submit_string[0:4])
+                month=int(submit_string[5:7])
+                day=int(submit_string[8:10])
+                hour=int(submit_string[11:13])
+                start_datetime_object = dt.datetime(year, month, day, hour, 0, 0)
+                start_date_time_timestamp = int(start_datetime_object.replace(tzinfo=timezone.utc).timestamp()*1e3)
+                # Creates a dictionary with predetermined keys
+                dic = dict.fromkeys(self.dic_keys)
+                # Assigns values to the keys
+                dic[self.dic_keys[0]] = self.af_dictionary[self.site]
+                dic[self.dic_keys[1]] = self.job_dictionary[self.job_name]
+                dic[self.dic_keys[2]] = start_date_time_timestamp
+                dic[self.dic_keys[3]] = int(0)
+                dic[self.dic_keys[4]] = int(0)
+                dic[self.dic_keys[5]] = int(0)
+                dic[self.dic_keys[6]] = int(1)
+                dic[self.dic_keys[7]] = host_name
+            else:
+                print("ERROR -- FILE WAS NOT OPENED")
+        return dic 
+
+
+   # Seems like the first line index varies; 7, 11,..,(UC)
+   # SLAC has fli=0
     def parsing_ntuple_c(self, l, fli=7):
         with open(l, 'r') as f:
             if f:
