@@ -16,9 +16,6 @@ cat $HOME/pass.txt | voms-proxy-init -voms atlas
 
 lsetup "rucio -w"
 
-# Job's directory
-cd $DATA/ntuple_hist/FastFrames/
-
 # Go into the class's build directory
 cd /data/$USER/ntuple_hist/TutorialClass/build
 
@@ -28,5 +25,5 @@ source setup.sh
 # Return to the job's directory
 cd -
 
-# Set output path as $HOME due to permission issues
-cat $HOME/ff_local_GD.txt | python3 python/produce_metadata_files.py --grid_datasets $HOME/input/rucio_input.txt --output_path $HOME/input/
+# Running the FastFrames script
+python3 /data/$USER/ntuple_hist/FastFrames/python/FastFrames.py -c example_config.yml
