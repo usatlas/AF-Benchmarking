@@ -11,7 +11,7 @@ echo $(date +"%H:%M:%S") >> split.log
 
 
 asetup AthDerivation,21.2.178.0,here
-Reco_tf.py --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3
+Reco_tf.py --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3 2>&1 | tee pipe_file.log
 
 # Appends time after Reco_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
@@ -29,3 +29,4 @@ du DAOD_TRUTH3.TRUTH3.root >> split.log
 # Moves the log file to the output directory defined above
 mv log.EVNTtoDAOD ${output_dir}
 mv split.log ${output_dir}
+mv pipe_file.log ${output_dir}
