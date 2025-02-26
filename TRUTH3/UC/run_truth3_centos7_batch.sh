@@ -14,7 +14,7 @@ echo $(date +"%H:%M:%S") >> split.log
 ## -m : mounts a specific directory
 ## -r : precedes the commands we want to run within the container
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -m /data:/data -r "asetup AthDerivation,21.2.178.0,here && \
-  Reco_tf.py --inputEVNTFile ${config_dir}EVNT_centos.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3"
+  Reco_tf.py --inputEVNTFile ${config_dir}EVNT_centos.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3 2>&1 | tee pipe_file.log" 
 
 # Appends time after Reco_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
@@ -35,3 +35,4 @@ du DAOD_TRUTH3.TRUTH3.root >> split.log
 # Moves the log file to the output directory
 mv log.EVNTtoDAOD ${output_dir}
 mv split.log ${output_dir}
+mv pipe_file.log ${output_dir}
