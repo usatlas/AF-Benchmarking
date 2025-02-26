@@ -16,7 +16,7 @@ cp -r /sdf/home/$first_letter/$USER/AF-Benchmarking/EVNT/EVNTFiles .
 echo $(date +"%H:%M:%S") >> split.log
 
 asetup AthGeneration,23.6.34,here
-Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}
+Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed} 2>&1 | tee pipe_file.log
 
 # Appends time after Gen_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
@@ -34,3 +34,4 @@ du EVNT.root >> split.log
 # Moves the log file and date_name file to the output directory
 mv log.generate ${output_dir}
 mv split.log ${output_dir}
+mv pipe_file.log ${output_dir}
