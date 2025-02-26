@@ -22,7 +22,7 @@ echo $(date +"%H:%M:%S") >> split.log
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OS_container} -m /data:/data -r "asetup AthGeneration,23.6.34,here && \
 Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed}"
  
-# Appends time before Gen_tf.py to a log file
+# Appends time after Gen_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
 
 # Current time used for log file storage
