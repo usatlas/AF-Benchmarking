@@ -17,7 +17,7 @@ echo $(date +"%H:%M:%S") >> split.log
 ## -m : mounts a specific directory
 ## -r : precedes the commands we want to run within the container
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -m /data:/data -r "asetup Athena,24.0.53,here && \
-  Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT_el9_interactive.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
+  Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT_el9_interactive.root --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log"  
 
 # Appends time after Derivation_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
@@ -38,3 +38,4 @@ du DAOD_TRUTH3.TRUTH3.root >> split.log
 # Moves the log file to the output directory
 mv log.Derivation ${output_dir}
 mv split.log ${output_dir}
+mv pipe_file.log ${output_dir}

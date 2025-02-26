@@ -12,7 +12,7 @@ echo $(date +"%H:%M:%S") >> split.log
 
 # Sets the Athena version we want
 asetup Athena,24.0.53,here
-Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
+Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log
 
 # Appends time after Derivation_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
@@ -33,3 +33,4 @@ du DAOD_TRUTH3.TRUTH3.root >> split.log
 # Moves the log file to the output directory
 mv log.Derivation ${output_dir}
 mv split.log ${output_dir}
+mv pipe_file.log ${output_dir}
