@@ -23,9 +23,10 @@ output_dir="/atlasgpfs01/usatlas/data/${USER}/benchmarks/$curr_time/TRUTH3_el9_b
 mkdir -p ${output_dir}
 
 # Obtains and appends the host name and payload size to the log file
-hostname >> log.Derivation
-du DAOD_TRUTH3.TRUTH3.root >> log.Derivation
+hostname >> split.log
+du DAOD_TRUTH3.TRUTH3.root >> split.log
 
 # Moves the log file to the output directory
 mv log.Derivation ${output_dir}
+mv split.log ${output_dir}
 
