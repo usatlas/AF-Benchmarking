@@ -10,6 +10,9 @@ config_dir="EVNTFiles/100xxx/100001/"
 # The OS used in the container
 OScontainer="el9"
 
+# Copying input files to working directory
+cp -r ~/AF-Benchmarking/EVNT/EVNTFiles .
+
 # Sets up the container:
 ## -c : used to make a container followed by the OS we want to use
 ## -m : mounts a specific directory
