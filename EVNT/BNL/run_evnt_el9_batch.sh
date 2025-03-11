@@ -18,9 +18,8 @@ cp -r ~/AF-Benchmarking/EVNT/EVNTFiles .
 ## -m : mounts a specific directory
 ## -r : precedes the commands we want to run within the container
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "cp -r ~/AF-Benchmarking/EVNT/EVNTFiles . &&\
-  asetup AthGeneration,23.6.34,here &&\
-  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=100 --randomSeed=${seed}"
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup AthGeneration,23.6.34,here &&\
+  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=EVNTFiles/100xxx/100001/  --outputEVNTFile=EVNT.root --maxEvents=100 --randomSeed=1001"
 
 # Current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
