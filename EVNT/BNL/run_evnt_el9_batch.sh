@@ -14,7 +14,7 @@ cp -r ~/AF-Benchmarking/EVNT/EVNTFiles .
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup AthGeneration,23.6.34,here &&\
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log &&\
-  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=EVNTFiles/100xxx/100001/  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=1001 &&\
+  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=EVNTFiles/100xxx/100001/  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=1001 2>&1 | tee pipe_file.log &&\
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log"
 
 # Current time used for log file storage
@@ -31,3 +31,4 @@ du EVNT.root >> split.log
 # Moves the log file to the output directory
 mv log.generate ${output_dir}
 mv split.log ${output_dir}
+mv pipe_file.log ${output_dir}
