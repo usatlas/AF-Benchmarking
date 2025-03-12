@@ -1,9 +1,9 @@
 Universe = vanilla
 
 
-Output = /atlasgpfs01/usatlas/data/jroblesgo/myjob.$(Cluster).$(Process).out
-Error = /atlasgpfs01/usatlas/data/jroblesgo/myjob.$(Cluster).$(Process).err
-Log = /atlasgpfs01/usatlas/data/jroblesgo/myjob.$(Cluster).$(Process).log
+Output = /usatlas/u/jroblesgo/batch_output_files/truth3/centos/myjob.$(Cluster).$(Process).out
+Error = /usatlas/u/jroblesgo/batch_output_files/truth3/centos/myjob.$(Cluster).$(Process).err
+Log = /usatlas/u/jroblesgo/batch_output_files/truth3/centos/myjob.$(Cluster).$(Process).log
 
 Executable = /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/BNL/run_truth3_centos7_batch.sh
 
