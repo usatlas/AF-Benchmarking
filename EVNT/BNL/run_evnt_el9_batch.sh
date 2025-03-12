@@ -13,13 +13,15 @@ cp -r ~/AF-Benchmarking/EVNT/EVNTFiles .
 ## -r : precedes the commands we want to run within the container
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup AthGeneration,23.6.34,here &&\
-  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=EVNTFiles/100xxx/100001/  --outputEVNTFile=EVNT.root --maxEvents=100 --randomSeed=1001"
+  echo $(date +"%Y.%m.%d.%H.%S") >> split.log &&\
+  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=EVNTFiles/100xxx/100001/  --outputEVNTFile=EVNT.root --maxEvents=100 --randomSeed=1001 &&\
+  echo $(date +"%Y.%m.%d.%H.%S") >> split.log"
 
 # Current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Output directory
-output_dir="/usatlas/u/$USER/benchmarks/$curr_time/EVNT_el9_batch"
+output_dir="/usatlas/u/jroblesgo/benchmarks/${curr_time}/EVNT_el9_batch"
 
 # Creates the output directory
 mkdir -p ${output_dir}
