@@ -11,6 +11,10 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "lsetup 'p
   python3 ~/AF-Benchmarking/NTuple_Hist/coffea/BNL/example.py 2>&1 | tee coffea_hist.log &&\
   pwd $(date +"%Y.%m.%d.%H.%S") >> coffea_hist.log"
 
+hostname >> coffea_hist.log
+
+curr_time=$(date +"%Y.%m.%dT%H")
+
 output_dir="/usatlas/u/jroblesgo/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p ${output_dir}
