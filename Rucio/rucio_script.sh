@@ -54,7 +54,7 @@ elif [[ -d /usatlas ]]
 then
   job_dir="/usatlas/u/jroblesgo/RucioJob"
   output_dir="/usatlas/u/jroblesgo/benchmarks/$curr_time/Rucio"
-  container_el9 ${output_dir} ${job_dir} ${download_ID}
+  native_el9 ${output_dir} ${job_dir} ${download_ID}
 elif [[ -d /data ]]
 then
   job_dir="/data/$USER/RucioJob"
