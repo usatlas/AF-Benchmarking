@@ -32,3 +32,8 @@ du EVNT.root >> split.log
 mv log.generate ${output_dir}
 mv split.log ${output_dir}
 mv pipe_file.log ${output_dir}
+
+# Checks the directory, if it matches it cleans it for the next job
+if [ $(pwd)="/usatlas/u/jroblesgo/EVNTJob/el" ]; then
+  rm -r *
+fi
