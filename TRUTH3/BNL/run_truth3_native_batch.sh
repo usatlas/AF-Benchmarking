@@ -14,7 +14,7 @@ asetup Athena,24.0.53,here
 echo $(date +"%H:%M:%S") >> split.log
 
 
-Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log
+Derivation_tf.py --CA True --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log
 
 # Appends time after Derivation_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
