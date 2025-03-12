@@ -12,7 +12,7 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 ## -r : precedes the commands we want to run within the container
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "asetup AthDerivation,21.2.178.0,here && \
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log &&\
-  Reco_tf.py --inputEVNTFile EVNT_centos.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3 2>&1 | tee pipe_file.log &&\
+  Reco_tf.py --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3 2>&1 | tee pipe_file.log &&\
   echo $(date +"%Y.%m.%d.%H.%S")"
 
 # current time used for log file storage
