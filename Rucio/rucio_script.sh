@@ -52,8 +52,8 @@ if [[ -d /sdf ]]; then
   container_el9 ${output_dir} ${job_dir} ${download_ID}
 elif [[ -d /usatlas ]]
 then
-  job_dir="/atlasgpfs01/usatlas/scratch/$USER/RucioJob"
-  output_dir="/atlasgpfs01/usatlas/data/$USER/benchmarks/$curr_time/Rucio"
+  job_dir="/usatlas/u/jroblesgo/RucioJob"
+  output_dir="/usatlas/u/jroblesgo/benchmarks/$curr_time/Rucio"
   container_el9 ${output_dir} ${job_dir} ${download_ID}
 elif [[ -d /data ]]
 then
