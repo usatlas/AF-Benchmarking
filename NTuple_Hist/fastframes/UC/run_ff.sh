@@ -40,7 +40,7 @@ echo date >> ff.log
 echo hostname >> ff.log
 
 # output directory
-output_dir="/data/$USER/benchmarks/$curr_time/FF_NTuple"
+output_dir="/data/$USER/benchmarks/$curr_date/FF_NTuple"
 
 # Creates output dir
 mkdir -p ${output_dir}
