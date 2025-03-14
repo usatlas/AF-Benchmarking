@@ -1,5 +1,7 @@
 #!/bin/bash
 
+curr_date=$(date +"%Y.%m.%dT%H")
+
 # Sets up ATLAS environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
@@ -33,3 +35,15 @@ python3 /data/$USER/ntuple_hist/FastFrames/python/FastFrames.py -c $HOME/AF-Benc
 
 # Getting the date and time after running script
 echo date >> ff.log
+
+# Getting the host-machine's name
+echo hostname >> ff.log
+
+# output directory
+output_dir="/data/$USER/benchmarks/$curr_time/FF_NTuple"
+
+# Creates output dir
+mkdir -p ${output_dir}
+
+# Moves log to outputdir
+mv ff.log ${output_dir}
