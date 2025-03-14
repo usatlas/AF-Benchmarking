@@ -29,7 +29,7 @@ cd -
 echo date >> ff.log
 
 # Running the FastFrames script
-python3 /data/$USER/ntuple_hist/FastFrames/python/FastFrames.py -c example_config.yml 2>&1 | tee ff.log
+python3 /data/$USER/ntuple_hist/FastFrames/python/FastFrames.py -c $HOME/AF-Benchmarking/NTuple_Hist/fastframes/example_config.yml 2>&1 | tee ff.log
 
 # Getting the date and time after running script
 echo date >> ff.log
