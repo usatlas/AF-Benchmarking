@@ -16,5 +16,7 @@ condor_status -compact 2>&1 | tee ${file_name}
 # Output dir
 output_dir="/data/$USER/batch_benchmarks/${curr_date_hour}"
 
+mkdir -p ${output_dir}
+
 # Moves the log file to the benchmarks directory
 mv ${file_name} ${output_dir}
