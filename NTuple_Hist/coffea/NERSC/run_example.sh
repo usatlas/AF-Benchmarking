@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curr_time=$(date + "%Y.%m.%dT%H")
+curr_time=$(date +"%Y.%m.%dT%H")
 
 # Run this in a container
 
