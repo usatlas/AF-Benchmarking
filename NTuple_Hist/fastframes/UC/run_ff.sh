@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+curr_date=$(date +"%Y.%m.%dT%H")
 
 # Sets up ATLAS environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -39,7 +39,6 @@ echo date >> ff.log
 # Getting the host-machine's name
 echo hostname >> ff.log
 
-curr_date=$(date +"%Y.%m.%dT%H")
 # output directory
 output_dir="/data/$USER/benchmarks/${curr_date}/FF_NTuple"
 
