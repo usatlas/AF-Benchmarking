@@ -1,1 +1,0 @@
-700402  mc20a   fullsim /data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/user.bhodkins.42165201._000001.ANALYSIS.root
