@@ -3,7 +3,7 @@ general:
   
   # Paths
   input_filelist_path: "/home/selbor/input/filelist.txt"
-  input_sumweights_path: "/home/selbor/input/sum_of_weights.txt"
+  input_sumweights_path: "/home/selbor/input/sum_weights.txt"
   output_path_histograms: "/home/selbor/output/"
 
 
