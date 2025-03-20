@@ -43,15 +43,13 @@ class MyProcessor(processor.ProcessorABC):
     def postprocess(self, accumulator):
         pass
 
-
-if __name__ == "__main__":
-    # Gets the current time
-    start_time = datetime.now()
-    print(start_time)
+# Making a main function to encapsulate the code
+def main(fname, file_num):
 
     client = Client()
 
-    # Input file goes in here; requires absolute path
+    # Need to run this over the entire data set:
+    # /data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/
 
     client = Client()
 
@@ -72,9 +70,15 @@ if __name__ == "__main__":
     ax.set_xscale("log")
     ax.legend(title="NTuple -> Hist Coffea Frame Work")
 
-    fig.savefig("ntuple_cfw.pdf")
+    fig.savefig("ntuple_cfw_{}.pdf".format(file_num))
 
-    # Gets the current time
-    end_time = datetime.now()
-    print(end_time)
+if __name__ == "__main__":
+file_dir=r'/data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/'
+
+files_full_path=[os.path.join(file_dir,i) for i in sorted(os.listdir(file_dir))]
+
+i = 1
+for f in files_full_path:
+    main(f, i)
+    i +=1
 
