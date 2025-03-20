@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Time that will be used to store the log file
+curr_time=$(date +"%Y.%m.%dT%H")
+
+
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+export ALRB_localConfigDir=$HOME/localConfig
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "export ALRB_rootVersion=6.34.04-x86_64-el9-gcc13-opt && \
+  lsetup root && \
+  date >> photon_eventloop.log && \
+  python3 photon_ABCD_eventloop.py 2>&1 | tee photon_eventloop.log  && \
+  date >> photon_eventloop.log && \
+  hostname >> photon_eventloop.log"
+
+mv photon_eventloop.log /sdf/home/s/selbor/benchmarks/$curr_time/photon_eventloop/
