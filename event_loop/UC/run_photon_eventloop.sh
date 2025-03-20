@@ -14,7 +14,7 @@ lsetup root
 date >> photon_eventloop.log
 
 # Running the script
-python3 photon_ABCD_eventloop.py 2>&1 | tee photon_eventloop.log 
+python3 ~/AF-Benchmarking/event_loop/UC/photon_ABCD_eventloop.py 2>&1 | tee photon_eventloop.log 
 
 # Getting end date
 date >> photon_eventloop.log
