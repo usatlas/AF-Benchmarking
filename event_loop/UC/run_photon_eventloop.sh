@@ -22,4 +22,9 @@ date >> photon_eventloop.log
 # Getting host name
 hostname >> photon_eventloop.log
 
-mv photon_eventloop.log /data/$USER/benchmarks/$curr_time/photon_eventloop/
+# Output Dir
+output_dir="/data/$USER/benchmarks/$curr_time/photon_eventloop/"
+
+mkdir -p ${output_dir}
+
+mv photon_eventloop.log ${output_dir}

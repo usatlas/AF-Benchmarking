@@ -22,4 +22,8 @@ date >> photon_eventloop.log
 # Getting host name
 hostname >> photon_eventloop.log
 
-mv photon_eventloop.log /usatlas/u/jroblesgo/benchmarks/$curr_time/photon_eventloop/
+output_dir="/usatlas/u/jroblesgo/benchmarks/$curr_time/photon_eventloop/"
+
+mkdir -p ${output_dir}
+
+mv photon_eventloop.log ${output_dir}
