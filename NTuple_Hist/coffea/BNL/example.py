@@ -53,7 +53,6 @@ def main(fname, file_num):
 
     client = Client()
 
-    fname = "/data/selbor/ntuple_hist/coffea_fw/user.bhodkins.data2018_AllYear.v2.0_ANALYSIS.root/user.bhodkins.42164748._000288.ANALYSIS.root"
     events = NanoEventsFactory.from_root(
         {fname: "analysis"},
         schemaclass=NtupleSchema,
