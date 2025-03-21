@@ -12,6 +12,7 @@ from atlas_schema.schema import NtupleSchema
 from coffea.nanoevents import NanoEventsFactory
 from distributed import Client
 from datetime import datetime
+import os
 
 warnings.filterwarnings("ignore", module="coffea.*")
 
