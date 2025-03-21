@@ -13,4 +13,9 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "export ALRB_r
   date >> photon_eventloop.log && \
   hostname >> photon_eventloop.log"
 
-mv photon_eventloop.log /sdf/home/s/selbor/benchmarks/$curr_time/photon_eventloop/
+# Output directory
+output_dir="/sdf/home/s/selbor/benchmarks/$curr_time/photon_eventloop/"
+
+mkdir -p ${output_dir}
+
+mv photon_eventloop.log ${output_dir}
