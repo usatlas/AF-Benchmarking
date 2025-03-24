@@ -11,15 +11,13 @@ cd ${work_dir}
 
 source ../bin/activate
 
-start_time=$date
 
-$start_time >> coffea_hist.log
+$date >> coffea_hist.log
 
 python3 example.py 2>&1 | tee coffea_hist.log
 
-end_time=$date
 
-$end_time >> coffea_hist.log
+$date >> coffea_hist.log
 
 hostname >> coffea_hist.log
 
