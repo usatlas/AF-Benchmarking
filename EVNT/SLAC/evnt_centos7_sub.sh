@@ -8,7 +8,7 @@
 #SBATCH --error=output-%j.txt
 #SBATCH --ntasks=1 
 #SBATCH --cpus-per-task=2
-#SBATCH --mem-per-cpu=4g
+#SBATCH --mem-per-cpu=3g
 #SBATCH --time=0-02:00:00
 
 
@@ -23,3 +23,5 @@ export ALRB_CONT_CMDOPTS="-B /sdf"
 export ALRB_CONT_RUNPAYLOAD="source /sdf/home/s/$USER/AF-Benchmarking/EVNT/SLAC/run_evnt_centos_container.sh"
 
 source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c centos7
+
+
