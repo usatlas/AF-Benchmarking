@@ -10,7 +10,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --constraint=cpu
 #SBATCH -t 1:0:0
-#SBATCH --mem=4G
+#SBATCH --mem=3G
 
 # OpenMP settings:
 export OMP_NUM_THREADS=1
