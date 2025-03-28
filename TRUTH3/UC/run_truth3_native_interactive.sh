@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# current time used for log file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+
 # Input files are stored here
 config_dir="/data/$USER/TRUTH3_StaticDir/"
 
@@ -16,9 +19,6 @@ Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT_interactive.root --
 
 # Appends time after Derivation_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
-
-# current time used for log file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory
 output_dir="/data/$USER/benchmarks/$curr_time/TRUTH3_interactive"
