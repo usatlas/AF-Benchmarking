@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Current time used for file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+
 # Defines the directory where the input files are stored
 config_dir="/data/$(whoami)/TRUTH3_StaticDir/"
 
@@ -19,9 +22,6 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data:/data -r
 
 # Appends time after Derivation_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
-
-# Current time used for file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory
 output_dir="/data/$(whoami)/benchmarks/$curr_time/TRUTH3_el9_container"
