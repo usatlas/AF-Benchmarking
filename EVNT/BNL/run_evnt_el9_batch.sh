@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Current time used for log file storage
+curr_time=$(date +"%Y.%m.%dT%H")
 
 # The OS used in the container
 OScontainer="el9"
@@ -16,9 +17,6 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "as
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log &&\
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=EVNTFiles/100xxx/100001/  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=1001 2>&1 | tee pipe_file.log &&\
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log"
-
-# Current time used for log file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 
 # Output directory
 output_dir="/usatlas/u/jroblesgo/benchmarks/${curr_time}/EVNT_el9_batch"
