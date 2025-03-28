@@ -1,5 +1,8 @@
 #!/bin/bash
-  
+
+# Current time used for log file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+
 OS_container="centos7"
 
 # The seed used in the job
@@ -23,9 +26,6 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -m /data:/dat
 
 # Appends time after Gen_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
-
-# Current time used for log file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines and makes the output directory
 output_dir="/data/$(whoami)/benchmarks/$curr_time/EVNT_contained_centos7/"
