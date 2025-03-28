@@ -1,4 +1,7 @@
 #!/bin/bash
+# current time used for log file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+
 
 
 # Defines the OS the container will have
@@ -18,9 +21,6 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "as
   Reco_tf.py --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3"
 
 rm EVNT.root
-
-# current time used for log file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defining the output directory
 output_dir="$HOME/benchmarks/$curr_time/TRUTH3_centos/"

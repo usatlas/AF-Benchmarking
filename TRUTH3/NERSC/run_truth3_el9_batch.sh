@@ -1,4 +1,7 @@
 #!/bin/bash
+# Current time used for file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+
 
 
 # Defines the OS the container will have
@@ -18,9 +21,6 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "as
   Derivation_tf.py --CA True --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3"
 
 rm EVNT.root
-
-# Current time used for file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory
 output_dir="$HOME/benchmarks/$curr_time/TRUTH3_el9_container"
