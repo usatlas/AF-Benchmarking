@@ -6,6 +6,9 @@ seed=1001
 # Directory storing the input files
 config_dir="EVNTFiles/100xxx/100001/"
 
+# Current time used for log file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+
 user_name=$USER
 first_letter=${user_name:0:1}
 
@@ -21,8 +24,6 @@ Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.r
 # Appends time after Gen_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
 
-# Current time used for log file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 # Defines the output directory
 output_dir="/sdf/home/$first_letter/$USER/benchmarks/$curr_time/EVNT_container_el/"
 # Creates the output directory
