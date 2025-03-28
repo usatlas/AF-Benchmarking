@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Current time used for log file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+
+
 # Defining the OS wanted in the container
 OS_container="el9"
 
@@ -24,9 +28,6 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OS_container} -r "a
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log"
 
 rm -r evnt_el9/
-
-# Current time used for log file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines and makes the output directory
 output_dir="$HOME/benchmarks/$curr_time/EVNT_el9/"

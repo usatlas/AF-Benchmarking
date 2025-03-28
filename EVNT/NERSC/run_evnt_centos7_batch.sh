@@ -1,5 +1,8 @@
 #!/bin/bash
-  
+
+# Current time used for log file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+ 
 OS_container="centos7"
 
 # The seed used in the job
@@ -23,9 +26,6 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OS_container} -r "a
 echo $(date +"%Y.%m.%d.%H.%S") >> split.log 
 
 rm -r evnt_centos7/
-
-# Current time used for log file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines and makes the output directory
 output_dir="$HOME/benchmarks/$curr_time/EVNT_centos7/"
