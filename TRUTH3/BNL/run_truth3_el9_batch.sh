@@ -1,4 +1,7 @@
 #!/bin/bash
+# Current time used for file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+
 
 # Copying input files to working directory
 cp -r ~/AF-Benchmarking/TRUTH3/EVNT.root .
@@ -14,9 +17,6 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup Athena
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log &&\
   Derivation_tf.py --CA True --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log &&\
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log"
-
-# Current time used for file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory
 output_dir="/usatlas/u/jroblesgo/benchmarks/${curr_time}/TRUTH3_el9_batch"
