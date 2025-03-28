@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Defines the current time
+curr_time=$(date +"%Y.%m.%dT%H")
 
 username=$USER
 first_letter=${username:0:1}
@@ -16,8 +18,6 @@ Reco_tf.py --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --reductionCon
 # Appends time after Reco_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
 
-# Defines the current time
-curr_time=$(date +"%Y.%m.%dT%H")
 # Defines the output directory where the log file will be stored
 output_dir="/sdf/home/$first_letter/$USER/benchmarks/${curr_time}/TRUTH3_centos7_container"
 # Creates the output directory
