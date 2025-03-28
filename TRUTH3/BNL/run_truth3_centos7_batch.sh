@@ -1,4 +1,7 @@
 #!/bin/bash
+# current time used for log file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+
 
 # Copying input files to working directory
 cp -r ~/AF-Benchmarking/TRUTH3/EVNT.root .
@@ -14,9 +17,6 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "asetup At
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log &&\
   Reco_tf.py --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3 2>&1 | tee pipe_file.log &&\
   echo $(date +"%Y.%m.%d.%H.%S")"
-
-# current time used for log file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 
 output_dir="/usatlas/u/jroblesgo/benchmarks/${curr_time}/TRUTH3_centos7_batch"
 
