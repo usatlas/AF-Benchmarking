@@ -7,6 +7,9 @@ first_letter=${user_name:0:1}
 # Copies input files dir to the working dir
 cp -r /sdf/home/$first_letter/$USER/AF-Benchmarking/EVNT/EVNTFiles .
 
+# Current time used for log file storage
+curr_time=$(date +"%Y.%m.%dT%H")
+
 # Appends time before Gen_tf.py to log file
 echo $(date +"%H:%M:%S") >> split.log
 
@@ -21,8 +24,6 @@ Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir} --outputEVNTFile=EVNT.ro
 # Appends time after Gen_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
 
-# Current time used for log file storage
-curr_time=$(date +"%Y.%m.%dT%H")
 # Defines the output directory
 output_dir="/sdf/home/$first_letter/$USER/benchmarks/$curr_time/EVNT_container_centos"
 # Creates the output directory
