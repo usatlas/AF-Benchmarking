@@ -12,11 +12,11 @@ cd ${work_dir}
 source ../bin/activate
 
 
-$date >> split.log
+date >> split.log
 
 python3 example.py 2>&1 | tee coffea_hist.log
 
-$date >> split.log
+date >> split.log
 
 
 hostname >> split.log
