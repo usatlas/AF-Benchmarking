@@ -12,19 +12,18 @@ cd ${work_dir}
 source ../bin/activate
 
 
-$date >> coffea_hist.log
+$date >> split.log
 
 python3 example.py 2>&1 | tee coffea_hist.log
 
+$date >> split.log
 
-$date >> coffea_hist.log
 
-hostname >> coffea_hist.log
-
-rm ntuple_cfw*
+hostname >> split.log
 
 log_file_dir="/data/$(whoami)/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p ${log_file_dir}
 
 mv coffea_hist.log ${log_file_dir}
+mv split.log ${log_file_dir}

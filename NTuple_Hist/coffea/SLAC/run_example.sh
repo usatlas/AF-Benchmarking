@@ -13,22 +13,19 @@ source /sdf/data/atlas/u/selbor/testing/bin/activate
 
 start_time=$date
 
-$start_time >> coffea_hist.log
+$start_time >> split.log
 
 python3 /sdf/home/s/selbor/AF-Benchmarking/NTuple_Hist/coffea/SLAC/example.py 2>&1 | tee coffea_hist.log
 
 end_time=$date
 
-$end_time >> coffea_hist.log
+$end_time >> split.log
 
-hostname >> coffea_hist.log
-
-du ntuple_cfw.pdf >> coffea_hist.log
-
-rm ntuple_cfw.pdf
+hostname >> split.log
 
 log_file_dir="/sdf/home/s/selbor/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p ${log_file_dir}
 
 mv coffea_hist.log ${log_file_dir}
+mv split.log ${log_file_dir}
