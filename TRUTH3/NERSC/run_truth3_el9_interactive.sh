@@ -1,12 +1,12 @@
 #!/bin/bash
-# current time used for log file storage
+# Current time used for file storage
 curr_time=$(date +"%Y.%m.%dT%H")
 
 
 
 # Defines the OS the container will have
-OScontainer="centos7"
-job_dir="$SCRATCH/TRUTH3/centos7/"
+OScontainer="el9"
+job_dir="$SCRATCH/TRUTH3_int/el9/"
 mkdir -p ${job_dir}
 cd ${job_dir}
 cp ~/AF-Benchmarking/TRUTH3/EVNT.root .
@@ -20,16 +20,16 @@ echo $(date +"%H:%M:%S") >> split.log
 ## -c : used to make a container followed by the OS we want to use
 ## -m : mounts a specific directory
 ## -r : precedes the commands we want to run within the container
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup AthDerivation,21.2.178.0,here && \
-  Reco_tf.py --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3 2>&1 | tee pipe_file.log"
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup Athena,24.0.53,here && \
+  Derivation_tf.py --CA True --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log"
 
 # Appends time after Reco_tf.py to a log file
 echo $(date +"%H:%M:%S") >> split.log
 
 rm EVNT.root
 
-# Defining the output directory
-output_dir="$HOME/benchmarks/$curr_time/TRUTH3_centos/"
+# Defines the output directory
+output_dir="$HOME/benchmarks/$curr_time/TRUTH3_el9_int"
 
 # Creates the output directory
 mkdir -p ${output_dir}
@@ -39,7 +39,7 @@ hostname >> split.log
 du DAOD_TRUTH3.TRUTH3.root >> split.log
 
 # Moves the log file to the output directory
-mv log.EVNTtoDAOD ${output_dir}
+mv log.Derivation ${output_dir}
 mv split.log ${output_dir}
 mv pipe_file.log ${output_dir}
 

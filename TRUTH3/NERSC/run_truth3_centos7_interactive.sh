@@ -6,7 +6,7 @@ curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the OS the container will have
 OScontainer="centos7"
-job_dir="$SCRATCH/TRUTH3/centos7/"
+job_dir="$SCRATCH/TRUTH3_int/centos7/"
 mkdir -p ${job_dir}
 cd ${job_dir}
 cp ~/AF-Benchmarking/TRUTH3/EVNT.root .
@@ -29,7 +29,7 @@ echo $(date +"%H:%M:%S") >> split.log
 rm EVNT.root
 
 # Defining the output directory
-output_dir="$HOME/benchmarks/$curr_time/TRUTH3_centos/"
+output_dir="$HOME/benchmarks/$curr_time/TRUTH3_centos_int/"
 
 # Creates the output directory
 mkdir -p ${output_dir}
