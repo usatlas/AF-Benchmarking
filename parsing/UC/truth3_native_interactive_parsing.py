@@ -1,4 +1,4 @@
-import parsing as pc
+import updated_parsing as pc
 import data_handling as dh
 import traceback
 
@@ -24,18 +24,12 @@ list_dics = []
 
 for l in full_path_list:
     try:
-        list_dics.append(parsing.parsing_truth3(l, batch=True))
-    except IndexError:
-        try:
-            list_dics.append(parsing.parsing_truth3(l, batch=True, year_index=6, day_index=3, submit_time_index=4))
-        except IndexError:
-            list_dics.append(parsing.parsing_truth3_e1(l, os_used="native", batch=False))
-        except ValueError:
-            list_dics.append(parsing.parsing_truth3_log_split(l, os_used="native", batch=False))
-    except ValueError:
-        list_dics.append(parsing.parsing_truth3_log_split(l, os_used="native", batch=False))
+        list_dics.append(parsing.parsing_truth3_batch(l))
     except FileNotFoundError:
-        pass
+        try:
+            list_dics.append(parsing.string_and_split(l))
+        except FileNotFoundError:
+            continue
     except Exception as e:
         with open('truth3_native_interactive_errors.txt', 'a') as f:
             f.write(l + "\n")
@@ -43,6 +37,7 @@ for l in full_path_list:
             continue
 
 list_of_jsons = parsing.json_instances(list_dics)
+
 
 new_entries_set = parsing.bookkeeping_data(list_of_jsons, old_entries)
 

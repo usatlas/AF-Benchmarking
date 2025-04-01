@@ -1,4 +1,5 @@
 import data_handling as dh
+import traceback
 
 
 path_to_logs=r'/data/selbor/benchmarks'
@@ -20,17 +21,7 @@ benchmark_paths = parsing.benchmark_path()
 full_path_list = parsing.full_path_function(benchmark_paths)
 list_dics=[]
 for l in full_path_list:
-    try:
-        list_dics.append(parsing.parsing_ntuple_c(l, fli=7))
-    except IndexError:
-        list_dics.append(parsing.parsing_ntuple_c(l, fli=11))
-    except ValueError:
-        try:
-            list_dics.append(parsing.parsing_ntuple_c(l, fli=11))
-        except ValueError:
-            list_dics.append(parsing.parsing_ntuple_c_e2(l))
-        except IndexError:
-            list_dics.append(parsing.parsing_ntuple_c_e1(l))
+    list_dics.append(parsing.ntuple_parsing(l))
     except Exception as e:
         with open('ntuple_coffea_errors.txt', 'a') as f:
             f.write(l + "\n")

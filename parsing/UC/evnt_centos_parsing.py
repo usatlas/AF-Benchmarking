@@ -23,9 +23,9 @@ full_path_list = parsing.full_path_function(benchmark_paths)
 list_dics=[]
 for l in full_path_list:
     try:
-        list_dics.append(parsing.parsing_evnt(l, os_used="centos",batch=True))
+        list_dics.append(parsing.new_parsing_evnt(l, os_used="centos"))
     except FileNotFoundError:
-        continue
+        list_dics.append((parsing.missing_log_file(l)))
     except Exception as e:
         with open('evnt_centos_errors.txt', 'a') as f:
             f.write(l + "\n")

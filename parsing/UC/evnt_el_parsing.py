@@ -24,14 +24,15 @@ list_dics=[]
 
 for l in full_path_list:
     try:
-        list_dics.append(parsing.parsing_evnt(l,os_used="el",batch=True))
+       list_dics.append( parsing.new_parsing_evnt(l, os_used='el'))
     except FileNotFoundError:
-        continue
+        list_dics.append(parsing.missing_log_file(l))
     except Exception as e:
         with open('evnt_el_errors.txt', 'a') as f:
             f.write(l + "\n")
             f.write(traceback.format_exc())
             continue
+
 
 list_of_jsons = parsing.json_instances(list_dics)
 
