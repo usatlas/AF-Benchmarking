@@ -73,7 +73,7 @@ def main(fname, file_num):
     fig.savefig("ntuple_cfw_{}.pdf".format(file_num))
 
 if __name__ == "__main__":
-    file_dir=r'/global/homes/s/selbor/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/'
+    file_dir=r'/global/cfs/cdirs/m2616/selbor/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root'
 
     files_full_path=[os.path.join(file_dir,i) for i in sorted(os.listdir(file_dir))]
 
