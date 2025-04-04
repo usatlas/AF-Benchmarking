@@ -15,7 +15,7 @@ python3 evnt_centos/evnt_centos_parsing.py
 
 python3 truth3_centos/truth3_centos_batch_parsing.py
 
-python3 truth3_centos_inttruth3_centos_interactive_parsing.py
+python3 truth3_centos_int/truth3_centos_interactive_parsing.py
 
 python3 truth3_el/truth3_el_batch_parsing.py
 
