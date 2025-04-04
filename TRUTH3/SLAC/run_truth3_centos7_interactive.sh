@@ -33,4 +33,3 @@ mv log.EVNTtoDAOD ${output_dir}
 mv split.log ${output_dir}
 mv pipe_file.log ${output_dir}
 
-rm *
