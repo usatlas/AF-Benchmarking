@@ -11,6 +11,10 @@ cd /sdf/home/$first_letter/$USER/TRUTH3_int/centos
 cp -r /sdf/home/$first_letter/$USER/AF-Benchmarking/TRUTH3/EVNT.root .
 
 
+# Sets up the environment
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+
+
 # Sets up the container:
 ## -c : used to make a container followed by the OS we want to use
 ## -m : mounts a specific directory
