@@ -35,7 +35,7 @@ general:
 # Define regions
 regions:
   - name: "Muon"
-    selection: "true" #"ph_select_tightID_NOSYS != 0"
+    selection: "true" 
     variables:
       - name: "ph_pt"
         title: "Leading jet p_{T}; Leading jet p_{T} [GeV];Events"
@@ -43,8 +43,8 @@ regions:
         type: "double"
         binning:
           min: 0
-          max: 300
-          number_of_bins: 10
+          max: 1000
+          number_of_bins: 100
 #regions:
 #  - name: "met"
 #    selection: "met_met_NOSYS>0"
