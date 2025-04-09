@@ -44,7 +44,7 @@ regions:
         binning:
           min: 0
           max: 1000
-          number_of_bins: 100
+          number_of_bins: 10
 #regions:
 #  - name: "met"
 #    selection: "met_met_NOSYS>0"
