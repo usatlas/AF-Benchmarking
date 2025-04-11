@@ -17,6 +17,7 @@ class MyFirstProcessor(processor.ProcessorABC):
         # Accessing per-dataset meta-data
         dataset = events.metadata["dataset"]
 
+        # Defining histogram properties
         h_ph_pt = (
             had.Hist.new.StrCat(["all", "pass", "fail"], name="isEM")
             .Regular(200, 0.0, 2000.0, name="pt", label="$pt_{\gamma}$ [GeV]")
@@ -48,12 +49,14 @@ def gist_block():
     # Defining the root file name used in the analysis
     fname = "/data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/user.bhodkins.42165201._000001.ANALYSIS.root"
 
+    # Defining input events
     events = NanoEventsFactory.from_root(
             {fname: "analysis"},
             schemaclass=NtupleSchema,
             metadata={"dataset": "700402.Wmunugamma.mc20e.v2"},
             ).events()
 
+    # Defining "MyFirstProcessor" object
     p = MyFirstProcessor()
     out = p.process(events)
     #(computed,) = dask.compute(out)
@@ -72,25 +75,29 @@ def gist_block():
 from pathlib import Path
 
 def main():
+    # Path to data set directory
     dataset = Path("/data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/")
     client = Client()
 
-    # Defining the root file name used in the analysis
-
+    # Defining input events
     events = NanoEventsFactory.from_root(
             {item: "analysis" for item in dataset.iterdir()},
             schemaclass=NtupleSchema,
             metadata={"dataset": "700402.Wmunugamma.mc20e.v2"},
             ).events()
+
+    # Defining "MyFirstProcessor" object
     p = MyFirstProcessor()
     out = p.process(events)
     (computed,) = dask.compute(out)
     print(computed)
     fig, ax = plt.subplots()
+    # Plots using 'computed'
     computed["700402.Wmunugamma.mc20e.v2"]["ph_pt"].plot1d(ax=ax)
     ax.set_xscale("log")
     ax.legend(title="Photon pT for Wmunugamma")
 
+    # Saves hist figure as a pdf
     fig.savefig("ph_pt.pdf")
 
 if __name__ == "__main__":
