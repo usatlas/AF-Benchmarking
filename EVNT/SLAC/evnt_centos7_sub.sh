@@ -22,6 +22,6 @@ export ALRB_CONT_CMDOPTS="-B /sdf"
 
 export ALRB_CONT_RUNPAYLOAD="source /sdf/home/s/$USER/AF-Benchmarking/EVNT/SLAC/run_evnt_centos_container.sh"
 
-source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c centos7
+source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c centos7 -m /sdf/data/atlas/
 
 
