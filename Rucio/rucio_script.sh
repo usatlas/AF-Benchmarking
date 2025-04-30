@@ -48,7 +48,7 @@ if [[ -d /sdf ]]; then
   user_name=$USER
   first_letter=${user_name:0:1}
   job_dir="/sdf/home/$first_letter/$user_name/RucioJob"
-  output_dir="/sdf/home/$first_letter/$user_name/benchmarks/$curr_time/Rucio/"
+  output_dir="/sdf/data/atlas/u/selbor/benchmarks/$curr_time/Rucio/"
   container_el9 ${output_dir} ${job_dir} ${download_ID}
 elif [[ -d /usatlas ]]
 then
