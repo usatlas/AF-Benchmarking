@@ -25,7 +25,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r"asetup Ath
   echo $(date +"%H:%M:%S") >> split.log"
 
 # Defines the output directory where the log file will be stored
-output_dir="/sdf/home/$first_letter/$USER/benchmarks/${curr_time}/TRUTH3_centos7_int"
+output_dir="/sdf/data/atlas/u/selbor/benchmarks/${curr_time}/TRUTH3_centos7_int"
 # Creates the output directory
 mkdir -p ${output_dir}
 # Appends the host-name to the end of the log file

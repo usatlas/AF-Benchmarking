@@ -25,7 +25,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup Athena
 
 
 # Defines the output directory where the log file will be stored
-output_dir="/sdf/home/$first_letter/$USER/benchmarks/${curr_time}/TRUTH3_el9_int"
+output_dir="/sdf/data/atlas/u/selbor/benchmarks/${curr_time}/TRUTH3_el9_int"
 
 # Creates the output directory
 mkdir -p ${output_dir}
