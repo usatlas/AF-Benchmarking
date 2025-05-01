@@ -65,7 +65,7 @@ then
   user_name=$USER
   first_letter=${user_name:0:1}
   job_dir="/home/$USER/RucioJob/"
-  output_dir="/home/$USER/benchmarks/$curr_time/Rucio"
+  output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_time/Rucio"
   container_el9 ${output_dir} ${job_dir} ${download_ID}
 fi
 
