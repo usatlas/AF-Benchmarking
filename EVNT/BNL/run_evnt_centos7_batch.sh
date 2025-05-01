@@ -17,7 +17,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "asetup At
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log"
 
 # Output directory
-output_dir="/usatlas/u/jroblesgo/benchmarks/${curr_time}/EVNT_centos7_batch"
+output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/EVNT_centos7_batch"
 
 # Creates the output directory
 mkdir -p ${output_dir}
@@ -30,6 +30,6 @@ mv split.log ${output_dir}
 mv pipe_file.log ${output_dir}
 
 # Checks the directory, if it matches it cleans it for the next job
-if [ $(pwd)="/usatlas/u/jroblesgo/EVNTJob/centos" ]; then
+if [ $(pwd)="/atlasgpfs01/usatlas/scratch/jroblesgo/EVNT/centos" ]; then
   rm -r *
 fi

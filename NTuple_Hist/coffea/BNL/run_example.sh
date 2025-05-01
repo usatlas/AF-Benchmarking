@@ -16,7 +16,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "lsetup 'p
 hostname >> split.log
 
 
-output_dir="/usatlas/u/jroblesgo/benchmarks/${curr_time}/Coffea_Hist/"
+output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p ${output_dir}
 
