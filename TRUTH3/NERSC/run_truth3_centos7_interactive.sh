@@ -6,7 +6,7 @@ curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the OS the container will have
 OScontainer="centos7"
-job_dir="$SCRATCH/TRUTH3_int/centos7/"
+job_dir="$SCRATCH/TRUTH3/centos_int/"
 mkdir -p ${job_dir}
 cd ${job_dir}
 cp ~/AF-Benchmarking/TRUTH3/EVNT.root .
