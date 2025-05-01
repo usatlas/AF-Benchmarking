@@ -20,7 +20,7 @@ $date >> split.log
 
 hostname >> split.log
 
-log_file_dir="/global/homes/s/selbor/benchmarks/${curr_time}/Coffea_Hist/"
+log_file_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p ${log_file_dir}
 

@@ -24,7 +24,7 @@ date >> photon_eventloop.log
 hostname >> photon_eventloop.log
 
 # Output Dir
-output_dir="/global/homes/s/selbor/benchmarks/$curr_time/photon_eventloop/"
+output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_time/photon_eventloop/"
 
 mkdir -p ${output_dir}
 
