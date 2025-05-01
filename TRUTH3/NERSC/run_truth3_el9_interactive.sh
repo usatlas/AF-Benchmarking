@@ -20,7 +20,7 @@ echo $(date +"%H:%M:%S") >> split.log
 ## -c : used to make a container followed by the OS we want to use
 ## -m : mounts a specific directory
 ## -r : precedes the commands we want to run within the container
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -r "asetup Athena,24.0.53,here && \
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -m /global/cfs/cdirs/m2616/selbor -r "asetup Athena,24.0.53,here && \
   Derivation_tf.py --CA True --inputEVNTFile EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log"
 
 # Appends time after Reco_tf.py to a log file
@@ -29,7 +29,7 @@ echo $(date +"%H:%M:%S") >> split.log
 rm EVNT.root
 
 # Defines the output directory
-output_dir="$HOME/benchmarks/$curr_time/TRUTH3_el9_int"
+output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_time/TRUTH3_el9_int"
 
 # Creates the output directory
 mkdir -p ${output_dir}
