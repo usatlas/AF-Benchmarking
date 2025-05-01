@@ -3,6 +3,9 @@
 # Time that will be used to store the log file
 curr_time=$(date +"%Y.%m.%dT%H")
 
+# Job directory
+cd /pscratch/sd/s/selbor/ntuple/event_loop
+
 # Setting up
 setup ATLAS
 
