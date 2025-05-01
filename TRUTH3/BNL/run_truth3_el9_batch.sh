@@ -19,7 +19,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup Athena
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log"
 
 # Defines the output directory
-output_dir="/usatlas/u/jroblesgo/benchmarks/${curr_time}/TRUTH3_el9_batch"
+output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/TRUTH3_el9_batch"
 
 # Creates the output directory
 mkdir -p ${output_dir}
@@ -34,7 +34,7 @@ mv split.log ${output_dir}
 mv pipe_file.log ${output_dir}
 
 # Checks the directory, if it matches it cleans it for the next job
-if [ $(pwd)="/usatlas/u/jroblesgo/TRUTH3Job/el" ]; then
+if [ $(pwd)="/atlasgpfs01/usatlas/scratch/jroblesgo/TRUTH3/el" ]; then
   rm -r *
 fi
 

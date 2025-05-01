@@ -23,7 +23,7 @@ echo $(date +"%H:%M:%S") >> split.log
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defines the output directory
-output_dir="/usatlas/u/jroblesgo/benchmarks/${curr_time}/TRUTH3_native_batch"
+output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/TRUTH3_native_batch"
 
 # Creates the output directory
 mkdir -p ${output_dir}
@@ -38,7 +38,7 @@ mv split.log ${output_dir}
 mv pipe_file.log ${output_dir}
 
 # Checks the directory, if it matches it cleans it for the next job
-if [ $(pwd)="/usatlas/u/jroblesgo/TRUTH3Job/native" ]; then
+if [ $(pwd)="/atlasgpfs01/usatlas/scratch/jroblesgo/TRUTH3/native" ]; then
   rm -r *
 fi
 

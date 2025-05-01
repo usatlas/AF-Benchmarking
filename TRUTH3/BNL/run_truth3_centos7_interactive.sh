@@ -19,7 +19,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "asetup At
 curr_time=$(date +"%Y.%m.%dT%H")
 
 
-output_dir="/usatlas/u/jroblesgo/benchmarks/${curr_time}/TRUTH3_centos7_interactive"
+output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/TRUTH3_centos7_interactive"
 mkdir -p ${output_dir}
 hostname >> split.log
 du DAOD_TRUTH3.TRUTH3.root >> split.log
@@ -29,7 +29,7 @@ mv split.log ${output_dir}
 mv pipe_file.log ${output_dir}
 
 # Checks the directory, if it matches it cleans it for the next job
-if [ $(pwd)="/usatlas/u/jroblesgo/TRUTH3Job/centos_i" ]; then
+if [ $(pwd)="/atlasgpfs01/usatlas/scratch/jroblesgo/TRUTH3/centos_int" ]; then
   rm -r *
 fi
 
