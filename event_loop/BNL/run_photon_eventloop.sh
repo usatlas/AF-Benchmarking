@@ -3,6 +3,8 @@
 # Time that will be used to store the log file
 curr_time=$(date +"%Y.%m.%dT%H")
 
+cd /atlasgpfs01/usatlas/scratch/jroblesgo/ntuple/event_loop/
+
 # Setting up
 setup ATLAS
 
