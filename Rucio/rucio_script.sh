@@ -2,21 +2,22 @@
 
 container_el9 (){ 
   # Takes the following parameters:
-  # - output_dir (1)
-  # - job_dir (2)
-  # - download_ID (3)
+  # - dir_mount (1)
+  # - output_dir (2)
+  # - job_dir (3)
+  # - download_ID (4)
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   export ALRB_localConfigDir=$HOME/localConfig
-  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "export RUCIO_ACCOUNT=jroblesg && \
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m ${1} -r "export RUCIO_ACCOUNT=jroblesg && \
     lsetup rucio &&\
     cat /srv/pass.txt | voms-proxy-init -voms atlas && \
-    mkdir -p ${1} &&\
-    cd ${2} &&\
-    rm -r ${3}/ &&\
-    rucio download --rses AGLT2_LOCALGROUPDISK ${3}  2>&1 | tee rucio.log &&\
+    mkdir -p ${2} &&\
+    cd ${3} &&\
+    rm -r ${4}/ &&\
+    rucio download --rses AGLT2_LOCALGROUPDISK ${4}  2>&1 | tee rucio.log &&\
     hostname >> rucio.log &&\
-    du ${3}/ >> rucio.log &&\
-    mv rucio.log ${1}"
+    du ${4}/ >> rucio.log &&\
+    mv rucio.log ${2}"
 }
 
 native_el9 () {
@@ -48,13 +49,15 @@ if [[ -d /sdf ]]; then
   user_name=$USER
   first_letter=${user_name:0:1}
   job_dir="/sdf/home/$first_letter/$user_name/RucioJob"
+  dir_mount="/sdf/data/atlas/"
   output_dir="/sdf/data/atlas/u/selbor/benchmarks/$curr_time/Rucio/"
-  container_el9 ${output_dir} ${job_dir} ${download_ID}
+  container_el9 ${dir_mount} ${output_dir} ${job_dir} ${download_ID}
 elif [[ -d /usatlas ]]
 then
   job_dir="/atlasgpfs01/usatlas/scratch/jroblesgo/Rucio/"
+  dir_mount="/atlasgpfs01/usatlas/data/"
   output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/Rucio"
-  native_el9 ${output_dir} ${job_dir} ${download_ID}
+  native_el9 ${dir_mount} ${output_dir} ${job_dir} ${download_ID}
 elif [[ -d /data ]]
 then
   job_dir="/data/$USER/RucioJob"
@@ -65,8 +68,9 @@ then
   user_name=$USER
   first_letter=${user_name:0:1}
   job_dir="/pscratch/sd/s/selbor/Rucio/"
+  dir_mount="/global/cfs/cdirs/"
   output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_time/Rucio"
-  container_el9 ${output_dir} ${job_dir} ${download_ID}
+  container_el9 ${dir_mount} ${output_dir} ${job_dir} ${download_ID}
 fi
 
 
