@@ -51,13 +51,13 @@ if [[ -d /sdf ]]; then
   job_dir="/sdf/home/$first_letter/$user_name/RucioJob"
   dir_mount="/sdf/data/atlas/u/selbor/benchmarks/"
   output_dir="/sdf/data/atlas/u/selbor/benchmarks/$curr_time/Rucio/"
-  container_el9 ${dir_mount} ${output_dir} ${job_dir} ${download_ID}
+  container_el9 ${job_dir} ${dir_mount} ${output_dir} ${download_ID}
 elif [[ -d /usatlas ]]
 then
   job_dir="/atlasgpfs01/usatlas/scratch/jroblesgo/Rucio/"
   dir_mount="/atlasgpfs01/usatlas/data/"
   output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_time/Rucio"
-  native_el9 ${dir_mount} ${output_dir} ${job_dir} ${download_ID}
+  container_el9 ${job_dir} ${dir_mount} ${output_dir} ${download_ID}
 elif [[ -d /data ]]
 then
   job_dir="/data/$USER/RucioJob"
@@ -70,7 +70,7 @@ then
   job_dir="/pscratch/sd/s/selbor/Rucio/"
   dir_mount="/global/cfs/cdirs/m2616/selbor/benchmarks/"
   output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_time/Rucio"
-  container_el9 ${dir_mount} ${output_dir} ${job_dir} ${download_ID}
+  container_el9 ${job_dir} ${dir_mount} ${output_dir} ${download_ID}
 fi
 
 
