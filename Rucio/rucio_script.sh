@@ -11,7 +11,7 @@ container_el9 (){
   export ALRB_localConfigDir=$HOME/localConfig
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m ${2} -r "export RUCIO_ACCOUNT=jroblesg && \
     lsetup rucio &&\
-    cat srv/pass.txt | voms-proxy-init -voms atlas && \
+    cat /srv/pass.txt | voms-proxy-init -voms atlas && \
     mkdir -p ${3} &&\
     rm -r ${4}/ &&\
     rucio download --rses AGLT2_LOCALGROUPDISK ${4}  2>&1 | tee rucio.log &&\
