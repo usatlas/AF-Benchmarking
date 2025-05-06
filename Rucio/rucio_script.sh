@@ -68,7 +68,7 @@ then
   user_name=$USER
   first_letter=${user_name:0:1}
   job_dir="/pscratch/sd/s/selbor/Rucio/"
-  dir_mount="/global/cfs/cdirs/"
+  dir_mount="/global/cfs/cdirs/m2616/selbor/benchmarks/"
   output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_time/Rucio"
   container_el9 ${dir_mount} ${output_dir} ${job_dir} ${download_ID}
 fi
