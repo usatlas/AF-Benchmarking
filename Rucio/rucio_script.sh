@@ -2,22 +2,22 @@
 
 container_el9 (){ 
   # Takes the following parameters:
-  # - dir_mount (1)
-  # - output_dir (2)
-  # - job_dir (3)
+  # - job_dir (1)
+  # - dir_mount (2)
+  # - output_dir (3)
   # - download_ID (4)
+  cd ${1}
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   export ALRB_localConfigDir=$HOME/localConfig
-  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m ${1} -r "export RUCIO_ACCOUNT=jroblesg && \
+  source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m ${2} -r "export RUCIO_ACCOUNT=jroblesg && \
     lsetup rucio &&\
     cat /srv/pass.txt | voms-proxy-init -voms atlas && \
-    mkdir -p ${2} &&\
-    cd ${3} &&\
+    mkdir -p ${3} &&\
     rm -r ${4}/ &&\
     rucio download --rses AGLT2_LOCALGROUPDISK ${4}  2>&1 | tee rucio.log &&\
     hostname >> rucio.log &&\
     du ${4}/ >> rucio.log &&\
-    mv rucio.log ${2}"
+    mv rucio.log ${3}"
 }
 
 native_el9 () {
