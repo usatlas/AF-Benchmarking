@@ -1,39 +1,38 @@
-# this portion is done to ignore warnings from coffea for now
-from __future__ import annotations
-
-import warnings
 import awkward as ak
 import dask
 import hist.dask as had
 import matplotlib.pyplot as plt
-from distributed import Client
 from coffea import processor
-from atlas_schema.schema import NtupleSchema
 from coffea.nanoevents import NanoEventsFactory
 from distributed import Client
-from datetime import datetime
 import os
+from atlas_schema.schema import NtupleSchema
+from dask.distributed import performance_report
 
-warnings.filterwarnings("ignore", module="coffea.*")
 
-
-class MyProcessor(processor.ProcessorABC):
+class MyFirstProcessor(processor.ProcessorABC):
     def __init__(self):
         pass
-
     def process(self, events):
+        # Accessing per-dataset meta-data
         dataset = events.metadata["dataset"]
+
+        # Defining histogram properties
         h_ph_pt = (
             had.Hist.new.StrCat(["all", "pass", "fail"], name="isEM")
             .Regular(200, 0.0, 2000.0, name="pt", label="$pt_{\gamma}$ [GeV]")
             .Int64()
         )
 
+        # Defining the cut
         cut = ak.all(events.ph.isEM, axis=1)
+
+        # Filling the histogram
         h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt / 1.0e3))
         h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt / 1.0e3))
         h_ph_pt.fill(isEM="fail", pt=ak.firsts(events[~cut].ph.pt / 1.0e3))
 
+        # Returns hist entries
         return {
             dataset: {
                 "entries": ak.num(events, axis=0),
@@ -44,41 +43,63 @@ class MyProcessor(processor.ProcessorABC):
     def postprocess(self, accumulator):
         pass
 
-# Making a main function to encapsulate the code
-def main(fname, file_num):
-
+def gist_block():
     client = Client()
+        
+    # Defining the root file name used in the analysis
+    fname = "/atlasgpfs01/usatlas/data/jroblesgo/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/"
 
-    # Need to run this over the entire data set:
-    # /data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/
-
-    client = Client()
-
+    # Defining input events
     events = NanoEventsFactory.from_root(
-        {fname: "analysis"},
-        schemaclass=NtupleSchema,
-        metadata={"dataset": "700402.Wmunugamma.2024-08-06"},
-    ).events()
+            {fname: "analysis"},
+            schemaclass=NtupleSchema,
+            metadata={"dataset": "700402.Wmunugamma.mc20e.v2"},
+            ).events()
 
-    p = MyProcessor()
+    # Defining "MyFirstProcessor" object
+    p = MyFirstProcessor()
     out = p.process(events)
-    (computed,) = dask.compute(out)
+    #(computed,) = dask.compute(out)
+    with performance_report(filename="filename_optimizeFalse.html"):
+        (computed,) = dask.compute(out, optimize_graph=False)
+
     print(computed)
 
     fig, ax = plt.subplots()
-    computed["700402.Wmunugamma.2024-08-06"]["ph_pt"].plot1d(ax=ax)
+    computed["700402.Wmunugamma.mc20e.v2"]["ph_pt"].plot1d(ax=ax)
     ax.set_xscale("log")
-    ax.legend(title="NTuple -> Hist Coffea Frame Work")
+    ax.legend(title="Photon pT for Wmunugamma")
 
-    fig.savefig("ntuple_cfw_{}.pdf".format(file_num))
+    fig.savefig("ph_pt.pdf")
+
+from pathlib import Path
+
+def main():
+    # Path to data set directory
+    dataset = Path("/atlasgpfs01/usatlas/data/jroblesgo/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/")
+    client = Client()
+
+    # Defining input events
+    events = NanoEventsFactory.from_root(
+            {item: "analysis" for item in dataset.iterdir()},
+            schemaclass=NtupleSchema,
+            metadata={"dataset": "700402.Wmunugamma.mc20e.v2"},
+            ).events()
+
+    # Defining "MyFirstProcessor" object
+    p = MyFirstProcessor()
+    out = p.process(events)
+    (computed,) = dask.compute(out)
+    print(computed)
+    fig, ax = plt.subplots()
+    # Plots using 'computed'
+    computed["700402.Wmunugamma.mc20e.v2"]["ph_pt"].plot1d(ax=ax)
+    ax.set_xscale("log")
+    ax.legend(title="Photon pT for Wmunugamma")
+
+    # Saves hist figure as a pdf
+    fig.savefig("ph_pt.pdf")
 
 if __name__ == "__main__":
-    file_dir=r'/atlasgpfs01/usatlas/data/jroblesgo/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/'
-
-    files_full_path=[os.path.join(file_dir,i) for i in sorted(os.listdir(file_dir))]
-
-    i = 1
-    for f in files_full_path:
-        main(f, i)
-        i +=1
-
+    main()
+   
