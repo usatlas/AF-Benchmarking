@@ -5,13 +5,38 @@ cd /global/homes/s/selbor/parsing_jobs
 
 source bin/activate
 
-python3 truth3_el/truth3_el_parsing.py
-python3 truth3_el_int/truth3_el_int_parsing.py
-python3 truth3_centos/truth3_centos_parsing.py
-python3 truth3_centos_int/truth3_centos_int_parsing.py
-python3 evnt_el/evnt_el_parsing.py
-python3 evnt_centos/evnt_centos_parsing.py
-python3 rucio_download/rucio_parsing.py
+cd truth3_el/
+
+python3 truth3_el_parsing.py
+
+cd ../truth3_el_int/
+
+python3 truth3_el_int_parsing.py
+
+cd ../truth3_centos/
+
+python3 truth3_centos_parsing.py
+
+cd ../truth3_centos_int/
+
+python3 truth3_centos_int_parsing.py
+
+cd ../evnt_el/
+
+python3 evnt_el_parsing.py
+
+cd ../evnt_centos/
+
+python3 evnt_centos_parsing.py
+
+cd ../rucio_download/
+
+python3 rucio_parsing.py
+
+cd ../ntuple_coffea/
+
 python3 coffea_parsing.py
+
+cd -
 
 deactivate
