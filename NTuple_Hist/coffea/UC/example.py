@@ -1,3 +1,6 @@
+# this portion is done to ignore warnings from coffea for now
+from __future__ import annotations
+
 import awkward as ak
 import dask
 import hist.dask as had
@@ -8,6 +11,17 @@ from distributed import Client
 import os
 from atlas_schema.schema import NtupleSchema
 from dask.distributed import performance_report
+import json
+import warnings
+import time
+
+from pathlib import Path
+from coffea.dataset_tools import apply_to_fileset
+
+warnings.filterwarnings("ignore", module="coffea.*")
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore")
 
 
 class MyFirstProcessor(processor.ProcessorABC):
@@ -19,7 +33,7 @@ class MyFirstProcessor(processor.ProcessorABC):
         # Defining histogram properties
         h_ph_pt = (
             had.Hist.new.StrCat(["all"], name="isEM")
-            .Regular(200, 0.0, 1000.0, name="pt", label="$pt_{\gamma}$ [GeV]")
+            .Regular(200, 0.0, 1000.0, name="pt", label="$pt_{\\gamma}$ [GeV]")
             .Int64()
         )
 
@@ -37,7 +51,16 @@ class MyFirstProcessor(processor.ProcessorABC):
         # (not sure about this part) lumi: events.lumi
         # Putting it all together: weight= (xs*lumi*mc)/sum_weights
         # Error comes from the cross section, it doesn't find it
-        h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt/ 3e3), weights=(events.metadata["cross-section"]*events.metadata["lumi"]*events.weight*mc.events.pileup)/1816229744476160.0)
+        xs = events.metadata["xs"]
+        lum = events.metadata["luminosity"]
+        genFiltEff = events.metadata["genFiltEff"]
+        #kfactor = events.metadata["kFactor"]
+        kfactor = 1.
+        # sumOfWeights = events.metadata["sum_of_weights"]
+        # sumOfEvents = events.metadata["sum_of_events"]
+        sumOfWeights = 4345667100606464.0
+        weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
+        h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt/1000.), weight=(weight_norm*events.weight.mc*events.weight.pileup))
         #h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt / 1.0e3))
         #h_ph_pt.fill(isEM="fail", pt=ak.firsts(events[~cut].ph.pt / 1.0e3))
 
@@ -52,31 +75,39 @@ class MyFirstProcessor(processor.ProcessorABC):
     def postprocess(self, accumulator):
         pass
 
-from pathlib import Path
 
 def main():
-    # Path to data set directory
-    dataset = Path("/data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/")
-    client = Client()
-
-    dataset_id=700402
-    # Defining input events
-    events = NanoEventsFactory.from_root(
-            {item: "analysis" for item in dataset.iterdir()},
-            schemaclass=NtupleSchema,
-                        
-            metadata={"dataset": "700402.Wmunugamma.mc20e.v2", "lumi": 59700, "cross-section": "/cvmfs/atlas.cern.ch/repo/sw/database/GroupData/dev/PMGTools/PMGxsecDB_mc16.txt", "kfactor": "/home/selbor/input/sum_weights.txt"},
-            ).events()
-    kfactor = events.metadata.get("kfactor", 1.0)
-
     # Defining "MyFirstProcessor" object
     p = MyFirstProcessor()
-    out = p.process(events)
+
+    client = Client()
+
+    dataset_runnable = json.loads(Path("dataset_runnable/af_v2_700402.json").read_text())
+
+    nevents=0
+    for f in dataset_runnable["Wmunugamma"]["files"]:
+        nevents += int(dataset_runnable["Wmunugamma"]["files"][f]["num_entries"])
+    
+    print("Applying to fileset")
+    out = apply_to_fileset(
+        p,
+        dataset_runnable,
+        schemaclass=NtupleSchema,
+    )
+
+    start_time = time.time()
     (computed,) = dask.compute(out)
+    end_time = time.time()
+    execute_time = end_time - start_time
+    print(
+        f"... execution time: {end_time - start_time:6.2f} s ({(nevents / 1000.0) / execute_time:6.2f} kHz)"
+    )
+    
     print(computed)
     fig, ax = plt.subplots()
+    
     # Plots using 'computed'
-    computed["700402.Wmunugamma.mc20e.v2"]["ph_pt"].plot1d(ax=ax)
+    computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
     ax.legend(title="Photon pT for Wmunugamma")
 
     # Saves hist figure as a pdf
