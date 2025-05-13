@@ -72,7 +72,7 @@ def main():
 
     client = Client()
 
-    dataset_runnable = json.loads(Path("dataset_runnable/af_v2_700402.json").read_text())
+    dataset_runnable = json.loads(Path("/home/selbor/AF-Benchmarking/NTuple_Hist/coffea/dataset_runnable/af_v2_700402.json").read_text())
 
     nevents=0
     for f in dataset_runnable["Wmunugamma"]["files"]:
