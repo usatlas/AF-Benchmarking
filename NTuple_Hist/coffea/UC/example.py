@@ -41,16 +41,6 @@ class MyFirstProcessor(processor.ProcessorABC):
         cut = ak.all(events.ph.isEM, axis=1)
 
 
-        # Filling the histogram
-        # FIXME: Update this to handle weighted events
-        # Fold in: weight=weight_mc*weight_pileup*weight_beamspot
-
-        # NOSYS weight from FF sum_weights.txt file: 1816229744476160.0
-        # (not sure about this part) Number of events (MC): events.ph.pt 
-        # (not sure about this part) XS: events.xs or events['xs']
-        # (not sure about this part) lumi: events.lumi
-        # Putting it all together: weight= (xs*lumi*mc)/sum_weights
-        # Error comes from the cross section, it doesn't find it
         xs = events.metadata["xs"]
         lum = events.metadata["luminosity"]
         genFiltEff = events.metadata["genFiltEff"]
