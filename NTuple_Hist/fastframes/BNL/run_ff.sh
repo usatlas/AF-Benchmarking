@@ -8,11 +8,11 @@ export ALRB_localConfigDir=$HOME/localConfig
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup StatAnalysis,0.5.0
   lsetup emi
   cat $HOME/pass.txt | voms-proxy-init -voms atlas
-  cd /atlasgpfs01/usatlas/data/jroblesgo/TutorialClass/build
+  cd /srv/TutorialClass/build
   source setup.sh
   cd -
   echo date >> ff.log
-  python3 /atlasgpfs01/usatlas/data/jroblesgo/FastFrames/python/FastFrames.py -c $HOME/AF-Benchmarking/NTuple_Hist/fastframes/BNL/example_config.yml 2>&1 | tee ff.log"
+  python3 /srv/FastFrames/python/FastFrames.py -c $HOME/AF-Benchmarking/NTuple_Hist/fastframes/BNL/example_config.yml 2>&1 | tee ff.log"
   echo date >> ff.log
   echo hostname >> ff.log
 
