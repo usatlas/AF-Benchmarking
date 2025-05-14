@@ -1,39 +1,60 @@
 # this portion is done to ignore warnings from coffea for now
 from __future__ import annotations
 
-import warnings
 import awkward as ak
 import dask
 import hist.dask as had
 import matplotlib.pyplot as plt
-from distributed import Client
 from coffea import processor
-from atlas_schema.schema import NtupleSchema
 from coffea.nanoevents import NanoEventsFactory
 from distributed import Client
-from datetime import datetime
 import os
+from atlas_schema.schema import NtupleSchema
+from dask.distributed import performance_report
+import json
+import warnings
+import time
+
+from pathlib import Path
+from coffea.dataset_tools import apply_to_fileset
 
 warnings.filterwarnings("ignore", module="coffea.*")
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore")
 
 
-class MyProcessor(processor.ProcessorABC):
+class MyFirstProcessor(processor.ProcessorABC):
     def __init__(self):
         pass
-
     def process(self, events):
+        # Accessing per-dataset meta-data
         dataset = events.metadata["dataset"]
+        # Defining histogram properties
         h_ph_pt = (
-            had.Hist.new.StrCat(["all", "pass", "fail"], name="isEM")
-            .Regular(200, 0.0, 2000.0, name="pt", label="$pt_{\gamma}$ [GeV]")
+            had.Hist.new.StrCat(["all"], name="isEM")
+            .Regular(200, 0.0, 1000.0, name="pt", label="$pt_{\\gamma}$ [GeV]")
             .Int64()
         )
 
+        # Defining the cut
         cut = ak.all(events.ph.isEM, axis=1)
-        h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt / 1.0e3))
-        h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt / 1.0e3))
-        h_ph_pt.fill(isEM="fail", pt=ak.firsts(events[~cut].ph.pt / 1.0e3))
 
+
+        xs = events.metadata["xs"]
+        lum = events.metadata["luminosity"]
+        genFiltEff = events.metadata["genFiltEff"]
+        #kfactor = events.metadata["kFactor"]
+        kfactor = 1.
+        # sumOfWeights = events.metadata["sum_of_weights"]
+        # sumOfEvents = events.metadata["sum_of_events"]
+        sumOfWeights = 4345667100606464.0
+        weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
+        h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt/1000.), weight=(weight_norm*events.weight.mc*events.weight.pileup))
+        #h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt / 1.0e3))
+        #h_ph_pt.fill(isEM="fail", pt=ak.firsts(events[~cut].ph.pt / 1.0e3))
+
+        # Returns hist entries
         return {
             dataset: {
                 "entries": ak.num(events, axis=0),
@@ -44,41 +65,44 @@ class MyProcessor(processor.ProcessorABC):
     def postprocess(self, accumulator):
         pass
 
-# Making a main function to encapsulate the code
-def main(fname, file_num):
+def main():
+    # Defining "MyFirstProcessor" object
+    p = MyFirstProcessor()
 
     client = Client()
 
-    # Need to run this over the entire data set:
-    # /data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/
+    dataset_runnable = json.loads(Path("/global/homes/s/selbor/AF-Benchmarking/NTuple_Hist/coffea/dataset_runnable/af_v2_700402.json").read_text())
 
-    client = Client()
-
-    events = NanoEventsFactory.from_root(
-        {fname: "analysis"},
+    nevents=0
+    for f in dataset_runnable["Wmunugamma"]["files"]:
+        nevents += int(dataset_runnable["Wmunugamma"]["files"][f]["num_entries"])
+    
+    print("Applying to fileset")
+    out = apply_to_fileset(
+        p,
+        dataset_runnable,
         schemaclass=NtupleSchema,
-        metadata={"dataset": "700402.Wmunugamma.2024-08-06"},
-    ).events()
+    )
 
-    p = MyProcessor()
-    out = p.process(events)
+    start_time = time.time()
     (computed,) = dask.compute(out)
+    end_time = time.time()
+    execute_time = end_time - start_time
+    print(
+        f"... execution time: {end_time - start_time:6.2f} s ({(nevents / 1000.0) / execute_time:6.2f} kHz)"
+    )
+    
     print(computed)
-
     fig, ax = plt.subplots()
-    computed["700402.Wmunugamma.2024-08-06"]["ph_pt"].plot1d(ax=ax)
-    ax.set_xscale("log")
-    ax.legend(title="NTuple -> Hist Coffea Frame Work")
+    
+    # Plots using 'computed'
+    computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
+    ax.legend(title="Photon pT for Wmunugamma")
 
-    fig.savefig("ntuple_cfw_{}.pdf".format(file_num))
+    # Saves hist figure as a pdf
+    fig.savefig("ph_pt.pdf")
 
 if __name__ == "__main__":
-    file_dir=r'/global/cfs/cdirs/m2616/selbor/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root'
-
-    files_full_path=[os.path.join(file_dir,i) for i in sorted(os.listdir(file_dir))]
-
-    i = 1
-    for f in files_full_path:
-        main(f, i)
-        i +=1
+    main()
+ 
 
