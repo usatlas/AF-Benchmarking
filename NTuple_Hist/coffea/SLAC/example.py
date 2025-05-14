@@ -75,22 +75,35 @@ def main():
     dataset = Path("/sdf/data/atlas/u/selbor/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/")
     client = Client()
 
-    # Defining the root file name used in the analysis
+    dataset_runnable = json.loads(Path("/sdf/home/s/selbor/AF-Benchmarking/NTuple_Hist/coffea/dataset_runnable/af_v2_700402.json").read_text())
 
-    events = NanoEventsFactory.from_root(
-            {item: "analysis" for item in dataset.iterdir()},
-            schemaclass=NtupleSchema,
-            metadata={"dataset": "700402.Wmunugamma.mc20e.v2"},
-            ).events()
-    p = MyFirstProcessor()
-    out = p.process(events)
+    nevents=0
+    for f in dataset_runnable["Wmunugamma"]["files"]:
+        nevents += int(dataset_runnable["Wmunugamma"]["files"][f]["num_entries"])
+    
+    print("Applying to fileset")
+    out = apply_to_fileset(
+        p,
+        dataset_runnable,
+        schemaclass=NtupleSchema,
+    )
+
+    start_time = time.time()
     (computed,) = dask.compute(out)
+    end_time = time.time()
+    execute_time = end_time - start_time
+    print(
+        f"... execution time: {end_time - start_time:6.2f} s ({(nevents / 1000.0) / execute_time:6.2f} kHz)"
+    )
+    
     print(computed)
     fig, ax = plt.subplots()
-    computed["700402.Wmunugamma.mc20e.v2"]["ph_pt"].plot1d(ax=ax)
-    ax.set_xscale("log")
+    
+    # Plots using 'computed'
+    computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
     ax.legend(title="Photon pT for Wmunugamma")
 
+    # Saves hist figure as a pdf
     fig.savefig("ph_pt.pdf")
 
 if __name__ == "__main__":
