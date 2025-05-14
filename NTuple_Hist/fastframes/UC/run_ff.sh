@@ -2,6 +2,8 @@
 
 curr_date=$(date +"%Y.%m.%dT%H")
 
+cd /data/selbor/FFJob/
+
 # Sets up ATLAS environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
