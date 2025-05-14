@@ -13,8 +13,8 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup StatAn
   cd - &&\
   echo date >> ff.log &&\
   python3 /srv/FastFrames/python/FastFrames.py -c /srv/input/example_config.yml 2>&1 | tee ff.log"
-  echo date >> ff.log
-  echo hostname >> ff.log
+echo date >> ff.log
+echo hostname >> ff.log
 
 # output directory
 output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_date/FF_NTuple"
