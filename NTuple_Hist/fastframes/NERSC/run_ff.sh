@@ -10,7 +10,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup StatAn
   source setup.sh &&\
   cd - &&\
   echo date >> ff.log &&\
-  python3 /srv/FastFrames/python/FastFrames.py -c $HOME/AF-Benchmarking/NTuple_Hist/fastframes/NERSC/example_config.yml 2>&1 | tee ff.log"
+  python3 /srv/FastFrames/python/FastFrames.py -c /srv/input/example_config.yml 2>&1 | tee ff.log"
   echo date >> ff.log
   echo hostname >> ff.log
 
