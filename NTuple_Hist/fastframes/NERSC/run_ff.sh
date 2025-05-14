@@ -2,8 +2,6 @@
 
 curr_date=$(date +"%Y.%m.%dT%H")
 
-ddir
-
 # Sets up ATLAS environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
@@ -17,7 +15,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup StatAn
   echo hostname >> ff.log
 
 # output directory
-output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_time/FF_NTuple"
+output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_date/FF_NTuple"
 
 # Creates output dir
 mkdir -p ${output_dir}
