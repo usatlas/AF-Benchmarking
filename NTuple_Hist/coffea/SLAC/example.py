@@ -1,3 +1,6 @@
+# this portion is done to ignore warnings from coffea for now
+from __future__ import annotations
+
 import awkward as ak
 import dask
 import hist.dask as had
@@ -8,6 +11,17 @@ from distributed import Client
 import os
 from atlas_schema.schema import NtupleSchema
 from dask.distributed import performance_report
+import json
+import warnings
+import time
+
+from pathlib import Path
+from coffea.dataset_tools import apply_to_fileset
+
+warnings.filterwarnings("ignore", module="coffea.*")
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore")
 
 
 class MyFirstProcessor(processor.ProcessorABC):
@@ -16,20 +30,24 @@ class MyFirstProcessor(processor.ProcessorABC):
     def process(self, events):
         # Accessing per-dataset meta-data
         dataset = events.metadata["dataset"]
-
+        # Defining histogram properties
         h_ph_pt = (
-            had.Hist.new.StrCat(["all", "pass", "fail"], name="isEM")
-            .Regular(200, 0.0, 2000.0, name="pt", label="$pt_{\gamma}$ [GeV]")
+            had.Hist.new.StrCat(["all"], name="isEM")
+            .Regular(200, 0.0, 1000.0, name="pt", label="$pt_{\\gamma}$ [GeV]")
             .Int64()
         )
 
         # Defining the cut
         cut = ak.all(events.ph.isEM, axis=1)
 
-        # Filling the histogram
-        h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt / 1.0e3))
-        h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt / 1.0e3))
-        h_ph_pt.fill(isEM="fail", pt=ak.firsts(events[~cut].ph.pt / 1.0e3))
+
+        xs = events.metadata["xs"]
+        lum = events.metadata["luminosity"]
+        genFiltEff = events.metadata["genFiltEff"]
+        kfactor = 1.
+        sumOfWeights = 4345667100606464.0
+        weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
+        h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt/1000.), weight=(weight_norm*events.weight.mc*events.weight.pileup))
 
         # Returns hist entries
         return {
@@ -42,40 +60,15 @@ class MyFirstProcessor(processor.ProcessorABC):
     def postprocess(self, accumulator):
         pass
 
-def gist_block():
-    client = Client()
-        
-    # Defining the root file name used in the analysis
-    fname = "/data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/user.bhodkins.42165201._000001.ANALYSIS.root"
-
-    events = NanoEventsFactory.from_root(
-            {fname: "analysis"},
-            schemaclass=NtupleSchema,
-            metadata={"dataset": "700402.Wmunugamma.mc20e.v2"},
-            ).events()
-
-    p = MyFirstProcessor()
-    out = p.process(events)
-    #(computed,) = dask.compute(out)
-    with performance_report(filename="filename_optimizeFalse.html"):
-        (computed,) = dask.compute(out, optimize_graph=False)
-
-    print(computed)
-
-    fig, ax = plt.subplots()
-    computed["700402.Wmunugamma.mc20e.v2"]["ph_pt"].plot1d(ax=ax)
-    ax.set_xscale("log")
-    ax.legend(title="Photon pT for Wmunugamma")
-
-    fig.savefig("ph_pt.pdf")
-
-from pathlib import Path
 
 def main():
-    dataset = Path("/sdf/data/atlas/u/selbor/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/")
+    # Defining "MyFirstProcessor" object
+    p = MyFirstProcessor()
+
     client = Client()
 
-    dataset_runnable = json.loads(Path("/sdf/home/s/selbor/AF-Benchmarking/NTuple_Hist/coffea/dataset_runnable/af_v2_700402.json").read_text())
+    #FIXME: Need to update the path to the json file containing the weights
+    dataset_runnable = json.loads(Path("/home/selbor/AF-Benchmarking/NTuple_Hist/coffea/dataset_runnable/af_v2_700402.json").read_text())
 
     nevents=0
     for f in dataset_runnable["Wmunugamma"]["files"]:
