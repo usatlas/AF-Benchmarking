@@ -44,15 +44,10 @@ class MyFirstProcessor(processor.ProcessorABC):
         xs = events.metadata["xs"]
         lum = events.metadata["luminosity"]
         genFiltEff = events.metadata["genFiltEff"]
-        #kfactor = events.metadata["kFactor"]
         kfactor = 1.
-        # sumOfWeights = events.metadata["sum_of_weights"]
-        # sumOfEvents = events.metadata["sum_of_events"]
         sumOfWeights = 4345667100606464.0
         weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
         h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt/1000.), weight=(weight_norm*events.weight.mc*events.weight.pileup))
-        #h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt / 1.0e3))
-        #h_ph_pt.fill(isEM="fail", pt=ak.firsts(events[~cut].ph.pt / 1.0e3))
 
         # Returns hist entries
         return {
@@ -65,13 +60,15 @@ class MyFirstProcessor(processor.ProcessorABC):
     def postprocess(self, accumulator):
         pass
 
+
 def main():
     # Defining "MyFirstProcessor" object
     p = MyFirstProcessor()
 
     client = Client()
 
-    dataset_runnable = json.loads(Path("/srv/dataset_runnable/af_v2_700402.json").read_text())
+    # FIXME: Update the path to the json file containing the weights
+    dataset_runnable = json.loads(Path("/home/selbor/AF-Benchmarking/NTuple_Hist/coffea/dataset_runnable/af_v2_700402.json").read_text())
 
     nevents=0
     for f in dataset_runnable["Wmunugamma"]["files"]:
@@ -104,5 +101,4 @@ def main():
 
 if __name__ == "__main__":
     main()
- 
-
+   
