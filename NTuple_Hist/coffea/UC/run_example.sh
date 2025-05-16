@@ -1,23 +1,27 @@
-#! /bin/bash
-
+#!/bin/bash
 
 # Gets the current time
 curr_time=$(date +"%Y.%m.%dT%H")
 
-# Working directory
-work_dir="/data/$(whoami)/ntuple_hist/coffea_fw/"
+# Defining the directory the job will be running in
+working_dir="/scratch/$(whoami)/ntuple/coffea/"
 
-cd ${work_dir}
-
-source ../bin/activate
-
+# Goes into the job directory if it exits, creates it otherwise
+if [ -d "${working_dir}" ]; then
+  cd ${working_dir}
+else
+  mkdir -p ${working_dir}
+  cd ${working_dir}
+fi
 
 date >> split.log
 
-python3 example.py 2>&1 | tee coffea_hist.log
+# Setting up environment and container
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+export ALRB_localConfigDir=$HOME/localConfig
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "python3 /home/selbor/AF-Benchmarking/NTuple_Hist/coffea/UC/example.py  2>&1 | tee coffea_hist.log"
 
 date >> split.log
-
 
 hostname >> split.log
 
