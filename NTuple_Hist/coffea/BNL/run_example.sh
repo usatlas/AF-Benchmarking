@@ -1,20 +1,28 @@
 #!/bin/bash
 
-# Run this in a container
-
+# Gets the current time
 curr_time=$(date +"%Y.%m.%dT%H")
 
-cd /atlasgpfs01/usatlas/scratch/jroblesgo/ntuple/coffea
+working_dir="/atlasgpfs01/usatlas/scratch/jroblesgo/ntuple/coffea"
+
+# Goes into the job directory if it exits, creates it otherwise
+if [ -d "${working_dir}" ]; then
+  cd ${working_dir}
+else
+  mkdir -p ${working_dir}
+  cd ${working_dir}
+fi
+
+date >> split.log
+
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+export ALRB_localConfigDir=$HOME/localConfig
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /atlasgpfs01/usatlas/data/ -r "python3 /home/jroblesgo/AF-Benchmarking/NTuple_Hist/coffea/BNL/example.py 2>&1 | tee coffea_hist.log"
 
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "lsetup 'python 3.9.21-x86_64-centos7' &&\
-  pwd $(date +"%Y.%m.%d.%H.%S") >> split.log &&\
-  python3 ~/AF-Benchmarking/NTuple_Hist/coffea/BNL/example.py 2>&1 | tee coffea_hist.log &&\
-  pwd $(date +"%Y.%m.%d.%H.%S") >> split.log"
+date >> split.log
 
 hostname >> split.log
-
 
 output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/Coffea_Hist/"
 
