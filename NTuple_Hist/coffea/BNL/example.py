@@ -72,7 +72,7 @@ def main():
 
     client = Client()
     # Need to update the path to the json file containing the weights
-    dataset_runnable = json.loads(Path("/home/selbor/AF-Benchmarking/NTuple_Hist/coffea/dataset_runnable/af_v2_700402.json").read_text())
+    dataset_runnable = json.loads(Path("/atlasgpfs01/usatlas/data/jroblesgo/dataset_runnable/af_v2_700402.json").read_text())
 
     nevents=0
     for f in dataset_runnable["Wmunugamma"]["files"]:
