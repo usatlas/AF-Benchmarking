@@ -21,11 +21,11 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "ase
 
   cat $HOME/pass.txt | voms-proxy-init -voms atlas
   lsetup rucio -w
-  cd /data/$USER/ntuple_hist/TutorialClass/build
+  cd /data/$(whoami)/ntuple_hist/TutorialClass/build
   source setup.sh
   cd - 
   date >> ff.log
-  python3 /data/$USER/ntuple_hist/FastFrames/python/FastFrames.py -c /data/$USER/input/example_config.yml 2>&1 | tee ff.log"
+  python3 /data/$(whoami)/ntuple_hist/FastFrames/python/FastFrames.py -c /data/$(whoami)/input/example_config.yml 2>&1 | tee ff.log"
 
 # Getting the date and time after running script
 date >> ff.log
@@ -34,7 +34,7 @@ date >> ff.log
 hostname >> ff.log
 
 # output directory
-output_dir="/data/$USER/benchmarks/${curr_date}/FF_NTuple"
+output_dir="/data/$(whoami)/benchmarks/${curr_date}/FF_NTuple"
 
 # Creates output dir
 mkdir -p ${output_dir}
