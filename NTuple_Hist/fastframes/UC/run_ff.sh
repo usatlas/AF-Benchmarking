@@ -24,14 +24,14 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "ase
   cd /data/$(whoami)/ntuple_hist/TutorialClass/build
   source setup.sh
   cd - 
-  date >> ff.log
+  date >> split.log
   python3 /data/$(whoami)/ntuple_hist/FastFrames/python/FastFrames.py -c /data/$(whoami)/input/example_config.yml 2>&1 | tee ff.log"
 
 # Getting the date and time after running script
-date >> ff.log
+date >> split.log
 
 # Getting the host-machine's name
-hostname >> ff.log
+hostname >> split.log
 
 # output directory
 output_dir="/data/$(whoami)/benchmarks/${curr_date}/FF_NTuple"
@@ -41,3 +41,4 @@ mkdir -p ${output_dir}
 
 # Moves log to outputdir
 mv ff.log ${output_dir}
+mv split.log ${output_dir}
