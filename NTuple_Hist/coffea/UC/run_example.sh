@@ -4,7 +4,7 @@
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Defining the directory the job will be running in
-working_dir="/scratch/$(whoami)/ntuple/coffea/"
+working_dir="/data/$(whoami)/ntuple/coffea/"
 
 # Goes into the job directory if it exits, creates it otherwise
 if [ -d "${working_dir}" ]; then
