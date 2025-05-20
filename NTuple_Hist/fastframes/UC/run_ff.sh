@@ -2,44 +2,36 @@
 
 curr_date=$(date +"%Y.%m.%dT%H")
 
-cd /data/selbor/FFJob/
+working_dir="/data/selbor/FFJobi/"
+
+
+# Goes into the job directory if it exits, creates it otherwise
+if [ -d "${working_dir}" ]; then
+  cd ${working_dir}
+else
+  mkdir -p ${working_dir}
+  cd ${working_dir}
+fi
 
 # Sets up ATLAS environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "asetup StatAnalysis,0.5.0 &&\
+  lsetup emi &&\
 
-# Sets up root and boost
-asetup StatAnalysis,0.5.0
-
-# Sets up emi
-lsetup emi
-
-# Gives certificate credentials
-cat $HOME/pass.txt | voms-proxy-init -voms atlas
-
-lsetup "rucio -w"
-
-# Go into the class's build directory
-cd /data/$USER/ntuple_hist/TutorialClass/build
-
-# Setting paths
-source setup.sh
-
-# Return to the job's directory
-cd -
-
-# Getting the date and time before running script
-echo date >> ff.log
-
-# Running the FastFrames script
-python3 /data/$USER/ntuple_hist/FastFrames/python/FastFrames.py -c $HOME/AF-Benchmarking/NTuple_Hist/fastframes/example_config.yml 2>&1 | tee ff.log
+  cat $HOME/pass.txt | voms-proxy-init -voms atlas &&\
+  lsetup "rucio -w" &&\
+  cd /data/$USER/ntuple_hist/TutorialClass/build &&\
+  source setup.sh &&\
+  cd - &&\
+  date >> ff.log &&\
+  python3 /data/$USER/ntuple_hist/FastFrames/python/FastFrames.py -c $HOME/AF-Benchmarking/NTuple_Hist/fastframes/example_config.yml 2>&1 | tee ff.log"
 
 # Getting the date and time after running script
-echo date >> ff.log
+date >> ff.log
 
 # Getting the host-machine's name
-echo hostname >> ff.log
+hostname >> ff.log
 
 # output directory
 output_dir="/data/$USER/benchmarks/${curr_date}/FF_NTuple"
