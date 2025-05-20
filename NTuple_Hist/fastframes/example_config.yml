@@ -2,8 +2,8 @@ general:
   debug_level: DEBUG
   
   # Paths
-  input_filelist_path: "/home/selbor/input/ana_filelist.txt"
-  input_sumweights_path: "/home/selbor/input/sum_weights.txt"
+  input_filelist_path: "/home/selbor/input/filelist.txt"
+  input_sumweights_path: "/home/selbor/input/sum_weights_test.txt"
   output_path_histograms: "/home/selbor/output/"
 
 
@@ -13,7 +13,8 @@ general:
   
   default_reco_tree_name: "analysis"
 
-  # path to the file with cross-sections
+
+# path to the file with cross-sections
   xsection_files: ["/cvmfs/atlas.cern.ch/repo/sw/database/GroupData/dev/PMGTools/PMGxsecDB_mc16.txt"]
 
   # name of the custom class
@@ -64,5 +65,5 @@ regions:
 samples:
   - name: "example_FS"
     dsids: [700402]
-    campaigns: ["mc20e"]
+    campaigns: ["mc20a", "mc20d", "mc20e"]
     simulation_type: "fullsim"
