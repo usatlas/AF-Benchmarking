@@ -2,9 +2,9 @@ general:
   debug_level: DEBUG
   
   # Paths
-  input_filelist_path: "/home/selbor/input/filelist.txt"
-  input_sumweights_path: "/home/selbor/input/sum_weights_test.txt"
-  output_path_histograms: "/home/selbor/output/"
+  input_filelist_path: "/data/selbor/input/filelist.txt"
+  input_sumweights_path: "/data/selbor/input/sum_weights_test.txt"
+  output_path_histograms: "/data/selbor/output/"
 
 
   # Weights
