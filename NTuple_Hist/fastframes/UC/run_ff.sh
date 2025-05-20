@@ -2,7 +2,7 @@
 
 curr_date=$(date +"%Y.%m.%dT%H")
 
-working_dir="/data/selbor/FFJobi/"
+working_dir="/data/selbor/FFJob/"
 
 
 # Goes into the job directory if it exits, creates it otherwise
