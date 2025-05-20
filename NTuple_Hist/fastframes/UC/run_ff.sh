@@ -25,7 +25,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "ase
   source setup.sh &&\
   cd - &&\
   date >> ff.log &&\
-  python3 /data/$USER/ntuple_hist/FastFrames/python/FastFrames.py -c $HOME/AF-Benchmarking/NTuple_Hist/fastframes/example_config.yml 2>&1 | tee ff.log"
+  python3 /data/$USER/ntuple_hist/FastFrames/python/FastFrames.py -c /data/$USER/input/example_config.yml 2>&1 | tee ff.log"
 
 # Getting the date and time after running script
 date >> ff.log
