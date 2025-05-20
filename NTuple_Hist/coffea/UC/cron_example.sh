@@ -1,9 +1,3 @@
 #!/bin/bash
 
-source /data/selbor/ntuple_parse/env/bin/activate
-
-cd /data/selbor/parsing_jobs
-
-python3 ntuple_coffea/ntuple_coffea.py
-
-deactivate
+condor_submit /home/selbor/AF-Benchmarking/NTuple_Hist/coffea/UC/coffea_el9.sub
