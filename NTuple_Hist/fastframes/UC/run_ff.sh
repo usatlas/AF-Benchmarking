@@ -20,7 +20,6 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "ase
   lsetup emi
 
   cat $HOME/pass.txt | voms-proxy-init -voms atlas
-  lsetup rucio -w
   cd /data/$(whoami)/ntuple_hist/TutorialClass/build
   source setup.sh
   cd - 
