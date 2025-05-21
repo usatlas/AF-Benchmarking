@@ -6,7 +6,7 @@ Log = /data/selbor/ntuple_hist/coffea_fw/batch_files/$(Cluster).$(Process).log
 
 Executable = /home/selbor/AF-Benchmarking/NTuple_Hist/coffea/UC/run_example.sh
 
-request_memory = 3GB
+request_memory = 4GB
 request_cpus = 1
 
 Queue 1
