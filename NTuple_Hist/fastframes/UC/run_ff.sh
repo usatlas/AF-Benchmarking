@@ -19,7 +19,7 @@ export ALRB_localConfigDir=$HOME/localConfig
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "asetup StatAnalysis,0.5.0 &&\
   lsetup emi &&\
   cat $HOME/pass.txt | voms-proxy-init -voms atlas &&\
-  cd /data/$(whoami)/ntuple_hist/TutorialClass/buil &&\
+  cd /data/$(whoami)/ntuple_hist/TutorialClass/build &&\
   source setup.sh &&\
   cd - &&\
   lsetup "python 3.9.22-x86_64-el9" &&\
