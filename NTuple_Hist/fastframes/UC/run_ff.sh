@@ -23,7 +23,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "ase
   source setup.sh &&\
   cd - &&\
   lsetup 'python 3.9.22-x86_64-el9' &&\
-  pip3 install yaml &&\
+  pip3 install pyyaml &&\
   date >> split.log &&\
   python3 /data/$(whoami)/ntuple_hist/FastFrames/python/FastFrames.py -c /data/$(whoami)/input/example_config.yml 2>&1 | tee ff.log"
 
