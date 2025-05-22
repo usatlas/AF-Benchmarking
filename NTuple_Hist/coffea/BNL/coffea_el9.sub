@@ -7,7 +7,7 @@ Log = /usatlas/u/jroblesgo/batch_output_files/coffea/myjob.$(Cluster).$(Process)
 
 Executable = /usatlas/u/jroblesgo/AF-Benchmarking/NTuple_Hist/coffea/BNL/run_example.sh
 
-request_memory = 3GB
+request_memory = 16GB
 request_cpus = 1
 
 Queue 1

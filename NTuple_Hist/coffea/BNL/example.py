@@ -7,7 +7,7 @@ import hist.dask as had
 import matplotlib.pyplot as plt
 from coffea import processor
 from coffea.nanoevents import NanoEventsFactory
-from distributed import Client
+from distributed import Client, LocalCluster
 import os
 from atlas_schema.schema import NtupleSchema
 from dask.distributed import performance_report
@@ -94,14 +94,14 @@ def main():
     )
     
     print(computed)
-    fig, ax = plt.subplots()
+    #fig, ax = plt.subplots()
     
     # Plots using 'computed'
-    computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
-    ax.legend(title="Photon pT for Wmunugamma")
+    #computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
+    #ax.legend(title="Photon pT for Wmunugamma")
 
     # Saves hist figure as a pdf
-    fig.savefig("ph_pt.pdf")
+    #fig.savefig("ph_pt.pdf")
 
 if __name__ == "__main__":
     main()
