@@ -20,14 +20,14 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /atlasgpfs01/usatlas/data/ -r "python3 /home/jroblesgo/AF-Benchmarking/NTuple_Hist/coffea/BNL/example.py 2>&1 | tee coffea_hist.log"
 
-date >> split.log
+#date >> split.log
 
-hostname >> split.log
+#hostname >> split.log
 
-output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/Coffea_Hist/"
+#output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/Coffea_Hist/"
 
-mkdir -p ${output_dir}
+#mkdir -p ${output_dir}
 
-mv coffea_hist.log ${output_dir}
-mv split.log ${output_dir}
+#mv coffea_hist.log ${output_dir}
+#mv split.log ${output_dir}
 
