@@ -7,7 +7,7 @@ import hist.dask as had
 import matplotlib.pyplot as plt
 from coffea import processor
 from coffea.nanoevents import NanoEventsFactory
-from distributed import Client
+from distributed import Client,LocalCluster
 import os
 from atlas_schema.schema import NtupleSchema
 from dask.distributed import performance_report
