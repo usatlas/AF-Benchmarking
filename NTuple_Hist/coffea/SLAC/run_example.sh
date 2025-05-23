@@ -3,7 +3,7 @@
 # # Gets the current time
 curr_time=$(date +"%Y.%m.%dT%H")
 
-cp /sdf/home/s/$USER/AF-Benchmarking/Ntuple_Hist/coffea/SLAC/example.py .
+cp /sdf/home/s/$USER/AF-Benchmarking/NTuple_Hist/coffea/SLAC/example.py .
 
 date >> split.log
 
