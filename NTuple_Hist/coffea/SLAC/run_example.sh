@@ -3,12 +3,6 @@
 # # Gets the current time
 curr_time=$(date +"%Y.%m.%dT%H")
 
-# Working directory
-work_dir="/sdf/scratch/atlas/selbor/NTuple_Hist/coffea"
-
-cd ${work_dir}
-
-
 cp /sdf/home/s/$USER/AF-Benchmarking/Ntuple_Hist/coffea/SLAC/example.py .
 
 date >> split.log
