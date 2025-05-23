@@ -17,7 +17,7 @@ cp ~/AF-Benchmarking/NTuple_Hist/coffea/BNL/example.py .
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /atlasgpfs01/usatlas/data/ -r "date >> split.log
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /atlasgpfs01/usatlas/data/ -r "date >> split.log &&\
 python3 example.py 2>&1 | tee coffea_hist.log"
 
 #date >> split.log
