@@ -20,7 +20,7 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 
 export ALRB_CONT_CMDOPTS="-B /sdf"
 
-export ALRB_CONT_RUNPAYLOAD="source /sdf/home/s/$USER/AF-Benchmarking/EVNT/SLAC/run_evnt_centos_container.sh"
+export ALRB_CONT_RUNPAYLOAD="source /sdf/home/s/$USER/AF-Benchmarking/NTuple_Hist/coffea/SLAC/run_example.sh"
 
 source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c el9 -m /sdf/data/atlas/
 
