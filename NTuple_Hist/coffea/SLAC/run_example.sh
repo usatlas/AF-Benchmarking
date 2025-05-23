@@ -8,10 +8,12 @@ work_dir="/sdf/scratch/users/s/selbor/coffea_testing"
 
 cd ${work_dir}
 
+
+cp /sdf/home/s/$USER/AF-Benchmarking/Ntuple_Hist/coffea/SLAC/example.py .
+
 date >> split.log
 
-python3 /sdf/home/s/$USER/AF-Benchmarking/Ntuple_Hist/coffea/SLAC/example.py 2>&1 | tee coffea_hist.log
-
+python3 example.py 2>&1 | tee coffea_hist.log
 
 date >> split.log
 
