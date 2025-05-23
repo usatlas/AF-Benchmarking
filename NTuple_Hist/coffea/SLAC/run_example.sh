@@ -4,7 +4,7 @@
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Working directory
-work_dir="/sdf/scratch/users/s/selbor/coffea_testing"
+work_dir="/sdf/scratch/atlas/selbor/NTuple_Hist/coffea"
 
 cd ${work_dir}
 
