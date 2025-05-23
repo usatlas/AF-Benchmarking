@@ -10,12 +10,7 @@ cd ${work_dir}
 
 date >> split.log
 
-# Setting up environment and container
-export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-
-export ALRB_localConfigDir=$HOME/localConfig
-
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /sdf/data/atlas/ -r "python3 example.py 2>&1 | tee coffea_hist.log"
+python3 /sdf/home/s/$USER/AF-Benchmarking/Ntuple_Hist/coffea/SLAC/example.py 2>&1 | tee coffea_hist.log
 
 
 date >> split.log
