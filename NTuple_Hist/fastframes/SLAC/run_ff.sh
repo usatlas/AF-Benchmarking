@@ -2,9 +2,17 @@
 
 curr_date=$(date +"%Y.%m.%dT%H")
 
+echo "Start of Script"
+
+echo "Current dir"
+
+pwd 
+
 asetup StatAnalysis,0.5.0 
 
 cd /srv/TutorialClass/build
+
+echo "Changed dir"
 
 pwd
 
