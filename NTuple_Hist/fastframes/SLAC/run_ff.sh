@@ -16,6 +16,8 @@ echo "Changed dir"
 
 pwd
 
+ls
+
 source setup.sh
 
 cd -
