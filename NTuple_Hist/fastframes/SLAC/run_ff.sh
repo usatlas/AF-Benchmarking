@@ -2,10 +2,9 @@
 
 curr_date=$(date +"%Y.%m.%dT%H")
 
-
 asetup StatAnalysis,0.5.0 
 
-cd /sdf/data/atlas/u/selbor/TutorialClass/build
+cd /srv/TutorialClass/build
 
 pwd
 
