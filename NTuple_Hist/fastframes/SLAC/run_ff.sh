@@ -2,16 +2,13 @@
 
 curr_date=$(date +"%Y.%m.%dT%H")
 
-pwd
 
-ls
+asetup StatAnalysis,0.5.0
 
-#asetup StatAnalysis,0.5.0
+cd /sdf/data/atlas/u/selbor/TutorialClass/build
 
-#cd /sdf/data/atlas/u/selbor/TutorialClass/build
+source setup.sh
 
-#source setup.sh
+python3 /sdf/data/atlas/u/selbor/FastFrames/python/FastFrames.py -c /sdf/data/atlas/u/selbor/input_ff/example_config.yml 2>&1 | tee ff.log
 
-#python3 /sdf/data/atlas/u/selbor/FastFrames/python/FastFrames.py -c /sdf/data/atlas/u/selbor/input_ff/example_config.yml 2>&1 | tee ff.log
-
-#mv ff.log $HOME
+mv ff.log $HOME
