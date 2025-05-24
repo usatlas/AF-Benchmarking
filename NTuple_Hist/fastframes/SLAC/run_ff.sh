@@ -4,8 +4,6 @@ curr_date=$(date +"%Y.%m.%dT%H")
 
 asetup StatAnalysis,0.5.0
 
-cat $HOME/pass.txt | voms-proxy-init -voms atlas
-
 cd /sdf/data/atlas/u/selbor/TutorialClass/build
 
 source setup.sh
