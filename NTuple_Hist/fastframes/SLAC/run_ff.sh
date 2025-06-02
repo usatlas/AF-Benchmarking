@@ -10,15 +10,13 @@ pwd
 
 asetup StatAnalysis,0.5.0 
 
-cd /srv/TutorialClass/build
+cd /sdf/data/atlas/u/selbor/TutorialClass/build
 
 echo "Changed dir"
 
-pwd
-
-ls
-
 source setup.sh
+
+pwd
 
 cd -
 
