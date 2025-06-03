@@ -6,7 +6,7 @@ working_dir="/data/selbor/ntuple/fastframes/"
 
 
 # Goes into the job directory if it exits, creates it otherwise
-if [ -d "${working_dir}" ]; then
+if [ -d ${working_dir} ]; then
   cd ${working_dir}
 else
   mkdir -p ${working_dir}
