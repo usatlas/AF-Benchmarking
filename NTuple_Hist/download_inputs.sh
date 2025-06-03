@@ -12,3 +12,11 @@ rucio download --rses MWT2_UC_LOCALGROUPDISK user.bhodkins.700402.Wmunugamma.mc2
 rucio download --rses MWT2_UC_LOCALGROUPDISK user.bhodkins.700402.Wmunugamma.mc20a.v2.1_ANALYSIS.root
 
 rucio download --rses MWT2_UC_LOCALGROUPDISK user.bhodkins.700402.Wmunugamma.mc20d.v2.1_ANALYSIS.root
+
+rucio download --rses MWT2_UC_LOCALGROUPDISK user.bhodkins.700402.Wmunugamma.mc20a.v2.1_hist/
+
+rucio download --rses MWT2_UC_LOCALGROUPDISK user.bhodkins.700402.Wmunugamma.mc20d.v2.1_his
+t/
+
+rucio download --rses MWT2_UC_LOCALGROUPDISK user.bhodkins.700402.Wmunugamma.mc20e.v2.0_his
+t/
