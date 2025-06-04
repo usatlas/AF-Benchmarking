@@ -14,6 +14,7 @@ from dask.distributed import performance_report
 import json
 import warnings
 import time
+import uproot
 
 from pathlib import Path
 from coffea.dataset_tools import apply_to_fileset
@@ -93,15 +94,13 @@ def main():
         )
     
         print(computed)
-        fig, ax = plt.subplots()
-        ax.set_ylim(0, 350)
     
         # Plots using 'computed'
-        computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
-        ax.legend(title="Photon pT for Wmunugamma")
+        this_hist = computed["700403.Wenugamma.mc20a.v2.1"]["ph_pt"]
+        with uproot.recreate('coffea.root') as fp:
+            for i in np.arange(len(this_hist.axes[0])):
+                fp[this_hist.axes[0].bin(i)] = this_hist[{0: i}].to_numpy()
 
-        #Saves hist figure as a pdf
-        fig.savefig("ph_pt.pdf")
 
 if __name__ == "__main__":
     main()
