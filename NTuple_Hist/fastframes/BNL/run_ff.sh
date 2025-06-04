@@ -2,6 +2,7 @@
 
 curr_date=$(date +"%Y.%m.%dT%H")
 
+cd /atlasgpfs01/usatlas/data/jroblesgo/
 
 # Sets up ATLAS environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
