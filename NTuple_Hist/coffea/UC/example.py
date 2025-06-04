@@ -99,7 +99,7 @@ def main():
         computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
         ax.legend(title="Photon pT for Wmunugamma")
 
-         Saves hist figure as a pdf
+        #Saves hist figure as a pdf
         fig.savefig("ph_pt.pdf")
 
 if __name__ == "__main__":
