@@ -12,7 +12,7 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 $date >> split.log
 
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "lsetup 'python 3.9.22-x86_64-el9' &&\
-  pip3 install  light_roast-0.1.dev10+ge21defc-py3-none-any.whl &&\
+  pip3 install /global/homes/s/selbor/AF-Benchmarking/NTuple_Hist/NTuple_Hist/coffea/light_roast-0.1.dev10+ge21defc-py3-none-any.whl &&\
   pip3 install atlas_schema &&\
 
   python3 ~/AF-Benchmarking/NTuple_Hist/coffea/NERSC/example.py 2>&1 | tee coffea_hist.log"
