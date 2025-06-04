@@ -12,8 +12,8 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup StatAn
   source /srv/TutorialClass/build/setup.sh >> command_output.txt&&\
   echo date >> ff.log &&\
   python3 /srv/FastFrames/python/FastFrames.py -c /srv/input/example_config.yml 2>&1 | tee ff.log"
-echo date >> ff.log
-echo hostname >> ff.log
+date >> ff.log
+hostname >> ff.log
 
 # output directory
 #output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_date/FF_NTuple"
