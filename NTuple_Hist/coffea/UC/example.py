@@ -94,7 +94,7 @@ def main():
     
         print(computed)
         fig, ax = plt.subplots()
-        ax.set_ylim(0, 400)
+        ax.set_ylim(0, 350)
     
         # Plots using 'computed'
         computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
