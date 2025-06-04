@@ -1,5 +1,6 @@
 #! /bin/bash
 
 ssh iana "
-/sdf/home/s/selbor/AF-Benchmarking/NTuple_Hist/coffea/SLAC/run_example.sh
+cd /sdf/scratch/atlas/selbor/Ntuple_Hist/coffea/
+sbatch /sdf/home/s/selbor/AF-Benchmarking/NTuple_Hist/coffea/SLAC/coffea_el9_sub.sh
 "

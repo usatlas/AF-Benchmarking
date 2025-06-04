@@ -7,7 +7,7 @@ import hist.dask as had
 import matplotlib.pyplot as plt
 from coffea import processor
 from coffea.nanoevents import NanoEventsFactory
-from distributed import Client
+from distributed import Client,LocalCluster
 import os
 from atlas_schema.schema import NtupleSchema
 from dask.distributed import performance_report
@@ -65,39 +65,37 @@ def main():
     # Defining "MyFirstProcessor" object
     p = MyFirstProcessor()
 
-    client = Client()
-
-    #FIXME: Need to update the path to the json file containing the weights
-    dataset_runnable = json.loads(Path("/sdf/data/atlas/u/selbor/dataset_runnable/af_v2_700402.json").read_text())
-
-    nevents=0
-    for f in dataset_runnable["Wmunugamma"]["files"]:
-        nevents += int(dataset_runnable["Wmunugamma"]["files"][f]["num_entries"])
+    #client = Client()
+    # Limit to 4 total CPU cores, across 2 workers with 2 threads each
+    cluster = LocalCluster(n_workers=2, threads_per_worker=2)
+    with Client(cluster) as client:
+        dataset_runnable = json.loads(Path("/sdf/data/atlas/u/selbor/dataset_runnable/af_v2_700402.json").read_text())
+        nevents=0
+        for f in dataset_runnable["Wmunugamma"]["files"]:
+            nevents += int(dataset_runnable["Wmunugamma"]["files"][f]["num_entries"])
+            print("Applying to fileset")
+            out = apply_to_fileset(
+                    p,
+                    dataset_runnable,
+                    schemaclass=NtupleSchema,
+                    )
+        start_time = time.time()
+        (computed,) = dask.compute(out)
+        end_time = time.time()
+        execute_time = end_time - start_time
+        print(
+            f"... execution time: {end_time - start_time:6.2f} s ({(nevents / 1000.0) / execute_time:6.2f} kHz)"
+        )
     
-    print("Applying to fileset")
-    out = apply_to_fileset(
-        p,
-        dataset_runnable,
-        schemaclass=NtupleSchema,
-    )
-
-    start_time = time.time()
-    (computed,) = dask.compute(out)
-    end_time = time.time()
-    execute_time = end_time - start_time
-    print(
-        f"... execution time: {end_time - start_time:6.2f} s ({(nevents / 1000.0) / execute_time:6.2f} kHz)"
-    )
+        print(computed)
+        #fig, ax = plt.subplots()
     
-    print(computed)
-    fig, ax = plt.subplots()
-    
-    # Plots using 'computed'
-    computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
-    ax.legend(title="Photon pT for Wmunugamma")
+        # Plots using 'computed'
+        #computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
+        #ax.legend(title="Photon pT for Wmunugamma")
 
-    # Saves hist figure as a pdf
-    fig.savefig("ph_pt.pdf")
+        # Saves hist figure as a pdf
+        #fig.savefig("ph_pt.pdf")
 
 if __name__ == "__main__":
     main()
