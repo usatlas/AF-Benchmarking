@@ -18,7 +18,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup StatAn
   cmake3 --build /srv/TutorialClass/build -j 16 &&\
   source /srv/TutorialClass/build/setup.sh &&\
   echo date >> ff.log &&\
-  python3 /srv/FastFrames/python/FastFrames.py -c /srv/input/example_config.yml 2>&1 | tee ff.log""
+  python3 /srv/FastFrames/python/FastFrames.py -c /srv/input/example_config.yml 2>&1 | tee ff.log"
 date >> ff.log
 hostname >> ff.log
 
