@@ -9,7 +9,7 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup StatAnalysis,0.5.0 &&\
   cmake3 -S /srv/FF -B /srv/FF/build -DCMAKE_INSTALL_PREFIX=/srv/install &&\
-  cmake3 --build /srv/FastFrames/build -j 16 --target install &&\
+  cmake3 --build /srv/FF/build -j 16 --target install &&\
   source /srv/FF/build/setup.sh &&\
   cmake3 -S /srv/TutorialClass -B /srv/TutorialClass/build -DCMAKE_PREFIX_PATH=/srv/install -DCMAKE_INSTALL_PREFIX=/srv/TutorialClass/install &&\
   cmake3 --build /srv/TutorialClass/build -j 16 --target install &&\
