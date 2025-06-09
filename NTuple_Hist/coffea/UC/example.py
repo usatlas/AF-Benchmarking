@@ -96,7 +96,7 @@ def main():
         print(computed)
     
         # Plots using 'computed'
-        this_hist = computed["700403.Wenugamma.mc20a.v2.1"]["ph_pt"]
+        this_hist = computed["700402.Wenugamma.mc20a.v2.1"]["ph_pt"]
         with uproot.recreate('coffea.root') as fp:
             for i in np.arange(len(this_hist.axes[0])):
                 fp[this_hist.axes[0].bin(i)] = this_hist[{0: i}].to_numpy()
