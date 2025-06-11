@@ -36,7 +36,7 @@ class MyFirstProcessor(processor.ProcessorABC):
         h_ph_pt = (
             had.Hist.new.StrCat(["all"], name="isEM")
             .Regular(200, 0.0, 1000.0, name="pt", label="$pt_{\\gamma}$ [GeV]")
-            .Int64()
+            .Double()
         )
 
         # Defining the cut
