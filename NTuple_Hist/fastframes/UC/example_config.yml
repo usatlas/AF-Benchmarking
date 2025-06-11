@@ -36,7 +36,7 @@ general:
 # Define regions
 regions:
   - name: "Muon"
-    selection: "true" 
+    selection: "all" 
     variables:
       - name: "ph_pt"
         title: "p_{T}; p_{T} [GeV];Events"
