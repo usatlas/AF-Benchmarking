@@ -18,6 +18,7 @@ import uproot
 
 from pathlib import Path
 from coffea.dataset_tools import apply_to_fileset
+import numpy as np
 
 warnings.filterwarnings("ignore", module="coffea.*")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -52,9 +53,6 @@ class MyFirstProcessor(processor.ProcessorABC):
         sumOfWeights = 4345667100606464.0
         weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
         h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt/1000.), weight=(weight_norm*events.weight.mc*events.weight.pileup))
-        h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt/1000.), weight=(weight_norm*events.weight.mc*events.weight.pileup))
-        h_ph_pt.fill(isEM="fail", pt=ak.firsts(events[~cut].ph.pt/1000.), weight=(weight_norm*events.weight.mc*events.weight.pileup))
-
         #h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt / 1.0e3))
         #h_ph_pt.fill(isEM="fail", pt=ak.firsts(events[~cut].ph.pt / 1.0e3))
 
@@ -99,7 +97,8 @@ def main():
         print(computed)
     
         # Plots using 'computed'
-        this_hist = computed["700402.Wmunugamma.mc20a.v2.1"]["ph_pt"]
+        #this_hist = computed["700402.Wmunugamma.mc20a.v2.1"]["ph_pt"]
+        this_hist = computed["Wmunugamma"]['Wmunugamma']["ph_pt"]
         with uproot.recreate('coffea.root') as fp:
             for i in np.arange(len(this_hist.axes[0])):
                 fp[this_hist.axes[0].bin(i)] = this_hist[{0: i}].to_numpy()
