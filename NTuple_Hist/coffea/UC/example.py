@@ -35,7 +35,7 @@ class MyFirstProcessor(processor.ProcessorABC):
         # Defining histogram properties
         h_ph_pt = (
             had.Hist.new.StrCat(["all"], name="isEM")
-            .Regular(200, 0.0, 1000.0, name="pt", label="$pt_{\\gamma}$ [GeV]")
+            .Regular(100, 0.0, 1000.0, name="pt", label="$pt_{\\gamma}$ [GeV]")
             .Double()
         )
 
