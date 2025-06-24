@@ -31,7 +31,7 @@ general:
   number_of_cpus: 1
 
   luminosity:
-      mc20e: 59700
+      mc20a: 140000
 
 # Define regions
 regions:
@@ -47,19 +47,6 @@ regions:
           max: 1000
           number_of_bins: 100
 
-
-#regions:
-#  - name: "met"
-#    selection: "met_met_NOSYS>0"
-#    variables:
-#      - name: "met_met"
-#        title: "met; met [GeV];Events"
-#        definition: "met_met_NOSYS"
-#        type: "float"
-#        binning:
-#          min: 0
-#          max: 1000
-#          number_of_bins: 10
 
 # define samples
 samples:
