@@ -40,7 +40,8 @@ class MyFirstProcessor(processor.ProcessorABC):
         )
 
         # Defining the cut
-        cut = ak.all(events.ph.isEM, axis=1)
+        cut = ak.any(events.ph.passes("tightID"), axis=1)
+        phcut=events[cut].ph.passes("tightID")
 
 
         xs = events.metadata["xs"]
@@ -52,7 +53,7 @@ class MyFirstProcessor(processor.ProcessorABC):
         # sumOfEvents = events.metadata["sum_of_events"]
         sumOfWeights = 4345667100606464.0
         weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
-        h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt/1000.), weight=(weight_norm*events.weight.mc*events.weight.pileup))
+        h_ph_pt.fill(isEM="all", pt=ak.firsts(events[cut].ph[phcut].pt/1000.), weight=(weight_norm*events[cut].weight.mc*events[cut].weight.pileup))
         #h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt / 1.0e3))
         #h_ph_pt.fill(isEM="fail", pt=ak.firsts(events[~cut].ph.pt / 1.0e3))
 
