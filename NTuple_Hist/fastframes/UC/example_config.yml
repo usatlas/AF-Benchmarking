@@ -30,9 +30,6 @@ general:
 
   number_of_cpus: 1
 
-  luminosity:
-      mc20a: 140000
-
 # Define regions
 regions:
   - name: "Muon"
