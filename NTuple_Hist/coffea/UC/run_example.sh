@@ -27,14 +27,14 @@ pip3 install  light_roast-0.1.dev10+ge21defc-py3-none-any.whl &&\
 pip3 install atlas_schema &&\
 python3.9 example.py  2>&1 | tee coffea_hist.log"
 
-#date >> split.log
+date >> split.log
 
-#hostname >> split.log
+hostname >> split.log
 
-#log_file_dir="/data/$(whoami)/benchmarks/${curr_time}/Coffea_Hist/"
+log_file_dir="/data/$(whoami)/benchmarks/${curr_time}/Coffea_Hist/"
 
-#mkdir -p ${log_file_dir}
+mkdir -p ${log_file_dir}
 
-#mv coffea_hist.log ${log_file_dir}
-#mv split.log ${log_file_dir}
+mv coffea_hist.log ${log_file_dir}
+mv split.log ${log_file_dir}
 
