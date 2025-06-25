@@ -49,9 +49,9 @@ class MyFirstProcessor(processor.ProcessorABC):
         genFiltEff = events.metadata["genFiltEff"]
         #kfactor = events.metadata["kFactor"]
         kfactor = 1.
-        # sumOfWeights = events.metadata["sum_of_weights"]
-        # sumOfEvents = events.metadata["sum_of_events"]
-        sumOfWeights = 4345667100606464.0
+        sumOfWeights = events.metadata["sum_of_weights"]
+        # sumOfEvents = events.metadata["sum_of_events"] 
+        #sumOfWeights = 4345667100606464.0
         weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
         h_ph_pt.fill(isEM="all", pt=ak.firsts(events[cut].ph[phcut].pt/1000.), weight=(weight_norm*events[cut].weight.mc*events[cut].weight.pileup))
         #h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt / 1.0e3))
@@ -77,7 +77,7 @@ def main():
     # Limit to 4 total CPU cores, across 2 workers with 2 threads each
     cluster = LocalCluster(n_workers=2, threads_per_worker=2)
     with Client(cluster) as client:
-        dataset_runnable = json.loads(Path("/data/selbor/dataset_runnable/af_v2_700402.json").read_text())
+        dataset_runnable = json.loads(Path("/data/selbor/single_campaign_mc20e_dataset_runnable/af_v2_700402.json").read_text())
         nevents=0
         for f in dataset_runnable["Wmunugamma"]["files"]:
             nevents += int(dataset_runnable["Wmunugamma"]["files"][f]["num_entries"])
