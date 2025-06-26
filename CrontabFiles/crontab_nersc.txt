@@ -1,0 +1,93 @@
+# Welcome to scrontab, Slurm's cron-like interface.
+#
+# Edit this file to submit recurring jobs to be run by Slurm.
+#
+# Note that jobs will be run based on the Slurm controller's
+# time and timezone.
+#
+# Lines must either be valid entries, comments (start with '#'),
+# or blank.
+#
+# Lines starting with #SCRON will be parsed for options to use
+# with the next cron line. E.g., "#SCRON --time 1" would request
+# a one minute timelimit be applied. See the sbatch man page for
+# options, although note that not all options are supported here.
+#
+# For example, the following line (when uncommented) would request
+# a job be run at 5am each day.
+# 0 5 * * * /my/script/to/run
+#
+# min hour day-of-month month day-of-week command
+
+0 */6 * * * $HOME/AF-Benchmarking/Rucio/rucio_script.sh
+
+0 */6 * * * $HOME/AF-Benchmarking/TRUTH3/NERSC/run_truth3_centos7_interactive.sh
+
+0 */6 * * * $HOME/AF-Benchmarking/TRUTH3/NERSC/run_truth3_el9_interactive.sh
+
+0 */6 * * * $HOME/AF-Benchmarking/NTuple_Hist/coffea/NERSC/run_example.sh
+
+0 */6 * * * $HOME/AF-Benchmarking/event_loop/NERSC/run_photon_eventloop.sh
+
+59 */6 * * * $HOME/AF-Benchmarking/parsing/NERSC/cron_parsing.sh
+
+#SCRON -N 1
+#SCRON -C cpu
+#SCRON -q regular
+#SCRON -J truth3_el9
+#SCRON --cpus-per-task=1
+#SCRON --constraint=cpu
+#SCRON --mail-type=ALL
+#SCRON -t 1:0:0
+#SCRON --mem=4GB
+
+0 */6 * * * $HOME/AF-Benchmarking/TRUTH3/NERSC/run_truth3_el9_batch.sh
+
+#SCRON -N 1
+#SCRON -C cpu
+#SCRON -q regular
+#SCRON -J truth3_centos7
+#SCRON --cpus-per-task=1
+#SCRON --constraint=cpu
+#SCRON --mail-type=ALL
+#SCRON -t 1:0:0
+#SCRON --mem=4GB
+
+0 */6 * * * $HOME/AF-Benchmarking/TRUTH3/NERSC/run_truth3_centos7_batch.sh
+
+#SCRON -N 1
+#SCRON -C cpu
+#SCRON -q regular
+#SCRON -J evnt_el9
+#SCRON --cpus-per-task=1
+#SCRON --constraint=cpu
+#SCRON --mail-type=ALL
+#SCRON -t 2:0:0
+#SCRON --mem=4GB
+
+0 */6 * * * $HOME/AF-Benchmarking/EVNT/NERSC/run_evnt_el9_batch.sh
+
+#SCRON -N 1
+#SCRON -C cpu
+#SCRON -q regular
+#SCRON -J evnt_centos7
+#SCRON --cpus-per-task=1
+#SCRON --constraint=cpu
+#SCRON --mail-type=ALL
+#SCRON -t 2:0:0
+#SCRON --mem=4GB
+
+0 */6 * * * $HOME/AF-Benchmarking/EVNT/NERSC/run_evnt_centos7_batch.sh
+
+
+#SCRON -N 1
+#SCRON -C cpu
+#SCRON -q regular
+#SCRON -J ff
+#SCRON --cpus-per-task=1
+#SCRON --constraint=cpu
+#SCRON --mail-type=ALL
+#SCRON -t 1:0:0
+#SCRON --mem=4GB
+
+0 */6 * * * $HOME/AF-Benchmarking/NTuple_Hist/fastframes/NERSC/run_ff.sh
