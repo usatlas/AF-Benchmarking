@@ -1,0 +1,38 @@
+# Rucio Script
+0 */6 * * * /home/selbor/AF-Benchmarking/Rucio/rucio_script.sh
+
+# EVNT Scripts
+0 */6 * * * /home/selbor/AF-Benchmarking/EVNT/UC/cron_evnt_centos7_batch.sh
+
+0 */6 * * * /home/selbor/AF-Benchmarking/EVNT/UC/cron_evnt_el9_batch.sh
+
+0 */6 * * * /home/selbor/AF-Benchmarking/EVNT/UC/cron_evnt_native_batch.sh
+
+# TRUTH3 Scripts
+0 */6 * * * /home/selbor/AF-Benchmarking/TRUTH3/UC/cron_truth3_centos7_batch.sh
+
+0 */6 * * * /home/selbor/AF-Benchmarking/TRUTH3/UC/cron_truth3_native_interactive.sh
+
+0 */6 * * * /home/selbor/AF-Benchmarking/TRUTH3/UC/cron_truth3_el9_batch.sh
+
+0 */6 * * * /home/selbor/AF-Benchmarking/TRUTH3/UC/cron_truth3_centos7_interactive.sh
+
+0 */6 * * * /home/selbor/AF-Benchmarking/TRUTH3/UC/cron_truth3_native_batch.sh
+
+0 */6 * * * /home/selbor/AF-Benchmarking/TRUTH3/UC/cron_truth3_el9_interactive.sh
+
+# Phase 1 Metrics
+59 */6 * * * /home/selbor/AF-Benchmarking/parsing/UC/cron_parsing.sh
+
+# Coffea Scripts
+0 */6 * * * /home/selbor/AF-Benchmarking/NTuple_Hist/coffea/UC/run_example.sh
+
+# Coffea Metrics
+30 */6 * * * /home/selbor/AF-Benchmarking/NTuple_Hist/coffea/UC/cron_example.sh
+
+# FF Script
+0 */6 * * * /home/selbor/AF-Benchmarking/NTuple_Hist/NTuple_Hist/fastframes/UC/run_ff.sh
+
+# Mike's Script
+0 */6 * * * /home/selbor/AF-Benchmarking/event_loop/UC/run_photon_eventloop.sh
+
