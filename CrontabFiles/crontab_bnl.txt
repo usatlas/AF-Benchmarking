@@ -1,0 +1,34 @@
+# Rucio Script
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/Rucio/rucio_script.sh
+
+# EVNT Scripts
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/EVNT/BNL/centos_cron.sh
+
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/EVNT/BNL/el_cron.sh
+
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/EVNT/BNL/native_cron.sh
+
+# TRUTH3 Scripts
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/BNL/cron_centos_batch.sh
+
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/BNL/cron_native_interactive.sh
+
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/BNL/cron_el_batch.sh
+
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/BNL/cron_centos_interactive.sh
+
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/BNL/cron_native_batch.sh
+
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/BNL/cron_el9_interactive.sh
+
+# Coffea Scripts
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/NTuple_Hist/coffea/BNL/run_example.sh
+
+# Coffea Metrics
+30 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/NTuple_Hist/coffea/BNL/cron_example.sh
+
+# FF Script
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/NTuple_Hist/NTuple_Hist/fastframes/BNL/run_ff.sh
+
+# EventLoop Script
+0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/event_loop/BNL/run_photon_eventloop.sh
