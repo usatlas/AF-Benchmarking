@@ -33,6 +33,6 @@
 # FF Script
 0 */6 * * * /home/selbor/AF-Benchmarking/NTuple_Hist/NTuple_Hist/fastframes/UC/run_ff.sh
 
-# Mike's Script
+# EventLoop Script
 0 */6 * * * /home/selbor/AF-Benchmarking/event_loop/UC/run_photon_eventloop.sh
 
