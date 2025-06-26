@@ -14,9 +14,11 @@ from dask.distributed import performance_report
 import json
 import warnings
 import time
+import uproot
 
 from pathlib import Path
 from coffea.dataset_tools import apply_to_fileset
+import numpy as np
 
 warnings.filterwarnings("ignore", module="coffea.*")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -33,12 +35,13 @@ class MyFirstProcessor(processor.ProcessorABC):
         # Defining histogram properties
         h_ph_pt = (
             had.Hist.new.StrCat(["all"], name="isEM")
-            .Regular(200, 0.0, 1000.0, name="pt", label="$pt_{\\gamma}$ [GeV]")
-            .Int64()
+            .Regular(100, 0.0, 1000.0, name="pt", label="$pt_{\\gamma}$ [GeV]")
+            .Double()
         )
 
         # Defining the cut
-        cut = ak.all(events.ph.isEM, axis=1)
+        cut = ak.any(events.ph.passes("tightID"), axis=1)
+        phcut=events[cut].ph.passes("tightID")
 
 
         xs = events.metadata["xs"]
@@ -46,11 +49,11 @@ class MyFirstProcessor(processor.ProcessorABC):
         genFiltEff = events.metadata["genFiltEff"]
         #kfactor = events.metadata["kFactor"]
         kfactor = 1.
-        # sumOfWeights = events.metadata["sum_of_weights"]
-        # sumOfEvents = events.metadata["sum_of_events"]
-        sumOfWeights = 4345667100606464.0
+        sumOfWeights = events.metadata["sum_of_weights"]
+        # sumOfEvents = events.metadata["sum_of_events"] 
+        #sumOfWeights = 4345667100606464.0
         weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
-        h_ph_pt.fill(isEM="all", pt=ak.firsts(events.ph.pt/1000.), weight=(weight_norm*events.weight.mc*events.weight.pileup))
+        h_ph_pt.fill(isEM="all", pt=ak.firsts(events[cut].ph[phcut].pt/1000.), weight=(weight_norm*events[cut].weight.mc*events[cut].weight.pileup))
         #h_ph_pt.fill(isEM="pass", pt=ak.firsts(events[cut].ph.pt / 1.0e3))
         #h_ph_pt.fill(isEM="fail", pt=ak.firsts(events[~cut].ph.pt / 1.0e3))
 
@@ -74,8 +77,7 @@ def main():
     # Limit to 4 total CPU cores, across 2 workers with 2 threads each
     cluster = LocalCluster(n_workers=2, threads_per_worker=2)
     with Client(cluster) as client:
-        dataset_runnable = json.loads(Path("/atlasgpfs01/usatlas/data/jroblesgo/dataset_runnable/af_v2_700402.json").read_text())
-
+        dataset_runnable = json.loads(Path("/atlasgpfs01/usatlas/data/jroblesgo/single_campaign_mc20e_dataset_runnable/af_v2_700402.json").read_text())
         nevents=0
         for f in dataset_runnable["Wmunugamma"]["files"]:
             nevents += int(dataset_runnable["Wmunugamma"]["files"][f]["num_entries"])
@@ -94,14 +96,14 @@ def main():
         )
     
         print(computed)
-        #fig, ax = plt.subplots()
     
         # Plots using 'computed'
-        #computed["Wmunugamma"]["Wmunugamma"]["ph_pt"].plot1d(ax=ax)
-        #ax.legend(title="Photon pT for Wmunugamma")
+        #this_hist = computed["700402.Wmunugamma.mc20a.v2.1"]["ph_pt"]
+        this_hist = computed["Wmunugamma"]['Wmunugamma']["ph_pt"]
+        with uproot.recreate('coffea.root') as fp:
+            for i in np.arange(len(this_hist.axes[0])):
+                fp[this_hist.axes[0].bin(i)] = this_hist[{0: i}].to_numpy()
 
-        # Saves hist figure as a pdf
-        #fig.savefig("ph_pt.pdf")
 
 if __name__ == "__main__":
     main()
