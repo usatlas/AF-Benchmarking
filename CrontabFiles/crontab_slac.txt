@@ -1,0 +1,18 @@
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/SLAC/cron_truth3_el9_batch.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/SLAC/cron_truth3_el9_interactive.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/SLAC/cron_truth3_centos7_interactive.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/SLAC/cron_truth3_centos7_batch.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/EVNT/SLAC/cron_evnt_el9.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/EVNT/SLAC/cron_evnt_centos7.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/Rucio/cron_rucio_slac.sh
+
+0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/NTuple_Hist/coffea/SLAC/cron_coffea_slac.sh
+
+59 */6 * * * /sdf/home/s/selbor/parsing_jobs/cron_parsing.sh
+
