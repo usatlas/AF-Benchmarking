@@ -11,7 +11,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup StatAn
   cd /srv/FastFramesTutorial/TutorialClass/build/ &&\
   source setup.sh &&\
   cd - &&\
-  python3 /srv/FastFramesTutorial/FastFrames/python/FastFrames.py -c /srv/ff_input/example_config.yml 2>&1 | tee ff.log"
+  python3 /srv/FastFramesTutorial/FastFrames/python/FastFrames.py -c /srv/ff_input/mc20e_example_config.yml 2>&1 | tee ff.log"
 hostname >> ff.log
 
 # output directory
