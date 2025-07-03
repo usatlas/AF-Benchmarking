@@ -30,7 +30,7 @@ flowchart TD
 
     Event_Loop["Event Loop"]
     Fast_Frames["Fast Frames"]
-
-    classDef method fill:#e53935,stroke:#b71c1c,stroke-width:2px,color:white;
+    
+    classDef method fill:transparent,stroke:#d32f2f,stroke-width:2px,color:#d32f2f;
     class Event_Loop,Coffea,Fast_Frames method;
 ```
