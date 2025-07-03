@@ -20,3 +20,6 @@ plugins:
 nav:
   - Home: index.md
   - Flowchart: flowChart.md
+
+extra_javascript:
+     - https://unpkg.com/mermaid@8.6.4/dist/mermaid.min.js
