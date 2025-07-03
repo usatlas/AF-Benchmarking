@@ -28,8 +28,9 @@ flowchart TD
     click Coffea "https://github.com/usatlas/AF-Benchmarking/tree/main/NTuple_Hist/coffea" "Coffea documentation"
     click Fast_Frames "https://github.com/usatlas/AF-Benchmarking/tree/main/NTuple_Hist/fastframes" "Fast Frames documentation"
 
-    Event_Loop["Event Loop"]
-    Fast_Frames["Fast Frames"]
+    Event_Loop(["Event Loop"])
+    Coffea(["Coffea"])
+    Fast_Frames(["Fast Frames"])
     
     classDef method fill:transparent,stroke:#d32f2f,stroke-width:2px,color:#d32f2f;
     class Event_Loop,Coffea,Fast_Frames method;
