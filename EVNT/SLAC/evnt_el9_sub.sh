@@ -3,13 +3,13 @@
 #SBATCH --account=atlas:usatlas
 #SBATCH --partition=ampere
 #SBATCH --gpus a100:0
-#SBATCH --job-name=evnt_batch_el9
+#SBATCH --job-name=coffea_batch_el9
 #SBATCH --output=output-%j.txt
 #SBATCH --error=output-%j.txt
 #SBATCH --ntasks=1 
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=4g
-#SBATCH --time=0-02:00:00
+#SBATCH --time=0-01:00:00
 
 unset KRB5CCNAME
 
