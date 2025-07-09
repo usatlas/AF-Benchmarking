@@ -19,7 +19,7 @@ flowchart TD
     ntuple --> Event_Loop
     DAOD_PHYSLITE --> ntuple
     DAOD_PHYSLITE --> Event_Loop
-    DAOD_PHYSLITE --> bash[Rucio Downloads]
+    DAOD_PHYSLITE --> bash["Rucio Downloads"]
 
     Hist --> Plot
     Hist --> Fit
