@@ -4,7 +4,6 @@ flowchart TD
     GenTF --> EVNT
     EVNT --> RecoTF
     RecoTF --> DAOD_TRUTH
-    DAOD_TRUTH --> Event_Loop
     Event_Loop --> Hist
 
     EVNT--> Hits_ESD,AOD,DAOD_PHYS
