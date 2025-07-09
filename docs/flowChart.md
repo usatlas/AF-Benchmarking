@@ -1,14 +1,14 @@
 ```mermaid
 flowchart TD
-    SLHA --> EVNT
-    EVNT --> DAOD_TRUTH
+    SLHA --> GenTF
+    GenTF --> EVNT
+    EVNT --> RecoTF
+    RecoTF --> DAOD_TRUTH
     DAOD_TRUTH --> Event_Loop
     Event_Loop --> Hist
 
     EVNT--> Hits_ESD
-    Hits_ESD --> AOD
-    AOD --> DAOD_PHYS
-    DAOD_PHYS --> DAOD_PHYSLITE
+    Hits_ESD,AOD,DAOD_PHYS --> DAOD_PHYSLITE
 
     ntuple --> Coffea
     Coffea --> Hist
@@ -17,9 +17,9 @@ flowchart TD
     Fast_Frames --> Hist
 
     ntuple --> Event_Loop
-    DAOD_PHYSLITE --> Coffea
     DAOD_PHYSLITE --> ntuple
     DAOD_PHYSLITE --> Event_Loop
+    DAOD_PHYSLITE --> bash[Rucio Downloads]
 
     Hist --> Plot
     Hist --> Fit
@@ -35,3 +35,4 @@ flowchart TD
     classDef method fill:transparent,stroke:#d32f2f,stroke-width:2px,color:#d32f2f;
     class Event_Loop,Coffea,Fast_Frames method;
 ```
+
