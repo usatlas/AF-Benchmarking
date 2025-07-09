@@ -7,7 +7,7 @@ flowchart TD
     DAOD_TRUTH --> Event_Loop
     Event_Loop --> Hist
 
-    EVNT--> Hits_ESD
+    EVNT--> Hits_ESD,AOD,DAOD_PHYS
     Hits_ESD,AOD,DAOD_PHYS --> DAOD_PHYSLITE
 
     ntuple --> Coffea
