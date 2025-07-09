@@ -6,7 +6,7 @@ flowchart TD
     RecoTF --> DAOD_TRUTH
     Event_Loop --> Hist
 
-    EVNT--> Hits_ESD,AOD,DAOD_PHYS
+    EVNT--> bash["Hits_ESD, AOD, DAOD_PHYS"]
     bash["Hits_ESD, AOD, DAOD_PHYS"] --> DAOD_PHYSLITE
 
     ntuple --> Coffea
