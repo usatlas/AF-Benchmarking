@@ -2,7 +2,7 @@
 flowchart TD
     SLHA --> GenTF
     GenTF --> EVNT
-    EVNT --> RecoTF
+    EVNT --> RecoTF/Derivation_TF
     RecoTF/Derivation_TF --> DAOD_TRUTH
     Event_Loop --> Hist
 
