@@ -38,6 +38,6 @@ flowchart TD
     RecoTF/Derivation_TF(["RecoTF/Derivation_TF"])
     
     classDef method fill:transparent,stroke:#d32f2f,stroke-width:2px,color:#d32f2f;
-    class Event_Loop,Coffea,Fast_Frames,Rucio_Downloads,GenTF,RecoTF method;
+    class Event_Loop,Coffea,Fast_Frames,Rucio_Downloads,GenTF,RecoTF/Derivation_TF method;
 ```
 
