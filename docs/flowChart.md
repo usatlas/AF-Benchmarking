@@ -35,6 +35,6 @@ flowchart TD
     Rucio_Downloads(["Rucio Downloads"])
     
     classDef method fill:transparent,stroke:#d32f2f,stroke-width:2px,color:#d32f2f;
-    class Event_Loop,Coffea,Fast_Frames method;
+    class Event_Loop,Coffea,Fast_Frames,Rucio_Dowloads method;
 ```
 
