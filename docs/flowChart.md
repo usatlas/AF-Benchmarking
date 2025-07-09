@@ -27,13 +27,17 @@ flowchart TD
     click Coffea "https://github.com/usatlas/AF-Benchmarking/tree/main/NTuple_Hist/coffea" "Coffea documentation"
     click Fast_Frames "https://github.com/usatlas/AF-Benchmarking/tree/main/NTuple_Hist/fastframes" "Fast Frames documentation"
     click Rucio_Downloads "https://github.com/usatlas/AF-Benchmarking/blob/main/Rucio/rucio_script.sh" "'Rucio Downloads' Script"
+    click GenTF "https://github.com/usatlas/AF-Benchmarking/tree/main/EVNT" "EVNT Job Scripts"
+    click RecoTF "https://github.com/usatlas/AF-Benchmarking/tree/main/TRUTH3" "TRUTH3 Job Scripts"
 
     Event_Loop(["Event Loop"])
     Coffea(["Coffea"])
     Fast_Frames(["Fast Frames"])
     Rucio_Downloads(["Rucio Downloads"])
+    GenTF(["GenTF"])
+    RecoTF(["RecoTF"])
     
     classDef method fill:transparent,stroke:#d32f2f,stroke-width:2px,color:#d32f2f;
-    class Event_Loop,Coffea,Fast_Frames,Rucio_Downloads method;
+    class Event_Loop,Coffea,Fast_Frames,Rucio_Downloads,GenTF,RecoTF method;
 ```
 
