@@ -17,7 +17,6 @@ flowchart TD
 
     ntuple --> Event_Loop
     DAOD_PHYSLITE --> ntuple
-    DAOD_PHYSLITE --> Event_Loop
     DAOD_PHYSLITE --> Rucio_Downloads
 
     Hist --> Plot
