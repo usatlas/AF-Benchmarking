@@ -1,0 +1,12 @@
+Universe = vanilla
+
+Output = /data/selbor/eventloop.$(Cluster).$(Process).out
+Error = /data/selbor/eventloop.$(Cluster).$(Process).err
+Log = /data/selbor/eventloop.$(Cluster).$(Process).log
+
+Executable = /home/selbor/AF-Benchmarking/NTuple_Hist/event_loop/UC/run_photon_eventloop.sh
+
+request_memory = 3GB
+request_cpus = 1
+
+Queue 1
