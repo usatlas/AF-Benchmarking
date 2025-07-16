@@ -12,5 +12,5 @@ cd -
 
 python3 /srv/FastFramesTutorial/FastFrames/python/FastFrames.py -c /sdf/data/atlas/u/selbor/input_ff/mc20e_example_config.yml 2>&1 | tee ff.log
 
-mv ff.log /srv/benchmarks/${curr_date}/FF_Hist/
+mv ff.log /sdf/data/atlas/u/selbor/benchmarks/${curr_date}/FF_Hist/
 
