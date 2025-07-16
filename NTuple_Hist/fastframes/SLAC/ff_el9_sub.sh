@@ -22,4 +22,4 @@ export ALRB_CONT_CMDOPTS="-B /sdf"
 
 export ALRB_CONT_RUNPAYLOAD="source /sdf/home/s/$USER/AF-Benchmarking/NTuple_Hist/fastframes/SLAC/run_ff.sh"
 
-source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c el9 -m /sdf/data/atlas/
+source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c el9 -m /sdf/data/atlas/u/ 
