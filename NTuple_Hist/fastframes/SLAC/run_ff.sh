@@ -4,7 +4,7 @@ curr_date=$(date +"%Y.%m.%dT%H")
 
 asetup StatAnalysis,0.5.0
 
-cd /sdf/data/atlas/u/selbor/TutorialClass/build
+cd /sdf/data/atlas/u/selbor/FastFramesTutorial/TutorialClass/build
 
 source setup.sh
 
