@@ -83,13 +83,15 @@ def main():
         for f in dataset_runnable["Wmunugamma"]["files"]:
             nevents += int(dataset_runnable["Wmunugamma"]["files"][f]["num_entries"])
             print("Applying to fileset")
+            '''
             out = apply_to_fileset(
                     p,
                     dataset_runnable,
                     schemaclass=NtupleSchema,
                     )
+            '''
         start_time = time.time()
-        (computed,) = dask.compute(out)
+        (computed,) = dask.compute(out['Wmunugamma'])
         end_time = time.time()
         execute_time = end_time - start_time
         print(
