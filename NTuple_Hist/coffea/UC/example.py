@@ -82,14 +82,12 @@ def main():
         nevents=0
         for f in dataset_runnable["Wmunugamma"]["files"]:
             nevents += int(dataset_runnable["Wmunugamma"]["files"][f]["num_entries"])
-            print("Applying to fileset")
-            '''
-            out = apply_to_fileset(
-                    p,
-                    dataset_runnable,
-                    schemaclass=NtupleSchema,
-                    )
-            '''
+        print("Applying to fileset")
+        out = apply_to_fileset(
+                p,
+                dataset_runnable,
+                schemaclass=NtupleSchema,
+                )
         start_time = time.time()
         (computed,) = dask.compute(out['Wmunugamma'])
         end_time = time.time()
@@ -102,7 +100,7 @@ def main():
     
         # Plots using 'computed'
         #this_hist = computed["700402.Wmunugamma.mc20a.v2.1"]["ph_pt"]
-        this_hist = computed["Wmunugamma"]['Wmunugamma']["ph_pt"]
+        this_hist = computed['Wmunugamma']["ph_pt"]
         with uproot.recreate('coffea.root') as fp:
             for i in np.arange(len(this_hist.axes[0])):
                 fp[this_hist.axes[0].bin(i)] = this_hist[{0: i}].to_numpy()
