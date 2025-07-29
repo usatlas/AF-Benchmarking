@@ -1,3 +1,9 @@
+**Legend:**
+
+- **🔴 Red border** — Benchmarking script
+- **Blue node** — Data files
+
+
 ```mermaid
 flowchart TD
     SLHA --> GenTF
