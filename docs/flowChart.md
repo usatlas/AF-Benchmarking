@@ -1,5 +1,6 @@
 <p align="right">
   <span style="color:#d32f2f;">Red border</span>: Benchmarking script
+  <span style="color:#1976d2;">Blue border</span>: Data Formats
 </p>
 
 
