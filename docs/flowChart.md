@@ -1,7 +1,7 @@
-**Legend:**
-
-- **🔴 Red border** — Benchmarking script
-- **Blue node** — Data files
+<p align="right">
+  <strong>Legend:</strong><br>
+  <span style="color:#d32f2f;">Red border</span>: Benchmarking script
+</p>
 
 
 ```mermaid
