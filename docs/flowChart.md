@@ -40,6 +40,7 @@ flowchart TD
     class Event_Loop,Coffea,Fast_Frames,Rucio_Downloads,GenTF,RecoTF/Derivation_TF method;
     
     subgraph Legend [Legend]
-        legend1["<b>Red border</b>: Benchmarking script"]
+        direction TB
+        legend_ex(["Red border = Benchmarking Script"])
 ```
 
