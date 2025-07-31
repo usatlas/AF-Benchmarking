@@ -4,11 +4,14 @@ config_dir="EVNTFiles/100xxx/100001/"
 user_name=$USER
 first_letter=${user_name:0:1}
 
+rm -r *
+
 # Copies input files dir to the working dir
 cp -r /sdf/home/$first_letter/$USER/AF-Benchmarking/EVNT/EVNTFiles .
 
 # Current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
+
 
 # Appends time before Gen_tf.py to log file
 echo $(date +"%H:%M:%S") >> split.log

@@ -12,6 +12,8 @@ curr_time=$(date +"%Y.%m.%dT%H")
 user_name=$USER
 first_letter=${user_name:0:1}
 
+rm -r *
+
 cp -r /sdf/home/$first_letter/$USER/AF-Benchmarking/EVNT/EVNTFiles .
 
 # Appends time before Gen_tf.py to log file
