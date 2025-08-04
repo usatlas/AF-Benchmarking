@@ -7,7 +7,7 @@ cd /atlasgpfs01/usatlas/data/jroblesgo/
 # Sets up ATLAS environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup StatAnalysis,0.5.0 &&\
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup StatAnalysis,0.5.3 &&\
   cmake3 -S /srv/FastFrames -B /srv/FastFrames/build -DCMAKE_INSTALL_PREFIX=/srv/FastFrames/install &&\
   cmake3 --build /srv/FastFrames/build -j 16 --target install &&\
   source /srv/FastFrames/build/setup.sh &&\
