@@ -14,7 +14,10 @@ general:
   default_reco_tree_name: "analysis"
 
   # path to the file with cross-sections
-  xsection_files: ["/cvmfs/atlas.cern.ch/repo/sw/database/GroupData/dev/PMGTools/PMGxsecDB_mc16.txt"]
+  xsection_files: 
+    - files: ["/cvmfs/atlas.cern.ch/repo/sw/database/GroupData/dev/PMGTools/PMGxsecDB_mc16.txt"]
+      campaigns: ["mc20a", "mc20d", "mc20e"]
+
 
   # name of the custom class
   custom_frame_name: "TutorialClass"
