@@ -18,7 +18,7 @@ cp ~/AF-Benchmarking/NTuple_Hist/fastframes/UC/mc20e_example_config.yml ${workin
 # Sets up ATLAS environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "asetup StatAnalysis,0.5.0 &&\
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "asetup StatAnalysis,0.5.3 &&\
   lsetup emi &&\
   cat $HOME/pass.txt | voms-proxy-init -voms atlas &&\
   cd /data/$(whoami)/ntuple_hist/TutorialClass/build &&\
