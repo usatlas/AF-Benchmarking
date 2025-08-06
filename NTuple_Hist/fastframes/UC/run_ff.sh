@@ -18,7 +18,7 @@ cp ~/AF-Benchmarking/NTuple_Hist/fastframes/UC/mc20e_example_config.yml ${workin
 # Sets up ATLAS environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "asetup StatAnalysis,0.5.3 &&\
+source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "asetup StatAnalysis,0.6.2 &&\
   lsetup emi &&\
   cat $HOME/pass.txt | voms-proxy-init -voms atlas &&\
   cd /data/$(whoami)/ntuple_hist/TutorialClass/build &&\
@@ -27,7 +27,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "ase
   lsetup 'python 3.9.22-x86_64-el9' &&\
   pip3 install pyyaml &&\
   date >> split.log &&\
-  python3 /data/$(whoami)/ntuple_hist/FastFrames/python/FastFrames.py -c ${working_dir}/mc20e_example_config.yml 2>&1 | tee ff.log"
+  python3 /data/$(whoami)/FastFramesTutorial/python/FastFrames.py -c ${working_dir}/mc20e_example_config.yml 2>&1 | tee ff.log"
 
 # Getting the date and time after running script
 date >> split.log
