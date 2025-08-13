@@ -29,3 +29,16 @@
 
 # EventLoop Script
 0 */6 * * * /usatlas/u/jroblesgo/AF-Benchmarking/event_loop/BNL/run_photon_eventloop.sh
+
+
+# Parsing Scripts
+30 */6 * * * /atlasgpfs01/usatlas/data/jroblesgo/parsing_jobs/rucio/run_parsing.sh
+30 */6 * * * /atlasgpfs01/usatlas/data/jroblesgo/parsing_jobs/truth3_centos_i/run_parsing.sh
+30 */6 * * * /atlasgpfs01/usatlas/data/jroblesgo/parsing_jobs/truth3_centos/run_parsing.sh
+30 */6 * * * /atlasgpfs01/usatlas/data/jroblesgo/parsing_jobs/evnt_native/run_parsing.sh
+30 */6 * * * /atlasgpfs01/usatlas/data/jroblesgo/parsing_jobs/evnt_el/run_parsing.sh
+30 */6 * * * /atlasgpfs01/usatlas/data/jroblesgo/parsing_jobs/evnt_centos/run_parsing.sh
+30 */6 * * * /atlasgpfs01/usatlas/data/jroblesgo/parsing_jobs/truth3_el_i/run_parsing.sh
+30 */6 * * * /atlasgpfs01/usatlas/data/jroblesgo/parsing_jobs/truth3_el/run_parsing.sh
+30 */6 * * * /atlasgpfs01/usatlas/data/jroblesgo/parsing_jobs/truth3_native_i/run_parsing.sh
+30 */6 * * * /atlasgpfs01/usatlas/data/jroblesgo/parsing_jobs/truth3_native/run_parsing.sh
