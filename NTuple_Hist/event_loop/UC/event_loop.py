@@ -25,6 +25,9 @@ def photon_ABCD_eventloop(f_name, h_baseline_pt, metadata):
     sumOfWeights = metadata["sum_of_weights"]
     weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
 
+    # name of branches in tree
+    print(tree.GetListOfBranches())
+
     # Event loop
     for i, event in enumerate(tree):
         if (i+1) % 50000 == 0:
@@ -47,7 +50,7 @@ def main():
     samples = [
         {
             "name": "Wmunugamma",
-            "path": Path("/data/maclwong/Ben_Bkg_Samples/v2/Wmunugamma/"),
+            "path": Path("/data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/"),
             "metadata": {
                 "genFiltEff": 1.0,
                 "luminosity": 58.7916,
