@@ -1,52 +1,82 @@
-def photon_ABCD_eventloop(f_name):
-    print(f_name)
-    fp=r.TFile(f_name,"RO")
-    tree=fp.Get("analysis")
-    eventcount=0
-    totalevents=t.GetEntriesFast()
-    h_baseline_pt=r.TH1D("baseline_pt","baseline_pt",100,0,1000)
+import ROOT as r
+from pathlib import Path
 
-    # Metadata dictionary
-    metadata={"genFiltEff": 1.0,
-              "luminosity": 58.7916,
-              "process": "Wmunugamma",
-              "xs": 364840.0,
-              "sum_of_weights": 1816229744476160.0}
+def photon_ABCD_eventloop(f_name, h_baseline_pt, metadata):
+    """Process one ROOT file and fill the given histogram."""
+    fp = r.TFile.Open(f_name, "READ")
+    if not fp or fp.IsZombie():
+        print(f"Could not open file: {f_name}")
+        return
 
+    tree = fp.Get("analysis")
+    if not tree:
+        print(f"No tree named 'analysis' in {f_name}")
+        fp.Close()
+        return
+
+    totalevents = tree.GetEntriesFast()
+    print(f"  {f_name} has {totalevents} events")
+
+    # Normalization factors
     xs = metadata["xs"]
     lum = metadata["luminosity"]
     genFiltEff = metadata["genFiltEff"]
-    kfactor = 1.
+    kfactor = metadata.get("kfactor", 1.0)
     sumOfWeights = metadata["sum_of_weights"]
     weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
 
-    for event in tree:
-        eventcount+=1
-        if eventcount%50000 == 0:
-            print(f"Processed {eventcount:6d}/{totalevents} events")
+    # Event loop
+    for i, event in enumerate(tree):
+        if (i+1) % 50000 == 0:
+            print(f"    Processed {i+1:6d}/{totalevents}")
+
         for index, photon_pt in enumerate(event.ph_pt_NOSYS):
-            photon_id = ord(event.ph_select_tightID_NOSYS[index])
+            photon_id = event.ph_select_tightID_NOSYS[index]
             if photon_id == 0:
                 continue
-            
-            weight=(weight_norm*event.weight_mc_NOSYS*event.weight_pileup_NOSYS)
-            h_baseline_pt.Fill(photon_pt/1000.,weight)
-            break
+
+            weight = weight_norm * event.weight_mc_NOSYS * event.weight_pileup_NOSYS
+            h_baseline_pt.Fill(photon_pt/1000., weight)  # Fill GeV
+            break  # only fill with first passing photon
+
+    fp.Close()
 
 
 def main():
-    # Path to the input root files
-    file_dir=Path('/data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20e.v2.0_ANALYSIS.root/')
+    # Define samples (all will contribute to one histogram)
+    samples = [
+        {
+            "name": "Wmunugamma",
+            "path": Path("/data/maclwong/Ben_Bkg_Samples/v2/Wmunugamma/"),
+            "metadata": {
+                "genFiltEff": 1.0,
+                "luminosity": 58.7916,
+                "xs": 364840.0,
+                "sum_of_weights": 1816229744476160.0,
+                "kfactor": 1.0,
+            }
+        }
+    ]
 
-    # For-loop iterating over all data files in file_dir and inputting into function
-    for f in sorted(file_dir.iterdir()):
-        photon_ABCD_eventloop(str(f))
+    # Create a single histogram for all samples combined
+    h_baseline_pt = r.TH1D(
+        "baseline_pt_total",
+        "Photon baseline pT (all samples); pT [GeV]; Events",
+        100, 0, 1000
+    )
 
+    # Process every file in every sample, filling the same histogram
+    for s in samples:
+        print(f"\nProcessing sample: {s['name']}")
+        for f in sorted(s["path"].glob("*.root")):
+            photon_ABCD_eventloop(str(f), h_baseline_pt, s["metadata"])
 
-    # Output ROOT file
+    # Save combined histogram
     output_file = r.TFile("event_loop_output_hist.root", "RECREATE")
     h_baseline_pt.Write()
     output_file.Close()
+    print("\nCombined histogram written to event_loop_output_hist.root")
+
 
 if __name__ == "__main__":
-        main()
+    main()
