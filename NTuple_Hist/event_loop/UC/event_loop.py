@@ -34,8 +34,8 @@ def photon_ABCD_eventloop(f_name, h_baseline_pt, metadata):
             print(f"    Processed {i+1:6d}/{totalevents}")
 
         for index, photon_pt in enumerate(event.ph_pt_NOSYS):
-            photon_id = event.ph_select_tightID_NOSYS[index]
-            if photon_id == 0:
+            ph_tight=(ord(event.ph_select_tightID_NOSYS [index])>0)
+            if not ph_tight:
                 continue
 
             weight = weight_norm * event.weight_mc_NOSYS * event.weight_pileup_NOSYS
