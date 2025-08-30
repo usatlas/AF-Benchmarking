@@ -14,7 +14,7 @@ lsetup root
 date >> eventloop_arrays.log
 
 # Running the script
-python3 ~/AF-Benchmarking/event_loop/UC/event_loop_arrays.py 2>&1 | tee eventloop_arrays.log 
+python3 ~/AF-Benchmarking/NTuple_Hist/event_loop/UC/event_loop_arrays.py 2>&1 | tee eventloop_arrays.log 
 
 # Getting end date
 date >> eventloop_arrays.log
