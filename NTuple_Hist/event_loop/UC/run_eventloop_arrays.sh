@@ -3,6 +3,8 @@
 # Time that will be used to store the log file
 curr_time=$(date +"%Y.%m.%dT%H")
 
+cd /data/selbor/ntuple_hist/eventloop_arrays/
+
 # Setting up
 setup ATLAS
 
