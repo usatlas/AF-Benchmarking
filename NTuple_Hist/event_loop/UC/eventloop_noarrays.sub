@@ -1,0 +1,12 @@
+Universe = vanilla
+
+Output = /data/selbor/ntuple_hist/eventloop_noarrays/batch_files/eventloop.$(Cluster).$(Process).out
+Error = /data/selbor/ntuple_hist/eventloop_noarrays/batch_files/eventloop.$(Cluster).$(Process).err
+Log = /data/selbor/ntuple_hist/eventloop_noarrays/batch_files/eventloop.$(Cluster).$(Process).log
+
+Executable = /home/selbor/AF-Benchmarking/NTuple_Hist/event_loop/UC/run_eventloop_noarrays.sh
+
+request_memory = 3GB
+request_cpus = 1
+
+Queue 1
