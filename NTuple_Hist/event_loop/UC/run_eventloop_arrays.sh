@@ -6,11 +6,11 @@ curr_time=$(date +"%Y.%m.%dT%H")
 cd /data/selbor/ntuple_hist/eventloop_arrays/
 
 # Setting up
-setup ATLAS
+setupATLAS
 
 # Setting up root
-export ALRB_rootVersion=6.34.04-x86_64-el9-gcc13-opt
-lsetup root
+lsetup "views LCG_107a_ATLAS_2 x86_64-el9-gcc13-opt"
+
 
 # Getting start date
 date >> eventloop_arrays.log
