@@ -25,3 +25,4 @@ python3 truth3_native/truth3_native_batch_parsing.py
 
 python3 truth3_native_int/truth3_native_interactive_parsing.py
 
+python3 ntuple_coffea/ntuple_coffea.py
