@@ -20,7 +20,7 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir=$HOME/localConfig
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "asetup StatAnalysis,0.6.2 &&\
   lsetup emi &&\
-  cat /home/selbor/pass.txt | voms-proxy-init -voms atlas &&\
+  cat /data/selbor/pass/pass.txt | voms-proxy-init -voms atlas &&\
   cd /data/$(whoami)/FastFramesTutorial/TutorialClass/build &&\
   source setup.sh &&\
   cd - &&\
