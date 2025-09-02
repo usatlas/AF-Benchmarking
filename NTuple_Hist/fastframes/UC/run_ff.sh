@@ -26,7 +26,7 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "ase
   lsetup 'python 3.9.22-x86_64-el9' &&\
   pip3 install pyyaml &&\
   date >> split.log &&\
-  python3 /srv/FastFramesTutorial/FastFrames/python/FastFrames.py -c ${working_dir}/mc20e_example_config.yml 2>&1 | tee ff.log"
+  python3 /data/selbor/FastFramesTutorial/FastFrames/python/FastFrames.py -c ${working_dir}/mc20e_example_config.yml 2>&1 | tee ff.log"
 
 # Getting the date and time after running script
 date >> split.log
