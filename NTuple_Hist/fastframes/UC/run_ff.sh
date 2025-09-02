@@ -21,7 +21,7 @@ export ALRB_localConfigDir=$HOME/localConfig
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /data/ -r "asetup StatAnalysis,0.6.2 &&\
   lsetup emi &&\
   cat /data/selbor/pass/pass.txt | voms-proxy-init -voms atlas &&\
-  source /srv/FastFramesTutorial/TutorialClass/build/setup.sh &&\
+  source /data/selbor/FastFramesTutorial/TutorialClass/build/setup.sh &&\
   cd - &&\
   lsetup 'python 3.9.22-x86_64-el9' &&\
   pip3 install pyyaml &&\
