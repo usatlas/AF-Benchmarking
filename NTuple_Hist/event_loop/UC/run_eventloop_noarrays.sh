@@ -25,7 +25,7 @@ hostname >> split.log
 
 
 # Output Dir
-output_dir="/data/$USER/benchmarks/$curr_time/eventloop_noarrays/"
+output_dir="/data/selbor/benchmarks/$curr_time/eventloop_noarrays/"
 
 mkdir -p ${output_dir}
 
