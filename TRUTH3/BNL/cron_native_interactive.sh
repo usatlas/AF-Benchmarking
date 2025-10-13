@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Job directory
-job_dir="/atlasgpfs01/usatlas/scratch/jroblesgo/TRUTH3/native_int"
+job_dir="/atlasgpfs01/usatlas/data/jroblesgo/TRUTH3Job/native_i"
 
 if [ -d ${job_dir} ]; then
   cd ${job_dir}
