@@ -22,4 +22,5 @@ export ALRB_CONT_CMDOPTS="-B /sdf,/fs"
 
 export ALRB_CONT_RUNPAYLOAD="source /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/SLAC/run_truth3_centos7_container.sh"
 
+# shellcheck disable=SC1091
 source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c centos7

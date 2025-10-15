@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Changes directory to $DATA/parsing_jobs
-cd /data/selbor/parsing_jobs || exit
+cd /data/selbor/parsing_jobs || exit || exit
 
 # Runs the parsing scripts
 

@@ -3,10 +3,11 @@
 # Time that will be used to store the log file
 curr_time=$(date +"%Y.%m.%dT%H")
 
-cd /data/selbor/ntuple_hist/eventloop_noarrays/
+cd /data/selbor/ntuple_hist/eventloop_noarrays/ || exit
 
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+# shellcheck disable=SC1091
+source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
 lsetup "views LCG_107a_ATLAS_2 x86_64-el9-gcc13-opt"
 
 
@@ -25,9 +26,9 @@ hostname >> split.log
 
 
 # Output Dir
-output_dir="/data/selbor/benchmarks/$curr_time/eventloop_noarrays/"
+output_dir="/data/selbor/benchmarks/${curr_time}/eventloop_noarrays/"
 
-mkdir -p ${output_dir}
+mkdir -p "${output_dir}"
 
-mv eventloop_noarrays.log ${output_dir}
-mv split.log ${output_dir}
+mv eventloop_noarrays.log "${output_dir}"
+mv split.log "${output_dir}"

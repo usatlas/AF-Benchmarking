@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /data/selbor/TRUTH3Job/centos_interactive || exit
+cd /data/selbor/TRUTH3Job/centos_interactive || exit || exit
 
 rm ./*
 

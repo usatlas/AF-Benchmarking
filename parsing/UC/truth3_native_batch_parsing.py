@@ -21,9 +21,9 @@ full_path_list = parsing.full_path_function(benchmark_paths)
 
 list_dics = []
 
-for l in full_path_list:
+for log_path in full_path_list:
     try:
-        list_dics.append(parsing.parsing_truth3(l, batch=True))
+        list_dics.append(parsing.parsing_truth3(log_path, batch=True))
     except IndexError:
         try:
             list_dics.append(
@@ -32,20 +32,22 @@ for l in full_path_list:
                 )
             )
         except IndexError:
-            list_dics.append(parsing.parsing_truth3_e1(l, os_used="native", batch=True))
+            list_dics.append(
+                parsing.parsing_truth3_e1(log_path, os_used="native", batch=True)
+            )
         except ValueError:
             list_dics.append(
-                parsing.parsing_truth3_log_split(l, os_used="native", batch=True)
+                parsing.parsing_truth3_log_split(log_path, os_used="native", batch=True)
             )
     except ValueError:
         list_dics.append(
-            parsing.parsing_truth3_log_split(l, os_used="native", batch=True)
+            parsing.parsing_truth3_log_split(log_path, os_used="native", batch=True)
         )
     except FileNotFoundError:
         pass
     except Exception:
         with open("truth3_native_batch_errors.txt", "a") as f:
-            f.write(l + "\n")
+            f.write(log_path + "\n")
             f.write(traceback.format_exc())
             continue
 

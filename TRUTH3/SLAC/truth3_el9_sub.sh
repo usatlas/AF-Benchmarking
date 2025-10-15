@@ -22,4 +22,5 @@ export ALRB_CONT_CMDOPTS="-B /sdf"
 
 export ALRB_CONT_RUNPAYLOAD="source /sdf/home/s/selbor/AF-Benchmarking/TRUTH3/SLAC/run_truth3_el9_container.sh"
 
+# shellcheck disable=SC1091
 source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c el9

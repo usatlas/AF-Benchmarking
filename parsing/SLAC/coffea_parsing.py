@@ -36,25 +36,25 @@ full_path_list = parsing.full_path_function(benchmark_paths)
 list_dics = []
 
 # For-loop block used to populate the list
-for l in full_path_list:
+for log_path in full_path_list:
     try:
-        list_dics.append(parsing.parsing_ntuple_c(l, fli=0))
+        list_dics.append(parsing.parsing_ntuple_c(log_path, fli=0))
     except IndexError:
-        list_dics.append(parsing.parsing_ntuple_c(l, fli=11))
+        list_dics.append(parsing.parsing_ntuple_c(log_path, fli=11))
     except ValueError:
         try:
-            list_dics.append(parsing.parsing_ntuple_c(l, fli=11))
+            list_dics.append(parsing.parsing_ntuple_c(log_path, fli=11))
         except ValueError:
             try:
                 # print(l)
-                list_dics.append(parsing.parsing_ntuple_c_e2(l))
+                list_dics.append(parsing.parsing_ntuple_c_e2(log_path))
             except ValueError:
-                list_dics.append(parsing.parsing_ntuple_c_e3(l))
+                list_dics.append(parsing.parsing_ntuple_c_e3(log_path))
         except IndexError:
-            list_dics.append(parsing.parsing_ntuple_c_e1(l))
+            list_dics.append(parsing.parsing_ntuple_c_e1(log_path))
     except Exception:
         with open(error_file, "a") as f:
-            f.write(l + "\n")
+            f.write(log_path + "\n")
             f.write(traceback.format_exc())
             continue
 

@@ -3,16 +3,17 @@ import datetime as dt
 # from elasticsearch import Elasticsearch as es
 from datetime import timezone
 import os
+from typing import ClassVar
 
 
 class Parsing_Class:
     # Shared qualities among all objects created with this class
 
     # Dictionary used to obtain AF script is running at
-    af_dictionary = {"uc": "UC-AF", "slack": "SLAC-AF", "bnl": "BNL-AF"}
+    af_dictionary: ClassVar[dict] = {"uc": "UC-AF", "slack": "SLAC-AF", "bnl": "BNL-AF"}
 
     # Dictionary used to obtain job string recognized by ElasticSearch
-    job_dictionary = {
+    job_dictionary: ClassVar[dict] = {
         "Rucio": "Rucio Download",
         "TRUTH3": "truth3-batch",
         "EVNT": "EVNT-batch",
@@ -27,7 +28,7 @@ class Parsing_Class:
     }
 
     # Dictionary keys that are used to create dictionaries with no values
-    dic_keys = [
+    dic_keys: ClassVar[list] = [
         "cluster",
         "testType",
         "submitTime",
@@ -40,10 +41,14 @@ class Parsing_Class:
 
     # Dictionary storing the directory where the script directories are located at sites
     ## UPDATE: Need to include SLAC and BNL ##
-    benchmarks_dir_dic = {"uc": "/data/selbor/parsing_jobs", "slack": None, "bnl": None}
+    benchmarks_dir_dic: ClassVar[dict] = {
+        "uc": "/data/selbor/parsing_jobs",
+        "slack": None,
+        "bnl": None,
+    }
 
     # Dictionary that contains months mapped to numbers; used when parsing EVNT and TRUTH3 log files
-    months_dic = {
+    months_dic: ClassVar[dict] = {
         "Jan": "01",
         "Feb": "02",
         "Mar": "03",
@@ -89,8 +94,8 @@ class Parsing_Class:
 
     # Parses rucio.log
     # sti and eti are default cases, can be shifted if there are errors
-    def parsing_rucio(self, l, sti=0, eti=12, psi=1):
-        with open(l) as f:
+    def parsing_rucio(self, log_path, sti=0, eti=12, psi=1):
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -157,14 +162,14 @@ class Parsing_Class:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
 
-    def parsing_rucio_e1(self, l):
+    def parsing_rucio_e1(self, log_path):
         # Creates a dictionary with predetermined keys
         dic = dict.fromkeys(self.dic_keys)
         queue_time = 0
         run_time = 0
         payload_size = 0
         exit_code = 1
-        date_time_string = l.split("/")[4]
+        date_time_string = log_path.split("/")[4]
         year = int(date_time_string[0:4])
         month = int(date_time_string[5:7])
         day = int(date_time_string[8:10])
@@ -174,7 +179,7 @@ class Parsing_Class:
         start_date_time_timestamp = int(
             start_date_object.replace(tzinfo=timezone.utc).timestamp() * 1e3
         )
-        with open(l) as f:
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -197,7 +202,7 @@ class Parsing_Class:
     # Parses TRUTH3
     def parsing_truth3(
         self,
-        l,
+        log_path,
         os_used="native",
         container=False,
         batch=False,
@@ -205,7 +210,7 @@ class Parsing_Class:
         day_index=4,
         submit_time_index=5,
     ):
-        with open(l) as f:
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -291,13 +296,14 @@ class Parsing_Class:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
 
-    def parsing_truth3_e1(self, l, os_used="native", container=False, batch=False):
-        with open(l) as f:
+    def parsing_truth3_e1(
+        self, log_path, os_used="native", container=False, batch=False
+    ):
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
-                N = len(file_lines)
                 dic = dict.fromkeys(self.dic_keys)
-                date_time_string = (l.split("/"))[4]
+                date_time_string = (log_path.split("/"))[4]
                 start_year = int(date_time_string[0:4])
                 start_month = int(date_time_string[5:7])
                 start_day = int(date_time_string[8:10])
@@ -325,14 +331,14 @@ class Parsing_Class:
 
     # Parsing TRUTH3 with new log splitting workflow
     def parsing_truth3_log_split(
-        self, l, os_used="native", container=False, batch=False
+        self, log_path, os_used="native", container=False, batch=False
     ):
         # Getting the absolute path of the split log file
-        split_log_path = l.replace(self.log_name, self.split)
+        split_log_path = log_path.replace(self.log_name, self.split)
         # Creates a dictionary with predetermined keys
         dic = dict.fromkeys(self.dic_keys)
         # Opening the log file produced by the scheduled job
-        with open(l) as f:
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -442,7 +448,7 @@ class Parsing_Class:
 
     def parsing_truth3_interactive(
         self,
-        l,
+        log_path,
         os_used="native",
         container=False,
         batch=False,
@@ -450,7 +456,7 @@ class Parsing_Class:
         day_index=4,
         submit_time_index=5,
     ):
-        with open(l) as f:
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -535,7 +541,7 @@ class Parsing_Class:
 
     def parsing_evnt(
         self,
-        l,
+        log_path,
         os_used="native",
         container=False,
         batch=False,
@@ -546,7 +552,7 @@ class Parsing_Class:
         # Creates a dictionary with predetermined keys
         dic = dict.fromkeys(self.dic_keys)
 
-        with open(l) as f:
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -559,7 +565,7 @@ class Parsing_Class:
                     exit_code = 1
                     run_time = 0
                     queue_time = 0
-                    start_string = l.split("/")[4]
+                    start_string = log_path.split("/")[4]
                     year = int(start_string[0:4])
                     month = int(start_string[5:7])
                     day = int(start_string[8:10])
@@ -733,7 +739,7 @@ class Parsing_Class:
                         (end_time_object - start_time_object).total_seconds()
                     )
                     # Getting the absolute path of the split log file
-                    split_log_path = l.replace(self.log_name, self.split)
+                    split_log_path = log_path.replace(self.log_name, self.split)
 
                     with open(split_log_path) as g:
                         if g:
@@ -760,27 +766,25 @@ class Parsing_Class:
             dic[self.dic_keys[7]] = host_name
         return dic
 
-    def parsing_evnt_log_split(self, l, os_used="native", container=False, batch=True):
-        # Getting the absolute path of the split log file
-        split_log_path = l.replace(self.log_name, self.split)
-        # Creates a dictionary with predetermined keys
-        dic = dict.fromkeys(self.dic_keys)
+    def parsing_evnt_log_split(
+        self, log_path, os_used="native", container=False, batch=True
+    ):
         # Opening the log file produced by the scheduled job
-        with open(l) as f:
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
-                N = len(file_lines)
                 print(file_lines[0])
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
 
-    def parsing_evnt_uc_e1(self, l, os_used="native", container=False, batch=False):
-        with open(l) as f:
+    def parsing_evnt_uc_e1(
+        self, log_path, os_used="native", container=False, batch=False
+    ):
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
-                N = len(file_lines)
                 host_name = file_lines[0]
-                start_date_time_list = l.split("/")
+                start_date_time_list = log_path.split("/")
                 new_datetime_list = start_date_time_list[4].split(".")
                 year = int(new_datetime_list[0])
                 month = int(new_datetime_list[1])
@@ -806,8 +810,8 @@ class Parsing_Class:
         return dic
 
     # Seems like the first line index varies; 7, 11,..,
-    def parsing_ntuple_c(self, l, fli=7):
-        with open(l) as f:
+    def parsing_ntuple_c(self, log_path, fli=7):
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -865,13 +869,12 @@ class Parsing_Class:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
 
-    def parsing_ntuple_c_e1(self, l):
-        with open(l) as f:
+    def parsing_ntuple_c_e1(self, log_path):
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
-                N = len(file_lines)
                 # Extracts start date time information
-                start_date_time_line_list = l.split("/")
+                start_date_time_line_list = log_path.split("/")
                 date_time_string = start_date_time_line_list[4]
                 date_string = date_time_string.split("T")[0]
                 start_hour = int(date_time_string.split("T")[1])
@@ -889,7 +892,7 @@ class Parsing_Class:
                     start_datetime_object.replace(tzinfo=timezone.utc).timestamp() * 1e3
                 )
                 run_time = 0
-                host_name = file_lines[N - 1]
+                host_name = file_lines[-1]
                 payload_size = 0
                 exit_code = 1
                 queue_time = 0
@@ -908,8 +911,8 @@ class Parsing_Class:
                 print("ERROR -- FILE WAS NOT OPENED")
         return dic
 
-    def parsing_ntuple_c_e2(self, l, fli=7):
-        with open(l) as f:
+    def parsing_ntuple_c_e2(self, log_path, fli=7):
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)

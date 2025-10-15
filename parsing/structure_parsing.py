@@ -36,15 +36,15 @@ full_path_list = parsing.full_path_function(benchmark_paths)
 list_dics = []
 
 # For-loop block used to populate the list
-for l in full_path_list:
+for log_path in full_path_list:
     try:
         # TODO: Replace with actual Job's parsing function
-        list_dics.append(parsing.parsing_function(l))
-    except Exception as e:
+        list_dics.append(parsing.parsing_function(log_path))
+    except Exception:
         # TODO: Replace with actual alternate parsing function if needed
-        # list_dics.append(parsing.alternate_parsing_function(l))
+        # list_dics.append(parsing.alternate_parsing_function(log_path))
         with open(error_file, "a") as f:
-            f.write(l + "\n")
+            f.write(log_path + "\n")
             f.write(traceback.format_exc())
             continue
 

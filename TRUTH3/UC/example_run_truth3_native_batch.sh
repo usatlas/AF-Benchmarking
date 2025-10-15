@@ -12,7 +12,8 @@ cp ~/AF-Benchmarking/TRUTH3/EVNT.root "${inputFile_dir}"
 
 # Sets up our environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
+# shellcheck disable=SC1091 disable=SC1090
+source \"${ATLAS_LOCAL_ROOT_BASE}\"/user/atlasLocalSetup.sh
 
 # Sets the Athena version we want
 asetup Athena,24.0.53,here

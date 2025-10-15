@@ -36,11 +36,11 @@ full_path_list = parsing.full_path_function(benchmark_paths)
 list_dics = []
 
 # For-loop block used to populate the list
-for l in full_path_list:
+for log_path in full_path_list:
     try:
         list_dics.append(
             parsing.parsing_truth3(
-                l,
+                log_path,
                 os_used="el",
                 container=True,
                 batch=True,
@@ -64,7 +64,7 @@ for l in full_path_list:
 
     except Exception:
         with open(error_file, "a") as f:
-            f.write(l + "\n")
+            f.write(log_path + "\n")
             f.write(traceback.format_exc())
             continue
 

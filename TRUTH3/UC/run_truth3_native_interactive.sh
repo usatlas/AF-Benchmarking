@@ -1,28 +1,30 @@
 #!/bin/bash
 # shellcheck disable=SC1091
 
-# current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
+# current time used for log file storage
+
 
 # Input files are stored here
 config_dir="/data/$USER/TRUTH3_StaticDir/"
 
 # Sets up our environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+# shellcheck disable=SC1091
+source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
 
 # Appends time before Derivation_tf.py to log file
-date +"%H:%M:%S" >> split.log
+date +'%H:%H:%S' >> split.log
 
 # Sets the Athena version we want
 asetup Athena,24.0.53,here
 Derivation_tf.py --CA True --inputEVNTFile "${config_dir}EVNT_interactive.root" --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log
 
 # Appends time after Derivation_tf.py to a log file
-date +"%H:%M:%S" >> split.log
+date +'%H:%H:%S' >> split.log
 
 # Defines the output directory
-output_dir="/data/$USER/benchmarks/$curr_time/TRUTH3_interactive"
+output_dir="/data/$USER/benchmarks/${curr_time}/TRUTH3_interactive"
 
 # Creates the output directory
 mkdir -p "${output_dir}"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /data/selbor/TRUTH3Job/native/ || exit
+cd /data/selbor/TRUTH3Job/native/ || exit || exit
 
 rm ./*
 

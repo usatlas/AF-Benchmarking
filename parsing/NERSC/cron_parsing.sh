@@ -3,6 +3,7 @@
 
 cd /global/homes/s/selbor/parsing_jobs || exit
 
+# shellcheck disable=SC1091
 source bin/activate
 
 cd truth3_el/ || exit

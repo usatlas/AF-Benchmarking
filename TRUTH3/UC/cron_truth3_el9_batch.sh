@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /data/selbor/TRUTH3Job/container_el/ || exit
+cd /data/selbor/TRUTH3Job/container_el/ || exit || exit
 
 rm ./*
 

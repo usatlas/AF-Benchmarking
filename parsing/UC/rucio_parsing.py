@@ -36,12 +36,12 @@ list_dics = []
 
 # for loop that will input paths int the respective parsing function
 # if an error is encountered it will append message to error file and continue
-for l in full_path_list:
+for log_path in full_path_list:
     try:
-        list_dics.append(parsing.parsing_rucio(l))
+        list_dics.append(parsing.parsing_rucio(log_path))
     except Exception:
         with open(error_file, "a") as f:
-            f.write(l + "\n")
+            f.write(log_path + "\n")
             f.write(traceback.format_exc())
             continue
 

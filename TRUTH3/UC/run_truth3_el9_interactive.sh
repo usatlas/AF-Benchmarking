@@ -1,8 +1,9 @@
 #!/bin/bash
 # shellcheck disable=SC1091
 
-# Current time used for file storage
 curr_time=$(date +"%Y.%m.%dT%H")
+# Current time used for file storage
+
 
 # Defines the directory where the input files are stored
 config_dir="/data/$USER/TRUTH3_StaticDir/"
@@ -14,20 +15,21 @@ OScontainer="el9"
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 
 # Appends time before Derivation_tf.py to log file
-date +"%H:%M:%S" >> split.log
+date +'%H:%H:%S' >> split.log
 
 # Sets up the container:
 ## -c : used to make a container followed by the OS we want to use
 ## -m : mounts a specific directory
 ## -r : precedes the commands we want to run within the container
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -m /data:/data -r "asetup Athena,24.0.53,here && \
+# shellcheck disable=SC1091
+source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c "${OScontainer}" -m /data:/data -r "asetup Athena,24.0.53,here && \
   Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT_el9_interactive.root --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log"
 
 # Appends time after Derivation_tf.py to a log file
-date +"%H:%M:%S" >> split.log
+date +'%H:%H:%S' >> split.log
 
 # Defines the output directory
-output_dir="/data/$USER/benchmarks/$curr_time/TRUTH3_el9_container_interactive"
+output_dir="/data/$USER/benchmarks/${curr_time}/TRUTH3_el9_container_interactive"
 
 # Creates the output directory
 mkdir -p "${output_dir}"

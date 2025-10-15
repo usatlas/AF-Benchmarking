@@ -1,3 +1,4 @@
+# shellcheck shell=bash disable=all
 Universe = vanilla
 
 

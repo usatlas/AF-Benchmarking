@@ -111,7 +111,7 @@ class Parsing_Class(Paths_Class):
     # Uses information from the split log files and the date time string
     def string_and_split(self, l):
         split_lines = self.checks_for_split_logs(l)
-        dateTimeString = l.split("/")[6]
+        dateTimeString = log_path.split("/")[6]
         year = int(dateTimeString[0:4])
         month = int(dateTimeString[5:7])
         day = int(dateTimeString[8:10])
@@ -150,8 +150,8 @@ class Parsing_Class(Paths_Class):
 
     # Rucio parsing function
     # sti and eti are default cases, can be shifted if there are errors
-    def parsing_rucio(self, l, sti=0, eti=12, psi=1):
-        with open(l) as f:
+    def parsing_rucio(self, log_path, sti=0, eti=12, psi=1):
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -231,7 +231,7 @@ class Parsing_Class(Paths_Class):
                     run_time = 0
                     payload_size = 0
                     exit_code = 1
-                    date_time_string = l.split("/")[4]
+                    date_time_string = log_path.split("/")[4]
                     year = int(date_time_string[0:4])
                     month = int(date_time_string[5:7])
                     day = int(date_time_string[8:10])
@@ -259,8 +259,8 @@ class Parsing_Class(Paths_Class):
         return dic
 
     # Function that parses EVNT job files
-    def parsing_evnt(self, l, os_used="native"):
-        with open(l) as f:
+    def parsing_evnt(self, log_path, os_used="native"):
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -272,13 +272,13 @@ class Parsing_Class(Paths_Class):
                     try:
                         self.checks_for_split_logs(l)
                     except FileNotFoundError:
-                        dateTimeString = l.split("/")[6]
+                        dateTimeString = log_path.split("/")[6]
                 """
                 if 'sdfampere' in first_line and N<=1:
                     try:
                         self.checks_for_split_logs(l)
                     except FileNotFoundError:
-                        dateTimeString = l.split('/')[6]
+                        dateTimeString = log_path.split('/')[6]
                         year=int(dateTimeString[0:4])
                         month=int(dateTimeString[5:7])
                         day=int(dateTimeString[8:10])
@@ -390,8 +390,8 @@ class Parsing_Class(Paths_Class):
             return dic
             """
 
-    def parsing_truth3_batch(self, l):
-        with open(l) as f:
+    def parsing_truth3_batch(self, log_path):
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -400,7 +400,7 @@ class Parsing_Class(Paths_Class):
 
                 # Checks the length of the file; when it's one it just contains the host-name
                 if N == 1:
-                    dateTimeString = l.split("/")[6]
+                    dateTimeString = log_path.split("/")[6]
                     host_name = file_lines[0]
                     year = int(dateTimeString[0:4])
                     month = int(dateTimeString[5:7])
@@ -505,7 +505,7 @@ class Parsing_Class(Paths_Class):
                 return dic
 
     def ntuple_parsing(self, l):
-        with open(l) as f:
+        with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -558,7 +558,7 @@ class Parsing_Class(Paths_Class):
                         dic = self.string_and_split(l)
                     except FileNotFoundError:
                         host_name = file_lines[N - 1]
-                        dateTimeString = l.split("/")[6]
+                        dateTimeString = log_path.split("/")[6]
                         year = int(dateTimeString[0:4])
                         month = int(dateTimeString[5:7])
                         day = int(dateTimeString[8:10])

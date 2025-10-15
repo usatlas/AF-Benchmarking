@@ -1,4 +1,5 @@
 # I need to install ES here
+import traceback
 import data_handling as dh
 
 
@@ -24,12 +25,12 @@ full_path_list = parsing.full_path_function(benchmark_paths)
 
 list_dics = []
 
-for l in full_path_list:
+for log_path in full_path_list:
     try:
-        list_dics.append(parsing.parsing_rucio(l))
+        list_dics.append(parsing.parsing_rucio(log_path))
     except Exception:
         with open(error_file, "a") as f:
-            f.write(l + "n")
+            f.write(log_path + "n")
             f.write(traceback.format_exc())
             continue
 

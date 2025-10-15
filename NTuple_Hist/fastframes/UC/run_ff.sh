@@ -6,23 +6,25 @@ working_dir="/data/selbor/ntuple/fastframes/"
 
 
 # Goes into the job directory if it exits, creates it otherwise
-if [ -d ${working_dir} ]; then
-  cd ${working_dir}
+if [ -d "${working_dir}" ]; then
+  cd "${working_dir}" || exit
 else
-  mkdir -p ${working_dir}
-  cd ${working_dir}
+  mkdir -p "${working_dir}"
+  cd "${working_dir}" || exit
 fi
 
 cp ~/AF-Benchmarking/NTuple_Hist/fastframes/UC/mc20e_example_config.yml ${working_dir}
 
 # Sets up our working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+# shellcheck disable=SC1091
+source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
 
 # Set up for FF
 asetup StatAnalysis,0.6.3
 lsetup emi
 cat /data/selbor/pass/pass.txt | voms-proxy-init -voms atlas
+# shellcheck disable=SC1091
 source /data/selbor/FastFramesTutorial/TutorialClass/build/setup.sh
 
 date >> split.log
@@ -39,8 +41,8 @@ hostname >> split.log
 output_dir="/data/$(whoami)/benchmarks/${curr_date}/FF_NTuple"
 
 # Creates output dir
-mkdir -p ${output_dir}
+mkdir -p "${output_dir}"
 
 # Moves log to outputdir
-mv ff.log ${output_dir}
-mv split.log ${output_dir}
+mv ff.log "${output_dir}"
+mv split.log "${output_dir}"

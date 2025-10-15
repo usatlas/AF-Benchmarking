@@ -22,14 +22,14 @@ full_path_list = parsing.full_path_function(benchmark_paths)
 
 list_dics = []
 
-for l in full_path_list:
+for log_path in full_path_list:
     try:
-        list_dics.append(parsing.new_parsing_evnt(l, os_used="el"))
+        list_dics.append(parsing.new_parsing_evnt(log_path, os_used="el"))
     except FileNotFoundError:
-        list_dics.append(parsing.missing_log_file(l))
+        list_dics.append(parsing.missing_log_file(log_path))
     except Exception:
         with open("evnt_el_errors.txt", "a") as f:
-            f.write(l + "\n")
+            f.write(log_path + "\n")
             f.write(traceback.format_exc())
             continue
 

@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # # Gets the current time
+
 curr_time=$(date +"%Y.%m.%dT%H")
 
-cp /sdf/home/s/$USER/AF-Benchmarking/NTuple_Hist/coffea/SLAC/example.py .
+cp /sdf/home/s/"$USER"/AF-Benchmarking/NTuple_Hist/coffea/SLAC/example.py .
 
 date >> split.log
 
@@ -15,7 +16,7 @@ hostname >> split.log
 
 log_file_dir="/sdf/data/atlas/u/selbor/benchmarks/${curr_time}/Coffea_Hist/"
 
-mkdir -p ${log_file_dir}
+mkdir -p "${log_file_dir}"
 
-mv coffea_hist.log ${log_file_dir}
-mv split.log ${log_file_dir}
+mv coffea_hist.log "${log_file_dir}"
+mv split.log "${log_file_dir}"

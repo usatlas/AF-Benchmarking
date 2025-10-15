@@ -20,17 +20,17 @@ benchmark_paths = parsing.benchmark_path()
 full_path_list = parsing.full_path_function(benchmark_paths)
 
 list_dics = []
-for l in full_path_list:
+for log_path in full_path_list:
     try:
         list_dics.append(parsing.parsing_truth3_batch(l))
     except FileNotFoundError:
         try:
-            list_dics.append(parsing.string_and_split(l))
+            list_dics.append(parsing.string_and_split(log_path))
         except FileNotFoundError:
             continue
-    except Exception as e:
+    except Exception:
         with open("truth3_el_batch_errors.txt", "a") as f:
-            f.write(l + "\n")
+            f.write(log_path + "\n")
             f.write(traceback.format_exc())
             continue
 

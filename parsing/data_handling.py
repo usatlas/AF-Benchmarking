@@ -62,7 +62,7 @@ class Data_Handling(Parsing_Class):
         try:
             response = es.info()
             success = True
-        except Exception as e:
+        except Exception:
             success = False
             print(e)
         if success:
