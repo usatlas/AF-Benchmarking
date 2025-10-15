@@ -7,4 +7,3 @@ if [ -d ${job_dir} ]; then
   cd ${job_dir}
   condor_submit ~/AF-Benchmarking/TRUTH3/BNL/truth3_native.sub
 fi
-

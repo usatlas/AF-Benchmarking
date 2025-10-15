@@ -3,14 +3,15 @@ import json
 import os
 from elasticsearch import Elasticsearch
 
+
 class Data_Handling(Parsing_Class):
     def __init__(self, site_dir, job_name, log_name, site, script_dir):
         super().__init__(site_dir, job_name, log_name, site)
         self.script_dir = script_dir
-            
-    '''
+
+    """
     The following functions deal with the data once it has been parsed and stored in the respective dictionaries.
-    
+
     json_instances:
     - List input containing dictionaries
     - Elements are made into json instances
@@ -25,11 +26,11 @@ class Data_Handling(Parsing_Class):
 
     append_new_data:
     - The elements of the newly created new_entries_set are appended to the old_entries txt file
-    '''
+    """
 
     def json_instances(self, dic_list):
         # For-loop that will return a list of json instances
-        list_of_jsons =[]
+        list_of_jsons = []
         for dic in dic_list:
             list_of_jsons.append(json.dumps(dic))
         return list_of_jsons
@@ -39,7 +40,7 @@ class Data_Handling(Parsing_Class):
         if old_entries in os.listdir(self.benchmarks_dir_dic[self.site]):
             # Elements of the old_entries.txt file are appended to a list
             old_entries_list = []
-            with open(old_entries, 'r') as f:
+            with open(old_entries) as f:
                 if f:
                     lines_in_file = f.readlines()
                     for lines in lines_in_file:
@@ -55,9 +56,9 @@ class Data_Handling(Parsing_Class):
 
     def sending_data_to_ES(self, list_of_jsons, new_entries_set):
         es = Elasticsearch(
-                [{'host':"atlas-kibana.mwt2.org", 'port': 9200, 'scheme': "https"}],
-                basic_auth=("username", "password")
-                )
+            [{"host": "atlas-kibana.mwt2.org", "port": 9200, "scheme": "https"}],
+            basic_auth=("username", "password"),
+        )
         try:
             response = es.info()
             success = True
@@ -67,16 +68,12 @@ class Data_Handling(Parsing_Class):
         if success:
             for i in list_of_jsons:
                 if i in new_entries_set:
-                    es.index(
-                        index="af_benchmarks",
-                        document=i
-                        )
+                    es.index(index="af_benchmarks", document=i)
 
     def append_new_data(self, old_entries, new_entries_set):
-        with open(old_entries, 'a') as f:
+        with open(old_entries, "a") as f:
             if f:
                 for item in new_entries_set:
                     f.write(item + "\n")
             else:
                 print("ERROR -- FILE WAS NOT OPENED")
-

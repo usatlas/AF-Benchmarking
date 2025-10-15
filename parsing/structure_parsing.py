@@ -11,7 +11,7 @@ job_name = ''
 log_file_name=''
 
 # AF site used
-af_site ='' 
+af_site =''
 
 # Directory where the parsing script is located
 script_dir=r''
@@ -59,4 +59,3 @@ parsing.sending_data_to_ES(list_of_jsons, new_entries_set)
 # The new entries are appended onto the old_entries file
 parsing.append_new_data(old_entries, new_entries_set)
 ~
-  

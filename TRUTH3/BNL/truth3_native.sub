@@ -10,4 +10,3 @@ Executable = /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/BNL/run_truth3_native_b
 request_memory = 3G
 
 Queue 1
-

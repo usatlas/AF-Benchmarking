@@ -14,4 +14,3 @@ Derivation_tf.py --CA True --inputEVNTFile /srv/TRUTH3Files/el9/EVNT.root --outp
 
 # Appends the host-name to the end of the log file
 hostname >> log.Derivation
-

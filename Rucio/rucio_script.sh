@@ -1,6 +1,6 @@
 #! /bin/bash
 
-container_el9 (){ 
+container_el9 (){
   # Takes the following parameters:
   # - job_dir (1)
   # - dir_mount (2)
@@ -72,5 +72,3 @@ then
   output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_time/Rucio"
   container_el9 ${job_dir} ${dir_mount} ${output_dir} ${download_ID}
 fi
-
-

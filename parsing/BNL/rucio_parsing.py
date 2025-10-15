@@ -6,15 +6,15 @@ path_to_logs = r"/usatlas/u/jroblesgo/benchmarks"
 
 job_name = "Rucio"
 
-log_file_name="rucio.log"
+log_file_name = "rucio.log"
 
 af_site = "bnl"
 
-script_dir=r"/usatlas/u/jroblesgo/"
+script_dir = r"/usatlas/u/jroblesgo/"
 
-old_entries="rucio_sent.txt"
+old_entries = "rucio_sent.txt"
 
-error_file="rucio_error.txt"
+error_file = "rucio_error.txt"
 
 parsing = dh.Data_Handling(path_to_logs, job_name, log_file_name, af_site, script_dir)
 
@@ -27,9 +27,9 @@ list_dics = []
 for l in full_path_list:
     try:
         list_dics.append(parsing.parsing_rucio(l))
-    except Exception as e:
-        with open(error_file, 'a') as f:
-            f.write(l+"n")
+    except Exception:
+        with open(error_file, "a") as f:
+            f.write(l + "n")
             f.write(traceback.format_exc())
             continue
 

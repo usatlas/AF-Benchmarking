@@ -20,4 +20,3 @@ Derivation_tf.py --CA True --inputEVNTFile ${inputFile_dir}EVNT.root --outputDAO
 
 # Obtains and appends the host machine to the log file
 hostname >> log.Derivation
-

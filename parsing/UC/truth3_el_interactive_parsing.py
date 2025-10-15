@@ -1,24 +1,24 @@
-import data_handling as dh    
+import data_handling as dh
 
 
-path_to_logs=r'/data/selbor/benchmarks/'
+path_to_logs = r"/data/selbor/benchmarks/"
 
-job_name="TRUTH3_el9_container_interactive"
+job_name = "TRUTH3_el9_container_interactive"
 
-log_file_name="log.Derivation"
+log_file_name = "log.Derivation"
 
-af_site="uc"
+af_site = "uc"
 
-script_dir=r"/data/selbor/parsing_jobs/"
+script_dir = r"/data/selbor/parsing_jobs/"
 
-old_entries="truth3_el9_interactive_sent.txt"
+old_entries = "truth3_el9_interactive_sent.txt"
 
-parsing=dh.Data_Handling(path_to_logs, job_name, log_file_name, af_site, script_dir)
+parsing = dh.Data_Handling(path_to_logs, job_name, log_file_name, af_site, script_dir)
 
 benchmark_paths = parsing.benchmark_path()
 full_path_list = parsing.full_path_function(benchmark_paths)
 
-list_dics=[]
+list_dics = []
 for l in full_path_list:
     try:
         list_dics.append(parsing.parsing_truth3_batch(l))
@@ -27,8 +27,8 @@ for l in full_path_list:
             list_dics.append(parsing.string_and_split(l))
         except FileNotFoundError:
             continue
-    except Exception as e:
-        with open('truth3_el_interactive_errors.txt', 'a') as f:
+    except Exception:
+        with open("truth3_el_interactive_errors.txt", "a") as f:
             f.write(l + "\n")
             f.write(traceback.format_exc())
             continue

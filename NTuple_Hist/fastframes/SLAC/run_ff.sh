@@ -17,4 +17,3 @@ file_dir="/sdf/data/atlas/u/selbor/benchmarks/${curr_date}/FF_Hist/"
 mkdir -p ${file_dir}
 
 mv ff.log ${file_dir}
-

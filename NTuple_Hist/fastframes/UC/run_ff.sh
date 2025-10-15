@@ -19,7 +19,7 @@ cp ~/AF-Benchmarking/NTuple_Hist/fastframes/UC/mc20e_example_config.yml ${workin
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
 
-# Set up for FF 
+# Set up for FF
 asetup StatAnalysis,0.6.3
 lsetup emi
 cat /data/selbor/pass/pass.txt | voms-proxy-init -voms atlas

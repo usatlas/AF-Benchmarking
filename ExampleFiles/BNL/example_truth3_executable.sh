@@ -15,4 +15,3 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "asetup Athena
 
 # Obtains and appends the host name to the log file
 hostname >> log.Derivation
-

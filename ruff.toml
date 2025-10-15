@@ -1,0 +1,24 @@
+line-length = 88
+# some from SUSY PreInclude: https://gitlab.cern.ch/atlas/athena/-/blob/f275abe6e27941fe8417103b13e62a70812275ea/Generators/MadGraphControl/share/common/SUSY_SimplifiedModel_PreInclude.py
+builtins = ["include", "param_blocks", "masses", "decays", "filtSeq", "GeV", "evgenLog", "evgenConfig", "genSeq"]
+
+[lint]
+select = [
+  "E", "F", "W", # flake8
+  "UP",          # pyupgrade
+  "RUF",         # Ruff-specific
+  "TID",         # flake8-tidy-imports
+]
+ignore = [
+  "E402",
+  "E501",
+  "RUF001", # String contains ambiguous unicode character
+  "RUF005", # unpack-instead-of-concatenating-to-collection-literal
+]
+unfixable = [
+  "F841", # Removes unused variables
+]
+flake8-tidy-imports.ban-relative-imports = "all"
+
+[lint.per-file-ignores]
+"**.ipynb" = ["F821", "F401", "F841", "F811", "E703"]

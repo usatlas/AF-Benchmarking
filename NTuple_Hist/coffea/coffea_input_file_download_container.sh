@@ -2,7 +2,7 @@
 
 # File to use: user.bhodkins.42164748._000288.ANALYSIS.root
 
-container_el9 (){ 
+container_el9 (){
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   export ALRB_localConfigDir=$HOME/localConfig
   source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -r "export RUCIO_ACCOUNT=jroblesg && \

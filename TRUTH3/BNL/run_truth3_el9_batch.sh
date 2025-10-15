@@ -37,4 +37,3 @@ mv pipe_file.log ${output_dir}
 if [ $(pwd)="/atlasgpfs01/usatlas/scratch/jroblesgo/TRUTH3/el" ]; then
   rm -r *
 fi
-

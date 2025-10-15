@@ -33,4 +33,3 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c el9 -m /atlasgpfs01/u
 
 #mv coffea_hist.log ${output_dir}
 #mv split.log ${output_dir}
-

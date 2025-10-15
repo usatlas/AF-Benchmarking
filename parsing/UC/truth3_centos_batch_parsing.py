@@ -35,7 +35,7 @@ for l in full_path_list:
            f.write(traceback.format_exc())
             continue
 
-    
+
 list_of_jsons = parsing.json_instances(list_dics)
 
 new_entries_set = parsing.bookkeeping_data(list_of_jsons, old_entries)

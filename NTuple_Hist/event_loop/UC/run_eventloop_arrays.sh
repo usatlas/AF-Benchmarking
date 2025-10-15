@@ -13,7 +13,7 @@ lsetup "views LCG_107a_ATLAS_2 x86_64-el9-gcc13-opt"
 date >> split.log
 
 # Running the script
-python3 ~/AF-Benchmarking/NTuple_Hist/event_loop/UC/event_loop_arrays.py 2>&1 | tee eventloop_arrays.log 
+python3 ~/AF-Benchmarking/NTuple_Hist/event_loop/UC/event_loop_arrays.py 2>&1 | tee eventloop_arrays.log
 
 # Getting end date
 date >> split.log

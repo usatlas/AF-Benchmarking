@@ -37,4 +37,3 @@ mkdir -p ${log_file_dir}
 
 mv coffea_hist.log ${log_file_dir}
 mv split.log ${log_file_dir}
-

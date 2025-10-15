@@ -1,6 +1,6 @@
 #! /bin/bash
 
-container_el9 (){ 
+container_el9 (){
   # Takes the following parameters:
   # - output_dir (1)
   # - job_dir (2)
@@ -49,5 +49,3 @@ then
   output_dir="/home/$USER/benchmarks/$curr_time/Rucio"
   container_el9 ${output_dir} ${job_dir} ${download_ID}
 fi
-
-

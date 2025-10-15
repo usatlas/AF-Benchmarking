@@ -13,4 +13,3 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
 asetup Athena,24.0.53,here
 
 Derivation_tf.py --CA True --inputEVNTFile /data/$user_name/TRUTH3_StaticDir/EVNT.root --outputDAODFile=TRUTH3.root --formats TRUTH3
-

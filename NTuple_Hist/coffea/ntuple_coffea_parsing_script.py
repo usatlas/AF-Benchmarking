@@ -81,7 +81,7 @@ def parsing_function(l):
     else:
         print("ERROR -- FILE WAS NOT OPENED")
     f.close()
-   
+
 
 def creates_dics(list_of_data_tuples, af_location):
     af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}

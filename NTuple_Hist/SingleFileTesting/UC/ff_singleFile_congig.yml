@@ -1,25 +1,25 @@
 general:
   debug_level: DEBUG
-  
+
   # Paths
   input_filelist_path: "/srv/ntuple/fastframes/input/single_file.txt"
   input_sumweights_path: "/srv/ntuple/fastframes/input/single_sumweights.txt"
   output_path_histograms: "/srv/ntuple/fastframes/output/"
 
-
   # Weights
   default_sumweights: "NOSYS"
   default_event_weights: "weight_mc_NOSYS * weight_pileup_NOSYS"
-  
+
   default_reco_tree_name: "analysis"
 
-
-# path to the file with cross-sections
-  xsection_files: ["/cvmfs/atlas.cern.ch/repo/sw/database/GroupData/dev/PMGTools/PMGxsecDB_mc16.txt"]
+  # path to the file with cross-sections
+  xsection_files:
+    [
+      "/cvmfs/atlas.cern.ch/repo/sw/database/GroupData/dev/PMGTools/PMGxsecDB_mc16.txt",
+    ]
 
   # name of the custom class
   custom_frame_name: "TutorialClass"
-
 
   # automatic systematics?
   automatic_systematics: True
@@ -31,12 +31,12 @@ general:
   number_of_cpus: 1
 
   luminosity:
-      mc20a: 140000
+    mc20a: 140000
 
 # Define regions
 regions:
   - name: "Muon"
-    selection: "true" 
+    selection: "true"
     variables:
       - name: "ph_pt"
         title: "p_{T}; p_{T} [GeV];Events"
