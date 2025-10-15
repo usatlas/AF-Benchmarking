@@ -161,7 +161,6 @@ def makes_json_instances(list_of_dics):
 
 def bookkeeping_data(list_of_jsons):
     if sent_file in os.listdir(python_script_dir):
-        instances_not_in_file = []
         f = open(sent_file)
         formatted_lines = []
         if f:

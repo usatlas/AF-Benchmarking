@@ -9,18 +9,6 @@ def photon_ABCD_eventloop(f_name):
     f = r.TFile(f_name, "RO")
     t = f.Get("analysis")
     h_baseline_pt = r.TH1F("baseline_pt", "baseline_pt", 10000, 0, 10000)
-    h_istruth_it_ii_pt = r.TH1F(
-        "istruth_istight_isiso_pt", "istight_isiso", 10000, 0, 10000
-    )
-    h_istruth_it_ni_pt = r.TH1F(
-        "istruth_istight_noiso_pt", "istight_noiso", 10000, 0, 10000
-    )
-    h_istruth_nt_ii_pt = r.TH1F(
-        "istruth_notight_isiso_pt", "notight_isiso", 10000, 0, 10000
-    )
-    h_istruth_nt_ni_pt = r.TH1F(
-        "istruth_notight_noiso_pt", "notight_noiso", 10000, 0, 10000
-    )
 
     h_notruth_it_ii_pt = r.TH1F(
         "notruth_istight_isiso_pt", "istight_isiso", 10000, 0, 10000
@@ -79,7 +67,7 @@ def photon_ABCD_eventloop(f_name):
         btags = 0
         leadjetpt = 0.0
         ljpt = max(e.jet_pt_NOSYS)
-        if e.jet_pt_NOSYS[0] == None:
+        if e.jet_pt_NOSYS[0] is None:
             print(e.jet_pt_NOSYS)
         for j in range(len(e.jet_pt_NOSYS)):
             tlv = r.TLorentzVector()
@@ -108,7 +96,6 @@ def photon_ABCD_eventloop(f_name):
         postmindphicut += 1
 
         # at least one loose photon with pT>10 GeV, no photons near jets
-        photons = {}
         photon_index = -1
         for p in range(len(e.ph_pt_NOSYS)):
             if not ord(e.ph_select_baseline_NOSYS[p]) > 0:

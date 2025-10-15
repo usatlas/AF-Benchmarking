@@ -58,13 +58,11 @@ def parsing_function(element_from_list_of_full_path):
                 time_started = first_line_list[0]
                 time_submitted = first_line_list[5]
                 day_submitted = first_line_list[4]
-                time_zone = first_line_list[6]
                 year_submitted = first_line_list[7]
             elif len(first_line_list) == 7:
                 time_started = first_line_list[0]
                 time_submitted = first_line_list[4]
                 day_submitted = first_line_list[3]
-                time_zone = first_line_list[5]
                 year_submitted = first_line_list[6]
             month_submitted = months_dic[first_line_list[2]]
             # Extracted all needed information from the first line
@@ -166,7 +164,6 @@ def makes_json_instances(list_of_dics):
 def bookkeeping_data(list_of_jsons):
     python_script_dir = r"/Users/selbor/Work/env/"
     if "evnt_el9_sent.txt" in os.listdir(python_script_dir):
-        instances_not_in_file = []
         f = open("evnt_el9_sent.txt")
         formatted_lines = []
         if f:
@@ -188,7 +185,6 @@ def bookkeeping_data(list_of_jsons):
 
 
 def append_new_data(diff_set):
-    python_script_dir = r"/Users/selbor/Work/env/"
     f = open("evnt_el9_sent.txt", "a")
     if f:
         for item in diff_set:

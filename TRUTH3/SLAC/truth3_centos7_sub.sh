@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC1091
 #
 #SBATCH --account=atlas:usatlas
 #SBATCH --partition=ampere

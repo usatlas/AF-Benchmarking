@@ -131,7 +131,6 @@ def makes_json_instances(list_of_dics):
 def bookkeeping_data(list_of_jsons):
     python_script_dir = r"/Users/selbor/Work/env/"
     if "rucio_sent.txt" in os.listdir(python_script_dir):
-        instances_not_in_file = []
         f = open("rucio_sent.txt")
         formatted_lines = []
         if f:
@@ -153,7 +152,6 @@ def bookkeeping_data(list_of_jsons):
 
 
 def append_new_data(diff_set):
-    python_script_dir = r"/Users/selbor/Work/env/"
     f = open("rucio_sent.txt", "a")
     if f:
         for item in diff_set:

@@ -1,7 +1,7 @@
 include("MadGraphControl/SUSY_SimplifiedModel_PreInclude.py")
 # from GeneratorFilters.GeneratorFiltersConf import xAODPhotonFilter
 # from GeneratorFilters.GeneratorFiltersConf import xAODMultiElecMuTauFilter
-from MadGraphControl.MadGraphUtilsHelpers import *
+from MadGraphControl.MadGraphUtilsHelpers import get_physics_short
 
 
 include("GeneratorFilters//xAODPhotonFilter_Common.py")

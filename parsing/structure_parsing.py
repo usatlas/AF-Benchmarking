@@ -2,25 +2,25 @@ import data_handling as dh
 import traceback
 
 # Path to log files
-path_to_logs=r''
+path_to_logs = r""
 
 # Job name
-job_name = ''
+job_name = ""
 
 # Name of log file
-log_file_name=''
+log_file_name = ""
 
 # AF site used
-af_site =''
+af_site = ""
 
 # Directory where the parsing script is located
-script_dir=r''
+script_dir = r""
 
 # Txt file containing all the previously sent json instances
-old_entries=""
+old_entries = ""
 
 # Txt file containing all the 'new' errors
-error_file=''
+error_file = ""
 
 # Constructing the object with the Data_Handling Class
 parsing = dh.Data_Handling(path_to_logs, job_name, log_file_name, af_site, script_dir)
@@ -33,16 +33,17 @@ full_path_list = parsing.full_path_function(benchmark_paths)
 
 
 # List of dictionaries
-list_dics=[]
+list_dics = []
 
 # For-loop block used to populate the list
 for l in full_path_list:
     try:
-        list_dics.append(parsing.# Job's parsing function(l))
-    except SomeException:
-        list_dics.append(parsing.# Alternate parsing function(l))
+        # TODO: Replace with actual Job's parsing function
+        list_dics.append(parsing.parsing_function(l))
     except Exception as e:
-        with open(error_file, 'a') as f:
+        # TODO: Replace with actual alternate parsing function if needed
+        # list_dics.append(parsing.alternate_parsing_function(l))
+        with open(error_file, "a") as f:
             f.write(l + "\n")
             f.write(traceback.format_exc())
             continue
@@ -58,4 +59,3 @@ parsing.sending_data_to_ES(list_of_jsons, new_entries_set)
 
 # The new entries are appended onto the old_entries file
 parsing.append_new_data(old_entries, new_entries_set)
-~
