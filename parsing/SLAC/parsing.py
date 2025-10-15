@@ -302,11 +302,11 @@ class Parsing_Class:
 
     # Parsing TRUTH3 with new log splitting workflow
     def parsing_truth3_log_split(
-        self, l, os_used="native", container=False, batch=False
+        self, log_path, os_used="native", container=False, batch=False
     ):
         # Getting the absolute path of the split log file
-        split_log_path = l.replace(self.log_name, self.split)
-        piped_path = l.replace(self.log_name, self.piped)
+        split_log_path = log_path.replace(self.log_name, self.split)
+        piped_path = log_path.replace(self.log_name, self.piped)
         # Creates a dictionary with predetermined keys
         dic = dict.fromkeys(self.dic_keys)
         # Opening the log file produced by the scheduled job

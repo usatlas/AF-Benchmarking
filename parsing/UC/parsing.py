@@ -1,6 +1,7 @@
 from paths import Paths_Class
 import datetime as dt
 from datetime import timezone
+from typing import ClassVar
 
 
 class Parsing_Class(Paths_Class):
