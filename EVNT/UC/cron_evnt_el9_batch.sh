@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /data/selbor/EVNTJob/container_el
+cd /home/selbor/EVNTJob/container_el
 
 rm *
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /data/selbor/EVNTJob/container_centos
+cd /home/selbor/EVNTJob/container_centos
 
 rm *
 
