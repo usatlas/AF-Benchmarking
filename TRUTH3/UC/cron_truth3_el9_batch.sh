@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /data/selbor/TRUTH3Job/container_el/
+cd /home/selbor/TRUTH3Job/container_el/
 
 rm *
 

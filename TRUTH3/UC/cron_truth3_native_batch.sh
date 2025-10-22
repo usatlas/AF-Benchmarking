@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /data/selbor/TRUTH3Job/native/
+cd /home/selbor/TRUTH3Job/native/
 
 rm *
 

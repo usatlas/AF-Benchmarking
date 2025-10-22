@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /data/selbor/TRUTH3Job/container_centos/
+cd /home/selbor/TRUTH3Job/container_centos/
 
 rm *
 
