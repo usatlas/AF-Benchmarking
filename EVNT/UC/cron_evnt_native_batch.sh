@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /data/selbor/EVNTJob/native
+cd /home/selbor/EVNTJob/native
 
 rm *
 
