@@ -12,7 +12,8 @@ cp ~/AF-Benchmarking/TRUTH3/EVNT.root ${inputFile_dir}
 
 # Sets up our environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+# shellcheck disable=SC1091
+source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
 
 # Sets the Athena version we want
 asetup Athena,24.0.53,here
@@ -20,4 +21,3 @@ Derivation_tf.py --CA True --inputEVNTFile ${inputFile_dir}EVNT.root --outputDAO
 
 # Obtains and appends the host machine to the log file
 hostname >> log.Derivation
-

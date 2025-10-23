@@ -4,7 +4,7 @@
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Job directory
-cd /pscratch/sd/s/selbor/ntuple/event_loop
+cd /pscratch/sd/s/selbor/ntuple/event_loop || exit
 
 # Setting up
 setup ATLAS
@@ -17,7 +17,8 @@ lsetup root
 date >> photon_eventloop.log
 
 # Running the script
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -r "lsetup 'python 3.9.21-x86_64-centos7' &&\
+# shellcheck disable=SC1091
+source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c centos7 -r "lsetup 'python 3.9.21-x86_64-centos7' &&\
   python3 ~/AF-Benchmarking/event_loop/NERSC/photon_ABCD_eventloop.py 2>&1 | tee photon_eventloop.log"
 
 # Getting end date
@@ -27,8 +28,8 @@ date >> photon_eventloop.log
 hostname >> photon_eventloop.log
 
 # Output Dir
-output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/$curr_time/photon_eventloop/"
+output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/${curr_time}/photon_eventloop/"
 
-mkdir -p ${output_dir}
+mkdir -p "${output_dir}"
 
-mv photon_eventloop.log ${output_dir}
+mv photon_eventloop.log "${output_dir}"

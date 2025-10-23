@@ -17,5 +17,5 @@ export OMP_NUM_THREADS=1
 export OMP_PLACES=threads
 export OMP_PROC_BIND=spread
 
-#run the application: 
-srun -n 1 -c 1 --cpu_bind=cores  $HOME/AF-Benchmarking/TRUTH3/NERSC/run_truth3_centos7_batch.sh
+#run the application:
+srun -n 1 -c 1 --cpu_bind=cores  "$HOME"/AF-Benchmarking/TRUTH3/NERSC/run_truth3_centos7_batch.sh

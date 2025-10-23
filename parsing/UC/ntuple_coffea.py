@@ -2,29 +2,30 @@ import data_handling as dh
 import traceback
 
 
-path_to_logs=r'/data/selbor/benchmarks'
+path_to_logs = r"/data/selbor/benchmarks"
 
-job_name="Coffea_Hist"
+job_name = "Coffea_Hist"
 
-log_file_name="coffea_hist.log"
+log_file_name = "coffea_hist.log"
 
-af_site="uc"
+af_site = "uc"
 
-parsing_dir=r"/data/selbor/parsing_jobs/"
+parsing_dir = r"/data/selbor/parsing_jobs/"
 
-old_entries="coffea_sent.txt"
+old_entries = "coffea_sent.txt"
 
-parsing=dh.Data_Handling(path_to_logs, job_name, log_file_name, af_site, parsing_dir)
+parsing = dh.Data_Handling(path_to_logs, job_name, log_file_name, af_site, parsing_dir)
 
 benchmark_paths = parsing.benchmark_path()
 
 full_path_list = parsing.full_path_function(benchmark_paths)
-list_dics=[]
-for l in full_path_list:
-    list_dics.append(parsing.ntuple_parsing(l))
-    except Exception as e:
-        with open('ntuple_coffea_errors.txt', 'a') as f:
-            f.write(l + "\n")
+list_dics = []
+for log_path in full_path_list:
+    try:
+        list_dics.append(parsing.ntuple_parsing(log_path))
+    except Exception:
+        with open("ntuple_coffea_errors.txt", "a") as f:
+            f.write(log_path + "\n")
             f.write(traceback.format_exc())
             continue
 

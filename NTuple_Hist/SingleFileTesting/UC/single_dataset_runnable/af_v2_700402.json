@@ -1,6 +1,6 @@
 {
-    "Wmunugamma": {
-     "files": {
+  "Wmunugamma": {
+    "files": {
       "/data/maclwong/Ben_Bkg_Samples/v2/user.bhodkins.700402.Wmunugamma.mc20a.v2.1_ANALYSIS.root/user.bhodkins.42346303._000005.ANALYSIS.root": {
         "num_entries": 1921125,
         "object_path": "analysis",
@@ -54,5 +54,5 @@
       "process": "Wmunugamma",
       "xs": 364840.0
     }
-    }
+  }
 }

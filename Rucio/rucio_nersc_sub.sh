@@ -15,5 +15,5 @@ export OMP_NUM_THREADS=1
 export OMP_PLACES=threads
 export OMP_PROC_BIND=spread
 
-#run the application: 
-srun -n 2 -c 256 --cpu_bind=cores  $HOME/AF-Benchmarking/Rucio/rucio_script.sh
+#run the application:
+srun -n 2 -c 256 --cpu_bind=cores  "$HOME"/AF-Benchmarking/Rucio/rucio_script.sh

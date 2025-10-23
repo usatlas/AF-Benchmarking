@@ -12,7 +12,7 @@
 
 annotated-types==0.6.0
     # via pydantic
-astroid==3.1.0
+asteroid==3.1.0
     # via pylint
 awkward==2.6.3
     # via

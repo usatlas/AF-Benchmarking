@@ -16,27 +16,28 @@ config_dir="/data/$(whoami)/evnt_el9/100xxx/100001"
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 
 # Appends time before Gen_tf.py to log file
-echo $(date +"%H:%M:%S") >> split.log
+date +'%H:%H:%S' >> split.log
 
 # Sets up the container:
 ## -c : used to make a container followed by the OS we want to use
 ## -m : mounts a specific directory
 ## -r : precedes the commands we want to run within the container
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OS_container} -m /data:/data -r "asetup AthGeneration,23.6.34,here && \
+# shellcheck disable=SC1091
+source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c ${OS_container} -m /data:/data -r "asetup AthGeneration,23.6.34,here && \
 Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed} 2>&1 | tee pipe_file.log"
- 
+
 # Appends time after Gen_tf.py to a log file
-echo $(date +"%H:%M:%S") >> split.log
+date +'%H:%H:%S' >> split.log
 
 # Defines and makes the output directory
-output_dir="/data/$(whoami)/benchmarks/$curr_time/EVNT_contained_el9/"
-mkdir -p ${output_dir}
+output_dir="/data/$(whoami)/benchmarks/${curr_time}/EVNT_contained_el9/"
+mkdir -p "${output_dir}"
 
 # Obtains and appends the host name and payload size to the log file
 hostname >> split.log
 du EVNT.root >> split.log
 
 # Moves the log file and date_name file to the output directory
-mv log.generate ${output_dir}
-mv split.log ${output_dir}
-mv pipe_file.log ${output_dir}
+mv log.generate "${output_dir}"
+mv split.log "${output_dir}"
+mv pipe_file.log "${output_dir}"

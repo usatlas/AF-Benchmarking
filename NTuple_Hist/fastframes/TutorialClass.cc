@@ -60,4 +60,3 @@ ROOT::RDF::RNode TutorialClass::defineVariablesNtupleTruth(ROOT::RDF::RNode node
                                                            const UniqueSampleID& /*sampleID*/) {
   return node;
 }
-  

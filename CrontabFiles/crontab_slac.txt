@@ -15,4 +15,3 @@
 0 */6 * * * /sdf/home/s/selbor/AF-Benchmarking/NTuple_Hist/coffea/SLAC/cron_coffea_slac.sh
 
 59 */6 * * * /sdf/home/s/selbor/parsing_jobs/cron_parsing.sh
-

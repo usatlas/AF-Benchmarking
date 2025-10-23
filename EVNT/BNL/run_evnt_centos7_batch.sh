@@ -18,16 +18,16 @@ source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c centos7 -m /atlasgpfs
 output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/EVNT_centos7_batch"
 
 # Creates the output directory
-mkdir -p ${output_dir}
+mkdir -p "${output_dir}"
 # Obtains and appends the host name and payload size to the log file
 hostname >> split.log
 du EVNT.root >> split.log
 # Moves the log file to the output directory
-mv log.generate ${output_dir}
-mv split.log ${output_dir}
-mv pipe_file.log ${output_dir}
+mv log.generate "${output_dir}"
+mv split.log "${output_dir}"
+mv pipe_file.log "${output_dir}"
 
 # Checks the directory, if it matches it cleans it for the next job
-if [ $(pwd)="/atlasgpfs01/usatlas/scratch/jroblesgo/EVNT/centos" ]; then
-  rm -r *
+if [ "$(pwd)" = "/atlasgpfs01/usatlas/scratch/jroblesgo/EVNT/centos" ]; then
+  rm -r ./*
 fi

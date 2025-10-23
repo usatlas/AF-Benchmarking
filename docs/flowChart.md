@@ -3,7 +3,6 @@
   <span style="color:#1976d2;">Blue border</span>: Data Formats
 </p>
 
-
 ```mermaid
 flowchart TD
     SLHA --> GenTF
@@ -41,9 +40,8 @@ flowchart TD
     Rucio_Downloads(["Rucio Downloads"])
     GenTF(["GenTF"])
     RecoTF/Derivation_TF(["RecoTF/Derivation_TF"])
-    
+
     classDef method fill:transparent,stroke:#d32f2f,stroke-width:2px,color:#d32f2f;
     class Event_Loop,Coffea,Fast_Frames,Rucio_Downloads,GenTF,RecoTF/Derivation_TF method;
 
 ```
-

@@ -1,20 +1,19 @@
-import parsing as pc
 import data_handling as dh
 import traceback
 
-path_to_logs=r'/data/selbor/benchmarks'
+path_to_logs = r"/data/selbor/benchmarks"
 
-job_name="TRUTH3"
+job_name = "TRUTH3"
 
-log_file_name="log.Derivation"
+log_file_name = "log.Derivation"
 
-af_site="uc"
+af_site = "uc"
 
-script_dir=r'/data/selbor/parsing_jobs/'
+script_dir = r"/data/selbor/parsing_jobs/"
 
-old_entries="truth3_native_batch_sent.txt"
+old_entries = "truth3_native_batch_sent.txt"
 
-parsing=dh.Data_Handling(path_to_logs, job_name, log_file_name, af_site, script_dir)
+parsing = dh.Data_Handling(path_to_logs, job_name, log_file_name, af_site, script_dir)
 
 benchmark_paths = parsing.benchmark_path()
 
@@ -22,23 +21,33 @@ full_path_list = parsing.full_path_function(benchmark_paths)
 
 list_dics = []
 
-for l in full_path_list:
+for log_path in full_path_list:
     try:
-        list_dics.append(parsing.parsing_truth3(l, batch=True))
+        list_dics.append(parsing.parsing_truth3(log_path, batch=True))
     except IndexError:
         try:
-            list_dics.append(parsing.parsing_truth3(l, batch=True, year_index=6, day_index=3, submit_time_index=4))
+            list_dics.append(
+                parsing.parsing_truth3(
+                    l, batch=True, year_index=6, day_index=3, submit_time_index=4
+                )
+            )
         except IndexError:
-            list_dics.append(parsing.parsing_truth3_e1(l, os_used="native", batch=True))
+            list_dics.append(
+                parsing.parsing_truth3_e1(log_path, os_used="native", batch=True)
+            )
         except ValueError:
-            list_dics.append(parsing.parsing_truth3_log_split(l, os_used="native", batch=True))
+            list_dics.append(
+                parsing.parsing_truth3_log_split(log_path, os_used="native", batch=True)
+            )
     except ValueError:
-        list_dics.append(parsing.parsing_truth3_log_split(l, os_used="native", batch=True))
+        list_dics.append(
+            parsing.parsing_truth3_log_split(log_path, os_used="native", batch=True)
+        )
     except FileNotFoundError:
         pass
-    except Exception as e:
-        with open('truth3_native_batch_errors.txt', 'a') as f:
-            f.write(l + "\n")
+    except Exception:
+        with open("truth3_native_batch_errors.txt", "a") as f:
+            f.write(log_path + "\n")
             f.write(traceback.format_exc())
             continue
 
