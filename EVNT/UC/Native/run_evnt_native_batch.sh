@@ -8,12 +8,6 @@ seed=1001
 # Directory storing the input files
 config_dir="/data/$(whoami)/evnt/100xxx/100001"
 
-scratch_dir="/scratch/$(whoami)/EVNTJob/native/"
-
-mkdir -p "${scratch_dir}"
-
-cd "${scratch_dir}" || exit
-
 # Sets up our working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 # shellcheck disable=SC1091
