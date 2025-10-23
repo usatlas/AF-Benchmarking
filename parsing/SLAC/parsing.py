@@ -4,12 +4,15 @@ import json
 from datetime import timezone
 import os
 import traceback
+from typing import ClassVar
+
 
 class Parsing_Class:
     # Shared qualities among all objects created with this class
 
     # Dictionary used to obtain AF script is running at
-    af_dictionary = {'uc':'UC-AF', 'slac':'SLAC-AF', 'bnl':'BNL-AF'}
+    af_dictionary: ClassVar[dict[str, str]] = {'uc': 'UC-AF', 'slac': 'SLAC-AF', 'bnl': 'BNL-AF'}
+
 
     # Dictionary used to obtain job string recognized by ElasticSearch
     job_dictionary = {'Rucio': 'Rucio Download', "TRUTH3": "truth3-batch", "EVNT": "EVNT-batch", "Coffea_Hist": "ntuple-hist-coffea", "TRUTH3_centos": "truth3-centos-container-batch", "TRUTH3_el9_container": "truth3-el9-container-batch", "TRUTH3_centos_interactive": "truth3-centos-container-interactive", "TRUTH3_interactive": "truth3-interactive", "EVNT_contained_el9":"EVNT-el9-container-batch", "EVNT_contained_centos7": "EVNT-centos7-container-batch", "TRUTH3_el9_container_interactive":"truth3-el9-container-interactive", "EVNT_container_el":"EVNT-el9-container-batch", "EVNT_container_centos":"EVNT-centos7-container-batch", "TRUTH3_centos7_container":"truth3-centos-container-batch" }
