@@ -1,0 +1,12 @@
+Universe = vanilla
+
+Output = /home/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).out
+Error = /home/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).err
+Log = /home/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).log
+
+Executable = /home/selbor/AF-Benchmarking/EVNT/UC/run_evnt_native_batch.sh
+
+request_memory = 3GB
+request_cpus = 1
+
+Queue 1
