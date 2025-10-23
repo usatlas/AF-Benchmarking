@@ -11,6 +11,7 @@ OScontainer="el9"
 ## -m : mounts a specific directory
 ## -r : precedes the commands we want to run within the container
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+# shellcheck disable=SC1091
 source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh -c ${OScontainer} -m /atlasgpfs01 -r "asetup AthGeneration,23.6.34,here &&\
   echo $(date +"%Y.%m.%d.%H.%S") >> split.log &&\
   Gen_tf.py --ecmEnergy=13000.0 --jobConfig=/atlasgpfs01/usatlas/data/jroblesgo/EVNTJob/el/EVNTFiles/100xxx/100001/  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=1001 2>&1 | tee pipe_file.log &&\
