@@ -4,7 +4,7 @@ Output = /scratch/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).out
 Error = /scratch/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).err
 Log = /scratch/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).log
 
-Executable = /home/selbor/AF-Benchmarking/EVNT/UC/run_evnt_native_batch.sh
+Executable = /home/selbor/AF-Benchmarking/EVNT/UC/native/run_evnt_native_batch.sh
 
 request_memory = 3GB
 request_cpus = 1
