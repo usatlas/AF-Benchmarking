@@ -264,7 +264,6 @@ class Parsing_Class:
         with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
-                N = len(file_lines)
                 date_time_string = (log_path.split("/"))[4]
                 start_year = int(date_time_string[0:4])
                 start_month = int(date_time_string[5:7])
@@ -297,7 +296,6 @@ class Parsing_Class:
         with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
-                N = len(file_lines)
                 host_name = file_lines[0]
                 payload_size = file_lines[1].split("\t")[0]
                 submit_string = log_path.split("/")[6]
@@ -511,7 +509,6 @@ class Parsing_Class:
         with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
-                N = len(file_lines)
                 host_name = file_lines[0]
                 start_date_time_list = log_path.split("/")
                 new_datetime_list = start_date_time_list[4].split(".")
@@ -544,7 +541,6 @@ class Parsing_Class:
         with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
-                N = len(file_lines)
                 host_name = file_lines[0]
                 payload_size = file_lines[1].split("\t")[0]
                 submit_string = log_path.split("/")[6]
@@ -577,7 +573,6 @@ class Parsing_Class:
         with open(log_path) as f:
             if f:
                 file_lines = f.read().splitlines()
-                N = len(file_lines)
                 host_name = file_lines[0]
                 submit_string = log_path.split("/")[6]
                 year = int(submit_string[0:4])

@@ -60,9 +60,8 @@ class Data_Handling(Parsing_Class):
             basic_auth=("username", "password"),
         )
         try:
-            response = es.info()
             success = True
-        except Exception:
+        except Exception as e:
             success = False
             print(e)
         if success:

@@ -8,10 +8,14 @@ class Parsing_Class(Paths_Class):
     # Shared qualities among all objects created with this class
 
     # Dictionary used to obtain AF script is running at
-    af_dictionary: ClassVar[dict] = {"uc": "UC-AF", "slack": "SLAC-AF", "bnl": "BNL-AF"}
+    af_dictionary: ClassVar[dict[str, str]] = {
+        "uc": "UC-AF",
+        "slack": "SLAC-AF",
+        "bnl": "BNL-AF",
+    }
 
     # Dictionary used to obtain job string recognized by ElasticSearch
-    job_dictionary: ClassVar[dict] = {
+    job_dictionary: ClassVar[dict[str, str]] = {
         "Rucio": "Rucio Download",
         "TRUTH3": "truth3-batch",
         "EVNT": "EVNT-batch",
@@ -26,7 +30,7 @@ class Parsing_Class(Paths_Class):
     }
 
     # Dictionary keys used to create dictionaries with none values
-    dic_keys: ClassVar[list] = [
+    dic_keys: ClassVar[list[str]] = [
         "cluster",
         "testType",
         "submitTime",
@@ -39,14 +43,10 @@ class Parsing_Class(Paths_Class):
 
     # Dictionary storing the directory where the script directories are located at sites
     ## UPDATE: Need to include SLAC and BNL ##
-    benchmarks_dir_dic: ClassVar[dict] = {
-        "uc": "/data/selbor/parsing_jobs",
-        "slack": None,
-        "bnl": None,
-    }
+    # benchmarks_dir_dic = {"uc": "/data/selbor/parsing_jobs", "slack": None, "bnl": None}
 
     # Dictionary that contains months mapped to numbers; used when parsing EVNT and TRUTH3 log files
-    months_dic: ClassVar[dict] = {
+    months_dic: ClassVar[dict[str, str]] = {
         "Jan": "01",
         "Feb": "02",
         "Mar": "03",
@@ -93,8 +93,8 @@ class Parsing_Class(Paths_Class):
         return dic
 
     # Function that checks the split log file
-    def checks_for_split_logs(self, l):
-        split_log = l.replace(self.log_name, self.split)
+    def checks_for_split_logs(self, log_file):
+        split_log = log_file.replace(self.log_name, self.split)
         with open(split_log) as g:
             lines = g.read().splitlines()
             n = len(lines)
@@ -111,9 +111,9 @@ class Parsing_Class(Paths_Class):
         return (start_time, end_time, host_name, payload_size)
 
     # Uses information from the split log files and the date time string
-    def string_and_split(self, l):
-        split_lines = self.checks_for_split_logs(l)
-        dateTimeString = log_path.split("/")[4]
+    def string_and_split(self, log_file):
+        split_lines = self.checks_for_split_logs(log_file)
+        dateTimeString = log_file.split("/")[4]
         year = int(dateTimeString[0:4])
         month = int(dateTimeString[5:7])
         day = int(dateTimeString[8:10])
@@ -152,8 +152,8 @@ class Parsing_Class(Paths_Class):
 
     # Rucio parsing function
     # sti and eti are default cases, can be shifted if there are errors
-    def parsing_rucio(self, log_path, sti=0, eti=12, psi=1):
-        with open(log_path) as f:
+    def parsing_rucio(self, log_file, sti=0, eti=12, psi=1):
+        with open(log_file) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -233,7 +233,7 @@ class Parsing_Class(Paths_Class):
                     run_time = 0
                     payload_size = 0
                     exit_code = 1
-                    date_time_string = log_path.split("/")[4]
+                    date_time_string = log_file.split("/")[4]
                     year = int(date_time_string[0:4])
                     month = int(date_time_string[5:7])
                     day = int(date_time_string[8:10])
@@ -261,8 +261,8 @@ class Parsing_Class(Paths_Class):
         return dic
 
     # Function that parses EVNT job files
-    def parsing_evnt(self, log_path, os_used="native"):
-        with open(log_path) as f:
+    def parsing_evnt(self, log_file, os_used="native"):
+        with open(log_file) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -273,9 +273,9 @@ class Parsing_Class(Paths_Class):
                     "workers-ads-long-" in first_line and N <= 1
                 ):
                     try:
-                        self.checks_for_split_logs(l)
+                        self.checks_for_split_logs(log_file)
                     except FileNotFoundError:
-                        dateTimeString = log_path.split("/")[4]
+                        dateTimeString = log_file.split("/")[4]
                         year = int(dateTimeString[0:4])
                         month = int(dateTimeString[5:7])
                         day = int(dateTimeString[8:10])
@@ -402,7 +402,7 @@ class Parsing_Class(Paths_Class):
                             run_time += int((dt.timedelta(days=1)).total_seconds())
                         exit_code = 1
                         payload_size = 0
-                        host_name = self.checks_for_split_logs(l)[2]
+                        host_name = self.checks_for_split_logs(log_file)[2]
                         dic = self.dictionary_maker(
                             start_date_time_timestamp,
                             queue_time,
@@ -426,9 +426,9 @@ class Parsing_Class(Paths_Class):
                         if run_time < 0:
                             run_time += int((dt.timedelta(days=1)).total_seconds())
 
-                        host_name = self.checks_for_split_logs(l)[2]
+                        host_name = self.checks_for_split_logs(log_file)[2]
                         payload_size = int(
-                            self.checks_for_split_logs(l)[3].split("\t")[0]
+                            self.checks_for_split_logs(log_file)[3].split("\t")[0]
                         )
                         exit_code = 0
                         dic = self.dictionary_maker(
@@ -443,17 +443,17 @@ class Parsing_Class(Paths_Class):
                 print("ERROR -- FILE WAS NOT OPENED")
             return dic
 
-    def parsing_truth3_batch(self, log_path):
-        with open(log_path) as f:
+    def parsing_truth3_batch(self, log_file):
+        with open(log_file) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
                 # print(l)
-                # print(self.checks_for_split_logs(l))
+                # print(self.checks_for_split_logs(log_file))
 
                 # Checks the length of the file; when it's one it just contains the host-name
                 if N == 1:
-                    dateTimeString = log_path.split("/")[4]
+                    dateTimeString = log_file.split("/")[4]
                     host_name = file_lines[0]
                     year = int(dateTimeString[0:4])
                     month = int(dateTimeString[5:7])
@@ -537,16 +537,16 @@ class Parsing_Class(Paths_Class):
                             year, month, day, end_time_h, end_time_m, end_time_s
                         )
                         run_time = int((end_datetime - start_datetime).total_seconds())
-                        host_name = self.checks_for_split_logs(l)[2]
-                        if self.checks_for_split_logs(l)[3] != 0:
+                        host_name = self.checks_for_split_logs(log_file)[2]
+                        if self.checks_for_split_logs(log_file)[3] != 0:
                             payload_size = int(
-                                (self.checks_for_split_logs(l)[3]).split("\t")[0]
+                                (self.checks_for_split_logs(log_file)[3]).split("\t")[0]
                             )
                             exit_code = 0
                         else:
                             payload_size = 0
                             exit_code = 1
-                        host_name = self.checks_for_split_logs(l)[2]
+                        host_name = self.checks_for_split_logs(log_file)[2]
                         dic = self.dictionary_maker(
                             start_date_time_timestamp,
                             queue_time,
@@ -557,8 +557,8 @@ class Parsing_Class(Paths_Class):
                         )
                 return dic
 
-    def ntuple_parsing(self, l):
-        with open(log_path) as f:
+    def ntuple_parsing(self, log_file):
+        with open(log_file) as f:
             if f:
                 file_lines = f.read().splitlines()
                 N = len(file_lines)
@@ -614,10 +614,10 @@ class Parsing_Class(Paths_Class):
                     )
                 except IndexError:
                     try:
-                        dic = self.string_and_split(l)
+                        dic = self.string_and_split(log_file)
                     except FileNotFoundError:
                         host_name = file_lines[N - 1]
-                        dateTimeString = log_path.split("/")[4]
+                        dateTimeString = log_file.split("/")[4]
                         year = int(dateTimeString[0:4])
                         month = int(dateTimeString[5:7])
                         day = int(dateTimeString[8:10])
