@@ -1,8 +1,8 @@
 Universe = vanilla
 
-Output = /home/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).out
-Error = /home/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).err
-Log = /home/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).log
+Output = /scratch/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).out
+Error = /scratch/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).err
+Log = /scratch/selbor/EVNTJob/native/evnt_native.$(Cluster).$(Process).log
 
 Executable = /home/selbor/AF-Benchmarking/EVNT/UC/run_evnt_native_batch.sh
 
