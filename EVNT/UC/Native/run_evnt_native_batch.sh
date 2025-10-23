@@ -33,7 +33,7 @@ date +'%H:%H:%S' >> split.log
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Directory where all the output files will be sent to
-output_dir="/data/$(whoami)/benchmarks/${curr_time}/EVNT/"
+output_dir="/home/$(whoami)/benchmarks/${curr_time}/EVNT/"
 
 # Makes the output directory
 mkdir -p "${output_dir}"
