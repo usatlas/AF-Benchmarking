@@ -4,7 +4,6 @@
 # current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
 
-
 # Input files are stored here
 config_dir="/data/$USER/TRUTH3_StaticDir/"
 
@@ -37,3 +36,10 @@ du DAOD_TRUTH3.TRUTH3.root >> split.log
 mv log.Derivation "${output_dir}"
 mv split.log "${output_dir}"
 mv pipe_file.log "${output_dir}"
+
+# Directory that needs to be cleaned
+cleanup_dir="/home/selbor/TRUTH3Job/native_i"
+
+if [[ -d "${cleanup_dir}" && "${cleanup_dir}" == "/home/selbor/TRUTH3Job/native_i" ]]; then
+    rm -rf "${cleanup_dir:?}/"*
+fi
