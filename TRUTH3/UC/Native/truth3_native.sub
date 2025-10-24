@@ -1,0 +1,13 @@
+Universe = vanilla
+
+
+Output = /home/selbor/TRUTH3Job/native/truth3_native.$(Cluster).$(Process).out
+Error = /home/selbor/TRUTH3Job/native/truth3_native.$(Cluster).$(Process).err
+Log = /home/selbor/TRUTH3Job/native/truth3_native.$(Cluster).$(Process).log
+
+Executable = /home/selbor/AF-Benchmarking/TRUTH3/UC/Native/run_truth3_native_batch.sh
+
+request_memory = 3GB
+request_cpus = 1
+
+Queue 1
