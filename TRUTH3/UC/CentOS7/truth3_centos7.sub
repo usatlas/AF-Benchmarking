@@ -5,7 +5,7 @@ Output = /home/selbor/TRUTH3Job/centos7/truth3_centos7.$(Cluster).$(Process).out
 Error = /home/selbor/TRUTH3Job/centos7/truth3_centos7.$(Cluster).$(Process).err
 Log = /home/selbor/TRUTH3Job/centos7/truth3_centos7.$(Cluster).$(Process).log
 
-Executable = /home/selbor/AF-Benchmarking/TRUTH3/UC/run_truth3_centos7_batch.sh
+Executable = /home/selbor/AF-Benchmarking/TRUTH3/UC/CentOS7/run_truth3_centos7_batch.sh
 
 request_memory = 3GB
 request_cpus = 1
