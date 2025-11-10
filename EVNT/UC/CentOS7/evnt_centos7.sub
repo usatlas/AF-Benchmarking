@@ -1,0 +1,13 @@
+Universe = vanilla
+
+Output = /home/selbor/EVNTJob/centos7/evnt_centos7.$(Cluster).$(Process).out
+Error = /home/selbor/EVNTJob/centos7/evnt_centos7.$(Cluster).$(Process).err
+Log = /home/selbor/EVNTJob/centos7/evnt_centos7.$(Cluster).$(Process).log
+
+
+Executable = /home/selbor/AF-Benchmarking/EVNT/UC/CentOS7/run_evnt_centos7_batch.sh
+
+request_memory = 3GB
+request_cpus = 1
+
+Queue 1
