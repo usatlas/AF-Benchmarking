@@ -41,3 +41,10 @@ mv log.generate "${output_dir}"
 mv split.log "${output_dir}"
 mv pipe_file.log "${output_dir}"
 mv evnt_native.* "${output_dir}"
+
+# Directory that needs to be cleaned
+cleanup_dir="/home/selbor/EVNTJob/native"
+
+if [[ -d "${cleanup_dir}" && "${cleanup_dir}" == "/home/selbor/EVNTJob/native" ]]; then
+    rm -rf "${cleanup_dir:?}/"*
+fi
