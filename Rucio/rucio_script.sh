@@ -68,8 +68,8 @@ then
   container_el9 "${job_dir}" "${dir_mount}" "${output_dir}" "${download_ID}"
 elif [[ -d /data ]]
 then
-  job_dir="/data/$USER/RucioJob"
-  output_dir="/data/$USER/benchmarks/${curr_time}/Rucio/"
+  job_dir="/home/$USER/RucioJob"
+  output_dir="/home/$USER/benchmarks/${curr_time}/Rucio/"
   native_el9 "${output_dir}" "${job_dir}" "${download_ID}"
 elif [[ -d /pscratch ]]
 then
