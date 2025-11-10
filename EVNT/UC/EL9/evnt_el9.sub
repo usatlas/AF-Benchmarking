@@ -1,0 +1,13 @@
+Universe = vanilla
+
+Output = /home/selbor/EVNTJob/el9/evnt_el9.$(Cluster).$(Process).out
+Error = /home/selbor/EVNTJob/el9/evnt_el9.$(Cluster).$(Process).err
+Log = /home/selbor/EVNTJob/el9/evnt_el9.$(Cluster).$(Process).log
+
+
+Executable = /home/selbor/AF-Benchmarking/EVNT/UC/EL9/run_evnt_el9_batch.sh
+
+request_memory = 3GB
+request_cpus = 1
+
+Queue 1
