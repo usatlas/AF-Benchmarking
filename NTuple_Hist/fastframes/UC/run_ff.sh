@@ -2,7 +2,7 @@
 
 curr_date=$(date +"%Y.%m.%dT%H")
 
-working_dir="/data/selbor/ntuple/fastframes/"
+working_dir="/home/selbor/ntuple/ff/"
 
 
 # Goes into the job directory if it exits, creates it otherwise
@@ -38,7 +38,7 @@ date >> split.log
 hostname >> split.log
 
 # output directory
-output_dir="/data/$(whoami)/benchmarks/${curr_date}/FF_NTuple"
+output_dir="/home/$(whoami)/benchmarks/${curr_date}/FF_NTuple"
 
 # Creates output dir
 mkdir -p "${output_dir}"
@@ -46,3 +46,10 @@ mkdir -p "${output_dir}"
 # Moves log to outputdir
 mv ff.log "${output_dir}"
 mv split.log "${output_dir}"
+
+# Directory that needs to be cleaned
+cleanup_dir="/home/selbor/ntuple/ff"
+
+if [[ -d "${cleanup_dir}" && "${cleanup_dir}" == "/home/selbor/ntuple/ff" ]]; then
+    rm -rf "${cleanup_dir:?}/"*
+fi
