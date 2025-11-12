@@ -4,17 +4,6 @@
 
 curr_time=$(date +"%Y.%m.%dT%H")
 
-# Defining the directory the job will be running in
-working_dir="/data/$(whoami)/ntuple/coffea/"
-
-# Goes into the job directory if it exits, creates it otherwise
-if [ -d "${working_dir}" ]; then
-  cd "${working_dir}" || exit
-else
-  mkdir -p "${working_dir}"
-  cd "${working_dir}" || exit
-fi
-
 date >> split.log
 
 cp /home/"$(whoami)"/AF-Benchmarking/NTuple_Hist/coffea/UC/example.py .
@@ -33,7 +22,7 @@ date >> split.log
 
 hostname >> split.log
 
-log_file_dir="/data/$(whoami)/benchmarks/${curr_time}/Coffea_Hist/"
+log_file_dir="/home/$(whoami)/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p "${log_file_dir}"
 
