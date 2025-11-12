@@ -28,3 +28,10 @@ mkdir -p "${log_file_dir}"
 
 mv coffea_hist.log "${log_file_dir}"
 mv split.log "${log_file_dir}"
+
+# Directory that needs to be cleaned
+cleanup_dir="/home/selbor/ntuple/coffea"
+
+if [[ -d "${cleanup_dir}" && "${cleanup_dir}" == "/home/selbor/ntuple/coffea" ]]; then
+    rm -rf "${cleanup_dir:?}/"*
+fi
