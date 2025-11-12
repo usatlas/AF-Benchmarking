@@ -3,8 +3,6 @@
 # Time that will be used to store the log file
 curr_time=$(date +"%Y.%m.%dT%H")
 
-cd /data/selbor/ntuple_hist/eventloop_noarrays/ || exit
-
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 # shellcheck disable=SC1091
 source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
@@ -26,9 +24,16 @@ hostname >> split.log
 
 
 # Output Dir
-output_dir="/data/selbor/benchmarks/${curr_time}/eventloop_noarrays/"
+output_dir="/home/selbor/benchmarks/${curr_time}/eventloop_noarrays/"
 
 mkdir -p "${output_dir}"
 
 mv eventloop_noarrays.log "${output_dir}"
 mv split.log "${output_dir}"
+
+# Directory that needs to be cleaned
+cleanup_dir="/home/selbor/ntuple/eventloop_noarrays"
+
+if [[ -d "${cleanup_dir}" && "${cleanup_dir}" == "/home/selbor/ntuple/eventloop_noarrays" ]]; then
+    rm -rf "${cleanup_dir:?}/"*
+fi
