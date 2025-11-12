@@ -1,8 +1,8 @@
 Universe = vanilla
 
-Output = /data/selbor/ntuple_hist/coffea_fw/batch_files/$(Cluster).$(Process).out
-Error = /data/selbor/ntuple_hist/coffea_fw/batch_files/$(Cluster).$(Process).err
-Log = /data/selbor/ntuple_hist/coffea_fw/batch_files/$(Cluster).$(Process).log
+Output = /home/selbor/ntuple/coffea/coffea.$(Cluster).$(Process).out
+Error = /home/selbor/ntuple/coffea/coffea.$(Cluster).$(Process).err
+Log = /home/selbor/ntuple/coffea/coffea.$(Cluster).$(Process).log
 
 Executable = /home/selbor/AF-Benchmarking/NTuple_Hist/coffea/UC/run_example.sh
 
