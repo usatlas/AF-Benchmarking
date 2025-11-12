@@ -1,8 +1,8 @@
 Universe = vanilla
 
-Output = /data/selbor/ntuple_hist/eventloop_arrays/batch_files/eventloop.$(Cluster).$(Process).out
-Error = /data/selbor/ntuple_hist/eventloop_arrays/batch_files/eventloop.$(Cluster).$(Process).err
-Log = /data/selbor/ntuple_hist/eventloop_arrays/batch_files/eventloop.$(Cluster).$(Process).log
+Output = /home/selbor/ntuple/eventloop_arrays/eventloop_arrays.$(Cluster).$(Process).out
+Error = /home/selbor/ntuple/eventloop_arrays/eventloop_arrays.$(Cluster).$(Process).err
+Log = /home/selbor/ntuple/eventloop_arrays/eventloop_arrays.$(Cluster).$(Process).log
 
 Executable = /home/selbor/AF-Benchmarking/NTuple_Hist/event_loop/UC/run_eventloop_arrays.sh
 
