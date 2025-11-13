@@ -9,6 +9,8 @@ jobs:
     steps:
       - run: echo "🎉 This job uses runner scale set runners!"
 
+      - uses: actions/checkout@v5
+
       - name: Setup Globus credentials securely
         run: |
           mkdir -p ~/.globus
@@ -22,4 +24,5 @@ jobs:
         # Ensure secrets are masked in logs
         shell: bash
 
-      - run: bash Rucio/rucio_script.sh
+      - name: Rucio
+        run: bash Rucio/rucio_script.sh
