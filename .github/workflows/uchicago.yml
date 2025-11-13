@@ -26,4 +26,4 @@ jobs:
         shell: bash
 
       - name: Rucio
-        run: bash Rucio/rucio_script.sh
+        run: bash Rucio/rucio_script.sh uchicago
