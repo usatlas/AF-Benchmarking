@@ -80,4 +80,8 @@ then
   dir_mount="/global/cfs/cdirs/m2616/selbor/benchmarks/"
   output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/${curr_time}/Rucio"
   container_el9 "${job_dir}" "${dir_mount}" "${output_dir}" "${download_ID}"
+else
+  echo $(uname -a)
+  printenv
+  exit 1
 fi
