@@ -6,4 +6,4 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: arc-runner-set-uchicago
     steps:
-    - run: echo "🎉 This job uses runner scale set runners!"
+      - run: echo "🎉 This job uses runner scale set runners!"
