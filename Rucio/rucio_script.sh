@@ -63,7 +63,7 @@ if [[ -z "$site" ]]; then
     elif [[ -d /data ]]; then
         site="bnl"
     elif [[ -d /pscratch ]]; then
-        site="slac"
+        site="nersc"
     else
         echo "Cannot detect site from directories"
         exit 1
@@ -73,7 +73,7 @@ echo "Running for site: $site"
 
 # --- Configure directories based on site ---
 case "$site" in
-    uchicago)
+    bnl)
         job_dir="/atlasgpfs01/usatlas/scratch/jroblesgo/Rucio/"
         dir_mount="/atlasgpfs01/usatlas/data/"
         output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/Rucio"
@@ -86,10 +86,16 @@ case "$site" in
         output_dir="/sdf/data/atlas/u/selbor/benchmarks/${curr_time}/Rucio/"
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
-    bnl)
+    uchicago)
         job_dir="/home/$USER/RucioJob"
         output_dir="/home/$USER/benchmarks/${curr_time}/Rucio/"
         native_el9 "$output_dir" "$job_dir" "$download_ID"
+        ;;
+    nersc)
+        job_dir="/pscratch/sd/s/selbor/Rucio/"
+        dir_mount="/global/cfs/cdirs/m2616/selbor/benchmarks/"
+        output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/${curr_time}/Rucio"
+        container_el9 "${job_dir}" "${dir_mount}" "${output_dir}" "${download_ID}"
         ;;
     *)
         echo "Unknown site: $site"
