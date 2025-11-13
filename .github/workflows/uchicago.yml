@@ -21,6 +21,7 @@ jobs:
           # Set permissions
           chmod 644 ~/.globus/usercert.pem
           chmod 600 ~/.globus/userkey.pem
+          ls -lavh ~/.globus/
         # Ensure secrets are masked in logs
         shell: bash
 

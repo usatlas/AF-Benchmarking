@@ -1,6 +1,10 @@
 #! /bin/bash
+set -ex
 
+# Gets the current time
 curr_time=$(date +"%Y.%m.%dT%H")
+
+download_ID="mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.DAOD_PHYSLITE.e8532_e8528_s4162_s4114_r14622_r14663_p6491"
 
 container_el9 (){
   # Takes the following parameters:
@@ -46,42 +50,51 @@ native_el9 () {
   mv rucio.log "${1}"
 }
 
-# Gets the current time
-curr_time=$(date +"%Y.%m.%dT%H")
-
-download_ID="mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.DAOD_PHYSLITE.e8532_e8528_s4162_s4114_r14622_r14663_p6491"
+# --- Determine site ---
 # Conditional block determines the AF
 # If the directory exists run the commands in the block
-if [[ -d /sdf ]]; then
-  user_name=$USER
-  # shellcheck disable=SC2034
-  first_letter=${user_name:0:1}
-  job_dir="/sdf/scratch/atlas/${user_name}/RucioJob"
-  dir_mount="/sdf/data/atlas/u/selbor/benchmarks/"
-  output_dir="/sdf/data/atlas/u/selbor/benchmarks/${curr_time}/Rucio/"
-  container_el9 "${job_dir}" "${dir_mount}" "${output_dir}" "${download_ID}"
-elif [[ -d /usatlas ]]
-then
-  job_dir="/atlasgpfs01/usatlas/scratch/jroblesgo/Rucio/"
-  dir_mount="/atlasgpfs01/usatlas/data/"
-  output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/Rucio"
-  container_el9 "${job_dir}" "${dir_mount}" "${output_dir}" "${download_ID}"
-elif [[ -d /data ]]
-then
-  job_dir="/home/$USER/RucioJob"
-  output_dir="/home/$USER/benchmarks/${curr_time}/Rucio/"
-  native_el9 "${output_dir}" "${job_dir}" "${download_ID}"
-elif [[ -d /pscratch ]]
-then
-  user_name=$USER
-  # shellcheck disable=SC2034
-  first_letter=${user_name:0:1}
-  job_dir="/pscratch/sd/s/selbor/Rucio/"
-  dir_mount="/global/cfs/cdirs/m2616/selbor/benchmarks/"
-  output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/${curr_time}/Rucio"
-  container_el9 "${job_dir}" "${dir_mount}" "${output_dir}" "${download_ID}"
-else
-  echo $(uname -a)
-  printenv
-  exit 1
+site="$1"
+if [[ -z "$site" ]]; then
+    # Auto-detect
+    if [[ -d /sdf ]]; then
+        site="slac"
+    elif [[ -d /usatlas ]]; then
+        site="uchicago"
+    elif [[ -d /data ]]; then
+        site="bnl"
+    elif [[ -d /pscratch ]]; then
+        site="slac"
+    else
+        echo "Cannot detect site from directories"
+        exit 1
+    fi
 fi
+echo "Running for site: $site"
+
+# --- Configure directories based on site ---
+case "$site" in
+    uchicago)
+        job_dir="/atlasgpfs01/usatlas/scratch/jroblesgo/Rucio/"
+        dir_mount="/atlasgpfs01/usatlas/data/"
+        output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/Rucio"
+        container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
+        ;;
+    slac)
+        user_name=$USER
+        job_dir="/sdf/scratch/atlas/${user_name}/RucioJob"
+        dir_mount="/sdf/data/atlas/u/selbor/benchmarks/"
+        output_dir="/sdf/data/atlas/u/selbor/benchmarks/${curr_time}/Rucio/"
+        container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
+        ;;
+    bnl)
+        job_dir="/home/$USER/RucioJob"
+        output_dir="/home/$USER/benchmarks/${curr_time}/Rucio/"
+        native_el9 "$output_dir" "$job_dir" "$download_ID"
+        ;;
+    *)
+        echo "Unknown site: $site"
+        exit 1
+        ;;
+esac
+
+echo "Download complete. Output dir: $output_dir"
