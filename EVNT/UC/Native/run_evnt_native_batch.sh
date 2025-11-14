@@ -5,10 +5,6 @@ curr_time=$(date +"%Y.%m.%dT%H")
 # The seed used in the job
 seed=1001
 
-# shellcheck disable=SC1091
-
-set -eo pipefail
-
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "${script_dir}/../.." && pwd)"
 
