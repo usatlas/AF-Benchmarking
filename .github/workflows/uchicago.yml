@@ -38,6 +38,7 @@ jobs:
         run: |
           printenv
           type source
+          ls -l /usr/bin/sh; /usr/bin/sh --version || true
         shell: bash
 
       - name: Rucio
