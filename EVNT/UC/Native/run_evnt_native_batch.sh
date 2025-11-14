@@ -7,7 +7,7 @@ seed=1001
 
 # shellcheck disable=SC1091
 
-set -euo pipefail
+set -eo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "${script_dir}/../.." && pwd)"
@@ -17,7 +17,6 @@ jo_name="MC100001_MGPy8EG_A14N23LO_MET_25_N2_100_N1_80_WB.py"
 jo_path="${jo_dir}/${jo_name}"
 
 echo "Using JO: ${jo_path}"
-
 
 # Sets up our working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
