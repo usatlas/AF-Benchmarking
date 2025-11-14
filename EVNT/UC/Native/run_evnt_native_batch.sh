@@ -6,7 +6,7 @@ curr_time=$(date +"%Y.%m.%dT%H")
 seed=1001
 
 # Directory storing the input files
-#config_dir="EVNT/EVNTFiles/100xxx/100001"
+config_dir="EVNT/EVNTFiles/100xxx/100001"
 jo_name="MC100001_MGPy8EG_A14N23LO_MET_25_N2_100_N1_80_WB.py"
 
 # Sets up our working environment
@@ -19,7 +19,7 @@ date +'%H:%H:%S' >> split.log
 
 # Sets up the Ath* version
 asetup AthGeneration,23.6.34,here
-Gen_tf.py --ecmEnergy=13000.0 --jobConfig="${jo_name}"  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed="${seed}" 2>&1 | tee pipe_file.log
+Gen_tf.py --ecmEnergy=13000.0 --jobConfig="${config_dir}/${jo_name}"  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed="${seed}" 2>&1 | tee pipe_file.log
 
 # Appends time before Gen_tf.py to a log file
 date +'%H:%H:%S' >> split.log
