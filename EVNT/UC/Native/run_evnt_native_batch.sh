@@ -29,7 +29,7 @@ date +'%H:%H:%S' >> split.log
 curr_time=$(date +"%Y.%m.%dT%H")
 
 # Directory where all the output files will be sent to
-output_dir="/home/$(whoami)/benchmarks/${curr_time}/EVNT/"
+output_dir="$HOME/benchmarks/${curr_time}/EVNT/"
 
 # Makes the output directory
 mkdir -p "${output_dir}"
@@ -39,7 +39,7 @@ hostname >> split.log
 du EVNT.root >> split.log
 
 # Moves the log file to the output directory
-mv log.generate "${output_dir}"
+#mv log.generate "${output_dir}"
 mv split.log "${output_dir}"
 mv pipe_file.log "${output_dir}"
 mv evnt_native.* "${output_dir}"
