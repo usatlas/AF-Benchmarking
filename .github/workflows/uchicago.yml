@@ -9,6 +9,9 @@ jobs:
     steps:
       - run: echo "🎉 This job uses runner scale set runners!"
 
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
       - name: Install libcrypt.so.2
         run: |
           sudo apt-get update || true
