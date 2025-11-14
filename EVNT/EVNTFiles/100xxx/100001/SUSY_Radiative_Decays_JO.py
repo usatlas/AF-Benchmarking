@@ -1,3 +1,15 @@
+import sys
+import os
+
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+_pmg_dir = os.path.abspath(os.path.join(_current_dir, "..", "..", "PMG"))
+
+# Make PMG imports work on GitHub Actions
+sys.path.insert(0, _pmg_dir)
+sys.path.insert(0, os.path.join(_pmg_dir, "MadGraphControl"))
+sys.path.insert(0, os.path.join(_pmg_dir, "GeneratorFilters"))
+
+
 include("PMG/MadGraphControl/SUSY_SimplifiedModel_PreInclude.py")
 from PMG.MadGraphControl.MadGraphUtilsHelpers import get_physics_short
 
