@@ -73,27 +73,26 @@ echo "Running for site: $site"
 # --- Configure directories based on site ---
 case "$site" in
     bnl)
-        job_dir="/atlasgpfs01/usatlas/scratch/jroblesgo/Rucio/"
+        job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/atlasgpfs01/usatlas/data/"
-        output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/${curr_time}/Rucio"
+        output_dir="${job_dir}/${curr_time}/"
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
     slac)
-        user_name=$USER
-        job_dir="/sdf/scratch/atlas/${user_name}/RucioJob"
+        job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/sdf/data/atlas/u/selbor/benchmarks/"
-        output_dir="/sdf/data/atlas/u/selbor/benchmarks/${curr_time}/Rucio/"
+        output_dir="${job_dir}/${curr_time}/"
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
     uchicago)
-        job_dir="/home/$USER/RucioJob"
-        output_dir="/home/$USER/benchmarks/${curr_time}/Rucio/"
+        job_dir="$HOME/af_benchmarking/rucio/"
+        output_dir="${job_dir}/${curr_time}/"
         native_el9 "$output_dir" "$job_dir" "$download_ID"
         ;;
     nersc)
-        job_dir="/pscratch/sd/s/selbor/Rucio/"
+        job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/global/cfs/cdirs/m2616/selbor/benchmarks/"
-        output_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/${curr_time}/Rucio"
+        output_dir="${job_dir}/${curr_time}/"
         container_el9 "${job_dir}" "${dir_mount}" "${output_dir}" "${download_ID}"
         ;;
     *)
