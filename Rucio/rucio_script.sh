@@ -1,5 +1,4 @@
 #! /usr/bin/env bash
-set -x
 
 # Gets the current time
 curr_time=$(date +"%Y.%m.%dT%H")
