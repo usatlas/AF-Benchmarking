@@ -6,7 +6,7 @@ curr_time=$(date +"%Y.%m.%dT%H")
 seed=1001
 
 # Directory storing the input files
-config_dir="/data/$(whoami)/evnt/100xxx/100001"
+config_dir="$HOME/AF-Benchmarking/EVNT/EVNTFiles/100xxx/100001"
 
 # Sets up our working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
