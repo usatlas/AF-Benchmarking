@@ -1,12 +1,9 @@
-include("MadGraphControl/SUSY_SimplifiedModel_PreInclude.py")
-# from GeneratorFilters.GeneratorFiltersConf import xAODPhotonFilter
-# from GeneratorFilters.GeneratorFiltersConf import xAODMultiElecMuTauFilter
-from MadGraphControl.MadGraphUtilsHelpers import get_physics_short
+include("PMG/MadGraphControl/SUSY_SimplifiedModel_PreInclude.py")
+from PMG.MadGraphControl.MadGraphUtilsHelpers import get_physics_short
 
-
-include("GeneratorFilters//xAODPhotonFilter_Common.py")
-include("GeneratorFilters//xAODMultiElecMuTauFilter_Common.py")
-include("GeneratorFilters//xAODMETFilter_Common.py")
+include("PMG/GeneratorFilters/xAODPhotonFilter_Common.py")
+include("PMG/GeneratorFilters/xAODMultiElecMuTauFilter_Common.py")
+include("PMG/GeneratorFilters/xAODMETFilter_Common.py")
 
 JOName = get_physics_short()
 
@@ -204,4 +201,4 @@ if njets > 0:
     genSeq.Pythia8.Commands += ["Merging:Process = guess"]
     genSeq.Pythia8.UserHooks += ["JetMergingaMCatNLO"]
 
-include("MadGraphControl/SUSY_SimplifiedModel_PostInclude.py")
+include("PMG/MadGraphControl/SUSY_SimplifiedModel_PostInclude.py")
