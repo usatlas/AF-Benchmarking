@@ -29,7 +29,6 @@ jobs:
         run: |
           printenv
           type source
-          which java
         shell: bash
 
       - name: Rucio
