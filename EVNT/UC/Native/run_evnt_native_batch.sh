@@ -8,8 +8,7 @@ seed=1001
 # Directory storing the input files
 config_dir="${GITHUB_WORKSPACE}/EVNT/EVNTFiles/100xxx/100001"
 
-#max_events=10000
-max_events=100
+max_events=10000
 
 # Sets up our working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
