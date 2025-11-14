@@ -11,6 +11,14 @@ jobs:
 
       - uses: actions/checkout@v5
 
+      - name: Install libcrypt.so.2
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxcrypt-compat
+          if [ -f /usr/lib/x86_64-linux-gnu/libcrypt.so.2.0.0 ] && [ ! -f /usr/lib/x86_64-linux-gnu/libcrypt.so.2 ]; then
+            sudo ln -s /usr/lib/x86_64-linux-gnu/libcrypt.so.2.0.0 /usr/lib/x86_64-linux-gnu/libcrypt.so.2
+          fi
+
       - name: EVNT
         run: EVNT/UC/Native/run_evnt_native_batch.sh
         shell: bash
