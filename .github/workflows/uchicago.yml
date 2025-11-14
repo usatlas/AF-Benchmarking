@@ -13,11 +13,15 @@ jobs:
 
       - name: Install libcrypt.so.2
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libxcrypt-dev
-          if [ -f /usr/lib/x86_64-linux-gnu/libcrypt.so.2.1.0 ] && [ ! -f /usr/lib/x86_64-linux-gnu/libcrypt.so.2 ]; then
-            sudo ln -s /usr/lib/x86_64-linux-gnu/libcrypt.so.2.1.0 /usr/lib/x86_64-linux-gnu/libcrypt.so.2
+          sudo apt-get update || true
+          sudo apt-get install -y libxcrypt0 || true
+          sudo apt-get install -y libcrypt1  || true
+          CANDIDATE=$(ls /usr/lib/x86_64-linux-gnu/libcrypt.so.* 2>/dev/null | head -n 1 || true)
+          if [ -n "$CANDIDATE" ] && [ ! -f /usr/lib/x86_64-linux-gnu/libcrypt.so.2 ]; then
+            echo "Using $CANDIDATE as libcrypt.so.2"
+            sudo ln -s "$CANDIDATE" /usr/lib/x86_64-linux-gnu/libcrypt.so.2
           fi
+          ls -l /usr/lib/x86_64-linux-gnu/libcrypt.so*
 
       - name: EVNT
         run: EVNT/UC/Native/run_evnt_native_batch.sh
