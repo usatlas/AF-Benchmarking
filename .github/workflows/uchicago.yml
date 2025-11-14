@@ -41,7 +41,7 @@ jobs:
         shell: bash
 
       - name: Rucio
-        run: Rucio/rucio_script.sh uchicago
+        run: ./Rucio/rucio_script.sh uchicago
         shell: bash
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
