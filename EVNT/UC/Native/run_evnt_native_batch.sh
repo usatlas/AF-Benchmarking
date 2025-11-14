@@ -6,7 +6,7 @@ curr_time=$(date +"%Y.%m.%dT%H")
 seed=1001
 
 # Directory storing the input files
-config_dir="$GITHUB_WORKSPACE/EVNT/EVNTFiles/100xxx/100001/MC100001_MGPy8EG_A14N23LO_MET_25_N2_100_N1_80_WB.py"
+config_dir="$GITHUB_WORKSPACE/EVNT/EVNTFiles/100xxx/100001"
 
 # Sets up our working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
