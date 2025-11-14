@@ -17,12 +17,12 @@ jobs:
 
           # Write certificate preserving newlines
           cat > ~/.globus/usercert.pem << 'EOF'
-          ${{ secrets.GLOBUS_USERCERT }}
+          ${{ secrets.VOMS_USERCERT }}
           EOF
 
           # Write key preserving newlines
           cat > ~/.globus/userkey.pem << 'EOF'
-          ${{ secrets.GLOBUS_USERKEY }}
+          ${{ secrets.VOMS_USERKEY }}
           EOF
 
           sed -n '1,5p' ~/.globus/usercert.pem
@@ -43,6 +43,8 @@ jobs:
       - name: Rucio
         run: Rucio/rucio_script.sh uchicago
         shell: bash
+        env:
+          VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
 
   evnt:
     runs-on: arc-runner-set-uchicago
