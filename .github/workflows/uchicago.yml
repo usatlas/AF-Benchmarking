@@ -14,9 +14,9 @@ jobs:
       - name: Install libcrypt.so.2
         run: |
           sudo apt-get update
-          sudo apt-get install -y libxcrypt-compat
-          if [ -f /usr/lib/x86_64-linux-gnu/libcrypt.so.2.0.0 ] && [ ! -f /usr/lib/x86_64-linux-gnu/libcrypt.so.2 ]; then
-            sudo ln -s /usr/lib/x86_64-linux-gnu/libcrypt.so.2.0.0 /usr/lib/x86_64-linux-gnu/libcrypt.so.2
+          sudo apt-get install -y libxcrypt-dev
+          if [ -f /usr/lib/x86_64-linux-gnu/libcrypt.so.2.1.0 ] && [ ! -f /usr/lib/x86_64-linux-gnu/libcrypt.so.2 ]; then
+            sudo ln -s /usr/lib/x86_64-linux-gnu/libcrypt.so.2.1.0 /usr/lib/x86_64-linux-gnu/libcrypt.so.2
           fi
 
       - name: EVNT
