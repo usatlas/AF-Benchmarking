@@ -28,3 +28,12 @@ jobs:
         run: ./EVNT/UC/Native/run_evnt_native_batch.sh
         working-directory: .
         shell: bash
+
+        # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.generate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evnt-logs
+          path: |
+            log.generate
