@@ -8,9 +8,9 @@ seed=1001
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "${script_dir}/../.." && pwd)"
 
-jo="${repo_root}/EVNTFiles/100xxx/100001/MC100001_MGPy8EG_A14N23LO_MET_25_N2_100_N1_80_WB.py"
+#jo="${repo_root}/EVNTFiles/100xxx/100001/MC100001_MGPy8EG_A14N23LO_MET_25_N2_100_N1_80_WB.py"
 
-ls "${jo}"
+jo="${repo_root}/EVNTFiles/100xxx/100001/"
 
 # Sets up our working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
