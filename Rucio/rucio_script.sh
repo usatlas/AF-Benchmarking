@@ -37,7 +37,7 @@ native_el9 () {
 # shellcheck disable=SC1091
   source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
   lsetup emi
-  cat "$HOME"/pass.txt | voms-proxy-init -voms atlas
+  cat "$HOME"/pass.txt | bash voms-proxy-init -voms atlas
   lsetup "rucio -w"
   mkdir -p "${1}"
   cd "${2}" || exit
