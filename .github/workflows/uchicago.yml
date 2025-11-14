@@ -24,8 +24,8 @@ jobs:
           fi
           ls -l /usr/lib/x86_64-linux-gnu/libcrypt.so*
 
-      - name: EVNT
-        run: ./EVNT/UC/Native/run_evnt_native_batch.sh
+      - name: EVNT-EL9
+        run: ./EVNT/UC/EL9/run_evnt_el9_batch.sh
         working-directory: .
         shell: bash
 
