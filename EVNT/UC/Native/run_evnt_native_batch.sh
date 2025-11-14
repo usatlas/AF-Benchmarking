@@ -6,7 +6,9 @@ curr_time=$(date +"%Y.%m.%dT%H")
 seed=1001
 
 # Directory storing the input files
-config_dir="/data/$(whoami)/evnt/100xxx/100001"
+config_dir="${GITHUB_WORKSPACE}/EVNTFile/100xxx/100001"
+
+ls "${config_dir}"
 
 # Sets up our working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
