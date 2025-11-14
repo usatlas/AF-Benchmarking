@@ -37,3 +37,17 @@ jobs:
           name: evnt-logs
           path: |
             log.generate
+
+      - name: EVNT-CentOS7
+        run: ./EVNT/UC/CentOS7/run_evnt_centos7_batch.sh
+        working-directory: .
+        shell: bash
+
+        # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.generate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evnt-logs
+          path: |
+            log.generate
