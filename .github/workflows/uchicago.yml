@@ -22,6 +22,7 @@ jobs:
           chmod 644 ~/.globus/usercert.pem
           chmod 600 ~/.globus/userkey.pem
           ls -lavh ~/.globus/
+          printenv
         # Ensure secrets are masked in logs
         shell: bash
 
