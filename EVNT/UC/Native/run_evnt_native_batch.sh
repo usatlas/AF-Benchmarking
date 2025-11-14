@@ -8,7 +8,7 @@ seed=1001
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "${script_dir}/../.." && pwd)"
 
-jo_dir="${repo_root}/EVNT/EVNTFiles/100xxx/100001"
+jo_dir="${repo_root}/EVNTFiles/100xxx/100001"
 jo_name="MC100001_MGPy8EG_A14N23LO_MET_25_N2_100_N1_80_WB.py"
 jo_path="${jo_dir}/${jo_name}"
 
