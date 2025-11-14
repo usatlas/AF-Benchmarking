@@ -8,7 +8,7 @@ seed=1001
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "${script_dir}/../.." && pwd)"
 
-jo_dir="${repo_root}/EVNTFiles/100xxx/100001"
+jo="${repo_root}/EVNTFiles/100xxx/100001/MC100001_MGPy8EG_A14N23LO_MET_25_N2_100_N1_80_WB.py"
 
 # Sets up our working environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -20,7 +20,7 @@ date +'%H:%H:%S' >> split.log
 
 # Sets up the Ath* version
 asetup AthGeneration,23.6.34,here
-Gen_tf.py --ecmEnergy=13000.0 --jobConfig="${jo_dir}"  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed="${seed}" 2>&1 | tee pipe_file.log
+Gen_tf.py --ecmEnergy=13000.0 --jobConfig="${jo}"  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed="${seed}" 2>&1 | tee pipe_file.log
 
 # Appends time before Gen_tf.py to a log file
 date +'%H:%H:%S' >> split.log
