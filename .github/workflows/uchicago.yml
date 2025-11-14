@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  Explore-GitHub-Actions:
+  rucio:
     runs-on: arc-runner-set-uchicago
     steps:
       - run: echo "🎉 This job uses runner scale set runners!"
