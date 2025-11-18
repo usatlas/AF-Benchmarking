@@ -184,7 +184,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: coffea
-        run: ./NTuple_Hist/UC/run_example.sh
+        run: ./NTuple_Hist/UC/coffea/run_example.sh
         working-directory: .
         shell: bash
 
