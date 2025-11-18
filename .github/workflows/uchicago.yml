@@ -9,17 +9,20 @@ jobs:
     steps:
       - run: echo "🎉 This job uses runner scale set runners!"
 
-      - uses: actions/checkout@v5   # <-- REQUIRED
+      - uses: actions/checkout@v5 # <-- REQUIRED
 
       - name: Setup Globus credentials securely
         run: |
           mkdir -p ~/.globus
+
           cat > ~/.globus/usercert.pem << 'EOF'
           ${{ secrets.VOMS_USERCERT }}
           EOF
+
           cat > ~/.globus/userkey.pem << 'EOF'
           ${{ secrets.VOMS_USERKEY }}
           EOF
+
           chmod 644 ~/.globus/usercert.pem
           chmod 600 ~/.globus/userkey.pem
           ls -lavh ~/.globus/
@@ -37,60 +40,3 @@ jobs:
         shell: bash
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
