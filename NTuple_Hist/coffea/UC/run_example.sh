@@ -13,7 +13,7 @@ date >> split.log
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 export ALRB_localConfigDir="$HOME"/localConfig
 # shellcheck disable=SC1091
-source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c el9 -m /data/ -r "lsetup 'python 3.9.22-x86_64-el9' &&\
+source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c el9 -r "lsetup 'python 3.9.22-x86_64-el9' &&\
 pip3 install  ${GITHUB_WORKSPACE}/NTuple_Hist/coffea/UC/light_roast-0.1.dev10+ge21defc-py3-none-any.whl &&\
 pip3 install atlas_schema &&\
 python3.9 ${GITHUB_WORKSPACE}/NTuple_Hist/coffea/UC/example.py  2>&1 | tee coffea_hist.log"
@@ -22,7 +22,7 @@ date >> split.log
 
 hostname >> split.log
 
-log_file_dir="/home/$(whoami)/benchmarks/${curr_time}/Coffea_Hist/"
+log_file_dir="$HOME/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p "${log_file_dir}"
 
