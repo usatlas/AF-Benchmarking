@@ -41,6 +41,15 @@ jobs:
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
 
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload rucio.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rucio-log
+          path: |
+            rucio.log
+
   evnt-native:
     runs-on: arc-runner-set-uchicago
     steps:
@@ -82,3 +91,87 @@ jobs:
           name: evnt-el9-logs
           path: |
             log.generate
+
+  evnt-centos7:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: EVNT-CentOS7
+        run: ./EVNT/UC/CentOS7/run_evnt_centos7_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.generate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evnt-centos7-logs
+          path: |
+            log.generate
+
+  truth3-native:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: Truth3-Native
+        run: ./TRUTH3/UC/Native/run_truth3_native_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.Derivation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: truth3-native-log
+          path: |
+            log.Derivation
+
+  truth3-el9:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: Truth3-EL9
+        run: ./TRUTH3/UC/EL9/run_truth3_el9_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.Derivation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: truth3-el9-log
+          path: |
+            log.Derivation
+
+  truth3-centos7:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: Truth3-CentOS7
+        run: ./TRUTH3/UC/CentOS7/run_truth3_centos7_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.EVNTtoDAOD
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: truth3-centos7-log
+          path: |
+            log.EVNTtoDAOD
