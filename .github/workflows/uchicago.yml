@@ -1,48 +1,57 @@
-name: Uchicago-Rucio
+name: UChicago Runner Jobs
+
 on:
   workflow_dispatch:
   push:
 
 jobs:
+
   rucio:
     runs-on: arc-runner-set-uchicago
+
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
+      - name: Start
+        run: echo "🚀 Running on UChicago ARC Alma9 runner"
 
-      - uses: actions/checkout@v5
+      - name: Checkout repository
+        uses: actions/checkout@v5
 
-      - name: Setup Globus credentials securely
+      - name: Setup Globus credentials
+        shell: bash
         run: |
           mkdir -p ~/.globus
-          
-          # Write certificate preserving newlines
+
+          # certificate
           cat > ~/.globus/usercert.pem << 'EOF'
           ${{ secrets.VOMS_USERCERT }}
           EOF
-          
-          # Write key preserving newlines
+
+          # private key
           cat > ~/.globus/userkey.pem << 'EOF'
           ${{ secrets.VOMS_USERKEY }}
           EOF
 
-          sed -n '1,5p' ~/.globus/usercert.pem
-          
-          # Set permissions
           chmod 644 ~/.globus/usercert.pem
           chmod 600 ~/.globus/userkey.pem
-          ls -lavh ~/.globus/
-        # Ensure secrets are masked in logs
-        shell: bash
 
-      - name: Debug
+          echo "📁 Globus credentials written:"
+          ls -l ~/.globus
+
+      - name: Debug environment
+        shell: bash
         run: |
-          printenv
-          type source
-          ls -l /usr/bin/sh; /usr/bin/sh --version || true
-        shell: bash
+          echo "🔎 Checking environment"
+          pwd
+          ls -R .
+          printenv | sort | grep -E 'HOME|SHELL|PATH|RUNNER'
+          which bash || true
+          which sh || true
 
-      - name: Rucio
-        run: ./Rucio/rucio_script.sh uchicago
+      - name: Run Rucio script
         shell: bash
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
+        run: |
+          chmod +x Rucio/rucio_script.sh
+          ./Rucio/rucio_script.sh uchicago
+
