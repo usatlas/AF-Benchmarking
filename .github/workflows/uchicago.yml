@@ -14,15 +14,19 @@ jobs:
       - name: Setup Globus credentials securely
         run: |
           mkdir -p ~/.globus
+          
           # Write certificate preserving newlines
           cat > ~/.globus/usercert.pem << 'EOF'
           ${{ secrets.VOMS_USERCERT }}
           EOF
+          
           # Write key preserving newlines
           cat > ~/.globus/userkey.pem << 'EOF'
           ${{ secrets.VOMS_USERKEY }}
           EOF
+
           sed -n '1,5p' ~/.globus/usercert.pem
+          
           # Set permissions
           chmod 644 ~/.globus/usercert.pem
           chmod 600 ~/.globus/userkey.pem
