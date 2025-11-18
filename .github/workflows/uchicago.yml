@@ -1,0 +1,60 @@
+name: UChicago
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  rucio:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: Setup Globus credentials securely
+        run: |
+          mkdir -p ~/.globus
+
+          # Write certificate preserving newlines
+          cat > ~/.globus/usercert.pem << 'EOF'
+          ${{ secrets.VOMS_USERCERT }}
+          EOF
+
+          # Write key preserving newlines
+          cat > ~/.globus/userkey.pem << 'EOF'
+          ${{ secrets.VOMS_USERKEY }}
+          EOF
+
+          sed -n '1,5p' ~/.globus/usercert.pem
+
+          # Set permissions
+          chmod 644 ~/.globus/usercert.pem
+          chmod 600 ~/.globus/userkey.pem
+          ls -lavh ~/.globus/
+        # Ensure secrets are masked in logs
+        shell: bash
+
+      - name: Debug
+        run: |
+          printenv
+          type source
+          ls -l /usr/bin/sh; /usr/bin/sh --version || true
+        shell: bash
+
+      - name: Rucio
+        run: ./Rucio/rucio_script.sh uchicago
+        shell: bash
+        env:
+          VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
+
+  evnt:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: EVNT
+        run: ./EVNT/UC/Native/run_evnt_native_batch.sh
+        working-directory: .
+        shell: bash
