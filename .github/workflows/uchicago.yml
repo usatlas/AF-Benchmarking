@@ -40,3 +40,24 @@ jobs:
         shell: bash
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
+
+  evnt:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: EVNT
+        run: ./EVNT/UC/Native/run_evnt_native_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.generate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evnt-native-logs
+          path: |
+            log.generate
