@@ -21,7 +21,7 @@ date +'%H:%H:%S' >> split.log
 ## -r : precedes the commands we want to run within the container
 # shellcheck disable=SC1091
 source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c el9 -m /data:/data -r "asetup Athena,24.0.53,here && \
-  Derivation_tf.py --CA True --inputEVNTFile ${config_dir}EVNT_el9_batch.root --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log"
+  Derivation_tf.py --CA True --inputEVNTFile ${config_dir} --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log"
 
 # Appends time after Derivation_tf.py to a log file
 date +'%H:%H:%S' >> split.log
