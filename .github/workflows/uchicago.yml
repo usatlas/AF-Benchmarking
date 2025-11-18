@@ -1,4 +1,4 @@
-name: Actions Runner Controller Demo
+name: Uchicago-Rucio
 on:
   workflow_dispatch:
   push:
