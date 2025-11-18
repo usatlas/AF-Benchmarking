@@ -183,6 +183,12 @@ jobs:
 
       - uses: actions/checkout@v5
 
+      - name: Install Coffea dependencies
+        run: |
+          pip3 install --upgrade pip
+          pip3 install awkward uproot coffea hist
+        shell: bash
+
       - name: coffea
         run: ./NTuple_Hist/coffea/UC/run_example.sh
         working-directory: .
