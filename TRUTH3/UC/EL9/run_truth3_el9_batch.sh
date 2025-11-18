@@ -37,7 +37,7 @@ hostname >> split.log
 du DAOD_TRUTH3.TRUTH3.root >> split.log
 
 # Moves the log file to the output directory
-mv log.Derivation "${output_dir}"
+#mv log.Derivation "${output_dir}"
 mv split.log "${output_dir}"
 mv pipe_file.log "${output_dir}"
 
