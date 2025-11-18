@@ -6,7 +6,7 @@ curr_time=$(date +"%Y.%m.%dT%H")
 
 
 # Input files are stored here
-config_dir="/data/$(whoami)/TRUTH3_StaticDir/"
+config_dir="${GITHUB_WORKSPACE}/TRUTH3/EVNT.root"
 
 # Sets up our environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
