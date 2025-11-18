@@ -4,13 +4,12 @@ on:
   push:
 
 jobs:
-  Explore-GitHub-Actions:
+  rucio:
     runs-on: arc-runner-set-uchicago
     steps:
       - run: echo "🎉 This job uses runner scale set runners!"
 
-      - name: Checkout repo
-        uses: actions/checkout@v5
+      - uses: actions/checkout@v5
 
       - name: Setup Globus credentials securely
         run: |
@@ -31,46 +30,15 @@ jobs:
         # Ensure secrets are masked in logs
         shell: bash
 
+      - name: Debug
+        run: |
+          printenv
+          type source
+          ls -l /usr/bin/sh; /usr/bin/sh --version || true
+        shell: bash
+
       - name: Rucio
         run: ./Rucio/rucio_script.sh uchicago
         shell: bash
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
-      
-      - name: Upload rucio.log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: rucio-log
-          path: |
-            rucio.log
-
-
-
-      - name: EVNT-EL9
-        run: ./EVNT/UC/EL9/run_evnt_el9_batch.sh
-        working-directory: .
-        shell: bash
-
-        # See https://github.com/orgs/community/discussions/45415
-      - name: Upload log.generate
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: evnt-el9-logs
-          path: |
-            log.generate
-
-      - name: EVNT-CentOS7
-        run: ./EVNT/UC/CentOS7/run_evnt_centos7_batch.sh
-        working-directory: .
-        shell: bash
-
-        # See https://github.com/orgs/community/discussions/45415
-      - name: Upload log.generate
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: evnt-centos7-logs
-          path: |
-            log.generate
