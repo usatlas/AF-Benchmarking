@@ -175,3 +175,24 @@ jobs:
           name: truth3-centos7-log
           path: |
             log.EVNTtoDAOD
+
+  coffea:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: coffea
+        run: ./NTuple_Hist/UC/run_example.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload coffea_hist.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coffea-hist
+          path: |
+            coffea_hist.log
