@@ -24,6 +24,41 @@ jobs:
           fi
           ls -l /usr/lib/x86_64-linux-gnu/libcrypt.so*
 
+      - name: Setup Globus credentials securely
+        run: |
+          mkdir -p ~/.globus
+          # Write certificate preserving newlines
+          cat > ~/.globus/usercert.pem << 'EOF'
+          ${{ secrets.VOMS_USERCERT }}
+          EOF
+          # Write key preserving newlines
+          cat > ~/.globus/userkey.pem << 'EOF'
+          ${{ secrets.VOMS_USERKEY }}
+          EOF
+          sed -n '1,5p' ~/.globus/usercert.pem
+          # Set permissions
+          chmod 644 ~/.globus/usercert.pem
+          chmod 600 ~/.globus/userkey.pem
+          ls -lavh ~/.globus/
+        # Ensure secrets are masked in logs
+        shell: bash
+
+      - name: Rucio
+        run: ./Rucio/rucio_script.sh uchicago
+        shell: bash
+        env:
+          VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
+      
+      - name: Upload rucio.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rucio-log
+          path: |
+            rucio.log
+
+
+
       - name: EVNT-EL9
         run: ./EVNT/UC/EL9/run_evnt_el9_batch.sh
         working-directory: .
