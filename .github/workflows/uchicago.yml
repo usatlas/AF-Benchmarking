@@ -217,3 +217,24 @@ jobs:
           name: event-loop
           path: |
             eventloop_arrays.log
+
+  event-loop-standard:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: event-loop-standard
+        run: ./NTuple_Hist/event_loop/UC/standard/run_eventloop_noarrays.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload eventloop_noarrays.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: event-loop-noarrays
+          path: |
+            eventloop_noarrays.log
