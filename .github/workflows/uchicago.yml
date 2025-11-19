@@ -195,4 +195,4 @@ jobs:
         with:
           name: coffea-hist
           path: |
-            coffe_hist.log
+            coffea_hist.log
