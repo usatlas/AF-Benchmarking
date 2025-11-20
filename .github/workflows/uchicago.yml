@@ -1,0 +1,286 @@
+name: Actions Runner Controller Demo
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  rucio:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5 # <-- REQUIRED
+
+      - name: Setup Globus credentials securely
+        run: |
+          mkdir -p ~/.globus
+
+          cat > ~/.globus/usercert.pem << 'EOF'
+          ${{ secrets.VOMS_USERCERT }}
+          EOF
+
+          cat > ~/.globus/userkey.pem << 'EOF'
+          ${{ secrets.VOMS_USERKEY }}
+          EOF
+
+          chmod 644 ~/.globus/usercert.pem
+          chmod 600 ~/.globus/userkey.pem
+          ls -lavh ~/.globus/
+        shell: bash
+
+      - name: Debug
+        run: |
+          printenv
+          type source
+          ls -l /usr/bin/sh; /usr/bin/sh --version || true
+        shell: bash
+
+      - name: Rucio
+        run: ./Rucio/rucio_script.sh uchicago
+        shell: bash
+        env:
+          VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload rucio.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rucio-log
+          path: |
+            rucio.log
+
+  evnt-native:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: EVNT
+        run: ./EVNT/UC/Native/run_evnt_native_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.generate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evnt-native-logs
+          path: |
+            log.generate
+
+  evnt-el9:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: EVNT-EL9
+        run: ./EVNT/UC/EL9/run_evnt_el9_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.generate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evnt-el9-logs
+          path: |
+            log.generate
+
+  evnt-centos7:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: EVNT-CentOS7
+        run: ./EVNT/UC/CentOS7/run_evnt_centos7_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.generate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evnt-centos7-logs
+          path: |
+            log.generate
+
+  truth3-native:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: Truth3-Native
+        run: ./TRUTH3/UC/Native/run_truth3_native_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.Derivation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: truth3-native-log
+          path: |
+            log.Derivation
+
+  truth3-el9:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: Truth3-EL9
+        run: ./TRUTH3/UC/EL9/run_truth3_el9_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.Derivation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: truth3-el9-log
+          path: |
+            log.Derivation
+
+  truth3-centos7:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: Truth3-CentOS7
+        run: ./TRUTH3/UC/CentOS7/run_truth3_centos7_batch.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload log.EVNTtoDAOD
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: truth3-centos7-log
+          path: |
+            log.EVNTtoDAOD
+
+  coffea:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: coffea
+        run: ./NTuple_Hist/coffea/UC/run_example.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload coffea_hist.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coffea-hist
+          path: |
+            coffea_hist.log
+
+  event-loop-columnar:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: event-loop-columnar
+        run: ./NTuple_Hist/event_loop/UC/columnar/run_eventloop_arrays.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload eventloop_arrays.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: event-loop
+          path: |
+            eventloop_arrays.log
+
+  event-loop-standard:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5
+
+      - name: event-loop-standard
+        run: ./NTuple_Hist/event_loop/UC/standard/run_eventloop_noarrays.sh
+        working-directory: .
+        shell: bash
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload eventloop_noarrays.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: event-loop-noarrays
+          path: |
+            eventloop_noarrays.log
+
+  FF:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5 # <-- REQUIRED
+
+      - name: Setup Globus credentials securely
+        run: |
+          mkdir -p ~/.globus
+
+          cat > ~/.globus/usercert.pem << 'EOF'
+          ${{ secrets.VOMS_USERCERT }}
+          EOF
+
+          cat > ~/.globus/userkey.pem << 'EOF'
+          ${{ secrets.VOMS_USERKEY }}
+          EOF
+
+          chmod 644 ~/.globus/usercert.pem
+          chmod 600 ~/.globus/userkey.pem
+          ls -lavh ~/.globus/
+        shell: bash
+
+      - name: Debug
+        run: |
+          printenv
+          type source
+          ls -l /usr/bin/sh; /usr/bin/sh --version || true
+        shell: bash
+
+      - name: ff
+        run: ./NTuple_Hist/fastframes/UC/run_ff.sh
+        shell: bash
+        env:
+          VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload ff.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fastframes-log
+          path: |
+            ff.log
