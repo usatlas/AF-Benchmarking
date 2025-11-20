@@ -10,7 +10,7 @@ source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
 # Set up for FF
 asetup StatAnalysis,0.6.3
 lsetup emi
-cat /data/selbor/pass/pass.txt | voms-proxy-init -voms atlas
+printf "%s" "${VOMS_PASSWORD}" | voms-proxy-init -voms atlas
 # shellcheck disable=SC1091
 source /data/selbor/FastFramesTutorial/TutorialClass/build/setup.sh
 
