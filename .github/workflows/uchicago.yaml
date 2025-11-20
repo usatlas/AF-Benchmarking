@@ -19,7 +19,40 @@ jobs:
 
   usatlas-image:
     runs-on: arc-runner-set-uchicago
+    env:
+      RUCIO_ACCOUNT: jroblesg
     steps:
+      - name: Setup Globus credentials securely
+        run: |
+          mkdir -p ~/.globus
+
+          # Write certificate preserving newlines
+          cat > ~/.globus/usercert.pem << 'EOF'
+          ${{ secrets.VOMS_USERCERT }}
+          EOF
+
+          # Write key preserving newlines
+          cat > ~/.globus/userkey.pem << 'EOF'
+          ${{ secrets.VOMS_USERKEY }}
+          EOF
+
+          sed -n '1,5p' ~/.globus/usercert.pem
+
+          # Set permissions
+          chmod 644 ~/.globus/usercert.pem
+          chmod 600 ~/.globus/userkey.pem
+          ls -lavh ~/.globus/
+
+          export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+          export ALRB_localConfigDir="$HOME"/localConfig
+          source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
+
+          lsetup rucio
+          printf "%s" "${VOMS_PASSWORD}" | voms-proxy-init -voms atlas
+
+        # Ensure secrets are masked in logs
+        shell: bash
+
       - run: |
           set +e
           export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -28,5 +61,4 @@ jobs:
           set -e
           diagnostics
           toolTest -m validate all
-        env:
-          RUCIO_ACCOUNT: gstark
+
