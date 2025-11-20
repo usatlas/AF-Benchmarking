@@ -48,7 +48,7 @@ jobs:
           export ALRB_localConfigDir="$HOME"/localConfig
           source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
 
-          lsetup rucio
+          lsetup "rucio -w"
           printf "%s" "${VOMS_PASSWORD}" | voms-proxy-init -voms atlas
 
         # Ensure secrets are masked in logs
