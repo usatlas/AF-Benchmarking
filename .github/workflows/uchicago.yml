@@ -238,3 +238,50 @@ jobs:
           name: event-loop-noarrays
           path: |
             eventloop_noarrays.log
+
+
+  FF:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: echo "🎉 This job uses runner scale set runners!"
+
+      - uses: actions/checkout@v5 # <-- REQUIRED
+
+      - name: Setup Globus credentials securely
+        run: |
+          mkdir -p ~/.globus
+
+          cat > ~/.globus/usercert.pem << 'EOF'
+          ${{ secrets.VOMS_USERCERT }}
+          EOF
+
+          cat > ~/.globus/userkey.pem << 'EOF'
+          ${{ secrets.VOMS_USERKEY }}
+          EOF
+
+          chmod 644 ~/.globus/usercert.pem
+          chmod 600 ~/.globus/userkey.pem
+          ls -lavh ~/.globus/
+        shell: bash
+
+      - name: Debug
+        run: |
+          printenv
+          type source
+          ls -l /usr/bin/sh; /usr/bin/sh --version || true
+        shell: bash
+
+      - name: ff
+        run: ./NTuple_Hist/fastframes/UC/run_ff.sh
+        shell: bash
+        env:
+          VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
+
+      # See https://github.com/orgs/community/discussions/45415
+      - name: Upload ff.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fastframes-log
+          path: |
+            ff.log
