@@ -26,9 +26,6 @@ date >> split.log
 # Getting the host-machine's name
 hostname >> split.log
 
-# Moves log to outputdir
-mv split.log "${output_dir}"
-
 # Directory that needs to be cleaned
 cleanup_dir="/home/selbor/ntuple/ff"
 
