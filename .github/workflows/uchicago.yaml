@@ -4,39 +4,6 @@ on:
   push:
 
 jobs:
-  atlas-adc-image:
-    runs-on: arc-runner-set-uchicago
-    container: registry.cern.ch/atlasadc/atlas-grid-almalinux9-base
-    steps:
-      - name: Diagnostics on ADC Image
-        run: |
-          mkdir -p ~/.globus
-
-          # Write certificate preserving newlines
-          cat > ~/.globus/usercert.pem << 'EOF'
-          ${{ secrets.VOMS_USERCERT }}
-          EOF
-
-          # Write key preserving newlines
-          cat > ~/.globus/userkey.pem << 'EOF'
-          ${{ secrets.VOMS_USERKEY }}
-          EOF
-
-          sed -n '1,5p' ~/.globus/usercert.pem
-
-          # Set permissions
-          chmod 644 ~/.globus/usercert.pem
-          chmod 600 ~/.globus/userkey.pem
-          ls -lavh ~/.globus/
-
-          set +e
-          export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-          export ALRB_localConfigDir="$HOME"/localConfig
-          source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
-
-          diagnostics
-          printf "%s" "${{ secrets.VOMS_PASSWORD }}" | toolTest -m validate all
-
   usatlas-image:
     runs-on: arc-runner-set-uchicago
     env:
@@ -69,6 +36,6 @@ jobs:
           source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
 
           diagnostics
-          printf "%s" "${{ secrets.VOMS_PASSWORD }}" | toolTest -m validate all
+          printf "%s" "${{ secrets.VOMS_PASSWORD }}" | toolTest -m user all
 
         shell: bash
