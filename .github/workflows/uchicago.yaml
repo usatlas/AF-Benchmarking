@@ -1,0 +1,26 @@
+name: UChicago
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  atlas-adc-image:
+    runs-on: arc-runner-set-uchicago
+    container: registry.cern.ch/atlasadc/atlas-grid-almalinux9-base
+    steps:
+      - run: |
+          export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+          export ALRB_localConfigDir="$HOME"/localConfig
+          source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
+          diagnostics
+          toolTest -m validate all
+
+  usatlas-image:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - run: |
+          export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+          export ALRB_localConfigDir="$HOME"/localConfig
+          source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
+          diagnostics
+          toolTest -m validate all
