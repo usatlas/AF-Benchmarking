@@ -9,6 +9,8 @@ jobs:
     env:
       RUCIO_ACCOUNT: jroblesg
     steps:
+      - name: debug
+        run: printenv
       - name: Diagnostics on USATLAS Image
         run: |
           mkdir -p ~/.globus
