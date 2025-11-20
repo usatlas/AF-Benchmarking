@@ -28,3 +28,5 @@ jobs:
           set -e
           diagnostics
           toolTest -m validate all
+        env:
+          RUCIO_ACCOUNT: gstark
