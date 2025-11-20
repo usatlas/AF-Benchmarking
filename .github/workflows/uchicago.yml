@@ -239,7 +239,6 @@ jobs:
           path: |
             eventloop_noarrays.log
 
-
   FF:
     runs-on: arc-runner-set-uchicago
     steps:
