@@ -19,7 +19,7 @@ jobs:
     runs-on: arc-runner-set-uchicago
     steps:
       - uses: actions/checkout@v5
-      - uses: ./.github/actions/setup-globus
+      - uses: .github/actions/setup-globus
         with:
           voms-usercert: ${{ secrets.VOMS_USERCERT }}
           voms-userkey: ${{ secrets.VOMS_USERKEY }}
