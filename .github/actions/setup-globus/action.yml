@@ -6,11 +6,9 @@ inputs:
   voms-usercert:
     description: "Public key and user information (usercert.pem)"
     required: true
-    default: ${{ secrets.VOMS_USERCERT }}
   voms-userkey:
     description: "Private key (userkey.pem)"
     required: true
-    default: ${{ secrets.VOMS_USERKEY }}
 runs:
   using: "composite"
   steps:
