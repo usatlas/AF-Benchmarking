@@ -1,12 +1,14 @@
-name: 'Setup Globus'
-description: 'Set up the ~/.globus directory with necessary files and permissions for using Grid computing and VOMS (Virtual Organization Membership Service).'
+name: "Setup Globus"
+description:
+  "Set up the ~/.globus directory with necessary files and permissions for using
+  Grid computing and VOMS (Virtual Organization Membership Service)."
 inputs:
   voms-usercert:
-    description: 'Public key and user information (usercert.pem)'
+    description: "Public key and user information (usercert.pem)"
     required: true
     default: ${{ secrets.VOMS_USERCERT }}
   voms-userkey:
-    description: 'Private key (userkey.pem)'
+    description: "Private key (userkey.pem)"
     required: true
     default: ${{ secrets.VOMS_USERKEY }}
 runs:
