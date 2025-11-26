@@ -14,8 +14,8 @@ runs:
   steps:
     - name: Mask Inputs
       run: |
-        echo ::add-mask::${{ inputs.VOMS_USERCERT }}
-        echo ::add-mask::${{ inputs.VOMS_USERKEY }}
+        echo ::add-mask::${{ inputs.voms-usercert }}
+        echo ::add-mask::${{ inputs.voms-userkey }}
       shell: bash
 
     - name: Create directory
@@ -25,10 +25,10 @@ runs:
     - name: Create files
       run: |
         cat > ~/.globus/usercert.pem << 'EOF'
-        ${{ inputs.VOMS_USERCERT }}
+        ${{ inputs.voms-usercert }}
         EOF
         cat > ~/.globus/userkey.pem << 'EOF'
-        ${{ inputs.VOMS_USERKEY }}
+        ${{ inputs.voms-userkey }}
         EOF
       shell: bash
 
