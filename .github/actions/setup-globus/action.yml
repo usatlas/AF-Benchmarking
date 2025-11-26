@@ -12,12 +12,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Mask Inputs
-      run: |
-        echo ::add-mask::${{ inputs.voms-usercert }}
-        echo ::add-mask::${{ inputs.voms-userkey }}
-      shell: bash
-
     - name: Create directory
       run: mkdir -p ~/.globus
       shell: bash
