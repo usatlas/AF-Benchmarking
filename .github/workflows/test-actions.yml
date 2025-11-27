@@ -1,0 +1,25 @@
+name: Test custom actions
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - uses: actions/checkout@v5
+      - uses: .github/actions/setup-globus
+        with:
+          voms-usercert: ${{ secrets.VOMS_USERCERT }}
+          voms-userkey: ${{ secrets.VOMS_USERKEY }}

@@ -1,0 +1,33 @@
+name: "Setup Globus"
+description:
+  "Set up the ~/.globus directory with necessary files and permissions for using
+  Grid computing and VOMS (Virtual Organization Membership Service)."
+inputs:
+  voms-usercert:
+    description: "Public key and user information (usercert.pem)"
+    required: true
+  voms-userkey:
+    description: "Private key (userkey.pem)"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Create directory
+      run: mkdir -p ~/.globus
+      shell: bash
+
+    - name: Create files
+      run: |
+        cat > ~/.globus/usercert.pem << 'EOF'
+        ${{ inputs.voms-usercert }}
+        EOF
+        cat > ~/.globus/userkey.pem << 'EOF'
+        ${{ inputs.voms-userkey }}
+        EOF
+      shell: bash
+
+    - name: Set permissions
+      run: |
+        chmod 644 ~/.globus/usercert.pem
+        chmod 600 ~/.globus/userkey.pem
+      shell: bash
