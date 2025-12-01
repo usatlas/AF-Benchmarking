@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Callable
+from collections.abc import Callable
 import hashlib
 from datetime import datetime, timedelta
 
