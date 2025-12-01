@@ -5,6 +5,7 @@ import datetime as dt
 ANSI_ESCAPE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
 
 date_format = "%Y-%m-%d %H:%M:%S"
+# Note: Update the script to contain a dictionary containing the naming schemes for the AFs.
 
 
 # Strips the text of its green color
@@ -60,7 +61,7 @@ def parse_rucio_log(path):
     kind = "benchmark"
 
     return {
-        "cluster": "BNL-AF",
+        "cluster": "UC-AF",
         "testType": "Rucio Download",
         "submitTime": utc_timestamp,
         "queueTime": 0,
