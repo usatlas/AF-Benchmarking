@@ -1,7 +1,5 @@
 #!/bin/bash
 
-curr_date=$(date +"%Y.%m.%dT%H")
-
 yml_dir="${GITHUB_WORKSPACE}/NTuple_Hist/fastframes/UC/"
 
 # Sets up our working environment

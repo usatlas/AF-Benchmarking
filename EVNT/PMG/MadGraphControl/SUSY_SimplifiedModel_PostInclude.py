@@ -54,8 +54,8 @@ else:
             + process
         )
         # Check that if p and j get redefined that it is consistent with 5FS otherwise raise error
-        for l in process.split("\n"):
-            l_nocomment = l.split("#")[0]
+        for line in process.split("\n"):
+            l_nocomment = line.split("#")[0]
             if (
                 "define p" in l_nocomment or "define j" in l_nocomment
             ) and l_nocomment.count("=") == 1:
@@ -134,9 +134,9 @@ else:
     if tarfile.is_tarfile(runArgs.inputGeneratorFile):
         myTarball = tarfile.open(runArgs.inputGeneratorFile)
         myEvents = None
-        for afile in myTarball.getnames():
-            if afile.endswith(".events"):
-                myEvents = afile
+        for filename in myTarball.getnames():
+            if filename.endswith(".events"):
+                myEvents = filename
         if myEvents is None:
             raise RuntimeError("No input events file found!")
         else:
@@ -144,10 +144,10 @@ else:
             update_lhe_file(
                 lhe_file_old=myEvents, param_card_old=param_card_old, masses=masses
             )
-            for aline in events_file:
+            for line in events_file:
                 # Note that because this was directly extracted, we have a binary file, not a text file!
-                if b"ktdurham" in aline and b"=" in aline:
-                    ktdurham = float(aline.split(b"=")[0].strip())
+                if b"ktdurham" in line and b"=" in line:
+                    ktdurham = float(line.split(b"=")[0].strip())
                     break
         myTarball.close()
     else:
@@ -158,9 +158,9 @@ else:
             masses=masses,
         )
         with open(runArgs.inputGeneratorFile) as events_file:
-            for aline in events_file:
-                if "ktdurham" in aline and "=" in aline:
-                    ktdurham = float(aline.split("=")[0].strip())
+            for line in events_file:
+                if "ktdurham" in line and "=" in line:
+                    ktdurham = float(line.split("=")[0].strip())
                     break
 
     if madspin_card is not None:
@@ -177,12 +177,12 @@ else:
 check_reset_proc_number(opts)
 
 # Pythia8 setup for matching if necessary
-njets = max([l.count("j") for l in process.split("\n")])
+njets = max([line.count("j") for line in process.split("\n")])
 njets_min = min(
     [
-        l.count("j")
-        for l in process.split("\n")
-        if "generate " in l or "add process" in l
+        line.count("j")
+        for line in process.split("\n")
+        if "generate " in line or "add process" in line
     ]
 )
 if njets > 0 and njets != njets_min and hasattr(genSeq, "Pythia8"):

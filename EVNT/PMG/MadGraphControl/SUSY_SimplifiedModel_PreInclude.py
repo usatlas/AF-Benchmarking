@@ -79,7 +79,7 @@ run_settings = {
     "xqcut": 0,
 }  # use CKKW-L merging (yes, this is a weird setting)
 # Set up default PDF and systematic settings (note: action in import module)
-from MadGraphControl.MadGraph_NNPDF30NLO_Base_Fragment import *
+import MadGraphControl.MadGraph_NNPDF30NLO_Base_Fragment  # noqa: F401
 from AthenaCommon import Logging
 
 presusylog = Logging.logging.getLogger("SUSY_PreInclude")
