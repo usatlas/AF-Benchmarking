@@ -6,7 +6,6 @@ import dask
 import hist.dask as had
 from coffea import processor
 from distributed import Client, LocalCluster
-import os
 from atlas_schema.schema import NtupleSchema
 import json
 import warnings
@@ -77,8 +76,8 @@ def main():
     # client = Client()
     # Limit to 4 total CPU cores, across 2 workers with 2 threads each
     cluster = LocalCluster(n_workers=2, threads_per_worker=2)
-    local_directory = f"/tmp/dask-scratch-space-{os.getuid()}"
-    with Client(cluster) as client:
+    # local_directory = f"/tmp/dask-scratch-space-{os.getuid()}"
+    with Client(cluster):
         dataset_runnable = json.loads(
             Path(
                 "/data/selbor/single_campaign_mc20e_dataset_runnable/af_v2_700402.json"

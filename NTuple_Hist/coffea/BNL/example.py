@@ -76,7 +76,7 @@ def main():
     # client = Client()
     # Limit to 4 total CPU cores, across 2 workers with 2 threads each
     cluster = LocalCluster(n_workers=2, threads_per_worker=2)
-    with Client(cluster) as client:
+    with Client(cluster):
         dataset_runnable = json.loads(
             Path(
                 "/atlasgpfs01/usatlas/data/jroblesgo/single_campaign_mc20e_dataset_runnable/af_v2_700402.json"
