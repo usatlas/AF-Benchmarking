@@ -3,36 +3,22 @@ on:
   push:
   pull_request:
     branches:
-    - main
+      - main
   # Run every 6 hours
   schedule:
-  - cron:  '0 */6 * * *'
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 jobs:
   rucio:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
+      - uses: actions/checkout@v5
 
-      - uses: actions/checkout@v5 # <-- REQUIRED
-
-      - name: Setup Globus credentials securely
-        run: |
-          mkdir -p ~/.globus
-
-          cat > ~/.globus/usercert.pem << 'EOF'
-          ${{ secrets.VOMS_USERCERT }}
-          EOF
-
-          cat > ~/.globus/userkey.pem << 'EOF'
-          ${{ secrets.VOMS_USERKEY }}
-          EOF
-
-          chmod 644 ~/.globus/usercert.pem
-          chmod 600 ~/.globus/userkey.pem
-          ls -lavh ~/.globus/
-        shell: bash
+      - uses: .github/actions/setup-globus
+        with:
+          voms-usercert: ${{ secrets.VOMS_USERCERT }}
+          voms-userkey: ${{ secrets.VOMS_USERKEY }}
 
       - name: Debug
         run: |
@@ -59,8 +45,6 @@ jobs:
   evnt-native:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
-
       - uses: actions/checkout@v5
 
       - name: EVNT
@@ -80,8 +64,6 @@ jobs:
   evnt-el9:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
-
       - uses: actions/checkout@v5
 
       - name: EVNT-EL9
@@ -101,8 +83,6 @@ jobs:
   evnt-centos7:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
-
       - uses: actions/checkout@v5
 
       - name: EVNT-CentOS7
@@ -122,8 +102,6 @@ jobs:
   truth3-native:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
-
       - uses: actions/checkout@v5
 
       - name: Truth3-Native
@@ -143,8 +121,6 @@ jobs:
   truth3-el9:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
-
       - uses: actions/checkout@v5
 
       - name: Truth3-EL9
@@ -164,8 +140,6 @@ jobs:
   truth3-centos7:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
-
       - uses: actions/checkout@v5
 
       - name: Truth3-CentOS7
@@ -185,8 +159,6 @@ jobs:
   coffea:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
-
       - uses: actions/checkout@v5
 
       - name: coffea
@@ -206,8 +178,6 @@ jobs:
   event-loop-columnar:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
-
       - uses: actions/checkout@v5
 
       - name: event-loop-columnar
@@ -227,8 +197,6 @@ jobs:
   event-loop-standard:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
-
       - uses: actions/checkout@v5
 
       - name: event-loop-standard
@@ -248,26 +216,12 @@ jobs:
   FF:
     runs-on: arc-runner-set-uchicago
     steps:
-      - run: echo "🎉 This job uses runner scale set runners!"
+      - uses: actions/checkout@v5
 
-      - uses: actions/checkout@v5 # <-- REQUIRED
-
-      - name: Setup Globus credentials securely
-        run: |
-          mkdir -p ~/.globus
-
-          cat > ~/.globus/usercert.pem << 'EOF'
-          ${{ secrets.VOMS_USERCERT }}
-          EOF
-
-          cat > ~/.globus/userkey.pem << 'EOF'
-          ${{ secrets.VOMS_USERKEY }}
-          EOF
-
-          chmod 644 ~/.globus/usercert.pem
-          chmod 600 ~/.globus/userkey.pem
-          ls -lavh ~/.globus/
-        shell: bash
+      - uses: .github/actions/setup-globus
+        with:
+          voms-usercert: ${{ secrets.VOMS_USERCERT }}
+          voms-userkey: ${{ secrets.VOMS_USERKEY }}
 
       - name: Debug
         run: |
