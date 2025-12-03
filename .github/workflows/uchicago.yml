@@ -9,6 +9,9 @@ on:
     - cron: "0 */6 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   rucio:
     runs-on: arc-runner-set-uchicago
