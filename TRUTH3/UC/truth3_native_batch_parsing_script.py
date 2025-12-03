@@ -110,7 +110,7 @@ def parsing_function(element_from_list_of_full_path):
 
 
 def creates_dictionaries(list_of_parsed_data, af_location="uc"):
-    af_dictionary = {"uc": "UC-AF", "slack": "SLAC-AF", "bnl": "BNL-AF"}
+    af_dictionary = {"uc": "UC-AF", "slac": "SLAC-AF", "bnl": "BNL-AF"}
     list_of_dics = []
     for tuples in list_of_parsed_data:
         dic = {}

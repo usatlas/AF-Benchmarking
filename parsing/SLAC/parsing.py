@@ -12,7 +12,7 @@ class Parsing_Class:
     # Dictionary used to obtain AF script is running at
     af_dictionary: ClassVar[dict[str, str]] = {
         "uc": "UC-AF",
-        "slack": "SLAC-AF",
+        "slac": "SLAC-AF",
         "bnl": "BNL-AF",
     }
 
@@ -48,7 +48,7 @@ class Parsing_Class:
 
     # Dictionary storing the directory where the script directories are located at sites
     ## UPDATE: Need to include SLAC and BNL ##
-    # benchmarks_dir_dic = {"uc": "/data/selbor/parsing_jobs", "slack": None, "bnl": None}
+    # benchmarks_dir_dic = {"uc": "/data/selbor/parsing_jobs", "slac": None, "bnl": None}
     # Dictionary that contains months mapped to numbers; used when parsing EVNT and TRUTH3 log files
     months_dic: ClassVar[dict[str, str]] = {
         "Jan": "01",

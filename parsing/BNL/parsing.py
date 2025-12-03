@@ -10,7 +10,7 @@ class Parsing_Class:
     # Shared qualities among all objects created with this class
 
     # Dictionary used to obtain AF script is running at
-    af_dictionary: ClassVar[dict] = {"uc": "UC-AF", "slack": "SLAC-AF", "bnl": "BNL-AF"}
+    af_dictionary: ClassVar[dict] = {"uc": "UC-AF", "slac": "SLAC-AF", "bnl": "BNL-AF"}
 
     # Dictionary used to obtain job string recognized by ElasticSearch
     job_dictionary: ClassVar[dict] = {
@@ -43,7 +43,7 @@ class Parsing_Class:
     ## UPDATE: Need to include SLAC and BNL ##
     benchmarks_dir_dic: ClassVar[dict] = {
         "uc": "/data/selbor/parsing_jobs",
-        "slack": None,
+        "slac": None,
         "bnl": None,
     }
 
