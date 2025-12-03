@@ -1,0 +1,22 @@
+*[AF]: Analysis Facility
+*[AFs]: Analysis Facilities
+*[API]: Application Programming Interface
+*[BNL]: Brookhaven National Laboratory
+*[CERN]: European Organization for Nuclear Research
+*[CLI]: Command Line Interface
+*[CVMFS]: CernVM File System
+*[EOS]: EOS storage system
+*[GPU]: Graphics Processing Unit
+*[GPUs]: Graphics Processing Units
+*[HTC]: High Throughput Computing
+*[HTCondor]: High Throughput Computing Condor
+*[MPI]: Message Passing Interface
+*[SLAC]: SLAC National Accelerator Laboratory
+*[SLURM]: Simple Linux Utility for Resource Management
+*[SSH]: Secure Shell
+*[UChicago]: University of Chicago
+*[VM]: Virtual Machine
+*[VMs]: Virtual Machines
+*[xAOD]: ATLAS Analysis Object Data
+*[RSE]: Rucio Storage Element (e.g. `MWT2_UC_LOCALGROUP_DISK`)
+*[NERSC]: National Energy Research Scientific Computing Center
