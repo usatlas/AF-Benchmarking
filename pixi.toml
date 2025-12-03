@@ -1,7 +1,7 @@
 [workspace]
 authors = ["Giordon Stark <kratsg@gmail.com>"]
 channels = ["conda-forge"]
-name = "af-docs"
+name = "af-benchmarking"
 platforms = ["linux-64", "linux-aarch64", "osx-64", "osx-arm64", "win-64"]
 version = "0.1.0"
 
