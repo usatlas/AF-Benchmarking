@@ -20,25 +20,17 @@ jobs:
           voms-usercert: ${{ secrets.VOMS_USERCERT }}
           voms-userkey: ${{ secrets.VOMS_USERKEY }}
 
-      - name: Debug
-        run: |
-          printenv
-          type source
-          ls -l /usr/bin/sh; /usr/bin/sh --version || true
-        shell: bash
-
-      - name: Rucio
+      - name: execute
         run: ./Rucio/rucio_script.sh uchicago
         shell: bash
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload rucio.log
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: rucio-log
+          name: ${{ github.job }}-logs
           path: |
             rucio.log
 
@@ -47,17 +39,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: EVNT
+      - name: execute
         run: ./EVNT/UC/Native/run_evnt_native_batch.sh
         working-directory: .
         shell: bash
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload log.generate
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: evnt-native-logs
+          name: ${{ github.job }}-logs
           path: |
             log.generate
 
@@ -66,17 +57,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: EVNT-EL9
+      - name: execute
         run: ./EVNT/UC/EL9/run_evnt_el9_batch.sh
         working-directory: .
         shell: bash
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload log.generate
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: evnt-el9-logs
+          name: ${{ github.job }}-logs
           path: |
             log.generate
 
@@ -85,17 +75,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: EVNT-CentOS7
+      - name: execute
         run: ./EVNT/UC/CentOS7/run_evnt_centos7_batch.sh
         working-directory: .
         shell: bash
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload log.generate
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: evnt-centos7-logs
+          name: ${{ github.job }}-logs
           path: |
             log.generate
 
@@ -104,17 +93,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Truth3-Native
+      - name: execute
         run: ./TRUTH3/UC/Native/run_truth3_native_batch.sh
         working-directory: .
         shell: bash
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload log.Derivation
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: truth3-native-log
+          name: ${{ github.job }}-logs
           path: |
             log.Derivation
 
@@ -123,17 +111,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Truth3-EL9
+      - name: execute
         run: ./TRUTH3/UC/EL9/run_truth3_el9_batch.sh
         working-directory: .
         shell: bash
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload log.Derivation
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: truth3-el9-log
+          name: ${{ github.job }}-logs
           path: |
             log.Derivation
 
@@ -142,17 +129,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Truth3-CentOS7
+      - name: execute
         run: ./TRUTH3/UC/CentOS7/run_truth3_centos7_batch.sh
         working-directory: .
         shell: bash
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload log.EVNTtoDAOD
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: truth3-centos7-log
+          name: ${{ github.job }}-logs
           path: |
             log.EVNTtoDAOD
 
@@ -161,17 +147,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: coffea
+      - name: execute
         run: ./NTuple_Hist/coffea/UC/run_example.sh
         working-directory: .
         shell: bash
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload coffea_hist.log
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: coffea-hist
+          name: ${{ github.job }}-logs
           path: |
             coffea_hist.log
 
@@ -180,17 +165,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: event-loop-columnar
+      - name: execute
         run: ./NTuple_Hist/event_loop/UC/columnar/run_eventloop_arrays.sh
         working-directory: .
         shell: bash
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload eventloop_arrays.log
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: event-loop
+          name: ${{ github.job }}-logs
           path: |
             eventloop_arrays.log
 
@@ -199,17 +183,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: event-loop-standard
+      - name: execute
         run: ./NTuple_Hist/event_loop/UC/standard/run_eventloop_noarrays.sh
         working-directory: .
         shell: bash
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload eventloop_noarrays.log
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: event-loop-noarrays
+          name: ${{ github.job }}-logs
           path: |
             eventloop_noarrays.log
 
@@ -223,24 +206,16 @@ jobs:
           voms-usercert: ${{ secrets.VOMS_USERCERT }}
           voms-userkey: ${{ secrets.VOMS_USERKEY }}
 
-      - name: Debug
-        run: |
-          printenv
-          type source
-          ls -l /usr/bin/sh; /usr/bin/sh --version || true
-        shell: bash
-
-      - name: ff
+      - name: execute
         run: ./NTuple_Hist/fastframes/UC/run_ff.sh
         shell: bash
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
 
-      # See https://github.com/orgs/community/discussions/45415
-      - name: Upload ff.log
+      - name: upload log
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fastframes-log
+          name: ${{ github.job }}-logs
           path: |
             ff.log
