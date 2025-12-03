@@ -8,13 +8,13 @@ UChicago, SLAC, BNL. The jobs used to benchmark are:
 
 [Documentation](https://atlassoftwaredocs.web.cern.ch/internal-links/grid-tutorial/rucio-download-files/)
 
-[Script used at AFs](af-benchmarking/blob/main/Rucio/rucio_script.sh)
+[Script used at AFs](https://github.com/usatlas/af-benchmarking/blob/main/Rucio/rucio_script.sh)
 
 ## EVNT:
 
 [Documentation for EVNT Production](https://atlassoftwaredocs.web.cern.ch/analysis-software/AnalysisSWTutorial/mc_generation/)
 
-[Script used at the UC AF](af-benchmarking/EVNT/UC/run_evnt_native_batch.sh)
+[Script used at the UC AF](https://github.com/usatlas/af-benchmarking/blob/main/EVNT/UC/run_evnt_native_batch.sh)
 
 - [Rucio Download](https://atlassoftwaredocs.web.cern.ch/internal-links/grid-tutorial/rucio-download-files/)
 - :
