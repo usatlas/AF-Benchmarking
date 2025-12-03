@@ -1,7 +1,13 @@
 name: uchicago
 on:
-  workflow_dispatch:
   push:
+  pull_request:
+    branches:
+    - main
+  # Run every 6 hours
+  schedule:
+  - cron:  '0 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   rucio:
