@@ -127,7 +127,7 @@ def parsing_function(log_path):
 
 
 def creates_dics(list_of_data_tuples, af_location):
-    af_dictionary = {"uc": "UC-AF", "slack": "SLAC-AF", "bnl": "BNL-AF"}
+    af_dictionary = {"uc": "UC-AF", "slac": "SLAC-AF", "bnl": "BNL-AF"}
     list_of_dics = []
     for tuples in list_of_data_tuples:
         dic = {}
