@@ -55,7 +55,7 @@ site="$1"
 if [[ -z "$site" ]]; then
     # Auto-detect
     if [[ -d /sdf ]]; then
-        site="slack"
+        site="slac"
     elif [[ -d /usatlas ]]; then
         site="uchicago"
     elif [[ -d /data ]]; then
@@ -77,7 +77,7 @@ case "$site" in
         output_dir="${job_dir}/${curr_time}/"
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
-    slack)
+    slac)
         job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/sdf/data/atlas/u/selbor/benchmarks/"
         output_dir="${job_dir}/${curr_time}/"
