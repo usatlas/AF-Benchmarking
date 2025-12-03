@@ -80,7 +80,7 @@ def main():
     with Client(cluster):
         dataset_runnable = json.loads(
             Path(
-                "/data/selbor/single_campaign_mc20e_dataset_runnable/af_v2_700402.json"
+                "/home/runner/_work/af-benchmarking/af-benchmarking/NTuple_Hist/coffea/single_campaign_mc20e_dataset_runnable/af_v2_700402.json"
             ).read_text()
         )
         nevents = 0

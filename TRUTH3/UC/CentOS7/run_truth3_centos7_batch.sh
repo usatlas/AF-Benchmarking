@@ -6,7 +6,7 @@ curr_time=$(date +"%Y.%m.%dT%H")
 
 
 # Defines the directory where the input files are stored
-config_dir="/data/$(whoami)/TRUTH3_StaticDir/"
+config_dir="${GITHUB_WORKSPACE}/TRUTH3/EVNT.root"
 
 # Sets up the ATLAS Environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
@@ -19,8 +19,8 @@ date +'%H:%H:%S' >> split.log
 ## -m : mounts a specific directory
 ## -r : precedes the commands we want to run within the container
 # shellcheck disable=SC1091
-source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c centos7 -m /data:/data -r "asetup AthDerivation,21.2.178.0,here && \
-  Reco_tf.py --inputEVNTFile ${config_dir}EVNT_centos.root --outputDAODFile=TRUTH3.root --reductionConf TRUTH3 2>&1 | tee pipe_file.log"
+source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c centos7 -r "asetup AthDerivation,21.2.178.0,here && \
+  Reco_tf.py --inputEVNTFile ${config_dir} --outputDAODFile=TRUTH3.root --reductionConf TRUTH3 2>&1 | tee pipe_file.log"
 
 # Appends time after Reco_tf.py to a log file
 date +'%H:%H:%S' >> split.log
@@ -36,7 +36,7 @@ hostname >> split.log
 du DAOD_TRUTH3.TRUTH3.root >> split.log
 
 # Moves the log file to the output directory
-mv log.EVNTtoDAOD "${output_dir}"
+#mv log.EVNTtoDAOD "${output_dir}"
 mv split.log "${output_dir}"
 mv pipe_file.log "${output_dir}"
 

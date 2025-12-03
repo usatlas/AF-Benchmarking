@@ -2,9 +2,9 @@ general:
   debug_level: DEBUG
 
   # Paths
-  input_filelist_path: "/data/selbor/ntuple/fastframes/input/mc20e_filelist.txt"
-  input_sumweights_path: "/data/selbor/ntuple/fastframes/input/mc20e_sumweights.txt"
-  output_path_histograms: "/data/selbor/ntuple/fastframes/output/"
+  input_filelist_path: "./NTuple_Hist/fastframes/UC/mc20e_filelist.txt"
+  input_sumweights_path: "./NTuple_Hist/fastframes/UC/mc20e_sumweights.txt"
+  output_path_histograms: "./NTuple_Hist/fastframes/UC/"
 
   # Weights
   default_sumweights: "NOSYS"
