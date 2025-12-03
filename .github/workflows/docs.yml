@@ -27,9 +27,6 @@ jobs:
       - name: Check documentation
         run: pixi run build-check
 
-      - name: Extract text from HTML
-        run: pixi run extract-text
-
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v4
