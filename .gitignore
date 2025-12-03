@@ -1,0 +1,22 @@
+site/
+site_text/
+*~
+*.py[co]
+__pycache__
+*.egg-info
+*.eggs
+*~
+*.bak
+.ipynb_checkpoints
+.DS_Store
+\#*#
+.#*
+*.swp
+*.map
+
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+# AI Agents
+CLAUDE.md

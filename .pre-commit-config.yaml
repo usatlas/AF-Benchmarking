@@ -2,7 +2,7 @@ ci:
   autoupdate_commit_msg: "chore: update pre-commit hooks"
   autofix_commit_msg: "style: pre-commit fixes"
 
-exclude: ^.cruft.json|.copier-answers.yml|src/pyhs3/roadmap.py|example.py$
+exclude: ^.cruft.json|.copier-answers.yml|docs/css/fonts/.*$
 
 repos:
   - repo: https://github.com/adamchainz/blacken-docs
