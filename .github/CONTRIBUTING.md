@@ -5,25 +5,43 @@ installed, you can install it by following the instructions at
 [pixi documentation](https://pixi.sh). On macOS, you can use
 `brew install pixi`.
 
-To use pixi, run the following commands:
+## Available Environments
+
+This project uses pixi with multiple environments:
+
+- **`docs`** - Documentation building (Python 3.14, mkdocs, plugins)
+- **`kibana`** - Parsing and Kibana upload (Python 3.13, elasticsearch)
+
+## Documentation Development
+
+To work on documentation, use the `docs` environment:
 
 ```console
-$ pixi task list        # List all available tasks
-$ pixi run build        # Build the documentation
-$ pixi run serve        # Build and serve the docs locally (with auto-reload)
-$ pixi run build-check  # Build and validate all links
-$ pixi run validate     # Validate links in the built site
+$ pixi task list -e docs     # List all available documentation tasks
+$ pixi run -e docs build      # Build the documentation
+$ pixi run -e docs serve      # Build and serve the docs locally (with auto-reload)
+$ pixi run -e docs build-check # Build and validate all links
+$ pixi run -e docs validate   # Validate links in the built site
 ```
 
 You can also pass arguments to customize the config file:
 
 ```console
-$ pixi run build --config custom-mkdocs.yml
-$ pixi run serve --config custom-mkdocs.yml
+$ pixi run -e docs build --config custom-mkdocs.yml
+$ pixi run -e docs serve --config custom-mkdocs.yml
+```
+
+## Parsing/Kibana Development
+
+To work on parsing and Kibana integration:
+
+```console
+$ pixi shell -e kibana  # Enter the kibana environment shell
+$ python parsing/scripts/...  # Run parsing scripts
 ```
 
 pixi handles everything for you, including setting up a temporary virtual
-environment with all required dependencies (mkdocs, plugins, linkchecker, etc.).
+environment with all required dependencies.
 
 # Setting up a development environment manually
 
@@ -59,18 +77,18 @@ You can also/alternatively run `pre-commit run` (changes only) or
 # Building docs
 
 This project uses MkDocs for documentation. The documentation is automatically
-built and published by ReadTheDocs when changes are pushed to the repository.
+built and published via GitHub Pages when changes are pushed to the main branch.
 
 You can build the docs locally using pixi:
 
 ```bash
-pixi run build
+pixi run -e docs build
 ```
 
 You can see a preview with live reload (great for iterating on documentation):
 
 ```bash
-pixi run serve
+pixi run -e docs serve
 ```
 
 Then open http://127.0.0.1:8000 in your browser.
@@ -78,7 +96,7 @@ Then open http://127.0.0.1:8000 in your browser.
 To validate all links in the documentation:
 
 ```bash
-pixi run build-check
+pixi run -e docs build-check
 ```
 
 This will build the documentation without directory URLs and run linkchecker to
