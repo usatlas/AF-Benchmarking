@@ -15,7 +15,7 @@ jobs:
   rucio:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - uses: ./.github/actions/setup-globus
         with:
@@ -30,7 +30,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
@@ -39,7 +39,7 @@ jobs:
   evnt-native:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: execute
         run: ./EVNT/UC/Native/run_evnt_native_batch.sh
@@ -48,7 +48,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
@@ -57,7 +57,7 @@ jobs:
   evnt-el9:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: execute
         run: ./EVNT/UC/EL9/run_evnt_el9_batch.sh
@@ -66,7 +66,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
@@ -75,7 +75,7 @@ jobs:
   evnt-centos7:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: execute
         run: ./EVNT/UC/CentOS7/run_evnt_centos7_batch.sh
@@ -84,7 +84,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
@@ -93,7 +93,7 @@ jobs:
   truth3-native:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: execute
         run: ./TRUTH3/UC/Native/run_truth3_native_batch.sh
@@ -102,7 +102,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
@@ -111,7 +111,7 @@ jobs:
   truth3-el9:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: execute
         run: ./TRUTH3/UC/EL9/run_truth3_el9_batch.sh
@@ -120,7 +120,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
@@ -129,7 +129,7 @@ jobs:
   truth3-centos7:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: execute
         run: ./TRUTH3/UC/CentOS7/run_truth3_centos7_batch.sh
@@ -138,7 +138,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
@@ -147,7 +147,7 @@ jobs:
   coffea:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: execute
         run: ./NTuple_Hist/coffea/UC/run_example.sh
@@ -156,7 +156,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
@@ -165,7 +165,7 @@ jobs:
   event-loop-columnar:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: execute
         run: ./NTuple_Hist/event_loop/UC/columnar/run_eventloop_arrays.sh
@@ -174,7 +174,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
@@ -183,7 +183,7 @@ jobs:
   event-loop-standard:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: execute
         run: ./NTuple_Hist/event_loop/UC/standard/run_eventloop_noarrays.sh
@@ -192,7 +192,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
@@ -201,7 +201,7 @@ jobs:
   FF:
     runs-on: arc-runner-set-uchicago
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - uses: ./.github/actions/setup-globus
         with:
@@ -216,7 +216,7 @@ jobs:
 
       - name: upload log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ github.job }}-logs
           path: |
