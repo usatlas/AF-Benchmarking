@@ -31,15 +31,14 @@ graph LR
 
 The workflows require these GitHub repository secrets:
 
-| Secret          | Purpose                | Used By          |
-| --------------- | ---------------------- | ---------------- |
-| `VOMS_USERCERT` | VOMS user certificate  | Globus setup     |
-| `VOMS_USERKEY`  | VOMS user key          | Globus setup     |
-| `VOMS_PASSWORD` | VOMS password          | Globus setup     |
-| `ES_USERNAME`   | Elasticsearch username | Parse and upload |
-| `ES_PASSWORD`   | Elasticsearch password | Parse and upload |
-| `KIBANA_TOKEN`  | Kibana benchmark token | Parse and upload |
-| `KIBANA_KIND`   | Kibana benchmark kind  | Parse and upload |
+| Secret          | Purpose                      | Used By          |
+| --------------- | ---------------------------- | ---------------- |
+| `VOMS_USERCERT` | VOMS user certificate        | Globus setup     |
+| `VOMS_USERKEY`  | VOMS user key                | Globus setup     |
+| `VOMS_PASSWORD` | VOMS password                | Globus setup     |
+| `KIBANA_TOKEN`  | Kibana benchmark token       | Parse and upload |
+| `KIBANA_KIND`   | Kibana benchmark kind        | Parse and upload |
+| `KIBANA_URI`    | LogStash/Kibana URI endpoint | Parse and upload |
 
 To add or update secrets:
 

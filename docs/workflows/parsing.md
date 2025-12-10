@@ -1,26 +1,29 @@
-# Parse and Upload Action
+# Parse and Upload Actions
 
-**File:** `.github/actions/parse-and-upload/action.yml`
+**Files:**
 
-This custom composite action handles parsing benchmark logs and uploading
+- `.github/actions/parse/action.yml` - Parse benchmark logs
+- `.github/actions/upload/action.yml` - Upload to LogStash/Kibana
+
+These custom composite actions handle parsing benchmark logs and uploading
 results to Elasticsearch/Kibana for visualization and analysis.
 
 ## Purpose
 
-After each benchmark job completes, this action:
+After each benchmark job completes, these actions:
 
-1. Parses the log file to extract timing and performance metrics
-2. Combines parsed data with static configuration
-3. Sends the data to LogStash for routing and storage in Elasticsearch/Kibana
+1. **Parse action**: Parses the log file to extract timing and performance
+   metrics, generating a JSON payload
+2. **Upload action**: Sends the JSON payload to LogStash for routing and storage
+   in Elasticsearch/Kibana
 
 ## Architecture
 
-The parse-and-upload action uses **LogStash as a routing service** to direct
-benchmark data to the appropriate Kibana instance:
+The parsing and upload workflow uses **two separate actions** to process and
+send benchmark data:
 
 ```
-GitHub Actions → LogStash → Elasticsearch/Kibana
-                (routing)
+Parse Action → payload.json → Upload Action → LogStash → Elasticsearch/Kibana
 ```
 
 **Key architectural details:**
@@ -39,6 +42,8 @@ single, simple integration point for GitHub Actions workflows.
 
 ## Inputs
 
+### Parse Action Inputs
+
 | Input          | Description                      | Required | Example                                       |
 | -------------- | -------------------------------- | -------- | --------------------------------------------- |
 | `job-type`     | Type of job                      | Yes      | `rucio`, `evnt-native`                        |
@@ -47,36 +52,57 @@ single, simple integration point for GitHub Actions workflows.
 | `cluster`      | Cluster name                     | Yes      | `UC-AF`, `SLAC-AF`, `BNL-AF`                  |
 | `kibana-token` | Token for benchmark ID           | Yes      | From secrets                                  |
 | `kibana-kind`  | Kind for benchmark ID            | Yes      | From secrets                                  |
-| `kibana-uri`   | URI endpoint for sending data    | Yes      | From secrets                                  |
 | `host`         | Hostname to identify the machine | Yes      | {% raw %} `${{ env.NODE_NAME }}` {% endraw %} |
+| `output-file`  | Output JSON file path            | No       | `payload.json` (default)                      |
+
+### Upload Action Inputs
+
+| Input          | Description               | Required | Example        |
+| -------------- | ------------------------- | -------- | -------------- |
+| `payload-file` | Path to JSON payload file | Yes      | `payload.json` |
+| `kibana-uri`   | URI endpoint for LogStash | Yes      | From secrets   |
 
 ## Implementation Steps
 
-The action performs these steps:
+### Parse Action
 
-### 1. Setup pixi
+The parse action performs these steps:
 
-Sets up the `kibana` pixi environment with:
-
-- Python 3.13
-- elasticsearch package
-- Other dependencies as needed
-
-### 2. Parse and Upload
-
-Runs the parsing script (provided by Juan):
+1. **Setup pixi**: Sets up the `kibana` pixi environment with Python 3.13 and
+   required dependencies
+2. **Parse log file**: Runs the parsing script to generate JSON payload:
 
 ```bash
-pixi run -e kibana python parsing/scripts/ci_parse_and_send.py \
+pixi run -e kibana python parsing/scripts/ci_parse.py \
   --job-type <job-type> \
   --log-file <log-file> \
   --log-type <log-type> \
   --cluster <cluster> \
   --token <token> \
   --kind <kind> \
-  --uri <kibana-uri> \
-  --host <host>
+  --host <host> \
+  --output payload.json
 ```
+
+3. **Output**: Generates `payload.json` file in the workspace
+
+### Upload Action
+
+The upload action performs these steps:
+
+1. **Validate payload file**: Checks that the payload file exists and displays
+   its contents for debugging
+2. **Upload to LogStash**: POSTs the JSON payload using curl:
+
+```bash
+curl -X POST "https://<kibana-uri>" \
+  -H "Content-Type: application/json" \
+  -d @payload.json \
+  -w "%{http_code}" \
+  -s -o /tmp/response.txt
+```
+
+3. **Verify response**: Checks HTTP status code and fails if not 2xx
 
 ## Data Structure
 
@@ -153,9 +179,9 @@ issues.
 {% raw %}
 
 ```yaml
-- name: parse and upload to kibana
+- name: parse benchmark log
   if: always() # Run even if benchmark failed
-  uses: ./.github/actions/parse-and-upload
+  uses: ./.github/actions/parse
   with:
     job-type: ${{ github.job }}
     log-file: rucio.log
@@ -163,9 +189,16 @@ issues.
     cluster: UC-AF
     kibana-token: ${{ secrets.KIBANA_TOKEN }}
     kibana-kind: ${{ secrets.KIBANA_KIND }}
-    kibana-uri: ${{ secrets.KIBANA_URI }}
     host: ${{ env.NODE_NAME }}
   continue-on-error: true # Don't fail job if parsing fails
+
+- name: upload to kibana
+  if: always() # Run even if parsing failed
+  uses: ./.github/actions/upload
+  with:
+    payload-file: payload.json
+    kibana-uri: ${{ secrets.KIBANA_URI }}
+  continue-on-error: true # Don't fail job if upload fails
 ```
 
 {% endraw %}
@@ -220,26 +253,36 @@ authentication headers or stored credentials.
 
 ### Testing Locally
 
-Test parsing without uploading:
+Test parsing and upload separately:
+
+**Test parsing:**
 
 ```bash
 pixi shell -e kibana
 
-python parsing/scripts/ci_parse_and_send.py \
+python parsing/scripts/ci_parse.py \
   --job-type rucio \
   --log-file path/to/rucio.log \
   --log-type rucio \
   --cluster UC-AF \
-  --token TOKEN \
-  --kind benchmark \
-  --uri KIBANA_URI \
-  --host HOSTNAME \
-  --dry-run  # If supported by parsing script
+  --token $KIBANA_TOKEN \
+  --kind $KIBANA_KIND \
+  --host $HOSTNAME \
+  --output payload.json
+```
+
+**Test upload:**
+
+```bash
+curl -X POST "https://$KIBANA_URI" \
+  -H "Content-Type: application/json" \
+  -d @payload.json \
+  -w "\nHTTP Status: %{http_code}\n"
 ```
 
 ## Integration with Other Workflows
 
-This action is currently used by:
+These actions are currently used by:
 
 - [UChicago Benchmark Workflow](benchmarks.md) - All 10 benchmark jobs
 
