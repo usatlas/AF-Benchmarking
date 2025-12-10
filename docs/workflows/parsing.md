@@ -163,7 +163,7 @@ issues.
     cluster: UC-AF
     kibana-token: ${{ secrets.KIBANA_TOKEN }}
     kibana-kind: ${{ secrets.KIBANA_KIND }}
-    kibana-uri: ${{ secrests.KIBANA_URI }}
+    kibana-uri: ${{ secrets.KIBANA_URI }}
     host: ${{ env.NODE_NAME }}
   continue-on-error: true # Don't fail job if parsing fails
 ```

@@ -54,10 +54,11 @@ pixi shell -e kibana
 python parsing/scripts/ci_parse_and_send.py \
   --job-type rucio \
   --log-file path/to/rucio.log \
+  --log-type rucio \
   --cluster UC-AF \
-  --uri $KIBANA_URI
   --token $KIBANA_TOKEN \
-  --kind $KIBANA_KIND
+  --kind $KIBANA_KIND \
+  --uri $KIBANA_URI \
   --host $HOSTNAME
 ```
 
@@ -125,11 +126,12 @@ new-benchmark:
       with:
         job-type: ${{ github.job }}
         log-file: new-benchmark.log # Update to match your log file
+        log-type: new-benchmark # Update to match your parser type
         cluster: UC-AF
-        es-username: ${{ secrets.ES_USERNAME }}
-        es-password: ${{ secrets.ES_PASSWORD }}
         kibana-token: ${{ secrets.KIBANA_TOKEN }}
         kibana-kind: ${{ secrets.KIBANA_KIND }}
+        kibana-uri: ${{ secrets.KIBANA_URI }}
+        host: ${{ env.NODE_NAME }}
       continue-on-error: true
 
     - name: upload log
@@ -233,7 +235,7 @@ gh run download <run-id>
 - Check "parse and upload to kibana" step logs
 - Verify log file exists and has expected format
 - Test parsing script locally
-- Check Elasticsearch credentials
+- Check token and kind values are correct
 
 **Artifact upload failures:**
 
@@ -312,9 +314,10 @@ pixi run -e kibana <task-name>
 For local testing, set these environment variables:
 
 ```bash
-# Elasticsearch credentials
-export ES_USERNAME="your-username"
-export ES_PASSWORD="your-password"
+# Kibana/LogStash configuration
+export KIBANA_TOKEN="your-kibana-token"
+export KIBANA_KIND="your-kibana-kind"
+export KIBANA_URI="your-kibana-uri"
 
 # VOMS credentials (if testing with Globus)
 export VOMS_PASSWORD="your-voms-password"
