@@ -10,17 +10,14 @@ inputs:
   cluster:
     description: "Cluster name (e.g., UC-AF, SLAC-AF, BNL-AF)"
     required: true
-  es-username:
-    description: "Elasticsearch username"
-    required: true
-  es-password:
-    description: "Elasticsearch password"
-    required: true
   kibana-token:
     description: "Token for benchmark identification"
     required: true
   kibana-kind:
     description: "Kind for benchmark identification"
+    required: true
+  host:
+    description: "Hostname to identify the machine running the job"
     required: true
 
 runs:
@@ -41,7 +38,6 @@ runs:
           --job-type "${{ inputs.job-type }}" \
           --log-file "${{ inputs.log-file }}" \
           --cluster "${{ inputs.cluster }}" \
-          --es-username "${{ inputs.es-username }}" \
-          --es-password "${{ inputs.es-password }}" \
           --token "${{ inputs.kibana-token }}" \
-          --kind "${{ inputs.kibana-kind }}"
+          --kind "${{ inputs.kibana-kind }}" \
+          --host "${{ inputs.host }}"
