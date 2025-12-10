@@ -34,6 +34,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: rucio.log
+          log-type: rucio
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
@@ -65,6 +66,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: log.generate
+          log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
@@ -96,6 +98,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: log.generate
+          log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
@@ -127,6 +130,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: log.generate
+          log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
@@ -158,6 +162,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: log.Derivation
+          log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
@@ -189,6 +194,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: log.Derivation
+          log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
@@ -220,6 +226,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: log.EVNTtoDAOD
+          log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
@@ -251,6 +258,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: coffea_hist.log
+          log-type: coffea
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
@@ -282,6 +290,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: eventloop_arrays.log
+          log-type: eventloop
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
@@ -313,6 +322,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: eventloop_noarrays.log
+          log-type: eventloop
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
@@ -350,6 +360,7 @@ jobs:
         with:
           job-type: ${{ github.job }}
           log-file: ff.log
+          log-type: ff
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}

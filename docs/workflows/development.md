@@ -55,10 +55,10 @@ python parsing/scripts/ci_parse_and_send.py \
   --job-type rucio \
   --log-file path/to/rucio.log \
   --cluster UC-AF \
-  --es-username $ES_USERNAME \
-  --es-password $ES_PASSWORD \
-  --token bench23f2f2ef \
-  --kind benchmark
+  --uri $KIBANA_URI
+  --token $KIBANA_TOKEN \
+  --kind $KIBANA_KIND
+  --host $HOSTNAME
 ```
 
 ### Testing Benchmark Scripts
