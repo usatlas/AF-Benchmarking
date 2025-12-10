@@ -2,6 +2,7 @@
 """
 Parse benchmark logs and generate JSON payload for upload to LogStash/Kibana.
 """
+
 import argparse
 import json
 import sys
@@ -151,6 +152,7 @@ def main():
     except Exception as e:
         print(f"Error parsing log file: {e}", file=sys.stderr)
         import traceback
+
         traceback.print_exc()
         return 1
 
