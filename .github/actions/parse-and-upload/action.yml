@@ -16,6 +16,9 @@ inputs:
   kibana-kind:
     description: "Kind for benchmark identification"
     required: true
+  kibana-uri:
+    description: "URI Endpoint for sending data to kibana"
+    required: true
   host:
     description: "Hostname to identify the machine running the job"
     required: true
@@ -40,4 +43,5 @@ runs:
           --cluster "${{ inputs.cluster }}" \
           --token "${{ inputs.kibana-token }}" \
           --kind "${{ inputs.kibana-kind }}" \
+          --uri "${{ inputs.kibana-uri }}" \
           --host "${{ inputs.host }}"
