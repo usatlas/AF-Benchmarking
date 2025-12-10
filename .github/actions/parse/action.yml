@@ -1,5 +1,5 @@
-name: "Parse and Upload to Kibana"
-description: "Parse benchmark logs and upload results to Elasticsearch/Kibana"
+name: "Parse Benchmark Logs"
+description: "Parse benchmark logs and generate JSON payload"
 inputs:
   job-type:
     description: "Type of job (rucio, evnt-native, etc.)"
@@ -20,12 +20,18 @@ inputs:
   kibana-kind:
     description: "Kind for benchmark identification"
     required: true
-  kibana-uri:
-    description: "URI Endpoint for sending data to kibana"
-    required: true
   host:
     description: "Hostname to identify the machine running the job"
     required: true
+  output-file:
+    description: "Output JSON file path"
+    required: false
+    default: "payload.json"
+
+outputs:
+  payload-file:
+    description: "Path to the generated payload JSON file"
+    value: ${{ inputs.output-file }}
 
 runs:
   using: "composite"
@@ -36,17 +42,15 @@ runs:
         pixi-version: v0.49.0
         environments: kibana
 
-    - name: Parse and upload
+    - name: Parse log file
       shell: bash
       run: |
-        # Juan will provide the parsing script implementation
-        # Expected interface (to be confirmed):
-        pixi run -e kibana python parsing/scripts/ci_parse_and_send.py \
+        pixi run -e kibana python parsing/scripts/ci_parse.py \
           --job-type "${{ inputs.job-type }}" \
           --log-file "${{ inputs.log-file }}" \
           --log-type "${{ inputs.log-type }}" \
           --cluster "${{ inputs.cluster }}" \
           --token "${{ inputs.kibana-token }}" \
           --kind "${{ inputs.kibana-kind }}" \
-          --uri "${{ inputs.kibana-uri }}" \
-          --host "${{ inputs.host }}"
+          --host "${{ inputs.host }}" \
+          --output "${{ inputs.output-file }}"
