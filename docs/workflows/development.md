@@ -1,6 +1,7 @@
 # Development Guide
 
-This guide covers local development, testing, and adding new benchmark workflows.
+This guide covers local development, testing, and adding new benchmark
+workflows.
 
 ## Local Development Setup
 
@@ -99,6 +100,7 @@ Ensure the script:
 Edit `.github/workflows/uchicago.yml` and add a new job:
 
 {% raw %}
+
 ```yaml
 new-benchmark:
   runs-on: arc-runner-set-uchicago
@@ -122,7 +124,7 @@ new-benchmark:
       uses: ./.github/actions/parse-and-upload
       with:
         job-type: ${{ github.job }}
-        log-file: new-benchmark.log  # Update to match your log file
+        log-file: new-benchmark.log # Update to match your log file
         cluster: UC-AF
         es-username: ${{ secrets.ES_USERNAME }}
         es-password: ${{ secrets.ES_PASSWORD }}
@@ -135,8 +137,9 @@ new-benchmark:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ github.job }}-logs
-        path: new-benchmark.log  # Update to match your log file
+        path: new-benchmark.log # Update to match your log file
 ```
+
 {% endraw %}
 
 ### 3. Update Parsing Scripts
@@ -347,4 +350,5 @@ chore: update dependencies
 - Learn about [parsing and upload](parsing.md)
 - Check [documentation workflow](documentation.md)
 - See [overview](index.md) for all workflows
-- Read [CONTRIBUTING.md](https://github.com/usatlas/af-benchmarking/blob/main/.github/CONTRIBUTING.md)
+- Read
+  [CONTRIBUTING.md](https://github.com/usatlas/af-benchmarking/blob/main/.github/CONTRIBUTING.md)

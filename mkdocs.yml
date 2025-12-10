@@ -63,12 +63,12 @@ extra_javascript:
 nav:
   - Home: index.md
   - Workflows:
-    - Overview: workflows/index.md
-    - Flowchart: flowChart.md
-    - Benchmarks: workflows/benchmarks.md
-    - Parsing & Upload: workflows/parsing.md
-    - Documentation: workflows/documentation.md
-    - Development: workflows/development.md
+      - Overview: workflows/index.md
+      - Flowchart: flowChart.md
+      - Benchmarks: workflows/benchmarks.md
+      - Parsing & Upload: workflows/parsing.md
+      - Documentation: workflows/documentation.md
+      - Development: workflows/development.md
 
 plugins:
   # Built-in
