@@ -1,14 +1,18 @@
 # CI/CD Workflows Overview
 
-This project uses GitHub Actions to automate benchmark execution, parsing, and documentation deployment.
+This project uses GitHub Actions to automate benchmark execution, parsing, and
+documentation deployment.
 
 ## Available Workflows
 
 The repository contains several automated workflows:
 
-- **[UChicago Benchmarks](benchmarks.md)** - Runs benchmark jobs at the UChicago Analysis Facility every 6 hours
-- **[Documentation](documentation.md)** - Builds and deploys documentation to GitHub Pages
-- **Semantic PR Check** - Validates pull request titles follow conventional commit format
+- **[UChicago Benchmarks](benchmarks.md)** - Runs benchmark jobs at the UChicago
+  Analysis Facility every 6 hours
+- **[Documentation](documentation.md)** - Builds and deploys documentation to
+  GitHub Pages
+- **Semantic PR Check** - Validates pull request titles follow conventional
+  commit format
 
 ## Workflow Architecture
 
@@ -27,15 +31,15 @@ graph LR
 
 The workflows require these GitHub repository secrets:
 
-| Secret | Purpose | Used By |
-|--------|---------|---------|
-| `VOMS_USERCERT` | VOMS user certificate | Globus setup |
-| `VOMS_USERKEY` | VOMS user key | Globus setup |
-| `VOMS_PASSWORD` | VOMS password | Globus setup |
-| `ES_USERNAME` | Elasticsearch username | Parse and upload |
-| `ES_PASSWORD` | Elasticsearch password | Parse and upload |
-| `KIBANA_TOKEN` | Kibana benchmark token | Parse and upload |
-| `KIBANA_KIND` | Kibana benchmark kind | Parse and upload |
+| Secret          | Purpose                | Used By          |
+| --------------- | ---------------------- | ---------------- |
+| `VOMS_USERCERT` | VOMS user certificate  | Globus setup     |
+| `VOMS_USERKEY`  | VOMS user key          | Globus setup     |
+| `VOMS_PASSWORD` | VOMS password          | Globus setup     |
+| `ES_USERNAME`   | Elasticsearch username | Parse and upload |
+| `ES_PASSWORD`   | Elasticsearch password | Parse and upload |
+| `KIBANA_TOKEN`  | Kibana benchmark token | Parse and upload |
+| `KIBANA_KIND`   | Kibana benchmark kind  | Parse and upload |
 
 To add or update secrets:
 
@@ -45,12 +49,12 @@ To add or update secrets:
 
 ## Pixi Environments
 
-The project uses [pixi](https://pixi.sh) for dependency management with two environments:
+The project uses [pixi](https://pixi.sh) for dependency management with two
+environments:
 
 ### `docs` Environment
 
-**Python:** 3.14
-**Purpose:** Building and serving documentation
+**Python:** 3.14 **Purpose:** Building and serving documentation
 **Dependencies:** mkdocs, plugins, linkchecker
 
 ```bash
@@ -61,8 +65,7 @@ pixi run -e docs build-check # Build and validate links
 
 ### `kibana` Environment
 
-**Python:** 3.13
-**Purpose:** Parsing logs and uploading to Kibana
+**Python:** 3.13 **Purpose:** Parsing logs and uploading to Kibana
 **Dependencies:** elasticsearch
 
 ```bash

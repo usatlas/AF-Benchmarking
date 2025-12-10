@@ -2,7 +2,8 @@
 
 **File:** `.github/actions/parse-and-upload/action.yml`
 
-This custom composite action handles parsing benchmark logs and uploading results to Elasticsearch/Kibana for visualization and analysis.
+This custom composite action handles parsing benchmark logs and uploading
+results to Elasticsearch/Kibana for visualization and analysis.
 
 ## Purpose
 
@@ -14,15 +15,15 @@ After each benchmark job completes, this action:
 
 ## Inputs
 
-| Input | Description | Required | Example |
-|-------|-------------|----------|---------|
-| `job-type` | Type of job | Yes | `rucio`, `evnt-native` |
-| `log-file` | Path to log file | Yes | `rucio.log` |
-| `cluster` | Cluster name | Yes | `UC-AF`, `SLAC-AF`, `BNL-AF` |
-| `es-username` | Elasticsearch username | Yes | From secrets |
-| `es-password` | Elasticsearch password | Yes | From secrets |
-| `kibana-token` | Token for benchmark ID | Yes | From secrets |
-| `kibana-kind` | Kind for benchmark ID | Yes | From secrets |
+| Input          | Description            | Required | Example                      |
+| -------------- | ---------------------- | -------- | ---------------------------- |
+| `job-type`     | Type of job            | Yes      | `rucio`, `evnt-native`       |
+| `log-file`     | Path to log file       | Yes      | `rucio.log`                  |
+| `cluster`      | Cluster name           | Yes      | `UC-AF`, `SLAC-AF`, `BNL-AF` |
+| `es-username`  | Elasticsearch username | Yes      | From secrets                 |
+| `es-password`  | Elasticsearch password | Yes      | From secrets                 |
+| `kibana-token` | Token for benchmark ID | Yes      | From secrets                 |
+| `kibana-kind`  | Kind for benchmark ID  | Yes      | From secrets                 |
 
 ## Implementation Steps
 
@@ -72,18 +73,18 @@ The parsed data sent to Kibana follows this structure:
 
 ### Field Descriptions
 
-| Field | Type | Description | Source |
-|-------|------|-------------|--------|
-| `cluster` | String | AF cluster name | Passed from workflow |
-| `testType` | String | Job type description | Parsed from log/mapped |
-| `submitTime` | Integer | UTC timestamp (ms) | Parsed from log |
-| `queueTime` | Integer | Queue time (seconds) | Parsed from log |
-| `runTime` | Integer | Execution time (seconds) | Parsed from log |
-| `payloadSize` | Integer | Output size (bytes) | Parsed from log |
-| `status` | Integer | Exit code (0=success) | Parsed from log |
-| `host` | String | Execution host | Parsed from log |
-| `token` | String | Benchmark identifier | Passed from workflow |
-| `kind` | String | Benchmark type | Passed from workflow |
+| Field         | Type    | Description              | Source                 |
+| ------------- | ------- | ------------------------ | ---------------------- |
+| `cluster`     | String  | AF cluster name          | Passed from workflow   |
+| `testType`    | String  | Job type description     | Parsed from log/mapped |
+| `submitTime`  | Integer | UTC timestamp (ms)       | Parsed from log        |
+| `queueTime`   | Integer | Queue time (seconds)     | Parsed from log        |
+| `runTime`     | Integer | Execution time (seconds) | Parsed from log        |
+| `payloadSize` | Integer | Output size (bytes)      | Parsed from log        |
+| `status`      | Integer | Exit code (0=success)    | Parsed from log        |
+| `host`        | String  | Execution host           | Parsed from log        |
+| `token`       | String  | Benchmark identifier     | Passed from workflow   |
+| `kind`        | String  | Benchmark type           | Passed from workflow   |
 
 ### Static vs Parsed Fields
 
@@ -112,14 +113,16 @@ The action uses `continue-on-error: true` in workflows, which means:
 - Parsing errors are visible in workflow logs
 - Benchmarks complete successfully even if Kibana upload fails
 
-This design ensures benchmark execution is never blocked by parsing/upload issues.
+This design ensures benchmark execution is never blocked by parsing/upload
+issues.
 
 ## Usage Example
 
 {% raw %}
+
 ```yaml
 - name: parse and upload to kibana
-  if: always()  # Run even if benchmark failed
+  if: always() # Run even if benchmark failed
   uses: ./.github/actions/parse-and-upload
   with:
     job-type: ${{ github.job }}
@@ -129,8 +132,9 @@ This design ensures benchmark execution is never blocked by parsing/upload issue
     es-password: ${{ secrets.ES_PASSWORD }}
     kibana-token: ${{ secrets.KIBANA_TOKEN }}
     kibana-kind: ${{ secrets.KIBANA_KIND }}
-  continue-on-error: true  # Don't fail job if parsing fails
+  continue-on-error: true # Don't fail job if parsing fails
 ```
+
 {% endraw %}
 
 ## Elasticsearch Configuration

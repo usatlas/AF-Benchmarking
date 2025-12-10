@@ -2,7 +2,8 @@
 
 **File:** `.github/workflows/docs.yml`
 
-This workflow automatically builds and deploys the project documentation to GitHub Pages.
+This workflow automatically builds and deploys the project documentation to
+GitHub Pages.
 
 ## Trigger
 
@@ -46,14 +47,14 @@ Runs only on pushes to `main` from the `usatlas/af-benchmarking` repository.
 
 #### Deployed Site
 
-The documentation is available at: [https://usatlas.github.io/af-benchmarking/](https://usatlas.github.io/af-benchmarking/)
+The documentation is available at:
+[https://usatlas.github.io/af-benchmarking/](https://usatlas.github.io/af-benchmarking/)
 
 ## Pixi Environment
 
 The workflow uses the `docs` pixi environment:
 
-**Python:** 3.14
-**Dependencies:**
+**Python:** 3.14 **Dependencies:**
 
 - mkdocs
 - mkdocs-material theme
@@ -212,8 +213,8 @@ pixi run -e docs validate
 nav:
   - Home: index.md
   - New Section:
-    - Page 1: section/page1.md
-    - Page 2: section/page2.md
+      - Page 1: section/page1.md
+      - Page 2: section/page2.md
 ```
 
 3. **Build and test** locally:
@@ -262,8 +263,8 @@ The deploy job requires specific permissions:
 
 ```yaml
 permissions:
-  pages: write      # Deploy to Pages
-  id-token: write   # Verify deployment source
+  pages: write # Deploy to Pages
+  id-token: write # Verify deployment source
 ```
 
 Set in the workflow at the job level.

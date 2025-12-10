@@ -1,26 +1,26 @@
-name: 'Parse and Upload to Kibana'
-description: 'Parse benchmark logs and upload results to Elasticsearch/Kibana'
+name: "Parse and Upload to Kibana"
+description: "Parse benchmark logs and upload results to Elasticsearch/Kibana"
 inputs:
   job-type:
-    description: 'Type of job (rucio, evnt-native, etc.)'
+    description: "Type of job (rucio, evnt-native, etc.)"
     required: true
   log-file:
-    description: 'Path to log file'
+    description: "Path to log file"
     required: true
   cluster:
-    description: 'Cluster name (e.g., UC-AF, SLAC-AF, BNL-AF)'
+    description: "Cluster name (e.g., UC-AF, SLAC-AF, BNL-AF)"
     required: true
   es-username:
-    description: 'Elasticsearch username'
+    description: "Elasticsearch username"
     required: true
   es-password:
-    description: 'Elasticsearch password'
+    description: "Elasticsearch password"
     required: true
   kibana-token:
-    description: 'Token for benchmark identification'
+    description: "Token for benchmark identification"
     required: true
   kibana-kind:
-    description: 'Kind for benchmark identification'
+    description: "Kind for benchmark identification"
     required: true
 
 runs:
