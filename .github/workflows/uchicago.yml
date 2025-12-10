@@ -37,6 +37,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -67,6 +68,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -97,6 +99,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -127,6 +130,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -157,6 +161,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -187,6 +192,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -217,6 +223,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -247,6 +254,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -277,6 +285,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -307,6 +316,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -343,6 +353,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-uri: ${{ secrets.KIBANA_URI }}
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
