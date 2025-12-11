@@ -64,7 +64,7 @@ nav:
   - Home: index.md
   - Workflows:
       - Overview: workflows/index.md
-      - Flowchart: flowChart.md
+      - Flowchart: workflows/flowchart.md
       - Benchmarks: workflows/benchmarks.md
       - Parsing & Upload: workflows/parsing.md
       - Documentation: workflows/documentation.md
