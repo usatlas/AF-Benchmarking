@@ -1,0 +1,69 @@
+import datetime as dt
+from pathlib import Path
+import json
+import re
+
+
+ANSI_ESCAPE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
+
+date_format = "%Y-%m-%d %H:%M:%S"
+
+
+def elapsed_to_seconds(s):
+    s = s.rstrip("m")
+    minutes, seconds = map(int, s.split(":"))
+    return minutes * 60 + seconds
+
+
+# Strips the text of its green color
+def strip_ansi(text):
+    return ANSI_ESCAPE.sub("", text)
+
+
+def parse_ff_log(path):
+    print(f"[FF] Parsing {path.name}")
+    with open(path) as f:
+        file_lines = f.readlines()
+        N = len(file_lines)
+    cleaned_lines = [strip_ansi(lines) for lines in file_lines[N - 2 : N]]
+    line1 = cleaned_lines[0].split(" ")  # processed/total events, elapsed time
+    elapsed_time = line1[3]
+    processed_events = int(line1[13])
+    if processed_events == 18304905:
+        status = 0
+    else:
+        status = 1
+
+    line2 = cleaned_lines[1].split(" ")
+    date = line2[13]
+    time = line2[14]
+
+    combined = f"{date} {time}"
+
+    # It was submitted to the batch so it's in UTC TimeZone already
+    dt_obj = dt.datetime.strptime(combined, "%d-%m-%Y %H:%M:%S")
+    utc_timestamp = int(dt_obj.timestamp() * 1000)
+
+    run_time = int(elapsed_to_seconds(elapsed_time))
+    frequency = int((processed_events / run_time) / 1000)
+
+    dicti = {
+        "submitTime": utc_timestamp,
+        "queueTime": 0,
+        "runTime": run_time,
+        "frequency": frequency,
+        "status": status,
+    }
+
+    print(dicti)
+
+    curr_dir = Path().absolute()
+    output_path = curr_dir / "ff_parsed.json"
+
+    with open(output_path, "w") as outfile:
+        json.dump(dicti, outfile, indent=4)
+
+
+# Registers this parsing script with the Class
+def register(parser):
+    parser.register_parsers("ff.log", parse_ff_log)
