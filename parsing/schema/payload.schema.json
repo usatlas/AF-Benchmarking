@@ -20,7 +20,7 @@
       "type": "string",
       "description": "Type of test, optionally with variation in brackets (e.g., 'rucio', 'athena[evnt-native]')",
       "minLength": 1,
-      "pattern": "^[a-z0-9_-]+(\\[[a-z0-9_-]+\\])?$"
+      "pattern": "^[a-z0-9_-]+(\\[[a-zA-Z0-9_-]+\\])?$"
     },
     "cluster": {
       "type": "string",

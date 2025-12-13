@@ -30,7 +30,7 @@ runners:
 | `coffea`              | `./NTuple_Hist/coffea/UC/run_example.sh`                         | `coffea_hist.log`        | NTuple to histogram (Coffea)          |
 | `event-loop-columnar` | `./NTuple_Hist/event_loop/UC/columnar/run_eventloop_arrays.sh`   | `eventloop_arrays.log`   | Event loop (columnar)                 |
 | `event-loop-standard` | `./NTuple_Hist/event_loop/UC/standard/run_eventloop_noarrays.sh` | `eventloop_noarrays.log` | Event loop (standard)                 |
-| `FF`                  | `./NTuple_Hist/fastframes/UC/run_ff.sh`                          | `ff.log`                 | NTuple to histogram (FastFrames)      |
+| `fastframes`          | `./NTuple_Hist/fastframes/UC/run_fastframes.sh`                  | `fastframes.log`         | NTuple to histogram (FastFrames)      |
 
 ## Workflow Steps
 

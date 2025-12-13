@@ -402,7 +402,7 @@ jobs:
           path: |
             eventloop_noarrays.log
 
-  FF:
+  fastframes:
     runs-on: arc-runner-set-uchicago
     steps:
       - uses: actions/checkout@v6
@@ -413,7 +413,7 @@ jobs:
           voms-userkey: ${{ secrets.VOMS_USERKEY }}
 
       - name: execute
-        run: ./NTuple_Hist/fastframes/UC/run_ff.sh
+        run: ./NTuple_Hist/fastframes/UC/run_fastframes.sh
         shell: bash
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
@@ -422,9 +422,8 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job-variation: ${{ github.job }}
-          log-file: ff.log
-          log-type: ff
+          log-file: fastframes.log
+          log-type: fastframes
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
@@ -443,4 +442,4 @@ jobs:
         with:
           name: ${{ github.job }}-logs
           path: |
-            ff.log
+            fastframes.log

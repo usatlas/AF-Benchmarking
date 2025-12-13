@@ -83,11 +83,11 @@
 #SCRON -N 1
 #SCRON -C cpu
 #SCRON -q regular
-#SCRON -J ff
+#SCRON -J fastframes
 #SCRON --cpus-per-task=1
 #SCRON --constraint=cpu
 #SCRON --mail-type=ALL
 #SCRON -t 1:0:0
 #SCRON --mem=4GB
 
-0 */6 * * * $HOME/AF-Benchmarking/NTuple_Hist/fastframes/NERSC/run_ff.sh
+0 */6 * * * $HOME/AF-Benchmarking/NTuple_Hist/fastframes/NERSC/run_fastframes.sh
