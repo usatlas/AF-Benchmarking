@@ -129,7 +129,7 @@ new-benchmark:
       if: always()
       uses: ./.github/actions/parse
       with:
-        job-variation: ${{ github.job }}
+        job: ${{ github.job }}
         log-file: new-benchmark.log # Update to match your log file
         log-type: new-benchmark # Update to match your parser type
         cluster: UC-AF

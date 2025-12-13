@@ -40,14 +40,14 @@ def validate_payload(data):
     jsonschema.validate(instance=data, schema=PAYLOAD_SCHEMA)
 
 
-def parse_log(log_file, log_type, job_variation, cluster, token, kind, host):
+def parse_log(log_file, log_type, job, cluster, token, kind, host):
     """
     Parse log file and return data dictionary.
 
     Args:
         log_file: Path to log file
         log_type: Type of parser to use (rucio, athena, coffea, eventloop, fastframes)
-        job_variation: Optional job variation name for testType specification
+        job: Job name
         cluster: Cluster name (UC-AF, SLAC-AF, BNL-AF)
         token: Kibana token for routing
         kind: Kibana kind for routing
@@ -60,14 +60,6 @@ def parse_log(log_file, log_type, job_variation, cluster, token, kind, host):
 
     if not log_path.exists():
         raise FileNotFoundError(f"Log file not found: {log_file}")
-
-    # Determine testType based on log_type and optional job_variation
-    # Strip log_type prefix from job_variation if present (e.g., "eventloop-columnar" -> "columnar")
-    if job_variation:
-        variation = job_variation.removeprefix(f"{log_type}-")
-        test_type = f"{log_type}[{variation}]"
-    else:
-        test_type = log_type
 
     # Parse based on log type
     if log_type == "rucio":
@@ -116,7 +108,7 @@ def parse_log(log_file, log_type, job_variation, cluster, token, kind, host):
         raise ValueError(f"Unknown log type: {log_type}")
 
     # Add common fields to all parsed data
-    data["testType"] = test_type
+    data["job"] = job
     data["cluster"] = cluster
     data["token"] = token
     data["kind"] = kind
@@ -129,11 +121,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Parse benchmark logs and generate JSON payload"
     )
-    parser.add_argument(
-        "--job-variation",
-        default="",
-        help="Optional job variation for testType specification",
-    )
+    parser.add_argument("--job", required=True, help="Job name")
     parser.add_argument("--log-file", required=True, help="Path to log file")
     parser.add_argument("--log-type", required=True, help="Type of log parser")
     parser.add_argument("--cluster", required=True, help="Cluster name")
@@ -150,13 +138,12 @@ def main():
         # Parse the log file
         console.print(f"[bold cyan]Parsing log file:[/bold cyan] {args.log_file}")
         console.print(f"[bold cyan]Log type:[/bold cyan] {args.log_type}")
-        if args.job_variation:
-            console.print(f"[bold cyan]Job variation:[/bold cyan] {args.job_variation}")
+        console.print(f"[bold cyan]Job:[/bold cyan] {args.job}")
 
         data = parse_log(
             args.log_file,
             args.log_type,
-            args.job_variation,
+            args.job,
             args.cluster,
             args.token,
             args.kind,

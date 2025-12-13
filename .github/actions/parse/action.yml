@@ -1,18 +1,16 @@
 name: "Parse Benchmark Logs"
 description: "Parse benchmark logs and generate JSON payload"
 inputs:
-  job-variation:
-    description:
-      "Optional job variation for testType specification (e.g., native, el9,
-      centos7)"
-    required: false
-    default: ""
+  job:
+    description: "Job name (e.g., rucio, eventloop-columnar, evnt-native)"
+    required: true
   log-file:
     description: "Path to log file"
     required: true
   log-type:
     description:
-      "Type of log parser to use (e.g., rucio, athena, coffea, eventloop, ff)"
+      "Type of log parser to use (e.g., rucio, athena, coffea, eventloop,
+      fastframes)"
     required: true
   cluster:
     description: "Cluster name (e.g., UC-AF, SLAC-AF, BNL-AF)"
@@ -49,7 +47,7 @@ runs:
       shell: bash
       run: |
         pixi run -e kibana python parsing/scripts/ci_parse.py \
-          --job-variation "${{ inputs.job-variation }}" \
+          --job "${{ inputs.job }}" \
           --log-file "${{ inputs.log-file }}" \
           --log-type "${{ inputs.log-type }}" \
           --cluster "${{ inputs.cluster }}" \
