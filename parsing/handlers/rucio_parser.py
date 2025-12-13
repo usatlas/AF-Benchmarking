@@ -1,8 +1,6 @@
 from collections import deque
 import re
 import datetime as dt
-import json
-from pathlib import Path
 
 ANSI_ESCAPE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
 
@@ -63,13 +61,7 @@ def parse_rucio_log(path):
         "status": status,
     }
 
-    print(dicti)
-
-    curr_dir = Path().absolute()
-    output_path = curr_dir / "rucio_parsed.json"
-
-    with open(output_path, "w") as outfile:
-        json.dump(dicti, outfile, indent=4)
+    return dicti
 
 
 # Registers this parsing script with the Class
