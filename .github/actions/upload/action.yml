@@ -19,8 +19,11 @@ runs:
           exit 1
         fi
         echo "Payload file found: ${{ inputs.payload-file }}"
-        echo "File contents:"
-        cat "${{ inputs.payload-file }}"
+        echo "::group::File contents"
+        cat "${{ inputs.payload-file }}" || true
+        printf "\n"
+        echo "::endgroup::"
+
 
     - name: Upload to LogStash
       shell: bash
