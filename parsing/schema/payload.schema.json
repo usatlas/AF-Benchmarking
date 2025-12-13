@@ -4,7 +4,7 @@
   "description": "Schema for benchmark log data sent to LogStash/Kibana",
   "type": "object",
   "required": [
-    "testType",
+    "job",
     "cluster",
     "submitTime",
     "queueTime",
@@ -16,11 +16,11 @@
     "kind"
   ],
   "properties": {
-    "testType": {
+    "job": {
       "type": "string",
-      "description": "Type of test, optionally with variation in brackets (e.g., 'rucio', 'athena[evnt-native]')",
+      "description": "Job name (e.g., 'rucio', 'eventloop-columnar', 'evnt-native')",
       "minLength": 1,
-      "pattern": "^[a-z0-9_-]+(\\[[a-zA-Z0-9_-]+\\])?$"
+      "pattern": "^[a-z0-9_-]+$"
     },
     "cluster": {
       "type": "string",

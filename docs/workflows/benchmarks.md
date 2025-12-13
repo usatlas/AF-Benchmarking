@@ -70,6 +70,7 @@ rucio:
       if: always()
       uses: ./.github/actions/parse
       with:
+        job: ${{ github.job }}
         log-file: rucio.log
         log-type: rucio
         cluster: UC-AF

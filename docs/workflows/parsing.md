@@ -44,34 +44,16 @@ single, simple integration point for GitHub Actions workflows.
 
 ### Parse Action Inputs
 
-| Input           | Description                                       | Required | Example                                       |
-| --------------- | ------------------------------------------------- | -------- | --------------------------------------------- |
-| `job-variation` | Optional job variation for testType specification | No       | `evnt-native`, `eventloop-columnar`           |
-| `log-file`      | Path to log file                                  | Yes      | `rucio.log`                                   |
-| `log-type`      | Type of log parser to use                         | Yes      | `rucio`, `athena`, `coffea`, `fastframes`     |
-| `cluster`       | Cluster name                                      | Yes      | `UC-AF`, `SLAC-AF`, `BNL-AF`                  |
-| `kibana-token`  | Token for benchmark ID                            | Yes      | From secrets                                  |
-| `kibana-kind`   | Kind for benchmark ID                             | Yes      | From secrets                                  |
-| `host`          | Hostname to identify the machine                  | Yes      | {% raw %} `${{ env.NODE_NAME }}` {% endraw %} |
-| `output-file`   | Output JSON file path                             | No       | `payload.json` (default)                      |
-
-#### testType Generation
-
-The `testType` field is automatically generated from `log-type` and optional
-`job-variation`:
-
-- If `job-variation` is **not provided**: `testType = log-type`
-  - Example: `log-type: rucio` → `testType: "rucio"`
-- If `job-variation` is **provided**: The `log-type` prefix is stripped from
-  `job-variation`, then formatted as `testType = log-type[variation]`
-  - Example: `log-type: eventloop`, `job-variation: eventloop-columnar` →
-    `testType: "eventloop[columnar]"`
-  - Example: `log-type: athena`, `job-variation: evnt-native` →
-    `testType: "athena[evnt-native]"`
-
-**Important:** Only provide `job-variation` when you need to distinguish between
-multiple jobs using the same `log-type`. If the job name equals the `log-type`
-(e.g., coffea, fastframes), omit `job-variation` to avoid redundancy.
+| Input          | Description                      | Required | Example                                      |
+| -------------- | -------------------------------- | -------- | -------------------------------------------- |
+| `job`          | Job name                         | Yes      | `rucio`, `eventloop-columnar`, `evnt-native` |
+| `log-file`     | Path to log file                 | Yes      | `rucio.log`                                  |
+| `log-type`     | Type of log parser to use        | Yes      | `rucio`, `athena`, `coffea`, `fastframes`    |
+| `cluster`      | Cluster name                     | Yes      | `UC-AF`, `SLAC-AF`, `BNL-AF`                 |
+| `kibana-token` | Token for benchmark ID           | Yes      | From secrets                                 |
+| `kibana-kind`  | Kind for benchmark ID            | Yes      | From secrets                                 |
+| `host`         | Hostname to identify the machine | Yes      | `${NODE_NAME}`                               |
+| `output-file`  | Output JSON file path            | No       | `payload.json` (default)                     |
 
 ### Upload Action Inputs
 
@@ -92,7 +74,7 @@ The parse action performs these steps:
 
 ```bash
 pixi run -e kibana python parsing/scripts/ci_parse.py \
-  --job-type <job-type> \
+  --job <job> \
   --log-file <log-file> \
   --log-type <log-type> \
   --cluster <cluster> \
@@ -132,7 +114,7 @@ Required structure:
 
 ```json
 {
-  "testType": "rucio",
+  "job": "rucio",
   "cluster": "UC-AF",
   "submitTime": 1234567890000,
   "queueTime": 0,
@@ -147,19 +129,18 @@ Required structure:
 
 ### Field Descriptions
 
-| Field         | Type    | Description                                          | Source                                                                 |
-| ------------- | ------- | ---------------------------------------------------- | ---------------------------------------------------------------------- |
-| `testType`    | String  | Test type, optionally with variation (e.g., `rucio`, | Generated from `log-type` and optional `job-variation`                 |
-|               |         | `athena[evnt-native]`)                               |                                                                        |
-| `cluster`     | String  | AF cluster name (UC-AF, SLAC-AF, BNL-AF)             | Passed from workflow                                                   |
-| `submitTime`  | Integer | UTC timestamp (ms since epoch)                       | Parsed from log                                                        |
-| `queueTime`   | Integer | Queue time (seconds)                                 | Parsed from log                                                        |
-| `runTime`     | Integer | Execution time (seconds)                             | Parsed from log                                                        |
-| `payloadSize` | Integer | Output size (bytes)                                  | Parsed from log                                                        |
-| `status`      | Integer | Exit code (0=success, non-zero=failure)              | Parsed from log                                                        |
-| `host`        | String  | Hostname where job executed (idn-hostname format)    | Passed from workflow via {% raw %} `${{ env.NODE_NAME }}` {% endraw %} |
-| `token`       | String  | Benchmark identifier AND LogStash routing key        | Passed from workflow (secrets)                                         |
-| `kind`        | String  | Benchmark type AND LogStash routing kind             | Passed from workflow (secrets)                                         |
+| Field         | Type    | Description                                       | Source                                                              |
+| ------------- | ------- | ------------------------------------------------- | ------------------------------------------------------------------- |
+| `job`         | String  | Job name (e.g., `rucio`, `eventloop-columnar`)    | Passed from workflow via {% raw %} `${{ github.job }}` {% endraw %} |
+| `cluster`     | String  | AF cluster name (UC-AF, SLAC-AF, BNL-AF)          | Passed from workflow                                                |
+| `submitTime`  | Integer | UTC timestamp (ms since epoch)                    | Parsed from log                                                     |
+| `queueTime`   | Integer | Queue time (seconds)                              | Parsed from log                                                     |
+| `runTime`     | Integer | Execution time (seconds)                          | Parsed from log                                                     |
+| `payloadSize` | Integer | Output size (bytes)                               | Parsed from log                                                     |
+| `status`      | Integer | Exit code (0=success, non-zero=failure)           | Parsed from log                                                     |
+| `host`        | String  | Hostname where job executed (idn-hostname format) | Passed from workflow via `${NODE_NAME}`                             |
+| `token`       | String  | Benchmark identifier AND LogStash routing key     | Passed from workflow (secrets)                                      |
+| `kind`        | String  | Benchmark type AND LogStash routing kind          | Passed from workflow (secrets)                                      |
 
 ### Static vs Parsed Fields
 
@@ -168,8 +149,7 @@ Required structure:
 - `cluster` - Set per site (UC-AF, SLAC-AF, etc.)
 - `token` - Benchmark identifier token AND LogStash routing key
 - `kind` - Benchmark kind/category AND LogStash routing kind
-- `host` - Hostname from workflow environment ({% raw %} `${{ env.NODE_NAME }}`
-  {% endraw %})
+- `host` - Hostname from workflow environment (`${NODE_NAME}`)
 
 **Parsed fields** (extracted from logs):
 
@@ -205,13 +185,13 @@ issues.
   if: always() # Run even if benchmark failed
   uses: ./.github/actions/parse
   with:
-    job-type: ${{ github.job }}
+    job: ${{ github.job }}
     log-file: rucio.log
     log-type: rucio
     cluster: UC-AF
     kibana-token: ${{ secrets.KIBANA_TOKEN }}
     kibana-kind: ${{ secrets.KIBANA_KIND }}
-    host: ${{ env.NODE_NAME }}
+    host: ${NODE_NAME}
   continue-on-error: true # Don't fail job if parsing fails
 
 - name: upload to kibana
@@ -283,7 +263,7 @@ Test parsing and upload separately:
 pixi shell -e kibana
 
 python parsing/scripts/ci_parse.py \
-  --job-type rucio \
+  --job rucio \
   --log-file path/to/rucio.log \
   --log-type rucio \
   --cluster UC-AF \
