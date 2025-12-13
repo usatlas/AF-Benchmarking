@@ -8,10 +8,30 @@ import json
 import sys
 from pathlib import Path
 
+import jsonschema
+
 # Add parent directory to path to import parsing modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from handlers import rucio_parser
+
+# Load JSON schema for validation
+SCHEMA_PATH = Path(__file__).parent.parent / "schema" / "payload.schema.json"
+with SCHEMA_PATH.open() as f:
+    PAYLOAD_SCHEMA = json.load(f)
+
+
+def validate_payload(data):
+    """
+    Validate payload data against JSON schema.
+
+    Args:
+        data: Dictionary to validate
+
+    Raises:
+        jsonschema.ValidationError: If data doesn't match schema
+    """
+    jsonschema.validate(instance=data, schema=PAYLOAD_SCHEMA)
 
 
 def parse_log(log_file, log_type, job_variation, cluster, token, kind, host):
@@ -126,6 +146,15 @@ def main():
             args.kind,
             args.host,
         )
+
+        # Validate payload against schema
+        try:
+            validate_payload(data)
+            print("✓ Payload validation successful")
+        except jsonschema.ValidationError as e:
+            print(f"Error: Payload validation failed: {e.message}", file=sys.stderr)
+            print(f"Failed at: {' -> '.join(str(p) for p in e.path)}", file=sys.stderr)
+            return 1
 
         # Write to output file
         output_path = Path(args.output)

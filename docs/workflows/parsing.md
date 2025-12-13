@@ -106,19 +106,22 @@ curl -X POST "https://<kibana-uri>" \
 
 ## Data Structure
 
-The parsed data sent to LogStash (which routes it to Kibana) follows this
-structure:
+The parsed data sent to LogStash (which routes it to Kibana) is validated
+against a JSON schema (`parsing/schema/payload.schema.json`) to ensure
+correctness before upload.
+
+Required structure:
 
 ```json
 {
+  "testType": "rucio",
   "cluster": "UC-AF",
-  "testType": "Rucio Download",
   "submitTime": 1234567890000,
   "queueTime": 0,
   "runTime": 3600,
   "payloadSize": 1073741824,
   "status": 0,
-  "host": "HOSTNAME",
+  "host": "hostname.example.com",
   "token": "<TOKEN>",
   "kind": "benchmark"
 }
@@ -126,18 +129,19 @@ structure:
 
 ### Field Descriptions
 
-| Field         | Type    | Description                                   | Source                                                                 |
-| ------------- | ------- | --------------------------------------------- | ---------------------------------------------------------------------- |
-| `cluster`     | String  | AF cluster name                               | Passed from workflow                                                   |
-| `testType`    | String  | Job type description                          | Parsed from log/mapped                                                 |
-| `submitTime`  | Integer | UTC timestamp (ms)                            | Parsed from log                                                        |
-| `queueTime`   | Integer | Queue time (seconds)                          | Parsed from log                                                        |
-| `runTime`     | Integer | Execution time (seconds)                      | Parsed from log                                                        |
-| `payloadSize` | Integer | Output size (bytes)                           | Parsed from log                                                        |
-| `status`      | Integer | Exit code (0=success)                         | Parsed from log                                                        |
-| `host`        | String  | Hostname where job executed                   | Passed from workflow via {% raw %} `${{ env.NODE_NAME }}` {% endraw %} |
-| `token`       | String  | Benchmark identifier AND LogStash routing key | Passed from workflow (secrets)                                         |
-| `kind`        | String  | Benchmark type AND LogStash routing kind      | Passed from workflow (secrets)                                         |
+| Field         | Type    | Description                                          | Source                                                                 |
+| ------------- | ------- | ---------------------------------------------------- | ---------------------------------------------------------------------- |
+| `testType`    | String  | Test type, optionally with variation (e.g., `rucio`, | Generated from `log-type` and optional `job-variation`                 |
+|               |         | `athena[evnt-native]`)                               |                                                                        |
+| `cluster`     | String  | AF cluster name (UC-AF, SLAC-AF, BNL-AF)             | Passed from workflow                                                   |
+| `submitTime`  | Integer | UTC timestamp (ms since epoch)                       | Parsed from log                                                        |
+| `queueTime`   | Integer | Queue time (seconds)                                 | Parsed from log                                                        |
+| `runTime`     | Integer | Execution time (seconds)                             | Parsed from log                                                        |
+| `payloadSize` | Integer | Output size (bytes)                                  | Parsed from log                                                        |
+| `status`      | Integer | Exit code (0=success, non-zero=failure)              | Parsed from log                                                        |
+| `host`        | String  | Hostname where job executed (idn-hostname format)    | Passed from workflow via {% raw %} `${{ env.NODE_NAME }}` {% endraw %} |
+| `token`       | String  | Benchmark identifier AND LogStash routing key        | Passed from workflow (secrets)                                         |
+| `kind`        | String  | Benchmark type AND LogStash routing kind             | Passed from workflow (secrets)                                         |
 
 ### Static vs Parsed Fields
 
