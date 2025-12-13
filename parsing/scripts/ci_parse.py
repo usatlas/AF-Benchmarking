@@ -14,14 +14,14 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from handlers import rucio_parser
 
 
-def parse_log(log_file, log_type, job_type, cluster, token, kind, host):
+def parse_log(log_file, log_type, job_variation, cluster, token, kind, host):
     """
     Parse log file and return data dictionary.
 
     Args:
         log_file: Path to log file
         log_type: Type of parser to use (rucio, athena, coffea, eventloop, ff)
-        job_type: Job type name
+        job_variation: Optional job variation name for testType specification
         cluster: Cluster name (UC-AF, SLAC-AF, BNL-AF)
         token: Kibana token for routing
         kind: Kibana kind for routing
@@ -35,6 +35,9 @@ def parse_log(log_file, log_type, job_type, cluster, token, kind, host):
     if not log_path.exists():
         raise FileNotFoundError(f"Log file not found: {log_file}")
 
+    # Determine testType based on log_type and optional job_variation
+    test_type = f"{log_type}[{job_variation}]" if job_variation else log_type
+
     # Parse based on log type
     if log_type == "rucio":
         data = rucio_parser.parse_rucio_log(log_path)
@@ -42,66 +45,47 @@ def parse_log(log_file, log_type, job_type, cluster, token, kind, host):
         # Placeholder for athena parser
         # TODO: Implement athena log parsing
         data = {
-            "cluster": cluster,
-            "testType": f"Athena {job_type}",
             "submitTime": 0,
             "queueTime": 0,
             "runTime": 0,
             "payloadSize": 0,
             "status": 0,
-            "host": host,
-            "token": token,
-            "kind": kind,
         }
     elif log_type == "coffea":
         # Placeholder for coffea parser
         # TODO: Implement coffea log parsing
         data = {
-            "cluster": cluster,
-            "testType": "Coffea Analysis",
             "submitTime": 0,
             "queueTime": 0,
             "runTime": 0,
             "payloadSize": 0,
             "status": 0,
-            "host": host,
-            "token": token,
-            "kind": kind,
         }
     elif log_type == "eventloop":
         # Placeholder for eventloop parser
         # TODO: Implement eventloop log parsing
         data = {
-            "cluster": cluster,
-            "testType": f"Event Loop {job_type}",
             "submitTime": 0,
             "queueTime": 0,
             "runTime": 0,
             "payloadSize": 0,
             "status": 0,
-            "host": host,
-            "token": token,
-            "kind": kind,
         }
     elif log_type == "ff":
         # Placeholder for fastframes parser
         # TODO: Implement fastframes log parsing
         data = {
-            "cluster": cluster,
-            "testType": "Fast Frames",
             "submitTime": 0,
             "queueTime": 0,
             "runTime": 0,
             "payloadSize": 0,
             "status": 0,
-            "host": host,
-            "token": token,
-            "kind": kind,
         }
     else:
         raise ValueError(f"Unknown log type: {log_type}")
 
-    # Override cluster, token, kind, and host from command line
+    # Add common fields to all parsed data
+    data["testType"] = test_type
     data["cluster"] = cluster
     data["token"] = token
     data["kind"] = kind
@@ -114,7 +98,11 @@ def main():
     parser = argparse.ArgumentParser(
         description="Parse benchmark logs and generate JSON payload"
     )
-    parser.add_argument("--job-type", required=True, help="Job type")
+    parser.add_argument(
+        "--job-variation",
+        default="",
+        help="Optional job variation for testType specification",
+    )
     parser.add_argument("--log-file", required=True, help="Path to log file")
     parser.add_argument("--log-type", required=True, help="Type of log parser")
     parser.add_argument("--cluster", required=True, help="Cluster name")
@@ -132,7 +120,7 @@ def main():
         data = parse_log(
             args.log_file,
             args.log_type,
-            args.job_type,
+            args.job_variation,
             args.cluster,
             args.token,
             args.kind,
