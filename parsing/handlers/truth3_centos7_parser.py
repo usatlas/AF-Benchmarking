@@ -1,6 +1,4 @@
 import datetime as dt
-from pathlib import Path
-import json
 
 
 MONTH_DICT = {
@@ -58,13 +56,7 @@ def parse_truth3_centos7_log(path):
         "status": status,
     }
 
-    curr_dir = Path().absolute()
-    output_path = curr_dir / "truth3_centos7_parsed.json"
-
-    print(dicti)
-
-    with open(output_path, "w") as outfile:
-        json.dump(dicti, outfile, indent=4)
+    return dicti
 
 
 # Registers this parsing script with the Class

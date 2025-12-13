@@ -1,6 +1,4 @@
 import datetime as dt
-from pathlib import Path
-import json
 import re
 
 
@@ -55,13 +53,7 @@ def parse_ff_log(path):
         "status": status,
     }
 
-    print(dicti)
-
-    curr_dir = Path().absolute()
-    output_path = curr_dir / "ff_parsed.json"
-
-    with open(output_path, "w") as outfile:
-        json.dump(dicti, outfile, indent=4)
+    return dicti
 
 
 # Registers this parsing script with the Class

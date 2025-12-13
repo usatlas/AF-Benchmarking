@@ -1,6 +1,5 @@
 from pathlib import Path
 import datetime as dt
-import json
 
 MONTH_DICT = {
     "Jan": "01",
@@ -55,13 +54,7 @@ def parse_coffea_log(path):
         "status": status,
     }
 
-    curr_dir = Path().absolute()
-    output_path = curr_dir / "coffea_parsed.json"
-
-    print(dicti)
-
-    with open(output_path, "w") as outfile:
-        json.dump(dicti, outfile, indent=4)
+    return dicti
 
 
 # Registers this parsing script with the Class
