@@ -31,7 +31,6 @@ jobs:
       - name: parse benchmark log
         shell: bash
         run: |
-          echo ${{ env.NODE_NAME }}
           echo ${NODE_NAME}
           printenv
 
@@ -45,7 +44,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
@@ -82,7 +81,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
@@ -119,7 +118,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
@@ -156,7 +155,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
@@ -193,7 +192,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
@@ -230,7 +229,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
@@ -267,7 +266,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
@@ -304,7 +303,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
@@ -341,7 +340,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
@@ -378,7 +377,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
@@ -421,7 +420,7 @@ jobs:
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
-          host: ${{ env.NODE_NAME }}
+          host: ${NODE_NAME}
 
       - name: upload to kibana
         if: always()
