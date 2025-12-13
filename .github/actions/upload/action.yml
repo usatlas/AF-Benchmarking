@@ -33,7 +33,8 @@ runs:
 
         echo "HTTP Response Code: $response"
         echo "::group::Response body"
-        cat response.txt
+        cat response.txt || true
+        printf "\n"
         echo "::endgroup::"
 
         if [[ ! "$response" =~ ^2 ]]; then
