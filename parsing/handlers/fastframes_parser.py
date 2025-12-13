@@ -18,8 +18,8 @@ def strip_ansi(text):
     return ANSI_ESCAPE.sub("", text)
 
 
-def parse_ff_log(path):
-    print(f"[FF] Parsing {path.name}")
+def parse_fastframes_log(path):
+    print(f"[FastFrames] Parsing {path.name}")
     with open(path) as f:
         file_lines = f.readlines()
         N = len(file_lines)
@@ -58,4 +58,4 @@ def parse_ff_log(path):
 
 # Registers this parsing script with the Class
 def register(parser):
-    parser.register_parsers("ff.log", parse_ff_log)
+    parser.register_parsers("fastframes.log", parse_fastframes_log)

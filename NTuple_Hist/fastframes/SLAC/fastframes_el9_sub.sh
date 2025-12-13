@@ -3,7 +3,7 @@
 #SBATCH --account=atlas:usatlas
 #SBATCH --partition=ampere
 #SBATCH --gpus a100:0
-#SBATCH --job-name=ff_el9
+#SBATCH --job-name=fastframes_el9
 #SBATCH --output=output-%j.txt
 #SBATCH --error=output-%j.txt
 #SBATCH --ntasks=1
@@ -20,7 +20,7 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 
 export ALRB_CONT_CMDOPTS="-B /sdf"
 
-export ALRB_CONT_RUNPAYLOAD="source /sdf/home/s/$USER/AF-Benchmarking/NTuple_Hist/fastframes/SLAC/run_ff.sh"
+export ALRB_CONT_RUNPAYLOAD="source /sdf/home/s/$USER/AF-Benchmarking/NTuple_Hist/fastframes/SLAC/run_fastframes.sh"
 
 # shellcheck disable=SC1091
 source $ATLAS_LOCAL_ROOT_BASE/user/atlasLocalSetup.sh -c el9 -m /sdf/data/atlas/u/

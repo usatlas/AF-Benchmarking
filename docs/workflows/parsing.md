@@ -48,7 +48,7 @@ single, simple integration point for GitHub Actions workflows.
 | -------------- | -------------------------------- | -------- | --------------------------------------------- |
 | `job-type`     | Type of job                      | Yes      | `rucio`, `evnt-native`                        |
 | `log-file`     | Path to log file                 | Yes      | `rucio.log`                                   |
-| `log-type`     | Type of log parser to use        | Yes      | `rucio`, `athena`, `coffea`, `ff`             |
+| `log-type`     | Type of log parser to use        | Yes      | `rucio`, `athena`, `coffea`, `fastframes`     |
 | `cluster`      | Cluster name                     | Yes      | `UC-AF`, `SLAC-AF`, `BNL-AF`                  |
 | `kibana-token` | Token for benchmark ID           | Yes      | From secrets                                  |
 | `kibana-kind`  | Kind for benchmark ID            | Yes      | From secrets                                  |

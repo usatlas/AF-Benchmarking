@@ -40,7 +40,7 @@ def parse_log(log_file, log_type, job_variation, cluster, token, kind, host):
 
     Args:
         log_file: Path to log file
-        log_type: Type of parser to use (rucio, athena, coffea, eventloop, ff)
+        log_type: Type of parser to use (rucio, athena, coffea, eventloop, fastframes)
         job_variation: Optional job variation name for testType specification
         cluster: Cluster name (UC-AF, SLAC-AF, BNL-AF)
         token: Kibana token for routing
@@ -91,7 +91,7 @@ def parse_log(log_file, log_type, job_variation, cluster, token, kind, host):
             "payloadSize": 0,
             "status": 0,
         }
-    elif log_type == "ff":
+    elif log_type == "fastframes":
         # Placeholder for fastframes parser
         # TODO: Implement fastframes log parsing
         data = {
