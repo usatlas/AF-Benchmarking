@@ -41,10 +41,10 @@ native_el9 () {
   mkdir -p "${1}"
   cd "${2}" || exit
   # shellcheck disable=SC2115
-  rm -r "${3:?}"/
+  rm -r "${3:?}"
   rucio download --rses AGLT2_LOCALGROUPDISK "${3}"  2>&1 | tee rucio.log
   hostname >> rucio.log
-  du "${3}"/ >> rucio.log
+  du "${3}" >> rucio.log
   mv rucio.log "${1}"
 }
 
@@ -84,9 +84,8 @@ case "$site" in
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
     uchicago)
-        job_dir="$HOME/af_benchmarking/rucio/"
-        output_dir="${job_dir}/${curr_time}/"
-        native_el9 "$output_dir" "$job_dir" "$download_ID"
+        output_dir="${HOME}"
+        native_el9 "${HOME}" "${HOME}" "$download_ID"
         ;;
     nersc)
         job_dir="$HOME/af_benchmarking/rucio/"
