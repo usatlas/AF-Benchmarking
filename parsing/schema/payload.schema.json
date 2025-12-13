@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Benchmark Payload",
+  "description": "Schema for benchmark log data sent to LogStash/Kibana",
+  "type": "object",
+  "required": [
+    "testType",
+    "cluster",
+    "submitTime",
+    "queueTime",
+    "runTime",
+    "payloadSize",
+    "status",
+    "host",
+    "token",
+    "kind"
+  ],
+  "properties": {
+    "testType": {
+      "type": "string",
+      "description": "Type of test, optionally with variation in brackets (e.g., 'rucio', 'athena[evnt-native]')",
+      "minLength": 1,
+      "pattern": "^[a-z0-9_-]+(\\[[a-z0-9_-]+\\])?$"
+    },
+    "cluster": {
+      "type": "string",
+      "description": "Cluster name where the benchmark ran",
+      "enum": ["UC-AF", "SLAC-AF", "BNL-AF"]
+    },
+    "submitTime": {
+      "type": "integer",
+      "description": "Job submit timestamp in milliseconds since epoch (UTC)",
+      "minimum": 0
+    },
+    "queueTime": {
+      "type": "integer",
+      "description": "Time spent in queue in seconds",
+      "minimum": 0
+    },
+    "runTime": {
+      "type": "integer",
+      "description": "Job execution time in seconds",
+      "minimum": 0
+    },
+    "payloadSize": {
+      "type": "integer",
+      "description": "Size of payload in bytes",
+      "minimum": 0
+    },
+    "status": {
+      "type": "integer",
+      "description": "Job exit status (0 = success, non-zero = failure)",
+      "minimum": 0
+    },
+    "host": {
+      "type": "string",
+      "description": "Hostname where the job executed",
+      "format": "idn-hostname",
+      "minLength": 1
+    },
+    "token": {
+      "type": "string",
+      "description": "Authentication token for LogStash routing",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "description": "Kind identifier for LogStash routing",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}
