@@ -9,11 +9,17 @@ import sys
 from pathlib import Path
 
 import jsonschema
+from rich.console import Console
+from rich.panel import Panel
+from rich.syntax import Syntax
 
 # Add parent directory to path to import parsing modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from handlers import rucio_parser
+
+# Initialize rich console
+console = Console()
 
 # Load JSON schema for validation
 SCHEMA_PATH = Path(__file__).parent.parent / "schema" / "payload.schema.json"
@@ -142,6 +148,11 @@ def main():
 
     try:
         # Parse the log file
+        console.print(f"[bold cyan]Parsing log file:[/bold cyan] {args.log_file}")
+        console.print(f"[bold cyan]Log type:[/bold cyan] {args.log_type}")
+        if args.job_variation:
+            console.print(f"[bold cyan]Job variation:[/bold cyan] {args.job_variation}")
+
         data = parse_log(
             args.log_file,
             args.log_type,
@@ -155,10 +166,17 @@ def main():
         # Validate payload against schema
         try:
             validate_payload(data)
-            print("✓ Payload validation successful")
+            console.print("✓ [bold green]Payload validation successful[/bold green]")
         except jsonschema.ValidationError as e:
-            print(f"Error: Payload validation failed: {e.message}", file=sys.stderr)
-            print(f"Failed at: {' -> '.join(str(p) for p in e.path)}", file=sys.stderr)
+            console.print(
+                Panel(
+                    f"[bold red]Validation failed:[/bold red] {e.message}\n"
+                    f"[bold red]Failed at:[/bold red] {' -> '.join(str(p) for p in e.path)}",
+                    title="[bold white on red] ERROR [/bold white on red]",
+                    border_style="red",
+                ),
+                style="bold red",
+            )
             return 1
 
         # Write to output file
@@ -166,15 +184,29 @@ def main():
         with output_path.open("w") as f:
             json.dump(data, f, indent=2)
 
-        print(f"Successfully generated payload: {args.output}")
-        print(f"Data: {json.dumps(data, indent=2)}")
+        console.print(
+            f"✓ [bold green]Successfully generated payload:[/bold green] {args.output}"
+        )
+
+        # Display payload with syntax highlighting
+        json_str = json.dumps(data, indent=2)
+        syntax = Syntax(json_str, "json", theme="monokai", line_numbers=False)
+        console.print(Panel(syntax, title="[bold cyan]Payload Data[/bold cyan]"))
 
         return 0
 
     except Exception as e:
-        print(f"Error parsing log file: {e}", file=sys.stderr)
+        console.print(
+            Panel(
+                f"[bold red]Error parsing log file:[/bold red] {e}",
+                title="[bold white on red] ERROR [/bold white on red]",
+                border_style="red",
+            ),
+            style="bold red",
+        )
         import traceback
 
+        console.print("[dim]Traceback:[/dim]")
         traceback.print_exc()
         return 1
 
