@@ -25,15 +25,16 @@ runs:
     - name: Upload to LogStash
       shell: bash
       run: |
-        response=$(curl -X POST "https://${{ inputs.kibana-uri }}" \
+        response=$(curl -X POST "${{ inputs.kibana-uri }}" \
           -H "Content-Type: application/json" \
           -d @${{ inputs.payload-file }} \
           -w "%{http_code}" \
-          -s -o /tmp/response.txt)
+          -s -o response.txt)
 
         echo "HTTP Response Code: $response"
-        echo "Response body:"
-        cat /tmp/response.txt
+        echo "::group::Response body"
+        cat response.txt
+        echo "::endgroup::"
 
         if [[ ! "$response" =~ ^2 ]]; then
           echo "Upload failed with HTTP status: $response"
