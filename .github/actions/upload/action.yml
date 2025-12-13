@@ -24,7 +24,6 @@ runs:
         printf "\n"
         echo "::endgroup::"
 
-
     - name: Upload to LogStash
       shell: bash
       run: |
