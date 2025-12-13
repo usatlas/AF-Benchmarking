@@ -29,6 +29,13 @@ jobs:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
 
       - name: parse benchmark log
+        shell: bash
+        run: |
+          echo ${{ env.NODE_NAME }}
+          echo ${NODE_NAME}
+          printenv
+
+      - name: parse benchmark log
         if: always()
         uses: ./.github/actions/parse
         with:
