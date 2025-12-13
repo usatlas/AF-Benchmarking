@@ -18,19 +18,19 @@ The workflow runs:
 The workflow runs 10 parallel benchmark jobs on `arc-runner-set-uchicago`
 runners:
 
-| Job                   | Script                                                           | Log File                 | Description                           |
-| --------------------- | ---------------------------------------------------------------- | ------------------------ | ------------------------------------- |
-| `rucio`               | `./Rucio/rucio_script.sh`                                        | `rucio.log`              | Download data using Rucio             |
-| `evnt-native`         | `./EVNT/UC/Native/run_evnt_native_batch.sh`                      | `log.generate`           | EVNT generation (native)              |
-| `evnt-el9`            | `./EVNT/UC/EL9/run_evnt_el9_batch.sh`                            | `log.generate`           | EVNT generation (EL9 container)       |
-| `evnt-centos7`        | `./EVNT/UC/CentOS7/run_evnt_centos7_batch.sh`                    | `log.generate`           | EVNT generation (CentOS7 container)   |
-| `truth3-native`       | `./TRUTH3/UC/Native/run_truth3_native_batch.sh`                  | `log.Derivation`         | TRUTH3 derivation (native)            |
-| `truth3-el9`          | `./TRUTH3/UC/EL9/run_truth3_el9_batch.sh`                        | `log.Derivation`         | TRUTH3 derivation (EL9 container)     |
-| `truth3-centos7`      | `./TRUTH3/UC/CentOS7/run_truth3_centos7_batch.sh`                | `log.EVNTtoDAOD`         | TRUTH3 derivation (CentOS7 container) |
-| `coffea`              | `./NTuple_Hist/coffea/UC/run_example.sh`                         | `coffea_hist.log`        | NTuple to histogram (Coffea)          |
-| `eventloop-columnar`  | `./NTuple_Hist/event_loop/UC/columnar/run_eventloop_arrays.sh`   | `eventloop_arrays.log`   | Event loop (columnar)                 |
-| `eventloop-standard`  | `./NTuple_Hist/event_loop/UC/standard/run_eventloop_noarrays.sh` | `eventloop_noarrays.log` | Event loop (standard)                 |
-| `fastframes`          | `./NTuple_Hist/fastframes/UC/run_fastframes.sh`                  | `fastframes.log`         | NTuple to histogram (FastFrames)      |
+| Job                  | Script                                                           | Log File                 | Description                           |
+| -------------------- | ---------------------------------------------------------------- | ------------------------ | ------------------------------------- |
+| `rucio`              | `./Rucio/rucio_script.sh`                                        | `rucio.log`              | Download data using Rucio             |
+| `evnt-native`        | `./EVNT/UC/Native/run_evnt_native_batch.sh`                      | `log.generate`           | EVNT generation (native)              |
+| `evnt-el9`           | `./EVNT/UC/EL9/run_evnt_el9_batch.sh`                            | `log.generate`           | EVNT generation (EL9 container)       |
+| `evnt-centos7`       | `./EVNT/UC/CentOS7/run_evnt_centos7_batch.sh`                    | `log.generate`           | EVNT generation (CentOS7 container)   |
+| `truth3-native`      | `./TRUTH3/UC/Native/run_truth3_native_batch.sh`                  | `log.Derivation`         | TRUTH3 derivation (native)            |
+| `truth3-el9`         | `./TRUTH3/UC/EL9/run_truth3_el9_batch.sh`                        | `log.Derivation`         | TRUTH3 derivation (EL9 container)     |
+| `truth3-centos7`     | `./TRUTH3/UC/CentOS7/run_truth3_centos7_batch.sh`                | `log.EVNTtoDAOD`         | TRUTH3 derivation (CentOS7 container) |
+| `coffea`             | `./NTuple_Hist/coffea/UC/run_example.sh`                         | `coffea_hist.log`        | NTuple to histogram (Coffea)          |
+| `eventloop-columnar` | `./NTuple_Hist/event_loop/UC/columnar/run_eventloop_arrays.sh`   | `eventloop_arrays.log`   | Event loop (columnar)                 |
+| `eventloop-standard` | `./NTuple_Hist/event_loop/UC/standard/run_eventloop_noarrays.sh` | `eventloop_noarrays.log` | Event loop (standard)                 |
+| `fastframes`         | `./NTuple_Hist/fastframes/UC/run_fastframes.sh`                  | `fastframes.log`         | NTuple to histogram (FastFrames)      |
 
 ## Workflow Steps
 
