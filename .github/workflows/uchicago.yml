@@ -305,7 +305,6 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job-variation: ${{ github.job }}
           log-file: coffea_hist.log
           log-type: coffea
           cluster: UC-AF
@@ -328,7 +327,7 @@ jobs:
           path: |
             coffea_hist.log
 
-  event-loop-columnar:
+  eventloop-columnar:
     runs-on: arc-runner-set-uchicago
     steps:
       - uses: actions/checkout@v6
@@ -365,7 +364,7 @@ jobs:
           path: |
             eventloop_arrays.log
 
-  event-loop-standard:
+  eventloop-standard:
     runs-on: arc-runner-set-uchicago
     steps:
       - uses: actions/checkout@v6

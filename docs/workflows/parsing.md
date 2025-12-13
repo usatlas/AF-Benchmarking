@@ -44,16 +44,34 @@ single, simple integration point for GitHub Actions workflows.
 
 ### Parse Action Inputs
 
-| Input          | Description                      | Required | Example                                       |
-| -------------- | -------------------------------- | -------- | --------------------------------------------- |
-| `job-type`     | Type of job                      | Yes      | `rucio`, `evnt-native`                        |
-| `log-file`     | Path to log file                 | Yes      | `rucio.log`                                   |
-| `log-type`     | Type of log parser to use        | Yes      | `rucio`, `athena`, `coffea`, `fastframes`     |
-| `cluster`      | Cluster name                     | Yes      | `UC-AF`, `SLAC-AF`, `BNL-AF`                  |
-| `kibana-token` | Token for benchmark ID           | Yes      | From secrets                                  |
-| `kibana-kind`  | Kind for benchmark ID            | Yes      | From secrets                                  |
-| `host`         | Hostname to identify the machine | Yes      | {% raw %} `${{ env.NODE_NAME }}` {% endraw %} |
-| `output-file`  | Output JSON file path            | No       | `payload.json` (default)                      |
+| Input           | Description                                       | Required | Example                                       |
+| --------------- | ------------------------------------------------- | -------- | --------------------------------------------- |
+| `job-variation` | Optional job variation for testType specification | No       | `evnt-native`, `eventloop-columnar`           |
+| `log-file`      | Path to log file                                  | Yes      | `rucio.log`                                   |
+| `log-type`      | Type of log parser to use                         | Yes      | `rucio`, `athena`, `coffea`, `fastframes`     |
+| `cluster`       | Cluster name                                      | Yes      | `UC-AF`, `SLAC-AF`, `BNL-AF`                  |
+| `kibana-token`  | Token for benchmark ID                            | Yes      | From secrets                                  |
+| `kibana-kind`   | Kind for benchmark ID                             | Yes      | From secrets                                  |
+| `host`          | Hostname to identify the machine                  | Yes      | {% raw %} `${{ env.NODE_NAME }}` {% endraw %} |
+| `output-file`   | Output JSON file path                             | No       | `payload.json` (default)                      |
+
+#### testType Generation
+
+The `testType` field is automatically generated from `log-type` and optional
+`job-variation`:
+
+- If `job-variation` is **not provided**: `testType = log-type`
+  - Example: `log-type: rucio` → `testType: "rucio"`
+- If `job-variation` is **provided**: The `log-type` prefix is stripped from
+  `job-variation`, then formatted as `testType = log-type[variation]`
+  - Example: `log-type: eventloop`, `job-variation: eventloop-columnar` →
+    `testType: "eventloop[columnar]"`
+  - Example: `log-type: athena`, `job-variation: evnt-native` →
+    `testType: "athena[evnt-native]"`
+
+**Important:** Only provide `job-variation` when you need to distinguish between
+multiple jobs using the same `log-type`. If the job name equals the `log-type`
+(e.g., coffea, fastframes), omit `job-variation` to avoid redundancy.
 
 ### Upload Action Inputs
 

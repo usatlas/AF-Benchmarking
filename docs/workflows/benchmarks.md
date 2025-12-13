@@ -28,8 +28,8 @@ runners:
 | `truth3-el9`          | `./TRUTH3/UC/EL9/run_truth3_el9_batch.sh`                        | `log.Derivation`         | TRUTH3 derivation (EL9 container)     |
 | `truth3-centos7`      | `./TRUTH3/UC/CentOS7/run_truth3_centos7_batch.sh`                | `log.EVNTtoDAOD`         | TRUTH3 derivation (CentOS7 container) |
 | `coffea`              | `./NTuple_Hist/coffea/UC/run_example.sh`                         | `coffea_hist.log`        | NTuple to histogram (Coffea)          |
-| `event-loop-columnar` | `./NTuple_Hist/event_loop/UC/columnar/run_eventloop_arrays.sh`   | `eventloop_arrays.log`   | Event loop (columnar)                 |
-| `event-loop-standard` | `./NTuple_Hist/event_loop/UC/standard/run_eventloop_noarrays.sh` | `eventloop_noarrays.log` | Event loop (standard)                 |
+| `eventloop-columnar`  | `./NTuple_Hist/event_loop/UC/columnar/run_eventloop_arrays.sh`   | `eventloop_arrays.log`   | Event loop (columnar)                 |
+| `eventloop-standard`  | `./NTuple_Hist/event_loop/UC/standard/run_eventloop_noarrays.sh` | `eventloop_noarrays.log` | Event loop (standard)                 |
 | `fastframes`          | `./NTuple_Hist/fastframes/UC/run_fastframes.sh`                  | `fastframes.log`         | NTuple to histogram (FastFrames)      |
 
 ## Workflow Steps
