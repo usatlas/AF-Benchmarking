@@ -41,10 +41,10 @@ native_el9 () {
   mkdir -p "${1}"
   cd "${2}" || exit
   # shellcheck disable=SC2115
-  rm -r "${3:?}"/
+  rm -r "${3:?}"
   rucio download --rses AGLT2_LOCALGROUPDISK "${3}"  2>&1 | tee rucio.log
   hostname >> rucio.log
-  du "${3}"/ >> rucio.log
+  du "${3}" >> rucio.log
   mv rucio.log "${1}"
 }
 
@@ -55,7 +55,7 @@ site="$1"
 if [[ -z "$site" ]]; then
     # Auto-detect
     if [[ -d /sdf ]]; then
-        site="slack"
+        site="slac"
     elif [[ -d /usatlas ]]; then
         site="uchicago"
     elif [[ -d /data ]]; then
@@ -77,16 +77,15 @@ case "$site" in
         output_dir="${job_dir}/${curr_time}/"
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
-    slack)
+    slac)
         job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/sdf/data/atlas/u/selbor/benchmarks/"
         output_dir="${job_dir}/${curr_time}/"
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
     uchicago)
-        job_dir="$HOME/af_benchmarking/rucio/"
-        output_dir="${job_dir}/${curr_time}/"
-        native_el9 "$output_dir" "$job_dir" "$download_ID"
+        output_dir="${PWD}"
+        native_el9 "${PWD}" "${PWD}" "$download_ID"
         ;;
     nersc)
         job_dir="$HOME/af_benchmarking/rucio/"

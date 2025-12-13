@@ -1,0 +1,47 @@
+name: "Upload to Kibana"
+description: "Upload JSON payload to LogStash/Kibana"
+inputs:
+  payload-file:
+    description: "Path to JSON payload file"
+    required: true
+  kibana-uri:
+    description: "LogStash/Kibana URI endpoint"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Validate payload file
+      shell: bash
+      run: |
+        if [ ! -f "${{ inputs.payload-file }}" ]; then
+          echo "Error: Payload file not found: ${{ inputs.payload-file }}"
+          exit 1
+        fi
+        echo "Payload file found: ${{ inputs.payload-file }}"
+        echo "::group::File contents"
+        cat "${{ inputs.payload-file }}" || true
+        printf "\n"
+        echo "::endgroup::"
+
+    - name: Upload to LogStash
+      shell: bash
+      run: |
+        response=$(curl -X POST "${{ inputs.kibana-uri }}" \
+          -H "Content-Type: application/json" \
+          -d @${{ inputs.payload-file }} \
+          -w "%{http_code}" \
+          -s -o response.txt)
+
+        echo "HTTP Response Code: $response"
+        echo "::group::Response body"
+        cat response.txt || true
+        printf "\n"
+        echo "::endgroup::"
+
+        if [[ ! "$response" =~ ^2 ]]; then
+          echo "Upload failed with HTTP status: $response"
+          exit 1
+        fi
+
+        echo "Upload successful!"
