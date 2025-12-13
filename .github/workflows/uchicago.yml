@@ -37,7 +37,7 @@ jobs:
           log-type: rucio
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -76,7 +76,7 @@ jobs:
           log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -115,7 +115,7 @@ jobs:
           log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -154,7 +154,7 @@ jobs:
           log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -193,7 +193,7 @@ jobs:
           log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -232,7 +232,7 @@ jobs:
           log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -271,7 +271,7 @@ jobs:
           log-type: athena
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -310,7 +310,7 @@ jobs:
           log-type: coffea
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -349,7 +349,7 @@ jobs:
           log-type: eventloop
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -388,7 +388,7 @@ jobs:
           log-type: eventloop
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
@@ -433,7 +433,7 @@ jobs:
           log-type: ff
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
-          kibana-kind: ${{ secrets.KIBANA_KIND }}
+          kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
         continue-on-error: true
 
