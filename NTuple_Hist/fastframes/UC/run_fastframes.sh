@@ -16,7 +16,10 @@ source /data/selbor/FastFramesTutorial/TutorialClass/build/setup.sh
 
 date >> split.log
 
-python3 /data/selbor/FastFramesTutorial/FastFrames/python/FastFrames.py -c "${yml_dir}"mc20e_example_config.yml 2>&1 | tee FastFrames.log
+echo "::group::FastFrames"
+python3 /data/selbor/FastFramesTutorial/FastFrames/python/FastFrames.py -c "${yml_dir}"mc20e_example_config.yml 2>&1 | tee fastframes.log
+printf "\n"
+echo "::endgroup::"
 
 # Getting the date and time after running script
 date >> split.log
