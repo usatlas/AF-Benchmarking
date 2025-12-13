@@ -52,7 +52,6 @@ pixi shell -e kibana
 
 # Run parsing script to generate payload.json
 python parsing/scripts/ci_parse.py \
-  --job-type rucio \
   --log-file path/to/rucio.log \
   --log-type rucio \
   --cluster UC-AF \
@@ -130,7 +129,7 @@ new-benchmark:
       if: always()
       uses: ./.github/actions/parse
       with:
-        job-type: ${{ github.job }}
+        job-variation: ${{ github.job }}
         log-file: new-benchmark.log # Update to match your log file
         log-type: new-benchmark # Update to match your parser type
         cluster: UC-AF
