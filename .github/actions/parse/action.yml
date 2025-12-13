@@ -1,9 +1,12 @@
 name: "Parse Benchmark Logs"
 description: "Parse benchmark logs and generate JSON payload"
 inputs:
-  job-type:
-    description: "Type of job (rucio, evnt-native, etc.)"
-    required: true
+  job-variation:
+    description:
+      "Optional job variation for testType specification (e.g., native, el9,
+      centos7)"
+    required: false
+    default: ""
   log-file:
     description: "Path to log file"
     required: true
@@ -46,7 +49,7 @@ runs:
       shell: bash
       run: |
         pixi run -e kibana python parsing/scripts/ci_parse.py \
-          --job-type "${{ inputs.job-type }}" \
+          --job-variation "${{ inputs.job-variation }}" \
           --log-file "${{ inputs.log-file }}" \
           --log-type "${{ inputs.log-type }}" \
           --cluster "${{ inputs.cluster }}" \
