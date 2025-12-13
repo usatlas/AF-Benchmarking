@@ -56,7 +56,12 @@ def parse_log(log_file, log_type, job_variation, cluster, token, kind, host):
         raise FileNotFoundError(f"Log file not found: {log_file}")
 
     # Determine testType based on log_type and optional job_variation
-    test_type = f"{log_type}[{job_variation}]" if job_variation else log_type
+    # Strip log_type prefix from job_variation if present (e.g., "eventloop-columnar" -> "columnar")
+    if job_variation:
+        variation = job_variation.removeprefix(f"{log_type}-")
+        test_type = f"{log_type}[{variation}]"
+    else:
+        test_type = log_type
 
     # Parse based on log type
     if log_type == "rucio":
