@@ -84,8 +84,8 @@ case "$site" in
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
     uchicago)
-        output_dir="${HOME}"
-        native_el9 "${HOME}" "${HOME}" "$download_ID"
+        output_dir="${PWD}"
+        native_el9 "${PWD}" "${PWD}" "$download_ID"
         ;;
     nersc)
         job_dir="$HOME/af_benchmarking/rucio/"
