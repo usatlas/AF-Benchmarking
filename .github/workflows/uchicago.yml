@@ -39,7 +39,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -47,7 +46,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
@@ -78,7 +76,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -86,7 +83,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
@@ -117,7 +113,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -125,7 +120,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
@@ -156,7 +150,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -164,7 +157,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
@@ -195,7 +187,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -203,7 +194,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
@@ -234,7 +224,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -242,7 +231,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
@@ -273,7 +261,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -281,7 +268,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
@@ -312,7 +298,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -320,7 +305,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
@@ -351,7 +335,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -359,7 +342,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
@@ -390,7 +372,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -398,7 +379,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
@@ -435,7 +415,6 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${{ env.NODE_NAME }}
-        continue-on-error: true
 
       - name: upload to kibana
         if: always()
@@ -443,7 +422,6 @@ jobs:
         with:
           payload-file: payload.json
           kibana-uri: ${{ secrets.KIBANA_URI }}
-        continue-on-error: true
 
       - name: upload log
         if: always()
