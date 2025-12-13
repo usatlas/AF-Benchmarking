@@ -27,10 +27,21 @@ jobs:
           voms-userkey: ${{ secrets.VOMS_USERKEY }}
 
       - name: execute
-        run: ./Rucio/rucio_script.sh uchicago
+        run: |
+          ./Rucio/rucio_script.sh uchicago
+          ls -lavh .
         shell: bash
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
+
+      - name: check files
+        if: always()
+        shell: bash
+        run: |
+          pwd
+          ls -lavh .
+          echo ${HOME}
+          ls -lavh ${HOME}
 
       - name: parse benchmark log
         if: always()
