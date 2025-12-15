@@ -16,7 +16,7 @@ from rich.syntax import Syntax
 # Add parent directory to path to import parsing modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from handlers import rucio_parser
+from handlers import rucio_parser, coffea_parser, fastframes_parser
 
 # Initialize rich console
 console = Console()
@@ -75,15 +75,7 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host):
             "status": 0,
         }
     elif log_type == "coffea":
-        # Placeholder for coffea parser
-        # TODO: Implement coffea log parsing
-        data = {
-            "submitTime": 0,
-            "queueTime": 0,
-            "runTime": 0,
-            "payloadSize": 0,
-            "status": 0,
-        }
+        data = coffea_parser.parse_coffea_log(log_path)
     elif log_type == "eventloop":
         # Placeholder for eventloop parser
         # TODO: Implement eventloop log parsing
@@ -95,15 +87,7 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host):
             "status": 0,
         }
     elif log_type == "fastframes":
-        # Placeholder for fastframes parser
-        # TODO: Implement fastframes log parsing
-        data = {
-            "submitTime": 0,
-            "queueTime": 0,
-            "runTime": 0,
-            "payloadSize": 0,
-            "status": 0,
-        }
+        data = fastframes_parser.parse_fastframes_log(log_path)
     else:
         raise ValueError(f"Unknown log type: {log_type}")
 
