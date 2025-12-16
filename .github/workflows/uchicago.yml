@@ -411,7 +411,6 @@ jobs:
 
       - name: print
         run: |
-          tree .
           find . -name "*.root"
 
       - name: parse benchmark log
