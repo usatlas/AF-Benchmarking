@@ -19,7 +19,6 @@ MONTH_DICT = {
 
 def parse_evnt_log(path):
     print(f"[EVNT] Parsing {path.name}")
-    payload = 0
     with open(path) as f:
         file_lines = f.readlines()
         N = len(file_lines)
@@ -50,7 +49,6 @@ def parse_evnt_log(path):
         "submitTime": utc_timestamp,
         "queueTime": queue_time,
         "runTime": run_time,
-        "payloadSize": payload,
         "status": status,
     }
 

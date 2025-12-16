@@ -44,8 +44,8 @@
     },
     "payloadSize": {
       "type": "integer",
-      "description": "Size of payload in bytes",
-      "minimum": 0
+      "description": "Size of payload in bytes (-1 if not provided, 0 for empty file)",
+      "minimum": -1
     },
     "frequency": {
       "type": "number",

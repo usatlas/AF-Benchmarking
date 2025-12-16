@@ -39,7 +39,7 @@ def parse_rucio_log(path):
     end_date_string = last_line[0]
     end_time_string = last_line[1].split(",")[0]
 
-    # Obtaining the payload; casted as int
+    # Obtaining the payload for status check; casted as int
     payload = int(payload_line.split("\t")[0])
     if payload != 0:
         status = 0
@@ -61,7 +61,6 @@ def parse_rucio_log(path):
         "submitTime": utc_timestamp,
         "queueTime": 0,
         "runTime": run_time,
-        "payloadSize": payload,
         "status": status,
     }
 

@@ -46,13 +46,11 @@ def parse_truth3_log(path):
     end_datetime_object = dt.datetime.combine(start_date_object, end_time)
     run_time = int((end_datetime_object - start_datetime_object).total_seconds())
     status = 0
-    payload = 0
 
     dicti = {
         "submitTime": utc_timestamp,
         "queueTime": queue_time,
         "runTime": run_time,
-        "payloadSize": payload,
         "status": status,
     }
 

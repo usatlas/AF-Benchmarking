@@ -46,15 +46,11 @@ def parse_coffea_log(path):
 
     status = 0
 
-    files = list(Path("NTuple_Hist", "coffea").rglob("coffea.root"))
-    payload = files[0].stat().st_size if files else 0
-
     dicti = {
         "submitTime": utc_timestamp,
         "queueTime": 0,
         "runTime": run_time,
         "frequency": frequency,
-        "payloadSize": payload,
         "status": status,
     }
 

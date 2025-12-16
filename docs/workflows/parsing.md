@@ -44,16 +44,17 @@ single, simple integration point for GitHub Actions workflows.
 
 ### Parse Action Inputs
 
-| Input          | Description                      | Required | Example                                      |
-| -------------- | -------------------------------- | -------- | -------------------------------------------- |
-| `job`          | Job name                         | Yes      | `rucio`, `eventloop-columnar`, `evnt-native` |
-| `log-file`     | Path to log file                 | Yes      | `rucio.log`                                  |
-| `log-type`     | Type of log parser to use        | Yes      | `rucio`, `athena`, `coffea`, `fastframes`    |
-| `cluster`      | Cluster name                     | Yes      | `UC-AF`, `SLAC-AF`, `BNL-AF`                 |
-| `kibana-token` | Token for benchmark ID           | Yes      | From secrets                                 |
-| `kibana-kind`  | Kind for benchmark ID            | Yes      | From secrets                                 |
-| `host`         | Hostname to identify the machine | Yes      | `${NODE_NAME}`                               |
-| `output-file`  | Output JSON file path            | No       | `payload.json` (default)                     |
+| Input          | Description                               | Required | Example                                      |
+| -------------- | ----------------------------------------- | -------- | -------------------------------------------- |
+| `job`          | Job name                                  | Yes      | `rucio`, `eventloop-columnar`, `evnt-native` |
+| `log-file`     | Path to log file                          | Yes      | `rucio.log`                                  |
+| `log-type`     | Type of log parser to use                 | Yes      | `rucio`, `athena`, `coffea`, `fastframes`    |
+| `cluster`      | Cluster name                              | Yes      | `UC-AF`, `SLAC-AF`, `BNL-AF`                 |
+| `kibana-token` | Token for benchmark ID                    | Yes      | From secrets                                 |
+| `kibana-kind`  | Kind for benchmark ID                     | Yes      | From secrets                                 |
+| `host`         | Hostname to identify the machine          | Yes      | `${NODE_NAME}`                               |
+| `payload-file` | Path to payload file for size calculation | No       | Empty string (default, payloadSize = -1)     |
+| `output-file`  | Output JSON file path                     | No       | `payload.json` (default)                     |
 
 ### Upload Action Inputs
 
@@ -129,18 +130,18 @@ Required structure:
 
 ### Field Descriptions
 
-| Field         | Type    | Description                                       | Source                                                              |
-| ------------- | ------- | ------------------------------------------------- | ------------------------------------------------------------------- |
-| `job`         | String  | Job name (e.g., `rucio`, `eventloop-columnar`)    | Passed from workflow via {% raw %} `${{ github.job }}` {% endraw %} |
-| `cluster`     | String  | AF cluster name (UC-AF, SLAC-AF, BNL-AF)          | Passed from workflow                                                |
-| `submitTime`  | Integer | UTC timestamp (ms since epoch)                    | Parsed from log                                                     |
-| `queueTime`   | Integer | Queue time (seconds)                              | Parsed from log                                                     |
-| `runTime`     | Integer | Execution time (seconds)                          | Parsed from log                                                     |
-| `payloadSize` | Integer | Output size (bytes)                               | Parsed from log                                                     |
-| `status`      | Integer | Exit code (0=success, non-zero=failure)           | Parsed from log                                                     |
-| `host`        | String  | Hostname where job executed (idn-hostname format) | Passed from workflow via `${NODE_NAME}`                             |
-| `token`       | String  | Benchmark identifier AND LogStash routing key     | Passed from workflow (secrets)                                      |
-| `kind`        | String  | Benchmark type AND LogStash routing kind          | Passed from workflow (secrets)                                      |
+| Field         | Type    | Description                                       | Source                                                                                                    |
+| ------------- | ------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `job`         | String  | Job name (e.g., `rucio`, `eventloop-columnar`)    | Passed from workflow via {% raw %} `${{ github.job }}` {% endraw %}                                       |
+| `cluster`     | String  | AF cluster name (UC-AF, SLAC-AF, BNL-AF)          | Passed from workflow                                                                                      |
+| `submitTime`  | Integer | UTC timestamp (ms since epoch)                    | Parsed from log                                                                                           |
+| `queueTime`   | Integer | Queue time (seconds)                              | Parsed from log                                                                                           |
+| `runTime`     | Integer | Execution time (seconds)                          | Parsed from log                                                                                           |
+| `payloadSize` | Integer | Output file size (bytes)                          | Calculated from `payload-file` input using `Path().stat().st_size` (-1 if not provided, 0 for empty file) |
+| `status`      | Integer | Exit code (0=success, non-zero=failure)           | Parsed from log                                                                                           |
+| `host`        | String  | Hostname where job executed (idn-hostname format) | Passed from workflow via `${NODE_NAME}`                                                                   |
+| `token`       | String  | Benchmark identifier AND LogStash routing key     | Passed from workflow (secrets)                                                                            |
+| `kind`        | String  | Benchmark type AND LogStash routing kind          | Passed from workflow (secrets)                                                                            |
 
 ### Static vs Parsed Fields
 

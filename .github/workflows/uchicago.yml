@@ -302,6 +302,7 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          payload-file: coffea.root
 
       - name: upload to kibana
         if: always()
@@ -419,6 +420,7 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          payload-file: example_FS.root
 
       - name: upload to kibana
         if: always()

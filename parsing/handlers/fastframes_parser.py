@@ -1,6 +1,5 @@
 import datetime as dt
 import re
-from pathlib import Path
 
 ANSI_ESCAPE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
 
@@ -45,15 +44,11 @@ def parse_fastframes_log(path):
     run_time = int(elapsed_to_seconds(elapsed_time))
     frequency = int((processed_events / run_time) / 1000)
 
-    files = list(Path("NTuple_Hist", "fastframes").rglob("example_FS.root"))
-    payload = files[0].stat().st_size if files else 0
-
     dicti = {
         "submitTime": utc_timestamp,
         "queueTime": 0,
         "runTime": run_time,
         "frequency": frequency,
-        "payloadSize": payload,
         "status": status,
     }
 

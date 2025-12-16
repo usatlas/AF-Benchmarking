@@ -24,6 +24,10 @@ inputs:
   host:
     description: "Hostname to identify the machine running the job"
     required: true
+  payload-file:
+    description: "Path to payload file for size calculation (optional)"
+    required: false
+    default: ""
   output-file:
     description: "Output JSON file path"
     required: false
@@ -54,4 +58,5 @@ runs:
           --token "${{ inputs.kibana-token }}" \
           --kind "${{ inputs.kibana-kind }}" \
           --host "${{ inputs.host }}" \
+          --payload-file "${{ inputs.payload-file }}" \
           --output "${{ inputs.output-file }}"

@@ -46,7 +46,7 @@ def validate_payload(data):
     jsonschema.validate(instance=data, schema=PAYLOAD_SCHEMA)
 
 
-def parse_log(log_file, log_type, job, cluster, token, kind, host):
+def parse_log(log_file, log_type, job, cluster, token, kind, host, payload_file):
     """
     Parse log file and return data dictionary.
 
@@ -58,6 +58,7 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host):
         token: Kibana token for routing
         kind: Kibana kind for routing
         host: Hostname where job executed
+        payload_file: Path to payload file for size calculation (empty string if not provided)
 
     Returns:
         Dictionary with benchmark data
@@ -66,6 +67,17 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host):
 
     if not log_path.exists():
         raise FileNotFoundError(f"Log file not found: {log_file}")
+
+    # Calculate payload size from file if provided
+    payload_size = -1  # Default: not provided
+    if payload_file:
+        payload_path = Path(payload_file)
+        if not payload_path.exists():
+            raise FileNotFoundError(f"Payload file not found: {payload_file}")
+        payload_size = payload_path.stat().st_size
+        console.print(
+            f"[bold cyan]Payload file:[/bold cyan] {payload_file} ({payload_size} bytes)"
+        )
 
     # Parse based on log type
     if log_type == "rucio":
@@ -83,7 +95,6 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host):
             "submitTime": 0,
             "queueTime": 0,
             "runTime": 0,
-            "payloadSize": 0,
             "status": 0,
         }
     elif log_type == "fastframes":
@@ -94,6 +105,7 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host):
     # Add common fields to all parsed data
     data["job"] = job
     data["cluster"] = cluster
+    data["payloadSize"] = payload_size
     data["token"] = token
     data["kind"] = kind
     data["host"] = host
@@ -112,6 +124,11 @@ def main():
     parser.add_argument("--token", required=True, help="Kibana token")
     parser.add_argument("--kind", required=True, help="Kibana kind")
     parser.add_argument("--host", required=True, help="Hostname")
+    parser.add_argument(
+        "--payload-file",
+        default="",
+        help="Path to payload file for size calculation (optional)",
+    )
     parser.add_argument(
         "--output", default="payload.json", help="Output JSON file path"
     )
@@ -132,6 +149,7 @@ def main():
             args.token,
             args.kind,
             args.host,
+            args.payload_file,
         )
 
         # Validate payload against schema
