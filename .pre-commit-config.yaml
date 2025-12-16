@@ -2,7 +2,7 @@ ci:
   autoupdate_commit_msg: "chore: update pre-commit hooks"
   autofix_commit_msg: "style: pre-commit fixes"
 
-exclude: ^.cruft.json|.copier-answers.yml|docs/css/fonts/.*$
+exclude: ^.cruft.json|.copier-answers.yml|docs/css/fonts/.*|parsing/example-logs/.*$
 
 repos:
   - repo: https://github.com/adamchainz/blacken-docs
@@ -58,7 +58,7 @@ repos:
     rev: "v2.4.1"
     hooks:
       - id: codespell
-        exclude: ^.+.ipynb|log.generate$
+        exclude: ^.+.ipynb$
         args: ["-w", "-L", "SLAC,checkin,slac"]
 
   - repo: https://github.com/shellcheck-py/shellcheck-py
