@@ -6,9 +6,11 @@
 config_dir="${GITHUB_WORKSPACE}/TRUTH3/EVNT.root"
 
 # Sets up our environment
+echo "::group::setupATLAS"
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 # shellcheck disable=SC1091
 source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
+echo "::endgroup::"
 
 # Appends time before Derivation_tf.py to log file
 date +'%H:%H:%S' >> split.log

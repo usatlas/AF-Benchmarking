@@ -9,9 +9,11 @@ config_dir="${GITHUB_WORKSPACE}/EVNT/EVNTFiles/100xxx/100001"
 max_events=10000
 
 # Sets up our working environment
+echo "::group::setupATLAS"
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 # shellcheck disable=SC1091
 source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
+echo "::endgroup::"
 
 # Appends time before Gen_tf.py to log file
 date +'%H:%H:%S' >> split.log
