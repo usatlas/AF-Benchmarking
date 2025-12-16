@@ -17,8 +17,8 @@ MONTH_DICT = {
 }
 
 
-def parse_truth3_centos7_log(path):
-    print(f"[TRUTH3 CentOS7] Parsing {path.name}")
+def parse_truth3_log(path):
+    print(f"[TRUTH3  Parsing {path.name}")
     with open(path) as f:
         file_lines = f.readlines()
         N = len(file_lines)
@@ -61,4 +61,4 @@ def parse_truth3_centos7_log(path):
 
 # Registers this parsing script with the Class
 def register(parser):
-    parser.register_parsers("log.EVNTtoDAOD", parse_truth3_centos7_log)
+    parser.register_parsers("log.EVNTtoDAOD", parse_truth3_log)
