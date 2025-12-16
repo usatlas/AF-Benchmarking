@@ -1,5 +1,7 @@
 import ROOT as r
 from pathlib import Path
+from datetime import datetime, timezone
+import time
 
 
 def photon_eventloop(f_name, h_baseline_pt, metadata):
@@ -26,11 +28,14 @@ def photon_eventloop(f_name, h_baseline_pt, metadata):
     sumOfWeights = metadata["sum_of_weights"]
     weight_norm = xs * genFiltEff * kfactor * lum / sumOfWeights
 
+    processed = 0
+
     # name of branches in tree
     # print(tree.GetListOfBranches())
 
     # Event loop
     for i, event in enumerate(tree):
+        processed += 1
         if (i + 1) % 50000 == 0:
             print(f"    Processed {i + 1:6d}/{totalevents}")
 
@@ -45,6 +50,7 @@ def photon_eventloop(f_name, h_baseline_pt, metadata):
             break  # only fill with first passing photon
 
     fp.Close()
+    return processed
 
 
 def main():
@@ -74,17 +80,34 @@ def main():
         1000,
     )
 
+    start_time_utc = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    t0 = time.perf_counter()
+
+    total_events_processed = 0
     # Process every file in every sample, filling the same histogram
     for s in samples:
         print(f"\nProcessing sample: {s['name']}")
         for f in sorted(s["path"].glob("*.root")):
-            photon_eventloop(str(f), h_baseline_pt, s["metadata"])
+            total_events_processed += photon_eventloop(
+                str(f), h_baseline_pt, s["metadata"]
+            )
+
+    dt = time.perf_counter() - t0
+    end_time_utc = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    event_rate_khz = (total_events_processed / dt) / 1000.0 if dt > 0 else 0.0
 
     # Save combined histogram
     output_file = r.TFile("event_loop_noarrays_output_hist.root", "RECREATE")
     h_baseline_pt.Write()
     output_file.Close()
     print("\nCombined histogram written to event_loop_output_hist.root")
+    print("\n=== BENCHMARK ===")
+    print(f"start_time_utc={start_time_utc}")
+    print(f"end_time_utc={end_time_utc}")
+    print(f"wall_time_sec={dt:.6f}")
+    print(f"events_processed={total_events_processed}")
+    print(f"event_rate_khz={event_rate_khz:.6f}")
+    print("=================\n")
 
 
 if __name__ == "__main__":
