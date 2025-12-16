@@ -1,9 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC1091
 
-# current time used for log file storage
-curr_time=$(date +"%Y.%m.%dT%H")
-
 
 # Input files are stored here
 config_dir="${GITHUB_WORKSPACE}/TRUTH3/EVNT.root"
@@ -23,24 +20,11 @@ Derivation_tf.py --CA True --inputEVNTFile "${config_dir}" --outputDAODFile=TRUT
 # Appends time after Derivation_tf.py to a log file
 date +'%H:%H:%S' >> split.log
 
-# Defines the output directory
-output_dir="/home/$(whoami)/benchmarks/${curr_time}/TRUTH3"
-
-# Creates the output directory
-mkdir -p "${output_dir}"
 
 # Obtains and appends the host machine and payload size to the log file
-hostname >> split.log
-du DAOD_TRUTH3.TRUTH3.root >> split.log
-
-# Moves the log file to the output directory
-#mv log.Derivation "${output_dir}"
-mv split.log "${output_dir}"
-mv pipe_file.log "${output_dir}"
-
-# Directory that needs to be cleaned
-cleanup_dir="/home/selbor/TRUTH3Job/native"
-
-if [[ -d "${cleanup_dir}" && "${cleanup_dir}" == "/home/selbor/TRUTH3Job/native" ]]; then
-    rm -rf "${cleanup_dir:?}/"*
-fi
+{
+  date +'%H:%M:%S'
+  echo "Starting job"
+  hostname
+  du DAOD_TRUTH3.TRUTH3.root
+} >> split.log
