@@ -409,10 +409,6 @@ jobs:
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
 
-      - name: print
-        run: |
-          find . -name "*.root"
-
       - name: parse benchmark log
         if: always()
         uses: ./.github/actions/parse
@@ -424,7 +420,7 @@ jobs:
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
-          payload-file: example_FS.root
+          payload-file: ./NTuple_Hist/fastframes/UC/example_FS.root
 
       - name: upload to kibana
         if: always()
