@@ -22,13 +22,6 @@ date >> split.log
 
 hostname >> split.log
 
-log_file_dir="$HOME/benchmarks/${curr_time}/Coffea_Hist/"
-
-mkdir -p "${log_file_dir}"
-
-#mv coffea_hist.log "${log_file_dir}"
-mv split.log "${log_file_dir}"
-
 # Directory that needs to be cleaned
 cleanup_dir="/home/selbor/ntuple/coffea"
 
