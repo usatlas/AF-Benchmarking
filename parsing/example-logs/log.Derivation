@@ -1,0 +1,1132 @@
+18:00:19 Mon Dec  8 18:00:19 UTC 2025
+18:00:19 Preloading tcmalloc_minimal.so
+18:00:19 Preloading /cvmfs/atlas.cern.ch/repo/sw/software/24.0/AthenaExternals/24.0.53/InstallArea/x86_64-el9-gcc13-opt/lib/libintlc.so.5:/cvmfs/atlas.cern.ch/repo/sw/software/24.0/AthenaExternals/24.0.53/InstallArea/x86_64-el9-gcc13-opt/lib/libimf.so
+18:00:20 Py:Derivation        INFO ****************** STARTING DERIVATION *****************
+18:00:20 Py:Derivation        INFO **** Transformation run arguments
+18:00:20 Py:Derivation        INFO RunArguments:
+18:00:20    EVNTFileIO = 'input'
+18:00:20    concurrentEvents = 0
+18:00:20    formats = ['TRUTH3']
+18:00:20    inputEVNTFile = ['/data/selbor/TRUTH3_StaticDir/EVNT.root']
+18:00:20    inputEVNTFileNentries = 301
+18:00:20    inputEVNTFileType = 'EVNT'
+18:00:20    maxEvents = -1
+18:00:20    nprocs = 0
+18:00:20    outputDAOD_TRUTH3File = 'DAOD_TRUTH3.TRUTH3.root'
+18:00:20    outputDAOD_TRUTH3FileType = 'AOD'
+18:00:20    perfmon = 'fastmonmt'
+18:00:20    threads = 0
+18:00:20    totalExecutorSteps = 0
+18:00:20    trfSubstepName = 'Derivation'
+18:00:20 Py:Derivation        INFO **** Setting-up configuration flags
+18:00:22 Py:Derivation        INFO Will attempt to make the following derived formats: ['TRUTH3']
+18:00:22 Py:AutoConfigFlags    INFO Obtaining metadata of auto-configuration by peeking into '/data/selbor/TRUTH3_StaticDir/EVNT.root'
+18:00:23 Py:MetaReader        INFO Current mode used: lite
+18:00:23 Py:MetaReader        INFO Current filenames: ['/data/selbor/TRUTH3_StaticDir/EVNT.root']
+18:00:24 Py:MetaReader        INFO MetaReader is called with the parameter "unique_tag_info_values" set to True. This is a workaround to remove all duplicate values from "/TagInfo" key
+18:00:24 Py:PerfMonMTSvcCfg    INFO Configuring PerfMonMTSvc with flags:
+18:00:24 Py:PerfMonMTSvcCfg    INFO   >> doFastMonMT True
+18:00:24 Py:PerfMonMTSvcCfg    INFO   >> doFullMonMT False
+18:00:24 Py:AutoConfigFlags    INFO Looking into the file in 'peeker' mode as the configuration requires more details: SimBarcodeOffset
+18:00:24 Py:MetaReader        INFO Current mode used: peeker
+18:00:24 Py:MetaReader        INFO Current filenames: ['/data/selbor/TRUTH3_StaticDir/EVNT.root']
+18:00:24 Py:MetaReader        INFO MetaReader is called with the parameter "unique_tag_info_values" set to True. This is a workaround to remove all duplicate values from "/TagInfo" key
+18:00:24 Py:JetRecConfig      INFO ******************
+18:00:24 Py:JetRecConfig      INFO Setting up to find AntiKt4TruthJets
+18:00:24 Py:JetRecConfig      INFO Standard Reco mode : filtering components in JetDefinition(AntiKt4TruthJets)
+18:00:24 Py:JetRecConfig      INFO  *** Number of ghost filtered components = 0  final  list=['BHadronsInitial', 'BHadronsFinal', 'BQuarksFinal', 'CHadronsInitial', 'CHadronsFinal', 'CQuarksFinal', 'TausFinal', 'WBosons', 'ZBosons', 'HBosons', 'TQuarksFinal', 'Partons']
+18:00:24 Py:JetRecConfig      INFO  *** Number of mod filtered components = 0  final  list=['Sort', 'Width', 'PartonTruthLabel', 'TruthPartonDR', 'JetDeltaRLabel:5000']
+18:00:24 Py:JetRecConfig      INFO  *** Number of  filtered components = 0  final  list=['extinput:JetInputTruthParticles', 'input:Truth', 'extinput:TruthLabelBHadronsInitial', 'input:BHadronsInitial', 'ghost:BHadronsInitial', 'extinput:TruthLabelBHadronsFinal', 'input:BHadronsFinal', 'ghost:BHadronsFinal', 'extinput:TruthLabelBQuarksFinal', 'input:BQuarksFinal', 'ghost:BQuarksFinal', 'extinput:TruthLabelCHadronsInitial', 'input:CHadronsInitial', 'ghost:CHadronsInitial', 'extinput:TruthLabelCHadronsFinal', 'input:CHadronsFinal', 'ghost:CHadronsFinal', 'extinput:TruthLabelCQuarksFinal', 'input:CQuarksFinal', 'ghost:CQuarksFinal', 'extinput:TruthLabelTausFinal', 'input:TausFinal', 'ghost:TausFinal', 'extinput:TruthLabelWBosons', 'input:WBosons', 'ghost:WBosons', 'extinput:TruthLabelZBosons', 'input:ZBosons', 'ghost:ZBosons', 'extinput:TruthLabelHBosons', 'input:HBosons', 'ghost:HBosons', 'extinput:TruthLabelTQuarksFinal', 'input:TQuarksFinal', 'ghost:TQuarksFinal', 'extinput:TruthLabelPartons', 'input:Partons', 'ghost:Partons', 'mod:Sort', 'mod:Width', 'mod:PartonTruthLabel', 'mod:TruthPartonDR', 'mod:JetDeltaRLabel:5000']
+18:00:24 Py:JetRecConfig      INFO Inspecting input file contents
+18:00:24 Py:JetRecConfig      INFO Scheduled JetAlgorithm instance "jetalg_AntiKt4TruthJets"
+18:00:24 Py:JetRecConfig      INFO Reordering algorithms in sequence AntiKt4TruthJets
+18:00:24 Py:JetRecConfig      INFO ******************
+18:00:24 Py:JetRecConfig      INFO Setting up to find AntiKt4TruthWZJets
+18:00:24 Py:JetRecConfig      INFO Standard Reco mode : filtering components in JetDefinition(AntiKt4TruthWZJets)
+18:00:24 Py:JetRecConfig      INFO  *** Number of ghost filtered components = 0  final  list=['BHadronsInitial', 'BHadronsFinal', 'BQuarksFinal', 'CHadronsInitial', 'CHadronsFinal', 'CQuarksFinal', 'TausFinal', 'WBosons', 'ZBosons', 'HBosons', 'TQuarksFinal', 'Partons']
+18:00:24 Py:JetRecConfig      INFO  *** Number of mod filtered components = 0  final  list=['Sort', 'Width', 'PartonTruthLabel', 'TruthPartonDR', 'JetDeltaRLabel:5000']
+18:00:24 Py:JetRecConfig      INFO  *** Number of  filtered components = 0  final  list=['extinput:JetInputTruthParticlesNoWZ', 'input:TruthWZ', 'extinput:TruthLabelBHadronsInitial', 'input:BHadronsInitial', 'ghost:BHadronsInitial', 'extinput:TruthLabelBHadronsFinal', 'input:BHadronsFinal', 'ghost:BHadronsFinal', 'extinput:TruthLabelBQuarksFinal', 'input:BQuarksFinal', 'ghost:BQuarksFinal', 'extinput:TruthLabelCHadronsInitial', 'input:CHadronsInitial', 'ghost:CHadronsInitial', 'extinput:TruthLabelCHadronsFinal', 'input:CHadronsFinal', 'ghost:CHadronsFinal', 'extinput:TruthLabelCQuarksFinal', 'input:CQuarksFinal', 'ghost:CQuarksFinal', 'extinput:TruthLabelTausFinal', 'input:TausFinal', 'ghost:TausFinal', 'extinput:TruthLabelWBosons', 'input:WBosons', 'ghost:WBosons', 'extinput:TruthLabelZBosons', 'input:ZBosons', 'ghost:ZBosons', 'extinput:TruthLabelHBosons', 'input:HBosons', 'ghost:HBosons', 'extinput:TruthLabelTQuarksFinal', 'input:TQuarksFinal', 'ghost:TQuarksFinal', 'extinput:TruthLabelPartons', 'input:Partons', 'ghost:Partons', 'mod:Sort', 'mod:Width', 'mod:PartonTruthLabel', 'mod:TruthPartonDR', 'mod:JetDeltaRLabel:5000']
+18:00:24 Py:JetRecConfig      INFO Inspecting input file contents
+18:00:24 Py:JetRecConfig      INFO Scheduled JetAlgorithm instance "jetalg_AntiKt4TruthWZJets"
+18:00:24 Py:JetRecConfig      INFO Reordering algorithms in sequence AntiKt4TruthWZJets
+18:00:24 Py:JetRecConfig      INFO ******************
+18:00:24 Py:JetRecConfig      INFO Setting up to find AntiKt4TruthDressedWZJets
+18:00:24 Py:JetRecConfig      INFO Standard Reco mode : filtering components in JetDefinition(AntiKt4TruthDressedWZJets)
+18:00:24 Py:JetRecConfig      INFO  *** Number of ghost filtered components = 0  final  list=['BHadronsInitial', 'BHadronsFinal', 'BQuarksFinal', 'CHadronsInitial', 'CHadronsFinal', 'CQuarksFinal', 'TausFinal', 'WBosons', 'ZBosons', 'HBosons', 'TQuarksFinal', 'Partons']
+18:00:24 Py:JetRecConfig      INFO  *** Number of mod filtered components = 0  final  list=['Sort', 'Width', 'PartonTruthLabel', 'TruthPartonDR', 'JetDeltaRLabel:5000']
+18:00:24 Py:JetRecConfig      INFO  *** Number of  filtered components = 0  final  list=['extinput:JetInputTruthParticlesDressedWZ', 'input:TruthDressedWZ', 'extinput:TruthLabelBHadronsInitial', 'input:BHadronsInitial', 'ghost:BHadronsInitial', 'extinput:TruthLabelBHadronsFinal', 'input:BHadronsFinal', 'ghost:BHadronsFinal', 'extinput:TruthLabelBQuarksFinal', 'input:BQuarksFinal', 'ghost:BQuarksFinal', 'extinput:TruthLabelCHadronsInitial', 'input:CHadronsInitial', 'ghost:CHadronsInitial', 'extinput:TruthLabelCHadronsFinal', 'input:CHadronsFinal', 'ghost:CHadronsFinal', 'extinput:TruthLabelCQuarksFinal', 'input:CQuarksFinal', 'ghost:CQuarksFinal', 'extinput:TruthLabelTausFinal', 'input:TausFinal', 'ghost:TausFinal', 'extinput:TruthLabelWBosons', 'input:WBosons', 'ghost:WBosons', 'extinput:TruthLabelZBosons', 'input:ZBosons', 'ghost:ZBosons', 'extinput:TruthLabelHBosons', 'input:HBosons', 'ghost:HBosons', 'extinput:TruthLabelTQuarksFinal', 'input:TQuarksFinal', 'ghost:TQuarksFinal', 'extinput:TruthLabelPartons', 'input:Partons', 'ghost:Partons', 'mod:Sort', 'mod:Width', 'mod:PartonTruthLabel', 'mod:TruthPartonDR', 'mod:JetDeltaRLabel:5000']
+18:00:24 Py:JetRecConfig      INFO Inspecting input file contents
+18:00:24 Py:JetRecConfig      INFO Scheduled JetAlgorithm instance "jetalg_AntiKt4TruthDressedWZJets"
+18:00:24 Py:JetRecConfig      INFO Reordering algorithms in sequence AntiKt4TruthDressedWZJets
+18:00:24 Py:JetRecConfig      INFO ******************
+18:00:24 Py:JetRecConfig      INFO Setting up to find AntiKtVR30Rmax4Rmin02TruthChargedJets
+18:00:24 Py:JetRecConfig      INFO Standard Reco mode : filtering components in JetDefinition(AntiKtVR30Rmax4Rmin02TruthChargedJets)
+18:00:24 Py:JetRecConfig      INFO  *** Number of ghost filtered components = 0  final  list=['BHadronsInitial', 'BHadronsFinal', 'BQuarksFinal', 'CHadronsInitial', 'CHadronsFinal', 'CQuarksFinal', 'TausFinal', 'WBosons', 'ZBosons', 'HBosons', 'TQuarksFinal', 'Partons']
+18:00:24 Py:JetRecConfig      INFO  *** Number of mod filtered components = 0  final  list=['Sort', 'PartonTruthLabel', 'TruthPartonDR', 'JetDeltaRLabel:5000']
+18:00:24 Py:JetRecConfig      INFO  *** Number of  filtered components = 0  final  list=['extinput:JetInputTruthParticlesCharged', 'input:TruthCharged', 'extinput:TruthLabelBHadronsInitial', 'input:BHadronsInitial', 'ghost:BHadronsInitial', 'extinput:TruthLabelBHadronsFinal', 'input:BHadronsFinal', 'ghost:BHadronsFinal', 'extinput:TruthLabelBQuarksFinal', 'input:BQuarksFinal', 'ghost:BQuarksFinal', 'extinput:TruthLabelCHadronsInitial', 'input:CHadronsInitial', 'ghost:CHadronsInitial', 'extinput:TruthLabelCHadronsFinal', 'input:CHadronsFinal', 'ghost:CHadronsFinal', 'extinput:TruthLabelCQuarksFinal', 'input:CQuarksFinal', 'ghost:CQuarksFinal', 'extinput:TruthLabelTausFinal', 'input:TausFinal', 'ghost:TausFinal', 'extinput:TruthLabelWBosons', 'input:WBosons', 'ghost:WBosons', 'extinput:TruthLabelZBosons', 'input:ZBosons', 'ghost:ZBosons', 'extinput:TruthLabelHBosons', 'input:HBosons', 'ghost:HBosons', 'extinput:TruthLabelTQuarksFinal', 'input:TQuarksFinal', 'ghost:TQuarksFinal', 'extinput:TruthLabelPartons', 'input:Partons', 'ghost:Partons', 'mod:Sort', 'mod:PartonTruthLabel', 'mod:TruthPartonDR', 'mod:JetDeltaRLabel:5000']
+18:00:24 Py:JetRecConfig      INFO Inspecting input file contents
+18:00:24 Py:JetRecConfig      INFO Scheduled JetAlgorithm instance "jetalg_AntiKtVR30Rmax4Rmin02TruthChargedJets"
+18:00:24 Py:JetRecConfig      INFO Reordering algorithms in sequence AntiKtVR30Rmax4Rmin02TruthChargedJets
+18:00:24 Py:JetRecConfig      INFO ******************
+18:00:24 Py:JetRecConfig      INFO Setting up to find AntiKt10TruthTrimmedPtFrac5SmallR20Jets
+18:00:24 Py:JetRecConfig      INFO Scheduling parent alg AntiKt10TruthJets for AntiKt10TruthTrimmedPtFrac5SmallR20Jets
+18:00:24 Py:JetRecConfig      INFO Standard Reco mode : filtering components in JetDefinition(AntiKt10TruthJets)
+18:00:24 Py:JetRecConfig      INFO  *** Number of ghost filtered components = 0  final  list=['BHadronsFinal', 'CHadronsFinal', 'WBosons', 'ZBosons', 'HBosons', 'TQuarksFinal', 'Partons', 'BHadronsFinal', 'CHadronsFinal', 'TausFinal', 'Partons']
+18:00:24 Py:JetRecConfig      INFO  *** Number of mod filtered components = 0  final  list=['Sort', 'Filter:50000', 'ktsplitter', 'JetGhostLabel']
+18:00:24 Py:JetRecConfig      INFO  *** Number of  filtered components = 0  final  list=['extinput:JetInputTruthParticles', 'input:Truth', 'extinput:TruthLabelBHadronsFinal', 'input:BHadronsFinal', 'ghost:BHadronsFinal', 'extinput:TruthLabelCHadronsFinal', 'input:CHadronsFinal', 'ghost:CHadronsFinal', 'extinput:TruthLabelWBosons', 'input:WBosons', 'ghost:WBosons', 'extinput:TruthLabelZBosons', 'input:ZBosons', 'ghost:ZBosons', 'extinput:TruthLabelHBosons', 'input:HBosons', 'ghost:HBosons', 'extinput:TruthLabelTQuarksFinal', 'input:TQuarksFinal', 'ghost:TQuarksFinal', 'extinput:TruthLabelPartons', 'input:Partons', 'ghost:Partons', 'extinput:TruthLabelTausFinal', 'input:TausFinal', 'ghost:TausFinal', 'mod:Sort', 'mod:Filter:50000', 'mod:ktsplitter', 'mod:JetGhostLabel']
+18:00:24 Py:JetRecConfig      INFO Inspecting input file contents
+18:00:24 Py:JetRecConfig      INFO Scheduled JetAlgorithm instance "jetalg_AntiKt10TruthJets"
+18:00:24 Py:JetRecConfig      INFO  *** Number of mod filtered components = 0  final  list=['Sort', 'JetGhostLabel', 'nsubjettiness', 'nsubjettinessR', 'ktsplitter', 'ecorr', 'ecorrR', 'qw', 'PartonTruthLabel', 'TruthPartonDR']
+18:00:24 Py:JetRecConfig      INFO  *** Number of  filtered components = 0  final  list=['mod:Sort', 'extinput:TruthLabelBHadronsFinal', 'input:BHadronsFinal', 'ghost:BHadronsFinal', 'extinput:TruthLabelCHadronsFinal', 'input:CHadronsFinal', 'ghost:CHadronsFinal', 'extinput:TruthLabelTausFinal', 'input:TausFinal', 'ghost:TausFinal', 'mod:JetGhostLabel', 'mod:nsubjettiness', 'mod:nsubjettinessR', 'mod:ktsplitter', 'mod:ecorr', 'mod:ecorrR', 'mod:qw', 'extinput:TruthLabelPartons', 'input:Partons', 'ghost:Partons', 'mod:PartonTruthLabel', 'mod:TruthPartonDR']
+18:00:24 Py:JetRecConfig      INFO Scheduled JetAlgorithm instance "jetalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets"
+18:00:24 Py:JetRecConfig      INFO Reordering algorithms in sequence AntiKt10TruthTrimmedPtFrac5SmallR20Jets
+18:00:24 Py:JetRecConfig      INFO ******************
+18:00:24 Py:JetRecConfig      INFO Setting up to find AntiKt10TruthSoftDropBeta100Zcut10Jets
+18:00:24 Py:JetRecConfig      INFO Scheduling parent alg AntiKt10TruthJets for AntiKt10TruthSoftDropBeta100Zcut10Jets
+18:00:24 Py:JetRecConfig      INFO Standard Reco mode : filtering components in JetDefinition(AntiKt10TruthJets)
+18:00:24 Py:JetRecConfig      INFO  *** Number of ghost filtered components = 0  final  list=['BHadronsFinal', 'CHadronsFinal', 'WBosons', 'ZBosons', 'HBosons', 'TQuarksFinal', 'Partons', 'BHadronsFinal', 'CHadronsFinal', 'TausFinal', 'Partons']
+18:00:24 Py:JetRecConfig      INFO  *** Number of mod filtered components = 0  final  list=['Sort', 'Filter:50000', 'ktsplitter', 'JetGhostLabel']
+18:00:24 Py:JetRecConfig      INFO  *** Number of  filtered components = 0  final  list=['extinput:JetInputTruthParticles', 'input:Truth', 'extinput:TruthLabelBHadronsFinal', 'input:BHadronsFinal', 'ghost:BHadronsFinal', 'extinput:TruthLabelCHadronsFinal', 'input:CHadronsFinal', 'ghost:CHadronsFinal', 'extinput:TruthLabelWBosons', 'input:WBosons', 'ghost:WBosons', 'extinput:TruthLabelZBosons', 'input:ZBosons', 'ghost:ZBosons', 'extinput:TruthLabelHBosons', 'input:HBosons', 'ghost:HBosons', 'extinput:TruthLabelTQuarksFinal', 'input:TQuarksFinal', 'ghost:TQuarksFinal', 'extinput:TruthLabelPartons', 'input:Partons', 'ghost:Partons', 'extinput:TruthLabelTausFinal', 'input:TausFinal', 'ghost:TausFinal', 'mod:Sort', 'mod:Filter:50000', 'mod:ktsplitter', 'mod:JetGhostLabel']
+18:00:24 Py:JetRecConfig      INFO Inspecting input file contents
+18:00:24 Py:JetRecConfig      INFO Scheduled JetAlgorithm instance "jetalg_AntiKt10TruthJets"
+18:00:24 Py:JetRecConfig      INFO  *** Number of mod filtered components = 0  final  list=['Sort', 'JetGhostLabel', 'nsubjettiness', 'nsubjettinessR', 'ktsplitter', 'ecorr', 'ecorrR', 'qw', 'PartonTruthLabel', 'TruthPartonDR']
+18:00:24 Py:JetRecConfig      INFO  *** Number of  filtered components = 0  final  list=['mod:Sort', 'extinput:TruthLabelBHadronsFinal', 'input:BHadronsFinal', 'ghost:BHadronsFinal', 'extinput:TruthLabelCHadronsFinal', 'input:CHadronsFinal', 'ghost:CHadronsFinal', 'extinput:TruthLabelTausFinal', 'input:TausFinal', 'ghost:TausFinal', 'mod:JetGhostLabel', 'mod:nsubjettiness', 'mod:nsubjettinessR', 'mod:ktsplitter', 'mod:ecorr', 'mod:ecorrR', 'mod:qw', 'extinput:TruthLabelPartons', 'input:Partons', 'ghost:Partons', 'mod:PartonTruthLabel', 'mod:TruthPartonDR']
+18:00:24 Py:JetRecConfig      INFO Scheduled JetAlgorithm instance "jetalg_AntiKt10TruthSoftDropBeta100Zcut10Jets"
+18:00:24 Py:JetRecConfig      INFO Reordering algorithms in sequence AntiKt10TruthSoftDropBeta100Zcut10Jets
+18:00:24 Py:METConfig         INFO METRecoConfig:    Creating MET config Truth
+18:00:24 Py:METConfig         INFO METRecoConfig:    Setting up regions for MET config Truth
+18:00:24 Py:METConfig         INFO METRecoConfig:    Added NonInt region tool named MET_NonIntRegions_Truth
+18:00:24 Py:METConfig         INFO METRecoConfig:    Added Int region tool named MET_IntRegions_Truth
+18:00:24 Py:METConfig         INFO METRecoConfig:    Added IntOut region tool named MET_IntOutRegions_Truth
+18:00:24 Py:METConfig         INFO METRecoConfig:    Added IntMuons region tool named MET_IntMuonsRegions_Truth
+18:00:24 Py:METConfig         INFO METRecoConfig:    Setting up builders for MET config Truth
+18:00:24 Py:METConfig         INFO METRecoConfig:    Added NonInt tool named MET_TruthTool_NonInt
+18:00:24 Py:METConfig         INFO METRecoConfig:    Added Int tool named MET_TruthTool_Int
+18:00:24 Py:METConfig         INFO METRecoConfig:    Added IntOut tool named MET_TruthTool_IntOut
+18:00:24 Py:METConfig         INFO METRecoConfig:    Added IntMuons tool named MET_TruthTool_IntMuons
+18:00:24 Py:METConfig         INFO METRecoConfig:    Setting up refiners for MET config Truth
+18:00:24 Py:METConfig         INFO METRecoConfig:    Generate METRecoTool for MET_Truth
+18:00:24 Py:METConfig         INFO METRecoConfig:    Added METRecoTool MET_RecoTool_Truth to alg METRecoAlg_Truth
+18:00:24 Py:METConfig         INFO METRecoConfig:    Added METRecoTool MET_RegionTool_Truth to alg METRecoAlg_Truth
+18:00:24 DecorateSUSYProcess: fileinfo.mc_channel_number 0 is SUSY: False
+18:00:24 DecorateSUSYProcess: fileinfo.mc_channel_number 0 is SUSY: False
+18:00:24 Py:PerfMonMTSvcCfg    INFO Configuring PerfMonMTSvc with flags:
+18:00:24 Py:PerfMonMTSvcCfg    INFO   >> doFastMonMT True
+18:00:24 Py:PerfMonMTSvcCfg    INFO   >> doFullMonMT False
+18:00:24 Py:AMITagHelper      INFO Cannot access /TagInfo/AMITag from in-file metadata
+18:00:24 Py:GeneratorsInfo    INFO Generators data: {'MadGraph': None, 'Pythia8': None, 'EvtGen': None}
+18:00:24 Py:GeneratorsInfo    INFO At least one MC generator is missing version information. Attempting to fix...
+18:00:24 Py:AMITagHelper      INFO Cannot access /TagInfo/AMITag from in-file metadata
+18:00:26 Athena::getMessageSvc: WARNING MessageSvc not found, will use std::cout
+18:00:26 Py:GeneratorsInfo WARNING Could not find release data for tag None.
+18:00:26 ApplicationMgr    SUCCESS
+18:00:26 ====================================================================================================================================
+18:00:26                                                    Welcome to ApplicationMgr (GaudiCoreSvc v38r0)
+18:00:26                                           running on workers-ads-68f974c8b9-bpqmx on Mon Dec  8 18:00:26 2025
+18:00:26 ====================================================================================================================================
+18:00:26 ApplicationMgr       INFO Application Manager Configured successfully
+18:00:26 CoreDumpSvc                                          INFO Handling signals: 11(Segmentation fault) 7(Bus error) 4(Illegal instruction) 14(Alarm clock)
+18:00:26 PerfMonMTSvc                                         INFO Initializing PerfMonMTSvc
+18:00:26 PerfMonMTSvc                                         INFO Service is configured for [1] threads analyzing [1] events concurrently
+18:00:26 PerfMonMTSvc                                         INFO Component-level measurements are [Disabled]
+18:00:26 AthenaEventLoopMgr                                   INFO Initializing AthenaEventLoopMgr
+18:00:27 ClassIDSvc                                           INFO getRegistryEntries: read 5116 CLIDRegistry entries for module ALL
+18:00:27 ClassIDSvc                                           INFO getRegistryEntries: read 399 CLIDRegistry entries for module ALL
+18:00:27 ClassIDSvc                                           INFO getRegistryEntries: read 16569 CLIDRegistry entries for module ALL
+18:00:27 EventInfoCnvAlg                                      INFO Initializing EventInfoCnvAlg
+18:00:27 MetaDataSvc                                          INFO Initializing MetaDataSvc
+18:00:27 PoolSvc                                              INFO io_register[PoolSvc](xmlcatalog_file:PoolFileCatalog.xml) [ok]
+18:00:27 PoolSvc                                              INFO Set connectionsvc retry/timeout/IDLE timeout to  'ConnectionRetrialPeriod':300/ 'ConnectionRetrialTimeOut':3600/ 'ConnectionTimeOut':5 seconds with connection cleanup disabled
+18:00:27 PoolSvc                                              INFO Frontier compression level set to 5
+18:00:27 DBReplicaSvc                                         INFO Frontier server at (serverurl=http://atlasfrontier-ai.cern.ch:8000/atlr)(serverurl=http://atlasfrontier1-ai.cern.ch:8000/atlr)(serverurl=http://atlasfrontier2-ai.cern.ch:8000/atlr)(proxyurl=http://v4a.mwt2.org:6082)(proxyurl=http://v4f.hl-lhc.net:6082)(proxyurl=http://uct2-squid.mwt2.org:3128)(proxyurl=http://v4f.hl-lhc.net:6082) will be considered for COOL data
+18:00:27 DBReplicaSvc                                         INFO Read replica configuration from /cvmfs/atlas.cern.ch/repo/sw/software/24.0/Athena/24.0.53/InstallArea/x86_64-el9-gcc13-opt/share/dbreplica.config
+18:00:27 DBReplicaSvc                                         INFO No specific match for domain found - use default fallback
+18:00:27 DBReplicaSvc                                         INFO Total of 2 servers found for host workers-ads-68f974c8b9-bpqmx [ATLF atlas_dd ]
+18:00:27 PoolSvc                                              INFO Successfully setup replica sorting algorithm
+18:00:27 PoolSvc                                              INFO Setting up APR FileCatalog and Streams
+18:00:27 PoolSvc                                              INFO POOL WriteCatalog is xmlcatalog_file:PoolFileCatalog.xml
+18:00:27 DbSession                                            INFO     Open     DbSession
+18:00:27 Domain[ROOT_All]                                     INFO >   Access   DbDomain     READ      [ROOT_All]
+18:00:27 MetaDataSvc                                          INFO Found MetaDataTools = PublicToolHandleArray(['IOVDbMetaDataTool/IOVDbMetaDataTool','BookkeeperTool/BookkeeperTool','xAODMaker::TruthMetaDataTool/TruthMetaDataTool','xAODMaker::FileMetaDataTool/xAODMaker::FileMetaDataTool','xAODMaker::EventFormatMetaDataTool/xAODMaker::EventFormatMetaDataTool'])
+18:00:27 EventSelector                                        INFO EventSelection with query
+18:00:27 PoolSvc                                              INFO File is not in Catalog! Attempt to open it anyway.
+18:00:27 DbSession                                            INFO     Open     DbSession
+18:00:27 Domain[ROOT_All]                                     INFO ->  Access   DbDatabase   READ      [ROOT_All] DCAEC6ED-DB6B-8DFD-18CD-CD54A6D157FF
+18:00:27 Domain[ROOT_All]                                     INFO                           /data/selbor/TRUTH3_StaticDir/EVNT.root
+18:00:27 RootDatabase.open                                    INFO /data/selbor/TRUTH3_StaticDir/EVNT.root File version:60806
+18:00:27 /data/selbor/TRUTH3_StaticDir/EVNT.root              INFO Database being retired...
+18:00:27 Domain[ROOT_All]                                     INFO ->  Deaccess DbDatabase   READ      [ROOT_All] DCAEC6ED-DB6B-8DFD-18CD-CD54A6D157FF
+18:00:27 Domain[ROOT_All]                                     INFO >   Deaccess DbDomain     READ      [ROOT_All]
+18:00:27 PoolSvc                                              INFO File is not in Catalog! Attempt to open it anyway.
+18:00:27 DbSession                                            INFO     Open     DbSession
+18:00:27 Domain[ROOT_All]                                     INFO >   Access   DbDomain     READ      [ROOT_All]
+18:00:27 Domain[ROOT_All]                                     INFO ->  Access   DbDatabase   READ      [ROOT_All] DCAEC6ED-DB6B-8DFD-18CD-CD54A6D157FF
+18:00:27 Domain[ROOT_All]                                     INFO                           /data/selbor/TRUTH3_StaticDir/EVNT.root
+18:00:27 RootDatabase.open                                    INFO /data/selbor/TRUTH3_StaticDir/EVNT.root File version:60806
+18:00:27 /data/selbor/TRUTH3_StaticDir/EVNT.root              INFO Database being retired...
+18:00:27 Domain[ROOT_All]                                     INFO ->  Deaccess DbDatabase   READ      [ROOT_All] DCAEC6ED-DB6B-8DFD-18CD-CD54A6D157FF
+18:00:27 Domain[ROOT_All]                                     INFO >   Deaccess DbDomain     READ      [ROOT_All]
+18:00:27 DbSession                                            INFO     Open     DbSession
+18:00:27 Domain[ROOT_All]                                     INFO >   Access   DbDomain     READ      [ROOT_All]
+18:00:27 Domain[ROOT_All]                                     INFO ->  Access   DbDatabase   READ      [ROOT_All] D0943738-EBE2-3F47-9F60-B5EF15C2D72D
+18:00:27 Domain[ROOT_All]                                     INFO                           /data/selbor/TRUTH3_StaticDir/EVNT.root
+18:00:27 RootDatabase.open                                    INFO /data/selbor/TRUTH3_StaticDir/EVNT.root File version:60806
+18:00:27 ClassIDSvc                                           INFO getRegistryEntries: read 1716 CLIDRegistry entries for module ALL
+18:00:27 EventPersistencySvc                                  INFO Added successfully Conversion service AthenaPoolCnvSvc
+18:00:27 ClassIDSvc                                           INFO getRegistryEntries: read 8 CLIDRegistry entries for module ALL
+18:00:27 MetaDataSvc                                          INFO   AlgTool: ToolSvc.IOVDbMetaDataTool
+18:00:27 MetaDataSvc                                          INFO   AlgTool: ToolSvc.BookkeeperTool
+18:00:27 MetaDataSvc                                          INFO   AlgTool: ToolSvc.TruthMetaDataTool
+18:00:27 MetaDataSvc                                          INFO   AlgTool: ToolSvc.xAODMaker::FileMetaDataTool
+18:00:27 MetaDataSvc                                          INFO   AlgTool: ToolSvc.xAODMaker::EventFormatMetaDataTool
+18:00:27 EventInfoCnvAlg.EventInfoCnvTool                     INFO Beam spot information not available
+18:00:27 EventInfoCnvAlg.EventInfoCnvTool                     INFO Will not fill beam spot information into xAOD::EventInfo
+18:00:27 GEN_EVNT2xAOD                                        INFO No pile-up truth will be written
+18:00:27 MCTruthCommonPreJetKernelNo1                         INFO Initializing the common selections in MCTruthCommonPreJetKernelNo1
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 2509 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 465 CLIDRegistry entries for module ALL
+18:00:28 ToolSvc.DFCommonTruthClassifier                      INFO  Initializing MCTruthClassifier
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 431 CLIDRegistry entries for module ALL
+18:00:28 ToolSvc.DFCommonTruthClassificationTool              INFO Decorating TruthParticles with classification information
+18:00:28 MCTruthCommonPreJetKernelNo1                         INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo1                         INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthClassificationDecorator/DFCommonTruthClassificationTool'])
+18:00:28 MCTruthCommonPreJetKernelNo2                         INFO Initializing the common selections in MCTruthCommonPreJetKernelNo2
+18:00:28 ToolSvc.DFCommonTruthMuonTool                        INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonTruthMuonTool                        INFO New truth particles container key: TruthMuons
+18:00:28 ToolSvc.DFCommonTruthMuonTool                        INFO Truth particle selection string:  'ParticleSelectionString':'(abs(TruthParticles.pdgId) == 13) && (TruthParticles.status == 1) && TruthParticles.barcode < 200000'
+18:00:28 MCTruthCommonPreJetKernelNo2                         INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo2                         INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthCollectionMaker/DFCommonTruthMuonTool'])
+18:00:28 MCTruthCommonPreJetKernelNo3                         INFO Initializing the common selections in MCTruthCommonPreJetKernelNo3
+18:00:28 ToolSvc.DFCommonTruthElectronTool                    INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonTruthElectronTool                    INFO New truth particles container key: TruthElectrons
+18:00:28 ToolSvc.DFCommonTruthElectronTool                    INFO Truth particle selection string:  'ParticleSelectionString':'(abs(TruthParticles.pdgId) == 11) && (TruthParticles.status == 1) && TruthParticles.barcode < 200000'
+18:00:28 MCTruthCommonPreJetKernelNo3                         INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo3                         INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthCollectionMaker/DFCommonTruthElectronTool'])
+18:00:28 MCTruthCommonPreJetKernelNo4                         INFO Initializing the common selections in MCTruthCommonPreJetKernelNo4
+18:00:28 ToolSvc.DFCommonTruthPhotonToolSim                   INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonTruthPhotonToolSim                   INFO New truth particles container key: TruthPhotons
+18:00:28 ToolSvc.DFCommonTruthPhotonToolSim                   INFO Truth particle selection string:  'ParticleSelectionString':'(abs(TruthParticles.pdgId) == 22) && (TruthParticles.status == 1) && ((TruthParticles.classifierParticleOrigin != 42 && TruthParticles.classifierParticleOrigin !=23) || (TruthParticles.pt > 20.0*GeV)) && ( TruthParticles.barcode < 200000 )'
+18:00:28 MCTruthCommonPreJetKernelNo4                         INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo4                         INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthCollectionMaker/DFCommonTruthPhotonToolSim'])
+18:00:28 MCTruthCommonPreJetKernelNo5                         INFO Initializing the common selections in MCTruthCommonPreJetKernelNo5
+18:00:28 ToolSvc.DFCommonTruthNeutrinoTool                    INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonTruthNeutrinoTool                    INFO New truth particles container key: TruthNeutrinos
+18:00:28 ToolSvc.DFCommonTruthNeutrinoTool                    INFO Truth particle selection string:  'ParticleSelectionString':'(TruthParticles.isNeutrino && TruthParticles.status == 1) && TruthParticles.barcode < 200000'
+18:00:28 MCTruthCommonPreJetKernelNo5                         INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo5                         INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthCollectionMaker/DFCommonTruthNeutrinoTool'])
+18:00:28 MCTruthCommonPreJetKernelNo6                         INFO Initializing the common selections in MCTruthCommonPreJetKernelNo6
+18:00:28 ToolSvc.DFCommonTruthBottomTool                      INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonTruthBottomTool                      INFO New truth particles container key: TruthBottom
+18:00:28 ToolSvc.DFCommonTruthBottomTool                      INFO Truth particle selection string:  'ParticleSelectionString':'(abs(TruthParticles.pdgId) == 5)'
+18:00:28 MCTruthCommonPreJetKernelNo6                         INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo6                         INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthCollectionMaker/DFCommonTruthBottomTool'])
+18:00:28 MCTruthCommonPreJetKernelNo7                         INFO Initializing the common selections in MCTruthCommonPreJetKernelNo7
+18:00:28 ToolSvc.DFCommonTruthTopTool                         INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonTruthTopTool                         INFO New truth particles container key: TruthTop
+18:00:28 ToolSvc.DFCommonTruthTopTool                         INFO Truth particle selection string:  'ParticleSelectionString':'(abs(TruthParticles.pdgId) == 6)'
+18:00:28 MCTruthCommonPreJetKernelNo7                         INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo7                         INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthCollectionMaker/DFCommonTruthTopTool'])
+18:00:28 MCTruthCommonPreJetKernelNo8                         INFO Initializing the common selections in MCTruthCommonPreJetKernelNo8
+18:00:28 ToolSvc.DFCommonTruthBosonTool                       INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonTruthBosonTool                       INFO New truth particles container key: TruthBoson
+18:00:28 ToolSvc.DFCommonTruthBosonTool                       INFO Truth particle selection string:  'ParticleSelectionString':'(abs(TruthParticles.pdgId) == 23 || abs(TruthParticles.pdgId) == 24 || abs(TruthParticles.pdgId) == 25)'
+18:00:28 MCTruthCommonPreJetKernelNo8                         INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo8                         INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthCollectionMaker/DFCommonTruthBosonTool'])
+18:00:28 MCTruthCommonPreJetKernelNo9                         INFO Initializing the common selections in MCTruthCommonPreJetKernelNo9
+18:00:28 ToolSvc.DFCommonTruthBSMTool                         INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonTruthBSMTool                         INFO New truth particles container key: TruthBSM
+18:00:28 ToolSvc.DFCommonTruthBSMTool                         INFO Truth particle selection string:  'ParticleSelectionString':'(TruthParticles.isBSM)'
+18:00:28 MCTruthCommonPreJetKernelNo9                         INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo9                         INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthCollectionMaker/DFCommonTruthBSMTool'])
+18:00:28 MCTruthCommonPreJetKernelNo10                        INFO Initializing the common selections in MCTruthCommonPreJetKernelNo10
+18:00:28 MCTruthCommonPreJetKernelNo10                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo10                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthIsolationTool/DFCommonTruthElectronIsolationTool1'])
+18:00:28 MCTruthCommonPreJetKernelNo11                        INFO Initializing the common selections in MCTruthCommonPreJetKernelNo11
+18:00:28 MCTruthCommonPreJetKernelNo11                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo11                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthIsolationTool/DFCommonTruthElectronIsolationTool2'])
+18:00:28 MCTruthCommonPreJetKernelNo12                        INFO Initializing the common selections in MCTruthCommonPreJetKernelNo12
+18:00:28 MCTruthCommonPreJetKernelNo12                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo12                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthIsolationTool/DFCommonTruthMuonIsolationTool1'])
+18:00:28 MCTruthCommonPreJetKernelNo13                        INFO Initializing the common selections in MCTruthCommonPreJetKernelNo13
+18:00:28 MCTruthCommonPreJetKernelNo13                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo13                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthIsolationTool/DFCommonTruthMuonIsolationTool2'])
+18:00:28 MCTruthCommonPreJetKernelNo14                        INFO Initializing the common selections in MCTruthCommonPreJetKernelNo14
+18:00:28 MCTruthCommonPreJetKernelNo14                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo14                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthIsolationTool/DFCommonTruthPhotonIsolationTool1'])
+18:00:28 MCTruthCommonPreJetKernelNo15                        INFO Initializing the common selections in MCTruthCommonPreJetKernelNo15
+18:00:28 MCTruthCommonPreJetKernelNo15                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo15                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthIsolationTool/DFCommonTruthPhotonIsolationTool2'])
+18:00:28 MCTruthCommonPreJetKernelNo16                        INFO Initializing the common selections in MCTruthCommonPreJetKernelNo16
+18:00:28 MCTruthCommonPreJetKernelNo16                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo16                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthIsolationTool/DFCommonTruthPhotonIsolationTool3'])
+18:00:28 MCTruthCommonPreJetKernelNo17                        INFO Initializing the common selections in MCTruthCommonPreJetKernelNo17
+18:00:28 ToolSvc.DFCommonTruthForwardProtonTool               INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonTruthForwardProtonTool               INFO New truth particles container key: TruthForwardProtons
+18:00:28 ToolSvc.DFCommonTruthForwardProtonTool               INFO Truth particle selection string:  'ParticleSelectionString':'(TruthParticles.status==1) && (abs(TruthParticles.pdgId)==2212) && (TruthParticles.e>0.8*6500000.0)'
+18:00:28 MCTruthCommonPreJetKernelNo17                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo17                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthCollectionMaker/DFCommonTruthForwardProtonTool'])
+18:00:28 MCTruthCommonPreJetKernelNo18                        INFO Initializing the common selections in MCTruthCommonPreJetKernelNo18
+18:00:28 MCTruthCommonPreJetKernelNo18                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo18                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthDressingTool/DFCommonTruthElectronDressingTool'])
+18:00:28 MCTruthCommonPreJetKernelNo19                        INFO Initializing the common selections in MCTruthCommonPreJetKernelNo19
+18:00:28 MCTruthCommonPreJetKernelNo19                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPreJetKernelNo19                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthDressingTool/DFCommonTruthMuonDressingTool'])
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 90 CLIDRegistry entries for module ALL
+18:00:28 jetalg_truthpartcopy_                                INFO Initializing jetalg_truthpartcopy_...
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 1057 CLIDRegistry entries for module ALL
+18:00:28 jetalg_truthpartcopy_.truth...JetMCTruthClassifier   INFO  Initializing MCTruthClassifier
+18:00:28 jetalg_truthpartcopy_                                INFO   Tool count: 1
+18:00:28 jetalg_truthpartcopy_                                INFO     jetalg_truthpartcopy_.truthpartcopy
+18:00:28 jetalg_truthpartcopy_.truthpartcopy                  INFO AsgTool jetalg_truthpartcopy_.truthpartcopy @ 0x1017e808
+18:00:28 jetalg_truthlabelcopy_BHadronsInitial                INFO Initializing jetalg_truthlabelcopy_BHadronsInitial...
+18:00:28 jetalg_truthlabelcopy_BHadronsInitial                INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_BHadronsInitial                INFO     jetalg_truthlabelcopy_BHadronsInitial.truthpartcopy_BHadronsInitial
+18:00:28 jetalg_truthlabelc...truthpartcopy_BHadronsInitial   INFO AsgTool jetalg_truthlabelcopy_BHadronsInitial.truthpartcopy_BHadronsInitial @ 0x15f14008
+18:00:28 jetalg_truthlabelcopy_BHadronsFinal                  INFO Initializing jetalg_truthlabelcopy_BHadronsFinal...
+18:00:28 jetalg_truthlabelcopy_BHadronsFinal                  INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_BHadronsFinal                  INFO     jetalg_truthlabelcopy_BHadronsFinal.truthpartcopy_BHadronsFinal
+18:00:28 jetalg_truthlabelcop...truthpartcopy_BHadronsFinal   INFO AsgTool jetalg_truthlabelcopy_BHadronsFinal.truthpartcopy_BHadronsFinal @ 0x15f15008
+18:00:28 jetalg_truthlabelcopy_BQuarksFinal                   INFO Initializing jetalg_truthlabelcopy_BQuarksFinal...
+18:00:28 jetalg_truthlabelcopy_BQuarksFinal                   INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_BQuarksFinal                   INFO     jetalg_truthlabelcopy_BQuarksFinal.truthpartcopy_BQuarksFinal
+18:00:28 jetalg_truthlabelcopy...truthpartcopy_BQuarksFinal   INFO AsgTool jetalg_truthlabelcopy_BQuarksFinal.truthpartcopy_BQuarksFinal @ 0x15fbc008
+18:00:28 jetalg_truthlabelcopy_CHadronsInitial                INFO Initializing jetalg_truthlabelcopy_CHadronsInitial...
+18:00:28 jetalg_truthlabelcopy_CHadronsInitial                INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_CHadronsInitial                INFO     jetalg_truthlabelcopy_CHadronsInitial.truthpartcopy_CHadronsInitial
+18:00:28 jetalg_truthlabelc...truthpartcopy_CHadronsInitial   INFO AsgTool jetalg_truthlabelcopy_CHadronsInitial.truthpartcopy_CHadronsInitial @ 0x15fbd008
+18:00:28 jetalg_truthlabelcopy_CHadronsFinal                  INFO Initializing jetalg_truthlabelcopy_CHadronsFinal...
+18:00:28 jetalg_truthlabelcopy_CHadronsFinal                  INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_CHadronsFinal                  INFO     jetalg_truthlabelcopy_CHadronsFinal.truthpartcopy_CHadronsFinal
+18:00:28 jetalg_truthlabelcop...truthpartcopy_CHadronsFinal   INFO AsgTool jetalg_truthlabelcopy_CHadronsFinal.truthpartcopy_CHadronsFinal @ 0x15fbe008
+18:00:28 jetalg_truthlabelcopy_CQuarksFinal                   INFO Initializing jetalg_truthlabelcopy_CQuarksFinal...
+18:00:28 jetalg_truthlabelcopy_CQuarksFinal                   INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_CQuarksFinal                   INFO     jetalg_truthlabelcopy_CQuarksFinal.truthpartcopy_CQuarksFinal
+18:00:28 jetalg_truthlabelcopy...truthpartcopy_CQuarksFinal   INFO AsgTool jetalg_truthlabelcopy_CQuarksFinal.truthpartcopy_CQuarksFinal @ 0x15fbf008
+18:00:28 jetalg_truthlabelcopy_TausFinal                      INFO Initializing jetalg_truthlabelcopy_TausFinal...
+18:00:28 jetalg_truthlabelcopy_TausFinal                      INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_TausFinal                      INFO     jetalg_truthlabelcopy_TausFinal.truthpartcopy_TausFinal
+18:00:28 jetalg_truthlabelcopy_Ta...truthpartcopy_TausFinal   INFO AsgTool jetalg_truthlabelcopy_TausFinal.truthpartcopy_TausFinal @ 0x15fc8008
+18:00:28 jetalg_truthlabelcopy_WBosons                        INFO Initializing jetalg_truthlabelcopy_WBosons...
+18:00:28 jetalg_truthlabelcopy_WBosons                        INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_WBosons                        INFO     jetalg_truthlabelcopy_WBosons.truthpartcopy_WBosons
+18:00:28 jetalg_truthlabelcopy_WBos...truthpartcopy_WBosons   INFO AsgTool jetalg_truthlabelcopy_WBosons.truthpartcopy_WBosons @ 0x15fc9008
+18:00:28 jetalg_truthlabelcopy_ZBosons                        INFO Initializing jetalg_truthlabelcopy_ZBosons...
+18:00:28 jetalg_truthlabelcopy_ZBosons                        INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_ZBosons                        INFO     jetalg_truthlabelcopy_ZBosons.truthpartcopy_ZBosons
+18:00:28 jetalg_truthlabelcopy_ZBos...truthpartcopy_ZBosons   INFO AsgTool jetalg_truthlabelcopy_ZBosons.truthpartcopy_ZBosons @ 0x15fca008
+18:00:28 jetalg_truthlabelcopy_HBosons                        INFO Initializing jetalg_truthlabelcopy_HBosons...
+18:00:28 jetalg_truthlabelcopy_HBosons                        INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_HBosons                        INFO     jetalg_truthlabelcopy_HBosons.truthpartcopy_HBosons
+18:00:28 jetalg_truthlabelcopy_HBos...truthpartcopy_HBosons   INFO AsgTool jetalg_truthlabelcopy_HBosons.truthpartcopy_HBosons @ 0x15fcb008
+18:00:28 jetalg_truthlabelcopy_TQuarksFinal                   INFO Initializing jetalg_truthlabelcopy_TQuarksFinal...
+18:00:28 jetalg_truthlabelcopy_TQuarksFinal                   INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_TQuarksFinal                   INFO     jetalg_truthlabelcopy_TQuarksFinal.truthpartcopy_TQuarksFinal
+18:00:28 jetalg_truthlabelcopy...truthpartcopy_TQuarksFinal   INFO AsgTool jetalg_truthlabelcopy_TQuarksFinal.truthpartcopy_TQuarksFinal @ 0x15fda008
+18:00:28 jetalg_truthlabelcopy_Partons                        INFO Initializing jetalg_truthlabelcopy_Partons...
+18:00:28 jetalg_truthlabelcopy_Partons                        INFO   Tool count: 1
+18:00:28 jetalg_truthlabelcopy_Partons                        INFO     jetalg_truthlabelcopy_Partons.truthpartcopy_Partons
+18:00:28 jetalg_truthlabelcopy_Part...truthpartcopy_Partons   INFO AsgTool jetalg_truthlabelcopy_Partons.truthpartcopy_Partons @ 0x15fdb008
+18:00:28 pjgalg_JetInputTruthParticles                        INFO Initializing pjgalg_JetInputTruthParticles...
+18:00:28 pjgalg_JetInputTruthParticles                        INFO Properties for PseudoJetGetter pjgalg_JetInputTruthParticles
+18:00:28 pjgalg_JetInputTruthParticles                        INFO              Label:  'Label':'Truth'
+18:00:28 pjgalg_JetInputTruthParticles                        INFO    Input container: JetInputTruthParticles
+18:00:28 pjgalg_JetInputTruthParticles                        INFO   Output container: PseudoJetJetInputTruthParticles
+18:00:28 pjgalg_JetInputTruthParticles                        INFO    Skip negative E: true
+18:00:28 pjgalg_JetInputTruthParticles                        INFO          Is EMTopo: 0
+18:00:28 pjgalg_JetInputTruthParticles                        INFO           Is PFlow: 0
+18:00:28 pjgalg_JetInputTruthParticles                        INFO             Is UFO: 0
+18:00:28 pjgalg_JetInputTruthParticles                        INFO           Is ghost: 0
+18:00:28 pjgalg_JetInputTruthParticles                        INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_JetInputTruthParticles                        INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_JetInputTruthParticles                        INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO Initializing pjgalg_GhostBHadronsFinal_default...
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO Properties for PseudoJetGetter pjgalg_GhostBHadronsFinal_default
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO              Label:  'Label':'GhostBHadronsFinal'
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO    Input container: TruthLabelBHadronsFinal
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO   Output container: PseudoJetGhostTruthLabelBHadronsFinal
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO    Skip negative E: true
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO             Is UFO: 0
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO           Is ghost: 1
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostBHadronsFinal_default                    INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO Initializing pjgalg_GhostBHadronsInitial_default...
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO Properties for PseudoJetGetter pjgalg_GhostBHadronsInitial_default
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO              Label:  'Label':'GhostBHadronsInitial'
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO    Input container: TruthLabelBHadronsInitial
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO   Output container: PseudoJetGhostTruthLabelBHadronsInitial
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO    Skip negative E: true
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO             Is UFO: 0
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO           Is ghost: 1
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostBHadronsInitial_default                  INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO Initializing pjgalg_GhostBQuarksFinal_default...
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO Properties for PseudoJetGetter pjgalg_GhostBQuarksFinal_default
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO              Label:  'Label':'GhostBQuarksFinal'
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO    Input container: TruthLabelBQuarksFinal
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO   Output container: PseudoJetGhostTruthLabelBQuarksFinal
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO    Skip negative E: true
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO             Is UFO: 0
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO           Is ghost: 1
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostBQuarksFinal_default                     INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO Initializing pjgalg_GhostCHadronsFinal_default...
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO Properties for PseudoJetGetter pjgalg_GhostCHadronsFinal_default
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO              Label:  'Label':'GhostCHadronsFinal'
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO    Input container: TruthLabelCHadronsFinal
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO   Output container: PseudoJetGhostTruthLabelCHadronsFinal
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO    Skip negative E: true
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO             Is UFO: 0
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO           Is ghost: 1
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostCHadronsFinal_default                    INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO Initializing pjgalg_GhostCHadronsInitial_default...
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO Properties for PseudoJetGetter pjgalg_GhostCHadronsInitial_default
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO              Label:  'Label':'GhostCHadronsInitial'
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO    Input container: TruthLabelCHadronsInitial
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO   Output container: PseudoJetGhostTruthLabelCHadronsInitial
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO    Skip negative E: true
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO             Is UFO: 0
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO           Is ghost: 1
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostCHadronsInitial_default                  INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO Initializing pjgalg_GhostCQuarksFinal_default...
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO Properties for PseudoJetGetter pjgalg_GhostCQuarksFinal_default
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO              Label:  'Label':'GhostCQuarksFinal'
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO    Input container: TruthLabelCQuarksFinal
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO   Output container: PseudoJetGhostTruthLabelCQuarksFinal
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO    Skip negative E: true
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO             Is UFO: 0
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO           Is ghost: 1
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostCQuarksFinal_default                     INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostHBosons_default                          INFO Initializing pjgalg_GhostHBosons_default...
+18:00:28 pjgalg_GhostHBosons_default                          INFO Properties for PseudoJetGetter pjgalg_GhostHBosons_default
+18:00:28 pjgalg_GhostHBosons_default                          INFO              Label:  'Label':'GhostHBosons'
+18:00:28 pjgalg_GhostHBosons_default                          INFO    Input container: TruthLabelHBosons
+18:00:28 pjgalg_GhostHBosons_default                          INFO   Output container: PseudoJetGhostTruthLabelHBosons
+18:00:28 pjgalg_GhostHBosons_default                          INFO    Skip negative E: true
+18:00:28 pjgalg_GhostHBosons_default                          INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostHBosons_default                          INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostHBosons_default                          INFO             Is UFO: 0
+18:00:28 pjgalg_GhostHBosons_default                          INFO           Is ghost: 1
+18:00:28 pjgalg_GhostHBosons_default                          INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostHBosons_default                          INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostHBosons_default                          INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostPartons_default                          INFO Initializing pjgalg_GhostPartons_default...
+18:00:28 pjgalg_GhostPartons_default                          INFO Properties for PseudoJetGetter pjgalg_GhostPartons_default
+18:00:28 pjgalg_GhostPartons_default                          INFO              Label:  'Label':'GhostPartons'
+18:00:28 pjgalg_GhostPartons_default                          INFO    Input container: TruthLabelPartons
+18:00:28 pjgalg_GhostPartons_default                          INFO   Output container: PseudoJetGhostTruthLabelPartons
+18:00:28 pjgalg_GhostPartons_default                          INFO    Skip negative E: true
+18:00:28 pjgalg_GhostPartons_default                          INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostPartons_default                          INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostPartons_default                          INFO             Is UFO: 0
+18:00:28 pjgalg_GhostPartons_default                          INFO           Is ghost: 1
+18:00:28 pjgalg_GhostPartons_default                          INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostPartons_default                          INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostPartons_default                          INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO Initializing pjgalg_GhostTQuarksFinal_default...
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO Properties for PseudoJetGetter pjgalg_GhostTQuarksFinal_default
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO              Label:  'Label':'GhostTQuarksFinal'
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO    Input container: TruthLabelTQuarksFinal
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO   Output container: PseudoJetGhostTruthLabelTQuarksFinal
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO    Skip negative E: true
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO             Is UFO: 0
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO           Is ghost: 1
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostTQuarksFinal_default                     INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostTausFinal_default                        INFO Initializing pjgalg_GhostTausFinal_default...
+18:00:28 pjgalg_GhostTausFinal_default                        INFO Properties for PseudoJetGetter pjgalg_GhostTausFinal_default
+18:00:28 pjgalg_GhostTausFinal_default                        INFO              Label:  'Label':'GhostTausFinal'
+18:00:28 pjgalg_GhostTausFinal_default                        INFO    Input container: TruthLabelTausFinal
+18:00:28 pjgalg_GhostTausFinal_default                        INFO   Output container: PseudoJetGhostTruthLabelTausFinal
+18:00:28 pjgalg_GhostTausFinal_default                        INFO    Skip negative E: true
+18:00:28 pjgalg_GhostTausFinal_default                        INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostTausFinal_default                        INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostTausFinal_default                        INFO             Is UFO: 0
+18:00:28 pjgalg_GhostTausFinal_default                        INFO           Is ghost: 1
+18:00:28 pjgalg_GhostTausFinal_default                        INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostTausFinal_default                        INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostTausFinal_default                        INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostWBosons_default                          INFO Initializing pjgalg_GhostWBosons_default...
+18:00:28 pjgalg_GhostWBosons_default                          INFO Properties for PseudoJetGetter pjgalg_GhostWBosons_default
+18:00:28 pjgalg_GhostWBosons_default                          INFO              Label:  'Label':'GhostWBosons'
+18:00:28 pjgalg_GhostWBosons_default                          INFO    Input container: TruthLabelWBosons
+18:00:28 pjgalg_GhostWBosons_default                          INFO   Output container: PseudoJetGhostTruthLabelWBosons
+18:00:28 pjgalg_GhostWBosons_default                          INFO    Skip negative E: true
+18:00:28 pjgalg_GhostWBosons_default                          INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostWBosons_default                          INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostWBosons_default                          INFO             Is UFO: 0
+18:00:28 pjgalg_GhostWBosons_default                          INFO           Is ghost: 1
+18:00:28 pjgalg_GhostWBosons_default                          INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostWBosons_default                          INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostWBosons_default                          INFO  Vertex input container: PrimaryVertices
+18:00:28 pjgalg_GhostZBosons_default                          INFO Initializing pjgalg_GhostZBosons_default...
+18:00:28 pjgalg_GhostZBosons_default                          INFO Properties for PseudoJetGetter pjgalg_GhostZBosons_default
+18:00:28 pjgalg_GhostZBosons_default                          INFO              Label:  'Label':'GhostZBosons'
+18:00:28 pjgalg_GhostZBosons_default                          INFO    Input container: TruthLabelZBosons
+18:00:28 pjgalg_GhostZBosons_default                          INFO   Output container: PseudoJetGhostTruthLabelZBosons
+18:00:28 pjgalg_GhostZBosons_default                          INFO    Skip negative E: true
+18:00:28 pjgalg_GhostZBosons_default                          INFO          Is EMTopo: 0
+18:00:28 pjgalg_GhostZBosons_default                          INFO           Is PFlow: 0
+18:00:28 pjgalg_GhostZBosons_default                          INFO             Is UFO: 0
+18:00:28 pjgalg_GhostZBosons_default                          INFO           Is ghost: 1
+18:00:28 pjgalg_GhostZBosons_default                          INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_GhostZBosons_default                          INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_GhostZBosons_default                          INFO  Vertex input container: PrimaryVertices
+18:00:28 #--------------------------------------------------------------------------
+18:00:28 #                         FastJet release 3.4.1
+18:00:28 #                 M. Cacciari, G.P. Salam and G. Soyez
+18:00:28 #     A software package for jet finding and analysis at colliders
+18:00:28 #                           http://fastjet.fr
+18:00:28 #
+18:00:28 # Please cite EPJC72(2012)1896 [arXiv:1111.6097] if you use this package
+18:00:28 # for scientific work and optionally PLB641(2006)57 [hep-ph/0512210].
+18:00:28 #
+18:00:28 # FastJet is provided without warranty under the GNU GPL v2 or higher.
+18:00:28 # It uses T. Chan's closest pair algorithm, S. Fortune's Voronoi code
+18:00:28 # and 3rd party plugin jet algorithms. See COPYING file for details.
+18:00:28 #--------------------------------------------------------------------------
+18:00:28 jetrecalg_AntiKt4TruthJets                           INFO Initialized IJetProvider : jetrecalg_AntiKt4TruthJets.builder
+18:00:28 jetrecalg_AntiKt4TruthJets                           INFO Initialize .... List of modifiers:
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 4149 CLIDRegistry entries for module ALL
+18:00:28 jetrecalg_AntiKt4TruthJets                           INFO     --> : jetrecalg_AntiKt4TruthJets.jetsort
+18:00:28 jetrecalg_AntiKt4TruthJets                           INFO     --> : jetrecalg_AntiKt4TruthJets.width
+18:00:28 jetrecalg_AntiKt4TruthJets                           INFO     --> : jetrecalg_AntiKt4TruthJets.partontruthlabel
+18:00:28 jetrecalg_AntiKt4TruthJets                           INFO     --> : jetrecalg_AntiKt4TruthJets.truthpartondr
+18:00:28 jetrecalg_AntiKt4TruthJets                           INFO     --> : jetrecalg_AntiKt4TruthJets.jetdrlabeler_jetpt5GeV
+18:00:28 jetalg_truthpartcopy_NoWZ                            INFO Initializing jetalg_truthpartcopy_NoWZ...
+18:00:28 jetalg_truthpartcopy_NoWZ.t...JetMCTruthClassifier   INFO  Initializing MCTruthClassifier
+18:00:28 jetalg_truthpartcopy_NoWZ                            INFO   Tool count: 1
+18:00:28 jetalg_truthpartcopy_NoWZ                            INFO     jetalg_truthpartcopy_NoWZ.truthpartcopyNoWZ
+18:00:28 jetalg_truthpartcopy_NoWZ.truthpartcopyNoWZ          INFO AsgTool jetalg_truthpartcopy_NoWZ.truthpartcopyNoWZ @ 0x15ffb008
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO Initializing pjgalg_JetInputTruthParticlesNoWZ...
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO Properties for PseudoJetGetter pjgalg_JetInputTruthParticlesNoWZ
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO              Label:  'Label':'TruthWZ'
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO    Input container: JetInputTruthParticlesNoWZ
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO   Output container: PseudoJetJetInputTruthParticlesNoWZ
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO    Skip negative E: true
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO          Is EMTopo: 0
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO           Is PFlow: 0
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO             Is UFO: 0
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO           Is ghost: 0
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_JetInputTruthParticlesNoWZ                    INFO  Vertex input container: PrimaryVertices
+18:00:28 jetrecalg_AntiKt4TruthWZJets                         INFO Initialized IJetProvider : jetrecalg_AntiKt4TruthWZJets.builder
+18:00:28 jetrecalg_AntiKt4TruthWZJets                         INFO Initialize .... List of modifiers:
+18:00:28 jetrecalg_AntiKt4TruthWZJets                         INFO     --> : jetrecalg_AntiKt4TruthWZJets.jetsort
+18:00:28 jetrecalg_AntiKt4TruthWZJets                         INFO     --> : jetrecalg_AntiKt4TruthWZJets.width
+18:00:28 jetrecalg_AntiKt4TruthWZJets                         INFO     --> : jetrecalg_AntiKt4TruthWZJets.partontruthlabel
+18:00:28 jetrecalg_AntiKt4TruthWZJets                         INFO     --> : jetrecalg_AntiKt4TruthWZJets.truthpartondr
+18:00:28 jetrecalg_AntiKt4TruthWZJets                         INFO     --> : jetrecalg_AntiKt4TruthWZJets.jetdrlabeler_jetpt5GeV
+18:00:28 jetalg_truthpartcopy_DressedWZ                       INFO Initializing jetalg_truthpartcopy_DressedWZ...
+18:00:28 jetalg_truthpartcopy_Dresse...JetMCTruthClassifier   INFO  Initializing MCTruthClassifier
+18:00:28 jetalg_truthpartcopy_DressedWZ                       INFO   Tool count: 1
+18:00:28 jetalg_truthpartcopy_DressedWZ                       INFO     jetalg_truthpartcopy_DressedWZ.truthpartcopyDressedWZ
+18:00:28 jetalg_truthpartcopy_Dres...truthpartcopyDressedWZ   INFO AsgTool jetalg_truthpartcopy_DressedWZ.truthpartcopyDressedWZ @ 0x16135808
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO Initializing pjgalg_JetInputTruthParticlesDressedWZ...
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO Properties for PseudoJetGetter pjgalg_JetInputTruthParticlesDressedWZ
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO              Label:  'Label':'TruthDressedWZ'
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO    Input container: JetInputTruthParticlesDressedWZ
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO   Output container: PseudoJetJetInputTruthParticlesDressedWZ
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO    Skip negative E: true
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO          Is EMTopo: 0
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO           Is PFlow: 0
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO             Is UFO: 0
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO           Is ghost: 0
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_JetInputTruthParticlesDressedWZ               INFO  Vertex input container: PrimaryVertices
+18:00:28 jetrecalg_AntiKt4TruthDressedWZJets                  INFO Initialized IJetProvider : jetrecalg_AntiKt4TruthDressedWZJets.builder
+18:00:28 jetrecalg_AntiKt4TruthDressedWZJets                  INFO Initialize .... List of modifiers:
+18:00:28 jetrecalg_AntiKt4TruthDressedWZJets                  INFO     --> : jetrecalg_AntiKt4TruthDressedWZJets.jetsort
+18:00:28 jetrecalg_AntiKt4TruthDressedWZJets                  INFO     --> : jetrecalg_AntiKt4TruthDressedWZJets.width
+18:00:28 jetrecalg_AntiKt4TruthDressedWZJets                  INFO     --> : jetrecalg_AntiKt4TruthDressedWZJets.partontruthlabel
+18:00:28 jetrecalg_AntiKt4TruthDressedWZJets                  INFO     --> : jetrecalg_AntiKt4TruthDressedWZJets.truthpartondr
+18:00:28 jetrecalg_AntiKt4TruthDressedWZJets                  INFO     --> : jetrecalg_AntiKt4TruthDressedWZJets.jetdrlabeler_jetpt5GeV
+18:00:28 jetalg_truthpartcopy_Charged                         INFO Initializing jetalg_truthpartcopy_Charged...
+18:00:28 jetalg_truthpartcopy_Charge...JetMCTruthClassifier   INFO  Initializing MCTruthClassifier
+18:00:28 jetalg_truthpartcopy_Charged                         INFO   Tool count: 1
+18:00:28 jetalg_truthpartcopy_Charged                         INFO     jetalg_truthpartcopy_Charged.truthpartcopyCharged
+18:00:28 jetalg_truthpartcopy_Charged.truthpartcopyCharged    INFO AsgTool jetalg_truthpartcopy_Charged.truthpartcopyCharged @ 0x161c2008
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO Initializing pjgalg_JetInputTruthParticlesCharged...
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO Properties for PseudoJetGetter pjgalg_JetInputTruthParticlesCharged
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO              Label:  'Label':'TruthCharged'
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO    Input container: JetInputTruthParticlesCharged
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO   Output container: PseudoJetJetInputTruthParticlesCharged
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO    Skip negative E: true
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO          Is EMTopo: 0
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO           Is PFlow: 0
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO             Is UFO: 0
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO           Is ghost: 0
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO  Treat negative E as ghost: 0
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO  Running by-vertex reco: 0
+18:00:28 pjgalg_JetInputTruthParticlesCharged                 INFO  Vertex input container: PrimaryVertices
+18:00:28 jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets      INFO Initialized IJetProvider : jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets.builder
+18:00:28 jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets      INFO Initialize .... List of modifiers:
+18:00:28 jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets      INFO     --> : jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets.jetsort
+18:00:28 jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets      INFO     --> : jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets.partontruthlabel
+18:00:28 jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets      INFO     --> : jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets.truthpartondr
+18:00:28 jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets      INFO     --> : jetrecalg_AntiKtVR30Rmax4Rmin02TruthChargedJets.jetdrlabeler_jetpt5GeV
+18:00:28 jetrecalg_AntiKt10TruthJets                          INFO Initialized IJetProvider : jetrecalg_AntiKt10TruthJets.builder
+18:00:28 jetrecalg_AntiKt10TruthJets                          INFO Initialize .... List of modifiers:
+18:00:28 jetrecalg_AntiKt10TruthJets.ktsplitter               INFO Initializing jetrecalg_AntiKt10TruthJets.ktsplitter
+18:00:28 jetrecalg_AntiKt10TruthJets                          INFO     --> : jetrecalg_AntiKt10TruthJets.jetsort
+18:00:28 jetrecalg_AntiKt10TruthJets                          INFO     --> : jetrecalg_AntiKt10TruthJets.jetptfilter_50000
+18:00:28 jetrecalg_AntiKt10TruthJets                          INFO     --> : jetrecalg_AntiKt10TruthJets.ktsplitter
+18:00:28 jetrecalg_AntiKt10TruthJets                          INFO     --> : jetrecalg_AntiKt10TruthJets.jetghostlabeler
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 2069 CLIDRegistry entries for module ALL
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR...Trim   INFO      Recluster R:  'RClus':0.200000
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR...Trim   INFO   pT faction min:  'PtFrac':0.0500000
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO Initialized IJetProvider : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.Trim
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO Initialize .... List of modifiers:
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFr...nsubjettiness   INFO Initializing jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.nsubjettiness
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtF...nsubjettinessR   INFO Initializing jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.nsubjettinessR
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5...ktsplitter   INFO Initializing jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.ktsplitter
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5Small...ecorr   INFO Initializing jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.ecorr
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5Smal...ecorrR   INFO Initializing jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.ecorrR
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20...qw   INFO Initializing jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.qw
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO     --> : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.jetsort
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO     --> : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.jetghostlabeler
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO     --> : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.nsubjettiness
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO     --> : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.nsubjettinessR
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO     --> : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.ktsplitter
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO     --> : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.ecorr
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO     --> : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.ecorrR
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO     --> : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.qw
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO     --> : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.partontruthlabel
+18:00:28 jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets    INFO     --> : jetrecalg_AntiKt10TruthTrimmedPtFrac5SmallR20Jets.truthpartondr
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO Initialized IJetProvider : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.SoftDrop
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO Initialize .... List of modifiers:
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBet...nsubjettiness   INFO Initializing jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.nsubjettiness
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBe...nsubjettinessR   INFO Initializing jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.nsubjettinessR
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta10...ktsplitter   INFO Initializing jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.ktsplitter
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut...ecorr   INFO Initializing jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.ecorr
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcu...ecorrR   INFO Initializing jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.ecorrR
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10J...qw   INFO Initializing jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.qw
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO     --> : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.jetsort
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO     --> : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.jetghostlabeler
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO     --> : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.nsubjettiness
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO     --> : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.nsubjettinessR
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO     --> : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.ktsplitter
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO     --> : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.ecorr
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO     --> : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.ecorrR
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO     --> : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.qw
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO     --> : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.partontruthlabel
+18:00:28 jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets     INFO     --> : jetrecalg_AntiKt10TruthSoftDropBeta100Zcut10Jets.truthpartondr
+18:00:28 METRecoAlg_Truth.MET_RecoTool_Truth                  INFO Initializing METRecoAlg_Truth.MET_RecoTool_Truth...
+18:00:28 METRecoAlg_Truth.MET_RecoTool_Truth                  INFO Reconstructing MET container: 'StoreGateSvc+MET_Truth' with composition map: 'StoreGateSvc+METMap_Truth'
+18:00:28 METRecoAlg_Truth.MET_RecoTool_Truth                  INFO Will not sum MET in this container.
+18:00:28 METRecoAlg_Truth.MET_RegionTool_Truth                INFO Initializing METRecoAlg_Truth.MET_RegionTool_Truth...
+18:00:28 METRecoAlg_Truth.MET_RegionTool_Truth                INFO Reconstructing MET container: 'StoreGateSvc+MET_TruthRegions' with composition map: 'StoreGateSvc+METMap_TruthRegions'
+18:00:28 METRecoAlg_Truth.MET_RegionTool_Truth                INFO Will not sum MET in this container.
+18:00:28 METRecoAlg_Truth.MET_Reg...MET_NonIntRegions_Truth   INFO Base MET container: MET_Truth
+18:00:28 METRecoAlg_Truth.MET_Reg...MET_NonIntRegions_Truth   INFO Base MET key: NonInt
+18:00:28 METRecoAlg_Truth.MET_Region...MET_IntRegions_Truth   INFO Base MET container: MET_Truth
+18:00:28 METRecoAlg_Truth.MET_Region...MET_IntRegions_Truth   INFO Base MET key: Int
+18:00:28 METRecoAlg_Truth.MET_Reg...MET_IntOutRegions_Truth   INFO Base MET container: MET_Truth
+18:00:28 METRecoAlg_Truth.MET_Reg...MET_IntOutRegions_Truth   INFO Base MET key: IntOut
+18:00:28 METRecoAlg_Truth.MET_R...MET_IntMuonsRegions_Truth   INFO Base MET container: MET_Truth
+18:00:28 METRecoAlg_Truth.MET_R...MET_IntMuonsRegions_Truth   INFO Base MET key: IntMuons
+18:00:28 TauTruthCommonKernel                                 INFO Initializing the common selections in TauTruthCommonKernel
+18:00:28 ToolSvc.DFCommonTauTruthBuilder                      INFO Initializing BuildTruthTaus
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 1740 CLIDRegistry entries for module ALL
+18:00:28 ToolSvc.DFCommonTauTruthBuilder.MCTruthClassifier    INFO  Initializing MCTruthClassifier
+18:00:28 TauTruthCommonKernel                                 INFO The following augmentation tools will be applied....
+18:00:28 TauTruthCommonKernel                                 INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthCollectionMakerTau/DFCommonTauTruthCollectionMaker'])
+18:00:28 MCTruthCommonPostJetKernelNo1                        INFO Initializing the common selections in MCTruthCommonPostJetKernelNo1
+18:00:28 MCTruthCommonPostJetKernelNo1                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPostJetKernelNo1                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthDressingTool/DFCommonTruthTauDressingTool'])
+18:00:28 MCTruthCommonPostJetKernelNo2                        INFO Initializing the common selections in MCTruthCommonPostJetKernelNo2
+18:00:28 MCTruthCommonPostJetKernelNo2                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPostJetKernelNo2                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::GenFilterTool/DFCommonTruthGenFilt'])
+18:00:28 MCTruthCommonPostJetKernelNo3                        INFO Initializing the common selections in MCTruthCommonPostJetKernelNo3
+18:00:28 MCTruthCommonPostJetKernelNo3                        INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonPostJetKernelNo3                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthQGDecorationTool/DFCommonTruthDressedWZQGLabelTool'])
+18:00:28 MCTruthNavigationDecoratorKernel                     INFO Initializing the common selections in MCTruthNavigationDecoratorKernel
+18:00:28 MCTruthNavigationDecoratorKernel                     INFO The following augmentation tools will be applied....
+18:00:28 MCTruthNavigationDecoratorKernel                     INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthNavigationDecorator/DFCommonTruthNavigationDecorator'])
+18:00:28 MCTruthCommonBosonsAndDecaysKernel                   INFO Initializing the common selections in MCTruthCommonBosonsAndDecaysKernel
+18:00:28 ToolSvc.DFCommonBosonsAndDecaysTool                  INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonBosonsAndDecaysTool                  INFO Base name for new truth particle/vertex containers:  'NewCollectionName':'TruthBosonsWithDecay'
+18:00:28 ToolSvc.DFCommonBosonsAndDecaysTool                  INFO New truth particles container key: TruthBosonsWithDecayParticles
+18:00:28 ToolSvc.DFCommonBosonsAndDecaysTool                  INFO New truth vertices container key: TruthBosonsWithDecayVertices
+18:00:28 MCTruthCommonBosonsAndDecaysKernel                   INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonBosonsAndDecaysKernel                   INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthDecayCollectionMaker/DFCommonBosonsAndDecaysTool'])
+18:00:28 TRUTHD2Kernel                                        INFO Initializing the common selections in TRUTHD2Kernel
+18:00:28 TRUTHD2Kernel                                        INFO The following augmentation tools will be applied....
+18:00:28 TRUTHD2Kernel                                        INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthD2Decorator/TruthD2Decorator'])
+18:00:28 MCTruthCommonBSMAndDecaysKernel                      INFO Initializing the common selections in MCTruthCommonBSMAndDecaysKernel
+18:00:28 ToolSvc.DFCommonBSMAndDecaysTool                     INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonBSMAndDecaysTool                     INFO Base name for new truth particle/vertex containers:  'NewCollectionName':'TruthBSMWithDecay'
+18:00:28 ToolSvc.DFCommonBSMAndDecaysTool                     INFO New truth particles container key: TruthBSMWithDecayParticles
+18:00:28 ToolSvc.DFCommonBSMAndDecaysTool                     INFO New truth vertices container key: TruthBSMWithDecayVertices
+18:00:28 MCTruthCommonBSMAndDecaysKernel                      INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonBSMAndDecaysKernel                      INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthDecayCollectionMaker/DFCommonBSMAndDecaysTool'])
+18:00:28 MCTruthCommonBornLeptonsKernel                       INFO Initializing the common selections in MCTruthCommonBornLeptonsKernel
+18:00:28 ToolSvc.DFCommonBornLeptonCollTool                   INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonBornLeptonCollTool                   INFO New truth particle collection key: BornLeptons
+18:00:28 MCTruthCommonBornLeptonsKernel                       INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonBornLeptonsKernel                       INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthBornLeptonCollectionMaker/DFCommonBornLeptonCollTool'])
+18:00:28 MCTruthCommonHSCollectionKernel                      INFO Initializing the common selections in MCTruthCommonHSCollectionKernel
+18:00:28 ToolSvc.DFCommonHSCollectionTool                     INFO Using 'StoreGateSvc+TruthEvents' as the source collections for new truth collections
+18:00:28 ToolSvc.DFCommonHSCollectionTool                     INFO New truth particle collection key:  'NewCollectionName':'HardScatter'
+18:00:28 MCTruthCommonHSCollectionKernel                      INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonHSCollectionKernel                      INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::HardScatterCollectionMaker/DFCommonHSCollectionTool'])
+18:00:28 DFCommonTruthCentralEDAlg                            INFO Initializing DFCommonTruthCentralEDAlg...
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO Initializing DFCommonTruthCentralEDAlg.DFCommonTruthCentralEDTool...
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO Configured properties:
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO      JetAlgorithm: Kt
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO         JetRadius: 0.5
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO    InputContainer: PseudoJetJetInputTruthParticles
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO    AbsRapidityMin: 0
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO    AbsRapidityMax: 1.5
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO    AreaDefinition: Voronoi
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO      VoronoiRfact: 0.9
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO   OutputContainer: TruthIsoCentralEventShape
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO Derived properties:
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO         Fastjet jet defn: Longitudinally invariant kt algorithm with R = 0.5 and E scheme recombination
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO        Fastjet area defn: Voronoi area with effective_Rfact = 0.9
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO     Fastjet jet selector: 0 <= |rap| <= 1.5
+18:00:28 DFCommonTruthCentralE...DFCommonTruthCentralEDTool   INFO   Use area four-momentum: 1
+18:00:28 DFCommonTruthForwardEDAlg                            INFO Initializing DFCommonTruthForwardEDAlg...
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO Initializing DFCommonTruthForwardEDAlg.DFCommonTruthForwardEDTool...
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO Configured properties:
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO      JetAlgorithm: Kt
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO         JetRadius: 0.5
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO    InputContainer: PseudoJetJetInputTruthParticles
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO    AbsRapidityMin: 1.5
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO    AbsRapidityMax: 3
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO    AreaDefinition: Voronoi
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO      VoronoiRfact: 0.9
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO   OutputContainer: TruthIsoForwardEventShape
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO Derived properties:
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO         Fastjet jet defn: Longitudinally invariant kt algorithm with R = 0.5 and E scheme recombination
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO        Fastjet area defn: Voronoi area with effective_Rfact = 0.9
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO     Fastjet jet selector: 1.5 <= |rap| <= 3
+18:00:28 DFCommonTruthForwardE...DFCommonTruthForwardEDTool   INFO   Use area four-momentum: 1
+18:00:28 DFCommonTruthEDKernel                                INFO Initializing the common selections in DFCommonTruthEDKernel
+18:00:28 DFCommonTruthEDKernel                                INFO The following augmentation tools will be applied....
+18:00:28 DFCommonTruthEDKernel                                INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthEDDecorator/DFCommonTruthEDDecorator'])
+18:00:28 MCTruthCommonTausAndDecaysKernel                     INFO Initializing the common selections in MCTruthCommonTausAndDecaysKernel
+18:00:28 ToolSvc.DFCommonTausAndDecaysTool                    INFO Using TruthParticles as the input truth container key
+18:00:28 ToolSvc.DFCommonTausAndDecaysTool                    INFO Base name for new truth particle/vertex containers:  'NewCollectionName':'TruthTausWithDecay'
+18:00:28 ToolSvc.DFCommonTausAndDecaysTool                    INFO New truth particles container key: TruthTausWithDecayParticles
+18:00:28 ToolSvc.DFCommonTausAndDecaysTool                    INFO New truth vertices container key: TruthTausWithDecayVertices
+18:00:28 MCTruthCommonTausAndDecaysKernel                     INFO The following augmentation tools will be applied....
+18:00:28 MCTruthCommonTausAndDecaysKernel                     INFO AugmentationTools = PublicToolHandleArray(['DerivationFramework::TruthDecayCollectionMaker/DFCommonTausAndDecaysTool'])
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 348 CLIDRegistry entries for module ALL
+18:00:28 DecisionSvc                                          INFO Inserting stream: StreamDAOD_TRUTH3 with no Algs
+18:00:28 AthDictLoaderSvc                                     INFO in initialize...
+18:00:28 AthDictLoaderSvc                                     INFO acquired Dso-registry
+18:00:28 StreamDAOD_TRUTH3.StreamDAOD_TRUTH3Tool              INFO Initializing StreamDAOD_TRUTH3.StreamDAOD_TRUTH3Tool
+18:00:28 TagInfoMgr                                           INFO   AlgTool: ToolSvc.IOVDbMetaDataTool
+18:00:28 StreamDAOD_TRUTH3                                    INFO Found HelperTools = PrivateToolHandleArray(['Athena::ThinningCacheTool/ThinningCacheTool_StreamDAOD_TRUTH3','xAODMaker::FileMetaDataCreatorTool/StreamDAOD_TRUTH3_FileMetaDataCreatorTool','MakeEventStreamInfo/StreamDAOD_TRUTH3_MakeEventStreamInfo','xAODMaker::EventFormatStreamHelperTool/StreamDAOD_TRUTH3_EventFormatStreamHelperTool'])
+18:00:28 StreamDAOD_TRUTH3                                    INFO Data output: DAOD_TRUTH3.TRUTH3.root
+18:00:28 StreamDAOD_TRUTH3                                    INFO I/O reinitialization...
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 113 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 76 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 92 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 65 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 1203 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 27 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 5 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 15 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 10 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 15 CLIDRegistry entries for module ALL
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 6 CLIDRegistry entries for module ALL
+18:00:28 AthenaEventLoopMgr                                   INFO Setup EventSelector service EventSelector
+18:00:28 ApplicationMgr                                       INFO Application Manager Initialized successfully
+18:00:28 /data/selbor/TRUTH3_StaticDir/EVNT.root              INFO Database being retired...
+18:00:28 Domain[ROOT_All]                                     INFO ->  Deaccess DbDatabase   READ      [ROOT_All] D0943738-EBE2-3F47-9F60-B5EF15C2D72D
+18:00:28 Domain[ROOT_All]                                     INFO >   Deaccess DbDomain     READ      [ROOT_All]
+18:00:28 DbSession                                            INFO     Open     DbSession
+18:00:28 Domain[ROOT_All]                                     INFO >   Access   DbDomain     READ      [ROOT_All]
+18:00:28 Domain[ROOT_All]                                     INFO ->  Access   DbDatabase   READ      [ROOT_All] D0943738-EBE2-3F47-9F60-B5EF15C2D72D
+18:00:28 Domain[ROOT_All]                                     INFO                           /data/selbor/TRUTH3_StaticDir/EVNT.root
+18:00:28 RootDatabase.open                                    INFO /data/selbor/TRUTH3_StaticDir/EVNT.root File version:60806
+18:00:28 ApplicationMgr                                       INFO Application Manager Started successfully
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 4 CLIDRegistry entries for module ALL
+18:00:28 ToolSvc.BookkeeperTool                               INFO Using number of event weight variations 148
+18:00:28 ToolSvc.BookkeeperTool                               INFO Preparing local cache for source 'D0943738-EBE2-3F47-9F60-B5EF15C2D72D' with 148 variations
+18:00:28 ToolSvc.BookkeeperTool                               INFO No incomplete bookkeepers with name 'IncompleteCutBookkeepers' in this file
+18:00:28 ToolSvc.BookkeeperTool                               INFO No complete bookkeepers with name 'CutBookkeepers' in this file
+18:00:28 ClassIDSvc                                           INFO getRegistryEntries: read 7 CLIDRegistry entries for module ALL
+18:00:28 AthenaPoolConverter                                  INFO massageEventInfo: unable to get OverrideRunNumberFromInput property from EventSelector
+18:00:28 AthenaEventLoopMgr                                   INFO   ===>>>  start of run 100013    <<<===
+18:00:29 IOVDbSvc                                             INFO Only 5 POOL conditions files will be open at once
+18:00:29 IOVDbSvc                                             INFO Initialised with 1 connections and 0 folders
+18:00:29 IOVDbSvc                                             INFO Service IOVDbSvc initialised successfully
+18:00:29 IOVDbSvc                                             INFO   AlgTool: ToolSvc.IOVDbMetaDataTool
+18:00:29 AthenaEventLoopMgr                                   INFO   ===>>>  start processing event #1, run #100013 0 events processed so far  <<<===
+18:00:29 PerfMonMTSvc                                         INFO Event [    1] CPU Time: 00h00m06s, Wall Time: 00h00m10s, Vmem: 1.32 GB, Rss: 833.54 MB, Pss: 647.69 MB, Swap: 0.00 KB
+18:00:29 ClassIDSvc                                           INFO getRegistryEntries: read 370 CLIDRegistry entries for module ALL
+18:00:29 HepMCWeightSvc                                       INFO   AlgTool: ToolSvc.IOVDbMetaDataTool
+18:00:29 ToolSvc.DFCommonTruthMuonTool                        INFO From metadata configured: Sherpa? 0
+18:00:32 ClassIDSvc                                           INFO getRegistryEntries: read 20 CLIDRegistry entries for module ALL
+18:00:32 jetalg_truthpartcopy_.truthpartcopy                  INFO Look for barcode offset in  metadata ...
+18:00:32 InputMetaDataStore                                WARNING retrieve(const): No valid proxy for object /Simulation/Parameters  of type IOVMetaDataContainer(CLID 1316383046)
+18:00:32 WARNING from FastJet: Recluster: the original cluster sequence is lacking explicit ghosts; area support will no longer be available after re-clustering
+18:00:32 WARNING from FastJet: Recluster: the original cluster sequence is lacking explicit ghosts; area support will no longer be available after re-clustering
+18:00:32 WARNING from FastJet: Recluster: the original cluster sequence is lacking explicit ghosts; area support will no longer be available after re-clustering
+18:00:32 WARNING from FastJet: Recluster: the original cluster sequence is lacking explicit ghosts; area support will no longer be available after re-clustering
+18:00:32 ToolSvc.DFCommonTauTruthBuilder                      INFO TruthTaus container with name TruthTaus is not available, will generate the container for each event from TruthParticles container
+18:00:32 ToolSvc.DFCommonBornLeptonCollTool                   INFO From metadata configured: Sherpa? 0
+18:00:32 ToolSvc.DFCommonHSCollectionTool                     INFO Ideentified sample as not pure-Pythia8. Gen info was madgraph+pythia8+evtgen
+18:00:32 DbSession                                            INFO     Open     DbSession
+18:00:32 Domain[ROOT_All]                                     INFO >   Access   DbDomain     UPDATE    [ROOT_All]
+18:00:32 Domain[ROOT_All]                                     INFO ->  Access   DbDatabase   CREATE    [ROOT_All] 31D2DC9B-2B76-4644-83A4-095D60CF7848
+18:00:32 Domain[ROOT_All]                                     INFO                           DAOD_TRUTH3.TRUTH3.root
+18:00:32 RootDatabase.open                                    INFO DAOD_TRUTH3.TRUTH3.root File version:62812
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO xAOD::AuxInfoBase [47FE21D1-5196-4961-A8A1-1DC1B4104DD8]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO xAOD::AuxContainerBase [C87C71B3-B03F-42FC-AF99-DF497F148397]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO xAOD::JetAuxContainer_v1 [17E48A73-2219-44A0-8913-D59DB61F4B15]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO xAOD::EventInfo_v1 [AE8BED6D-1D41-4CAF-994B-42613FC91A0A]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO xAOD::MissingETContainer_v1 [F49162FE-6BC0-49BC-A7DA-A792136BD939]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO DataVector<xAOD::TruthEvent_v1> [6290F297-F529-40EE-9FE5-1C577678306D]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO DataVector<xAOD::TruthParticle_v1> [58F98A16-E465-4CA5-A099-73033206D8E3]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO DataVector<xAOD::TruthVertex_v1> [5FBAE0AB-09F7-4B6C-B066-0A003FC38ECF]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO DataVector<xAOD::Jet_v1> [646342DF-D1E1-422A-975D-EA6DBF13CB6D]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO DataHeader_p6 [4DDBD295-EFCE-472A-9EC8-15CD35A9EB8D]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO DataHeaderForm_p6 [7BE56CEF-C866-4BEE-9348-A5F34B5F1DAD]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO Token [E013D4B1-CA9C-4E3C-9BE2-8691BBAFCB9A]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO bool [13FF06C5-AB4B-6EDD-68AB-3E6350E95305]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO unsigned int [BBACA313-D7B0-3A4C-9161-089CACF4B1CC]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO unsigned long long [388BE2E0-4452-7BB9-2563-DA3365C64623]
+18:00:32 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:00:32 StorageSvc                                           INFO float [64DE6A54-6E0B-BCDF-8A08-6EF31347E768]
+18:00:32 ClassIDSvc                                           INFO getRegistryEntries: read 254 CLIDRegistry entries for module ALL
+18:00:32 AthenaEventLoopMgr                                   INFO   ===>>>  done processing event #1, run #100013 1 events processed so far  <<<===
+18:00:32 WARNING from FastJet: Recluster: the original cluster sequence is lacking explicit ghosts; area support will no longer be available after re-clustering (LAST SUCH WARNING)
+18:00:44 WARNING from FastJet: ClusterSequenceAreaBase::get_median_rho_and_sigma(...): the estimated empty area is suspiciously large and negative and may lead to an over-estimation of rho. This may be due to (i) a rare statistical fluctuation or (ii) too small a range used to estimate the background properties.
+18:00:44 AthenaEventLoopMgr                                   INFO   ===>>>  start processing event #101, run #100013 100 events processed so far  <<<===
+18:00:44 AthenaEventLoopMgr                                   INFO   ===>>>  done processing event #101, run #100013 101 events processed so far  <<<===
+18:00:46 WARNING from FastJet: ClusterSequenceAreaBase::get_median_rho_and_sigma(...): the estimated empty area is suspiciously large and negative and may lead to an over-estimation of rho. This may be due to (i) a rare statistical fluctuation or (ii) too small a range used to estimate the background properties.
+18:00:56 AthenaEventLoopMgr                                   INFO   ===>>>  start processing event #201, run #100013 200 events processed so far  <<<===
+18:00:56 AthenaEventLoopMgr                                   INFO   ===>>>  done processing event #201, run #100013 201 events processed so far  <<<===
+18:00:57 WARNING from FastJet: ClusterSequenceAreaBase::get_median_rho_and_sigma(...): the estimated empty area is suspiciously large and negative and may lead to an over-estimation of rho. This may be due to (i) a rare statistical fluctuation or (ii) too small a range used to estimate the background properties.
+18:00:59 PerfMonMTSvc                                         INFO Event [  229] CPU Time: 00h00m35s, Wall Time: 00h00m40s, Vmem: 1.51 GB, Rss: 1021.13 MB, Pss: 835.26 MB, Swap: 0.00 KB
+18:01:07 AthenaEventLoopMgr                                   INFO   ===>>>  start processing event #301, run #100013 300 events processed so far  <<<===
+18:01:07 AthenaEventLoopMgr                                   INFO   ===>>>  done processing event #301, run #100013 301 events processed so far  <<<===
+18:01:07 ToolSvc.BookkeeperTool                               INFO Copying input containers for source 'D0943738-EBE2-3F47-9F60-B5EF15C2D72D'
+18:01:07 EventSelector                                        INFO Disconnecting input sourceID: D0943738-EBE2-3F47-9F60-B5EF15C2D72D
+18:01:07 /data/selbor/TRUTH3_StaticDir/EVNT.root              INFO Database being retired...
+18:01:07 Domain[ROOT_All]                                     INFO ->  Deaccess DbDatabase   READ      [ROOT_All] D0943738-EBE2-3F47-9F60-B5EF15C2D72D
+18:01:07 Domain[ROOT_All]                                     INFO >   Deaccess DbDomain     READ      [ROOT_All]
+18:01:07 AthenaEventLoopMgr                                   INFO No more events in event selection
+18:01:07 ToolSvc.BookkeeperTool                               INFO Successfully copied CutBookkeepers to the output MetaDataStore
+18:01:07 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:01:07 StorageSvc                                           INFO xAOD::FileMetaDataAuxInfo_v1 [BEE2BECF-A936-4078-9FDD-AD703C9ADF9F]
+18:01:07 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:01:07 StorageSvc                                           INFO xAOD::TruthMetaDataAuxContainer_v1 [E2EF5F89-DFFA-4225-823E-29E40130A7B2]
+18:01:07 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:01:07 StorageSvc                                           INFO xAOD::CutBookkeeperAuxContainer_v1 [AF612BAA-20B8-40A3-A418-894A9FB8A61B]
+18:01:07 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:01:07 StorageSvc                                           INFO EventStreamInfo_p3 [11DF1B8C-0DEE-4687-80D7-E74B520ACBB4]
+18:01:07 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:01:07 StorageSvc                                           INFO xAOD::FileMetaData_v1 [C87E3828-4A7A-480A-95DE-0339539F6A0F]
+18:01:07 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:01:07 StorageSvc                                           INFO xAOD::EventFormat_v1 [0EFE2D2C-9E78-441D-9A87-9EE2B908AC81]
+18:01:07 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:01:07 StorageSvc                                           INFO DataVector<xAOD::TruthMetaData_v1> [754BDA89-C0D9-43BF-B468-32E10C1690FE]
+18:01:07 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:01:07 StorageSvc                                           INFO xAOD::CutBookkeeperContainer_v1 [F2F90B2F-B879-43B8-AF9B-0F843E299A87]
+18:01:07 StorageSvc                                           INFO Building shape according to reflection information using shape ID for:
+18:01:07 StorageSvc                                           INFO IOVMetaDataContainer_p1 [6C2DE6DF-6D52-43F6-B435-9F29812F40C0]
+18:01:07 ClassIDSvc                                           INFO getRegistryEntries: read 29 CLIDRegistry entries for module ALL
+18:01:07 StreamDAOD_TRUTH3                                    INFO Metadata records written: 302
+18:01:07 DAOD_TRUTH3.TRUTH3.root                              INFO Database being retired...
+18:01:07 Domain[ROOT_All]                                     INFO ->  Deaccess DbDatabase   CREATE    [ROOT_All] 31D2DC9B-2B76-4644-83A4-095D60CF7848
+18:01:07 Domain[ROOT_All]                                     INFO >   Deaccess DbDomain     UPDATE    [ROOT_All]
+18:01:07 ApplicationMgr                                       INFO Application Manager Stopped successfully
+18:01:07 MCTruthCommonPreJetKernelNo1                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo1                         INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo1 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo1                         INFO ToolSvc.DFCommonTruthClassificationTool
+18:01:07 MCTruthCommonPreJetKernelNo1                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo2                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo2                         INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo2 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo2                         INFO ToolSvc.DFCommonTruthMuonTool
+18:01:07 MCTruthCommonPreJetKernelNo2                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo3                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo3                         INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo3 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo3                         INFO ToolSvc.DFCommonTruthElectronTool
+18:01:07 MCTruthCommonPreJetKernelNo3                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo4                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo4                         INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo4 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo4                         INFO ToolSvc.DFCommonTruthPhotonToolSim
+18:01:07 MCTruthCommonPreJetKernelNo4                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo5                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo5                         INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo5 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo5                         INFO ToolSvc.DFCommonTruthNeutrinoTool
+18:01:07 MCTruthCommonPreJetKernelNo5                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo6                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo6                         INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo6 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo6                         INFO ToolSvc.DFCommonTruthBottomTool
+18:01:07 MCTruthCommonPreJetKernelNo6                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo7                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo7                         INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo7 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo7                         INFO ToolSvc.DFCommonTruthTopTool
+18:01:07 MCTruthCommonPreJetKernelNo7                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo8                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo8                         INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo8 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo8                         INFO ToolSvc.DFCommonTruthBosonTool
+18:01:07 MCTruthCommonPreJetKernelNo8                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo9                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo9                         INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo9 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo9                         INFO ToolSvc.DFCommonTruthBSMTool
+18:01:07 MCTruthCommonPreJetKernelNo9                         INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo10                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo10                        INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo10 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo10                        INFO ToolSvc.DFCommonTruthElectronIsolationTool1
+18:01:07 MCTruthCommonPreJetKernelNo10                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo11                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo11                        INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo11 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo11                        INFO ToolSvc.DFCommonTruthElectronIsolationTool2
+18:01:07 MCTruthCommonPreJetKernelNo11                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo12                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo12                        INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo12 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo12                        INFO ToolSvc.DFCommonTruthMuonIsolationTool1
+18:01:07 MCTruthCommonPreJetKernelNo12                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo13                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo13                        INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo13 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo13                        INFO ToolSvc.DFCommonTruthMuonIsolationTool2
+18:01:07 MCTruthCommonPreJetKernelNo13                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo14                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo14                        INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo14 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo14                        INFO ToolSvc.DFCommonTruthPhotonIsolationTool1
+18:01:07 MCTruthCommonPreJetKernelNo14                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo15                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo15                        INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo15 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo15                        INFO ToolSvc.DFCommonTruthPhotonIsolationTool2
+18:01:07 MCTruthCommonPreJetKernelNo15                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo16                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo16                        INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo16 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo16                        INFO ToolSvc.DFCommonTruthPhotonIsolationTool3
+18:01:07 MCTruthCommonPreJetKernelNo16                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo17                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo17                        INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo17 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo17                        INFO ToolSvc.DFCommonTruthForwardProtonTool
+18:01:07 MCTruthCommonPreJetKernelNo17                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo18                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo18                        INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo18 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo18                        INFO ToolSvc.DFCommonTruthElectronDressingTool
+18:01:07 MCTruthCommonPreJetKernelNo18                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo19                        INFO ============================================================================
+18:01:07 MCTruthCommonPreJetKernelNo19                        INFO  The following CP tools were called by MCTruthCommonPreJetKernelNo19 for the whole train:
+18:01:07 MCTruthCommonPreJetKernelNo19                        INFO ToolSvc.DFCommonTruthMuonDressingTool
+18:01:07 MCTruthCommonPreJetKernelNo19                        INFO ============================================================================
+18:01:07 TauTruthCommonKernel                                 INFO ============================================================================
+18:01:07 TauTruthCommonKernel                                 INFO  The following CP tools were called by TauTruthCommonKernel for the whole train:
+18:01:07 TauTruthCommonKernel                                 INFO ToolSvc.DFCommonTauTruthCollectionMaker
+18:01:07 TauTruthCommonKernel                                 INFO ============================================================================
+18:01:07 MCTruthCommonPostJetKernelNo1                        INFO ============================================================================
+18:01:07 MCTruthCommonPostJetKernelNo1                        INFO  The following CP tools were called by MCTruthCommonPostJetKernelNo1 for the whole train:
+18:01:07 MCTruthCommonPostJetKernelNo1                        INFO ToolSvc.DFCommonTruthTauDressingTool
+18:01:07 MCTruthCommonPostJetKernelNo1                        INFO ============================================================================
+18:01:07 MCTruthCommonPostJetKernelNo2                        INFO ============================================================================
+18:01:07 MCTruthCommonPostJetKernelNo2                        INFO  The following CP tools were called by MCTruthCommonPostJetKernelNo2 for the whole train:
+18:01:07 MCTruthCommonPostJetKernelNo2                        INFO ToolSvc.DFCommonTruthGenFilt
+18:01:07 MCTruthCommonPostJetKernelNo2                        INFO ============================================================================
+18:01:07 MCTruthCommonPostJetKernelNo3                        INFO ============================================================================
+18:01:07 MCTruthCommonPostJetKernelNo3                        INFO  The following CP tools were called by MCTruthCommonPostJetKernelNo3 for the whole train:
+18:01:07 MCTruthCommonPostJetKernelNo3                        INFO ToolSvc.DFCommonTruthDressedWZQGLabelTool
+18:01:07 MCTruthCommonPostJetKernelNo3                        INFO ============================================================================
+18:01:07 MCTruthNavigationDecoratorKernel                     INFO ============================================================================
+18:01:07 MCTruthNavigationDecoratorKernel                     INFO  The following CP tools were called by MCTruthNavigationDecoratorKernel for the whole train:
+18:01:07 MCTruthNavigationDecoratorKernel                     INFO ToolSvc.DFCommonTruthNavigationDecorator
+18:01:07 MCTruthNavigationDecoratorKernel                     INFO ============================================================================
+18:01:07 MCTruthCommonBosonsAndDecaysKernel                   INFO ============================================================================
+18:01:07 MCTruthCommonBosonsAndDecaysKernel                   INFO  The following CP tools were called by MCTruthCommonBosonsAndDecaysKernel for the whole train:
+18:01:07 MCTruthCommonBosonsAndDecaysKernel                   INFO ToolSvc.DFCommonBosonsAndDecaysTool
+18:01:07 MCTruthCommonBosonsAndDecaysKernel                   INFO ============================================================================
+18:01:07 TRUTHD2Kernel                                        INFO ============================================================================
+18:01:07 TRUTHD2Kernel                                        INFO  The following CP tools were called by TRUTHD2Kernel for the whole train:
+18:01:07 TRUTHD2Kernel                                        INFO ToolSvc.TruthD2Decorator
+18:01:07 TRUTHD2Kernel                                        INFO ============================================================================
+18:01:07 MCTruthCommonBSMAndDecaysKernel                      INFO ============================================================================
+18:01:07 MCTruthCommonBSMAndDecaysKernel                      INFO  The following CP tools were called by MCTruthCommonBSMAndDecaysKernel for the whole train:
+18:01:07 MCTruthCommonBSMAndDecaysKernel                      INFO ToolSvc.DFCommonBSMAndDecaysTool
+18:01:07 MCTruthCommonBSMAndDecaysKernel                      INFO ============================================================================
+18:01:07 MCTruthCommonBornLeptonsKernel                       INFO ============================================================================
+18:01:07 MCTruthCommonBornLeptonsKernel                       INFO  The following CP tools were called by MCTruthCommonBornLeptonsKernel for the whole train:
+18:01:07 MCTruthCommonBornLeptonsKernel                       INFO ToolSvc.DFCommonBornLeptonCollTool
+18:01:07 MCTruthCommonBornLeptonsKernel                       INFO ============================================================================
+18:01:07 MCTruthCommonHSCollectionKernel                      INFO ============================================================================
+18:01:07 MCTruthCommonHSCollectionKernel                      INFO  The following CP tools were called by MCTruthCommonHSCollectionKernel for the whole train:
+18:01:07 MCTruthCommonHSCollectionKernel                      INFO ToolSvc.DFCommonHSCollectionTool
+18:01:07 MCTruthCommonHSCollectionKernel                      INFO ============================================================================
+18:01:07 DFCommonTruthEDKernel                                INFO ============================================================================
+18:01:07 DFCommonTruthEDKernel                                INFO  The following CP tools were called by DFCommonTruthEDKernel for the whole train:
+18:01:07 DFCommonTruthEDKernel                                INFO ToolSvc.DFCommonTruthEDDecorator
+18:01:07 DFCommonTruthEDKernel                                INFO ============================================================================
+18:01:07 MCTruthCommonTausAndDecaysKernel                     INFO ============================================================================
+18:01:07 MCTruthCommonTausAndDecaysKernel                     INFO  The following CP tools were called by MCTruthCommonTausAndDecaysKernel for the whole train:
+18:01:07 MCTruthCommonTausAndDecaysKernel                     INFO ToolSvc.DFCommonTausAndDecaysTool
+18:01:07 MCTruthCommonTausAndDecaysKernel                     INFO ============================================================================
+18:01:07 AllExecutedEventsCounterAlg                          INFO accepted 301 out of 301 events for filter AllExecutedEvents (Number of processed events before any cut)
+18:01:07 IOVDbSvc                                             INFO  bytes in ((      0.00 ))s
+18:01:07 IOVDbSvc                                             INFO Connection sqlite://;schema=cooldummy.db;dbname=OFLP200 : nConnect: 0 nFolders: 0 ReadTime: ((     0.00 ))s
+18:01:07 AthDictLoaderSvc                                     INFO in finalize...
+18:01:07 DecisionSvc                                          INFO Finalized successfully.
+18:01:07 AthenaPoolCnvSvc                                     INFO PerfStats ----------------------------------------
+18:01:07 AthenaPoolCnvSvc                                     INFO PerfStats Timing Measurements for AthenaPoolCnvSvc
+18:01:07 AthenaPoolCnvSvc                                     INFO PerfStats ----------------------------------------
+18:01:07 AthenaPoolCnvSvc                                     INFO PerfStats | fRep_ALL        |             625 ms |
+18:01:07 AthenaPoolCnvSvc                                     INFO PerfStats | commitOutput    |             571 ms |
+18:01:07 AthenaPoolCnvSvc                                     INFO PerfStats | cObjR_ALL       |             247 ms |
+18:01:07 AthenaPoolCnvSvc                                     INFO PerfStats | cRep_ALL        |              58 ms |
+18:01:07 AthenaPoolCnvSvc                                     INFO PerfStats | cObj_ALL        |            1563 ms |
+18:01:07 AthenaPoolCnvSvc                                     INFO PerfStats | cRepR_ALL       |             245 ms |
+18:01:07 AthenaPoolCnvSvc                                     INFO PerfStats ----------------------------------------
+18:01:07 ToolSvc                                              INFO Removing all tools created by ToolSvc
+18:01:07 ToolSvc.DFCommonTruthForwardProtonTool               INFO Processed 437430 truth particles, 0 were retained
+18:01:07 ToolSvc.DFCommonTruthBSMTool                         INFO Processed 437430 truth particles, 1806 were retained
+18:01:07 ToolSvc.DFCommonTruthBosonTool                       INFO Processed 437430 truth particles, 0 were retained
+18:01:07 ToolSvc.DFCommonTruthTopTool                         INFO Processed 437430 truth particles, 0 were retained
+18:01:07 ToolSvc.DFCommonTruthBottomTool                      INFO Processed 437430 truth particles, 159 were retained
+18:01:07 ToolSvc.DFCommonTruthNeutrinoTool                    INFO Processed 437430 truth particles, 398 were retained
+18:01:07 ToolSvc.DFCommonTruthPhotonToolSim                   INFO Processed 437430 truth particles, 1217 were retained
+18:01:07 ToolSvc.DFCommonTruthElectronTool                    INFO Processed 437430 truth particles, 942 were retained
+18:01:07 ToolSvc.DFCommonTruthMuonTool                        INFO Processed 437430 truth particles, 150 were retained
+18:01:07 ToolSvc.DFCommonTruthClassificationTool              INFO Processed and decorated 437430 truth particles
+18:01:07 METRecoAlg_Truth.MET_R...MET_IntMuonsRegions_Truth   INFO Finalizing METRecoAlg_Truth.MET_RegionTool_Truth.MET_IntMuonsRegions_Truth...
+18:01:07 METRecoAlg_Truth.MET_Reg...MET_IntOutRegions_Truth   INFO Finalizing METRecoAlg_Truth.MET_RegionTool_Truth.MET_IntOutRegions_Truth...
+18:01:07 METRecoAlg_Truth.MET_Region...MET_IntRegions_Truth   INFO Finalizing METRecoAlg_Truth.MET_RegionTool_Truth.MET_IntRegions_Truth...
+18:01:07 METRecoAlg_Truth.MET_Reg...MET_NonIntRegions_Truth   INFO Finalizing METRecoAlg_Truth.MET_RegionTool_Truth.MET_NonIntRegions_Truth...
+18:01:07 METRecoAlg_Truth.MET_RegionTool_Truth                INFO Finalizing METRecoAlg_Truth.MET_RegionTool_Truth...
+18:01:07 METRecoAlg_Truth.MET_RecoTool_Truth                  INFO Finalizing METRecoAlg_Truth.MET_RecoTool_Truth...
+18:01:07 PerfMonMTSvc                                         INFO Finalizing PerfMonMTSvc
+18:01:07 *****Chrono*****                                     INFO ****************************************************************************************************
+18:01:07 *****Chrono*****                                     INFO  The Final CPU consumption ( Chrono ) Table (ordered)
+18:01:07 *****Chrono*****                                     INFO ****************************************************************************************************
+18:01:07 TRUTHD2Kernel                                        INFO Time User   : Tot=    0 [us] Ave/Min/Max=       0(+-       0)/       0/       0 [us] #=301
+18:01:07 MCTruthCommonPreJetKernelNo19                        INFO Time User   : Tot=    0 [us] Ave/Min/Max=       0(+-       0)/       0/       0 [us] #=301
+18:01:07 MCTruthCommonPostJetKernelNo3                        INFO Time User   : Tot=    0 [us] Ave/Min/Max=       0(+-       0)/       0/       0 [us] #=301
+18:01:07 MCTruthCommonPreJetKernelNo13                        INFO Time User   : Tot=    0 [us] Ave/Min/Max=       0(+-       0)/       0/       0 [us] #=301
+18:01:07 MCTruthCommonPreJetKernelNo14                        INFO Time User   : Tot=    0 [us] Ave/Min/Max=       0(+-       0)/       0/       0 [us] #=301
+18:01:07 MCTruthCommonPostJetKernelNo1                        INFO Time User   : Tot=    0 [us] Ave/Min/Max=       0(+-       0)/       0/       0 [us] #=301
+18:01:07 DFCommonTruthEDKernel                                INFO Time User   : Tot=   10 [ms] Ave/Min/Max=  0.0332(+-   0.575)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonBornLeptonsKernel                       INFO Time User   : Tot=   10 [ms] Ave/Min/Max=  0.0332(+-   0.575)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo11                        INFO Time User   : Tot=   10 [ms] Ave/Min/Max=  0.0332(+-   0.575)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo18                        INFO Time User   : Tot=   10 [ms] Ave/Min/Max=  0.0332(+-   0.575)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonBosonsAndDecaysKernel                   INFO Time User   : Tot=   10 [ms] Ave/Min/Max=  0.0332(+-   0.575)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo6                         INFO Time User   : Tot=   10 [ms] Ave/Min/Max=  0.0332(+-   0.575)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonHSCollectionKernel                      INFO Time User   : Tot=   10 [ms] Ave/Min/Max=  0.0332(+-   0.575)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonTausAndDecaysKernel                     INFO Time User   : Tot=   10 [ms] Ave/Min/Max=  0.0332(+-   0.575)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo15                        INFO Time User   : Tot=   20 [ms] Ave/Min/Max=  0.0664(+-   0.812)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo16                        INFO Time User   : Tot=   20 [ms] Ave/Min/Max=  0.0664(+-   0.812)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo10                        INFO Time User   : Tot=   20 [ms] Ave/Min/Max=  0.0664(+-   0.812)/       0/      10 [ms] #=301
+18:01:07 TauTruthCommonKernel                                 INFO Time User   : Tot=   20 [ms] Ave/Min/Max=  0.0664(+-   0.812)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo17                        INFO Time User   : Tot=   20 [ms] Ave/Min/Max=  0.0664(+-   0.812)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo3                         INFO Time User   : Tot=   20 [ms] Ave/Min/Max=  0.0664(+-   0.812)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo12                        INFO Time User   : Tot=   30 [ms] Ave/Min/Max=  0.0997(+-   0.993)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo7                         INFO Time User   : Tot=   40 [ms] Ave/Min/Max=   0.133(+-    1.15)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo8                         INFO Time User   : Tot=   40 [ms] Ave/Min/Max=   0.133(+-    1.15)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo2                         INFO Time User   : Tot=   40 [ms] Ave/Min/Max=   0.133(+-    1.15)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPostJetKernelNo2                        INFO Time User   : Tot=   50 [ms] Ave/Min/Max=   0.166(+-    1.28)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo5                         INFO Time User   : Tot=  110 [ms] Ave/Min/Max=   0.365(+-    1.88)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo9                         INFO Time User   : Tot=  110 [ms] Ave/Min/Max=   0.365(+-    1.88)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonBSMAndDecaysKernel                      INFO Time User   : Tot=  130 [ms] Ave/Min/Max=   0.432(+-    2.03)/       0/      10 [ms] #=301
+18:01:07 MCTruthNavigationDecoratorKernel                     INFO Time User   : Tot=  150 [ms] Ave/Min/Max=   0.498(+-    2.18)/       0/      10 [ms] #=301
+18:01:07 MCTruthCommonPreJetKernelNo1                         INFO Time User   : Tot= 0.87  [s] Ave/Min/Max= 0.00289(+- 0.00453)/       0/    0.01  [s] #=301
+18:01:07 MCTruthCommonPreJetKernelNo4                         INFO Time User   : Tot= 2.64  [s] Ave/Min/Max= 0.00877(+-   0.141)/       0/    2.45  [s] #=301
+18:01:07 ChronoStatSvc                                        INFO Time User   : Tot= 37.5  [s]  #=  1
+18:01:07 *****Chrono*****                                     INFO ****************************************************************************************************
+18:01:07 ChronoStatSvc.finalize()                             INFO  Service finalized successfully
+18:01:07 FPEAuditor                                           INFO FPE summary for this job
+18:01:07 FPEAuditor                                           INFO  FPE OVERFLOWs  : 0
+18:01:07 FPEAuditor                                           INFO  FPE INVALIDs   : 0
+18:01:07 FPEAuditor                                           INFO  FPE DIVBYZEROs : 0
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 PerfMonMTSvc                                         INFO                                  PerfMonMTSvc Report
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 PerfMonMTSvc                                         INFO *** Full set of information can also be found in: perfmonmt_Derivation.json
+18:01:07 PerfMonMTSvc                                         INFO *** In order to make plots using the results run the following commands:
+18:01:07 PerfMonMTSvc                                         INFO *** $ perfmonmt-plotter.py -i perfmonmt_Derivation.json
+18:01:07 PerfMonMTSvc                                         INFO *** In order to print tables using the results run the following commands:
+18:01:07 PerfMonMTSvc                                         INFO *** $ perfmonmt-printer.py -i perfmonmt_Derivation.json
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 PerfMonMTSvc                                         INFO                                 Event Level Monitoring
+18:01:07 PerfMonMTSvc                                         INFO         (Only the first 10 and the last measurements are explicitly printed)
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 PerfMonMTSvc                                         INFO Event           CPU [s]     Wall [s]    Vmem [kB]   Rss [kB]    Pss [kB]    Swap [kB]
+18:01:07 PerfMonMTSvc                                         INFO ---------------------------------------------------------------------------------------
+18:01:07 PerfMonMTSvc                                         INFO 1               6.28        10.20       1386720     853548      663236      0
+18:01:07 PerfMonMTSvc                                         INFO 229             35.50       40.28       1579028     1045636     855302      0
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 PerfMonMTSvc                                         INFO                                 Snapshots Summary
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 PerfMonMTSvc                                         INFO Step         dCPU [s]    dWall [s]   <CPU>  dVmem [kB] dRss [kB]  dPss [kB]  dSwap [kB]
+18:01:07 PerfMonMTSvc                                         INFO ---------------------------------------------------------------------------------------
+18:01:07 PerfMonMTSvc                                         INFO Configure    4.69621     8.079       0.58   837312     671776     484739     0
+18:01:07 PerfMonMTSvc                                         INFO Initialize   1.44192     1.961       0.74   479088     170192     166953     0
+18:01:07 PerfMonMTSvc                                         INFO FirstEvent   3.34774     3.924       0.85   237036     173140     173082     0
+18:01:07 PerfMonMTSvc                                         INFO Execute      34.2706     34.658      0.99   29160      29516      29516      0
+18:01:07 PerfMonMTSvc                                         INFO Finalize     0.049705    0.05        0.99   0          304        304        0
+18:01:07 PerfMonMTSvc                                         INFO ***************************************************************************************
+18:01:07 PerfMonMTSvc                                         INFO Number of events processed:        301
+18:01:07 PerfMonMTSvc                                         INFO CPU usage per event [ms]:          125
+18:01:07 PerfMonMTSvc                                         INFO Events per second:                 7.802
+18:01:07 PerfMonMTSvc                                         INFO CPU utilization efficiency [%]:    90
+18:01:07 PerfMonMTSvc                                         INFO ***************************************************************************************
+18:01:07 PerfMonMTSvc                                         INFO Max Vmem:                          1.51 GB
+18:01:07 PerfMonMTSvc                                         INFO Max Rss:                           1021.13 MB
+18:01:07 PerfMonMTSvc                                         INFO Max Pss:                           835.26 MB
+18:01:07 PerfMonMTSvc                                         INFO Max Swap:                          0.00 KB
+18:01:07 PerfMonMTSvc                                         INFO ***************************************************************************************
+18:01:07 PerfMonMTSvc                                         INFO Leak estimate per event Vmem:      0.00 KB
+18:01:07 PerfMonMTSvc                                         INFO Leak estimate per event Pss:       0.00 KB
+18:01:07 PerfMonMTSvc                                         INFO   >> Estimated using the last 1 measurements from the Event Level Monitoring
+18:01:07 PerfMonMTSvc                                         INFO   >> Events prior to the first 25 are omitted...
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 PerfMonMTSvc                                         INFO                                   System Information
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 PerfMonMTSvc                                         INFO CPU Model:                         AMD EPYC 9754 128-Core Processor 1024 KB
+18:01:07 PerfMonMTSvc                                         INFO Number of Available Cores:         512
+18:01:07 PerfMonMTSvc                                         INFO Total Memory:                      2.21 TB
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 PerfMonMTSvc                                         INFO                                Environment Information
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 PerfMonMTSvc                                         INFO Malloc Library:                    libtcmalloc_minimal.so
+18:01:07 PerfMonMTSvc                                         INFO Math Library:                      libimf.so
+18:01:07 PerfMonMTSvc                                         INFO =======================================================================================
+18:01:07 ApplicationMgr                                       INFO Application Manager Finalized successfully
+18:01:07 ApplicationMgr                                       INFO Application Manager Terminated successfully
+18:01:07 leaving with code 0: "successful run"
