@@ -75,7 +75,7 @@ jobs:
         with:
           job: ${{ github.job }}
           log-file: log.generate
-          log-type: athena
+          log-type: evnt
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
@@ -112,7 +112,7 @@ jobs:
         with:
           job: ${{ github.job }}
           log-file: log.generate
-          log-type: athena
+          log-type: evnt
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
@@ -149,7 +149,7 @@ jobs:
         with:
           job: ${{ github.job }}
           log-file: log.generate
-          log-type: athena
+          log-type: evnt
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
@@ -186,7 +186,7 @@ jobs:
         with:
           job: ${{ github.job }}
           log-file: log.Derivation
-          log-type: athena
+          log-type: truth3
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
@@ -223,7 +223,7 @@ jobs:
         with:
           job: ${{ github.job }}
           log-file: log.Derivation
-          log-type: athena
+          log-type: truth3
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
@@ -260,7 +260,7 @@ jobs:
         with:
           job: ${{ github.job }}
           log-file: log.EVNTtoDAOD
-          log-type: athena
+          log-type: truth3
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
