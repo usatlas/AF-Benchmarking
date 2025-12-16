@@ -24,7 +24,7 @@ export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 # shellcheck disable=SC1091
 source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c ${OS_container} -m /global/cfs/cdirs/m2616/selbor -r "asetup AthGeneration,23.6.34,here && \
   date +'%Y.%m.%d.%H.%S' >> split.log &&\
-  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed} 2>&1 | tee pipe_file.log &&\
+  Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=1000 --randomSeed=${seed} 2>&1 | tee pipe_file.log &&\
   date +'%Y.%m.%d.%H.%S' >> split.log"
 
 rm -r evnt_el9/

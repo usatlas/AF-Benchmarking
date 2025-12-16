@@ -15,7 +15,7 @@ asetup AthGeneration,23.6.34,here
 # Appends time before Gen_tf.py to log file
 date +'%H:%H:%S' >> split.log
 
-Gen_tf.py --ecmEnergy=13000.0 --jobConfig=/atlasgpfs01/usatlas/data/jroblesgo/EVNTJob/native/EVNTFiles/100xxx/100001/  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed} 2>&1 | tee pipe_file.log
+Gen_tf.py --ecmEnergy=13000.0 --jobConfig=/atlasgpfs01/usatlas/data/jroblesgo/EVNTJob/native/EVNTFiles/100xxx/100001/  --outputEVNTFile=EVNT.root --maxEvents=1000 --randomSeed=${seed} 2>&1 | tee pipe_file.log
 
 # Appends time after Gen_tf.py to log file
 date +'%H:%H:%S' >> split.log

@@ -21,7 +21,7 @@ date +'%H:%H:%S' >> split.log
 ## -r : precedes the commands we want to run within the container
 # shellcheck disable=SC1091
 source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c "${OS_container}" -r "asetup AthGeneration,23.6.34,here && \
-Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=10000 --randomSeed=${seed} 2>&1 | tee pipe_file.log"
+Gen_tf.py --ecmEnergy=13000.0 --jobConfig=${config_dir}  --outputEVNTFile=EVNT.root --maxEvents=1000 --randomSeed=${seed} 2>&1 | tee pipe_file.log"
 
 # Appends time after Gen_tf.py to a log file
 {
