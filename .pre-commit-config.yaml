@@ -58,7 +58,7 @@ repos:
     rev: "v2.4.1"
     hooks:
       - id: codespell
-        exclude: ".+.ipynb"
+        exclude: ^.+.ipynb|log.generate$
         args: ["-w", "-L", "SLAC,checkin,slac"]
 
   - repo: https://github.com/shellcheck-py/shellcheck-py
