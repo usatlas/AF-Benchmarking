@@ -47,6 +47,11 @@
       "description": "Size of payload in bytes",
       "minimum": 0
     },
+    "frequency": {
+      "type": "number",
+      "description": "Frequency or event processing rate (kHz)",
+      "minimum": 0
+    },
     "status": {
       "type": "integer",
       "description": "Job exit status (0 = success, non-zero = failure)",
