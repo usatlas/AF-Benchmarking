@@ -4,9 +4,11 @@
 curr_time=$(date +"%Y.%m.%dT%H")
 
 
+echo "::group::setupATLAS"
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 # shellcheck disable=SC1091
 source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
+echo "::endgroup::"
 lsetup "views LCG_107a_ATLAS_2 x86_64-el9-gcc13-opt"
 
 # Getting start date

@@ -3,9 +3,11 @@
 yml_dir="${GITHUB_WORKSPACE}/NTuple_Hist/fastframes/UC/"
 
 # Sets up our working environment
+echo "::group::setupATLAS"
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
 # shellcheck disable=SC1091
 source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
+echo "::endgroup::"
 
 # Set up for FastFrames
 asetup StatAnalysis,0.6.3

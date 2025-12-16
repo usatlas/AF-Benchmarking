@@ -32,10 +32,12 @@ native_el9 () {
   # - output_dir
   # - job_dir
   # - download_ID
+  echo "::group::setupATLAS"
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   export ALRB_localConfigDir="$HOME"/localConfig
 # shellcheck disable=SC1091
   source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
+  echo "::endgroup::"
   lsetup emi "rucio -w"
   printf "%s" "${VOMS_PASSWORD}" | voms-proxy-init -voms atlas
   mkdir -p "${1}"
