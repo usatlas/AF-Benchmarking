@@ -409,6 +409,11 @@ jobs:
         env:
           VOMS_PASSWORD: ${{ secrets.VOMS_PASSWORD }}
 
+      - name: print
+        run: |
+          tree .
+          find . -name "*.root"
+
       - name: parse benchmark log
         if: always()
         uses: ./.github/actions/parse
