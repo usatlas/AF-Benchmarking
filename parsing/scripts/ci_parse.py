@@ -16,7 +16,13 @@ from rich.syntax import Syntax
 # Add parent directory to path to import parsing modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from handlers import rucio_parser, coffea_parser, fastframes_parser
+from handlers import (
+    rucio_parser,
+    coffea_parser,
+    fastframes_parser,
+    truth3_parser,
+    evnt_parser,
+)
 
 # Initialize rich console
 console = Console()
@@ -64,16 +70,10 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host):
     # Parse based on log type
     if log_type == "rucio":
         data = rucio_parser.parse_rucio_log(log_path)
-    elif log_type == "athena":
-        # Placeholder for athena parser
-        # TODO: Implement athena log parsing
-        data = {
-            "submitTime": 0,
-            "queueTime": 0,
-            "runTime": 0,
-            "payloadSize": 0,
-            "status": 0,
-        }
+    elif log_type == "evnt":
+        data = evnt_parser.parser_evnt_log(log_path)
+    elif log_type == "truth3":
+        data = truth3_parser.parser_truth3_log(log_path)
     elif log_type == "coffea":
         data = coffea_parser.parse_coffea_log(log_path)
     elif log_type == "eventloop":
