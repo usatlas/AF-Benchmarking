@@ -15,6 +15,6 @@ source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c el9 -m /data -r "ls
 python3.9 ${GITHUB_WORKSPACE}/NTuple_Hist/coffea/UC/example.py  2>&1 | tee coffea_hist.log"
 
 {
-  date+'%H:%M:%S'
+  date +'%H:%M:%S'
   hostname
 } >> split.log

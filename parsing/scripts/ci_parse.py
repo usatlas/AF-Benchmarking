@@ -71,9 +71,9 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host):
     if log_type == "rucio":
         data = rucio_parser.parse_rucio_log(log_path)
     elif log_type == "evnt":
-        data = evnt_parser.parser_evnt_log(log_path)
+        data = evnt_parser.parse_evnt_log(log_path)
     elif log_type == "truth3":
-        data = truth3_parser.parser_truth3_log(log_path)
+        data = truth3_parser.parse_truth3_log(log_path)
     elif log_type == "coffea":
         data = coffea_parser.parse_coffea_log(log_path)
     elif log_type == "eventloop":
