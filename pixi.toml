@@ -52,6 +52,9 @@ idna = ">=3.11,<4"
 rich = ">=14.2.0,<15"
 pytest = ">=9.0.2,<10"
 
+[feature.kibana.tasks]
+test = "pytest parsing/tests/"
+
 [environments]
 docs = ["docs"]
 kibana = ["kibana"]
