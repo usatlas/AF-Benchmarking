@@ -24,7 +24,7 @@ jobs:
           voms-usercert: ${{ secrets.VOMS_USERCERT }}
           voms-userkey: ${{ secrets.VOMS_USERKEY }}
 
-  test-parser:
+  test-handlers:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -38,3 +38,48 @@ jobs:
 
       - name: Run parser tests
         run: pixi run -e kibana test
+
+  test-parser:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        log-file:
+          - "log.Derivation"
+          - "coffea_hist.log"
+          - "eventloop_arrays.log"
+          - "rucio.log"
+          - "log.generate"
+          - "ff.log"
+          - "eventloop_noarrays.log"
+        log-type:
+          - "truth3"
+          - "coffea"
+          - "eventloop"
+          - "rucio"
+          - "evnt"
+          - "fastframes"
+          - "eventloop"
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: prefix-dev/setup-pixi@v0.9.3
+        with:
+          pixi-version: v0.49.0
+          environments: kibana
+
+      - name: parse ${{ matrix.log-type }} log
+        uses: ./.github/actions/parse
+        with:
+          job: ${{ matrix.log-type }}
+          log-file: log.generate
+          log-type: ${{ matrix.log-type }}
+          cluster: UC-AF
+          kibana-token: "our-token"
+          kibana-kind: "our-index"
+          host: "our-host"
+          os: alma9
+          mode: batch
+          containerized: "false"
