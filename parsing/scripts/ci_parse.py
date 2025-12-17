@@ -13,10 +13,7 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.syntax import Syntax
 
-# Add parent directory to path to import parsing modules
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from handlers import (
+from parsing.handlers import (
     rucio_parser,
     coffea_parser,
     fastframes_parser,
