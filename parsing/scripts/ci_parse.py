@@ -19,6 +19,7 @@ from parsing.handlers import (
     fastframes_parser,
     truth3_parser,
     evnt_parser,
+    eventloop_parser,
 )
 
 # Initialize rich console
@@ -86,14 +87,7 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host, payload_file)
     elif log_type == "coffea":
         data = coffea_parser.parse_coffea_log(log_path)
     elif log_type == "eventloop":
-        # Placeholder for eventloop parser
-        # TODO: Implement eventloop log parsing
-        data = {
-            "submitTime": 0,
-            "queueTime": 0,
-            "runTime": 0,
-            "status": 0,
-        }
+        data = eventloop_parser.parse_eventloop_log(log_path)
     elif log_type == "fastframes":
         data = fastframes_parser.parse_fastframes_log(log_path)
     else:
