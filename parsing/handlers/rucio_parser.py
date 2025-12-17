@@ -2,13 +2,9 @@ from collections import deque
 import re
 import datetime as dt
 
-from rich.console import Console
-
 ANSI_ESCAPE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
 
 date_format = "%Y-%m-%d %H:%M:%S"
-
-console = Console()
 
 
 # Strips the text of its green color
@@ -17,7 +13,7 @@ def strip_ansi(text):
 
 
 def parse_rucio_log(path):
-    console.print(f"[bold yellow][Rucio][/bold yellow] Parsing {path.name}")
+    print(f"Rucio Parsing {path.name}")
 
     first_line = None
     last_lines = deque(maxlen=12)
