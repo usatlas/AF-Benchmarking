@@ -44,27 +44,20 @@ jobs:
     strategy:
       matrix:
         include:
-          - log-file: "log.Derivation"
-            log-type: "truth3"
-            job-name: "truth3"
           - log-file: "coffea_hist.log"
             log-type: "coffea"
-            job-name: "coffea"
           - log-file: "eventloop_arrays.log"
             log-type: "eventloop"
-            job-name: "eventloop-columnar"
-          - log-file: "rucio.log"
-            log-type: "rucio"
-            job-name: "rucio"
-          - log-file: "log.generate"
-            log-type: "evnt"
-            job-name: "evnt"
-          - log-file: "ff.log"
-            log-type: "fastframes"
-            job-name: "fastframes"
           - log-file: "eventloop_noarrays.log"
             log-type: "eventloop"
-            job-name: "eventloop-standard"
+          - log-file: "log.generate"
+            log-type: "evnt"
+          - log-file: "ff.log"
+            log-type: "fastframes"
+          - log-file: "rucio.log"
+            log-type: "rucio"
+          - log-file: "log.Derivation"
+            log-type: "truth3"
 
     steps:
       - uses: actions/checkout@v6
@@ -74,7 +67,7 @@ jobs:
       - name: parse ${{ matrix.log-type }} log
         uses: ./.github/actions/parse
         with:
-          job: ${{ matrix.job-name }}
+          job: ${{ matrix.log-type }}
           log-file: parsing/example-logs/${{ matrix.log-file }}
           log-type: ${{ matrix.log-type }}
           cluster: UC-AF
