@@ -32,7 +32,7 @@ def parse_fastframes_log(path):
     combined = f"{date} {time}"
 
     # It was submitted to the batch so it's in UTC TimeZone already
-    dt_obj = dt.datetime.strptime(combined, "%d-%m-%Y %H:%M:%S")
+    dt_obj = dt.datetime.strptime(combined, "%d-%m-%Y %H:%M:%S").replace(tzinfo=dt.timezone.utc)
     utc_timestamp = int(dt_obj.timestamp() * 1000)
 
     run_time = int(elapsed_to_seconds(elapsed_time))

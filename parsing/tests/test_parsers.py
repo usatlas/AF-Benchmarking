@@ -29,7 +29,8 @@ class TestTruth3Parser:
 
         # Validate actual values from example log (not just key existence)
         # These expected values come from running parser on example log
-        assert result["submitTime"] == 1765245619000, "Submit time mismatch"
+        # Timestamps are in UTC (logs are from UTC timezone systems)
+        assert result["submitTime"] == 1765216819000, "Submit time mismatch"
         assert result["queueTime"] == 0, "Queue time should be 0"
         assert result["runTime"] == 48, "Runtime should be 48 seconds"
         assert result["status"] == 0, "Status should be 0 (success)"
@@ -44,7 +45,8 @@ class TestEvntParser:
         result = parse_evnt_log(log_file)
 
         # Validate actual values to catch calculation regressions
-        assert result["submitTime"] == 1765245648000, "Submit time mismatch"
+        # Timestamps are in UTC (logs are from UTC timezone systems)
+        assert result["submitTime"] == 1765216848000, "Submit time mismatch"
         assert result["queueTime"] == 0, "Queue time should be 0"
         assert result["runTime"] == 2418, "Runtime should be 2418 seconds"
         assert result["status"] == 0, "Status should be 0 (success)"
@@ -59,7 +61,8 @@ class TestRucioParser:
         result = parse_rucio_log(log_file)
 
         # Check actual parsed values
-        assert result["submitTime"] == 1765245622000, "Submit time mismatch"
+        # Timestamps are in UTC (logs are from UTC timezone systems)
+        assert result["submitTime"] == 1765216822000, "Submit time mismatch"
         assert result["queueTime"] == 0, "Queue time should be 0"
         assert result["runTime"] == 31, "Runtime should be 31 seconds"
         assert result["status"] == 0, "Status should be 0 (success)"
@@ -74,7 +77,8 @@ class TestFastFramesParser:
         result = parse_fastframes_log(log_file)
 
         # Check actual parsed values including frequency
-        assert result["submitTime"] == 1765245967000, "Submit time mismatch"
+        # Timestamps are in UTC (logs are from UTC timezone systems)
+        assert result["submitTime"] == 1765217167000, "Submit time mismatch"
         assert result["queueTime"] == 0, "Queue time should be 0"
         assert result["runTime"] == 345, "Runtime should be 345 seconds"
         assert result["frequency"] == 53, "Frequency should be 53"

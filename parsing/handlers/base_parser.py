@@ -61,19 +61,19 @@ def parse_atlas_log(path, log_name="ATLAS"):
         day = int(start_datetime_list[3])
         submit_time = dt.datetime.strptime(start_datetime_list[4], "%H:%M:%S").time()
 
-    # Build datetime objects
+    # Build datetime objects (explicitly UTC to avoid local timezone interpretation)
     start_date_object = dt.date(year, month, day)
     start_time = dt.datetime.strptime(start_datetime_list[0], "%H:%M:%S").time()
-    start_datetime_object = dt.datetime.combine(start_date_object, start_time)
+    start_datetime_object = dt.datetime.combine(start_date_object, start_time, tzinfo=dt.timezone.utc)
     utc_timestamp = int(start_datetime_object.timestamp()) * 1000
 
     # Calculate queue time
-    submit_datetime_object = dt.datetime.combine(start_datetime_object, submit_time)
+    submit_datetime_object = dt.datetime.combine(start_date_object, submit_time, tzinfo=dt.timezone.utc)
     queue_time = int((start_datetime_object - submit_datetime_object).total_seconds())
 
     # Calculate run time
     end_time = dt.datetime.strptime(end_time_list[0], "%H:%M:%S").time()
-    end_datetime_object = dt.datetime.combine(start_date_object, end_time)
+    end_datetime_object = dt.datetime.combine(start_date_object, end_time, tzinfo=dt.timezone.utc)
     run_time = int((end_datetime_object - start_datetime_object).total_seconds())
 
     status = 0
