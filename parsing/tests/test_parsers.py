@@ -84,7 +84,9 @@ class TestFastFramesParser:
 class TestCoffeaParser:
     """Tests for Coffea analysis log parser."""
 
-    @pytest.mark.skip(reason="Coffea parser depends on split.log which is not in example-logs")
+    @pytest.mark.skip(
+        reason="Coffea parser depends on split.log which is not in example-logs"
+    )
     def test_parse_coffea_example_log(self):
         """Test parsing of example Coffea log."""
         log_file = EXAMPLE_LOGS / "coffea_hist.log"
