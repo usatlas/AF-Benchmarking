@@ -24,10 +24,12 @@ printf "\n"
 echo "::endgroup::"
 
 # Getting the date and time after running script
+echo "::group::Collect Metrics"
 date >> split.log
 
 # Getting the host-machine's name
 hostname >> split.log
+echo "::endgroup::"
 
 # Directory that needs to be cleaned
 cleanup_dir="/home/selbor/ntuple/fastframes"

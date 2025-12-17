@@ -17,16 +17,21 @@ date +'%H:%H:%S' >> split.log
 
 # Sets the Athena version we want
 asetup Athena,24.0.53,here
+
+echo "::group::TRUTH3 Derivation"
 Derivation_tf.py --CA True --inputEVNTFile "${config_dir}" --outputDAODFile=TRUTH3.root --formats TRUTH3 2>&1 | tee pipe_file.log
+echo "::endgroup::"
 
 # Appends time after Derivation_tf.py to a log file
 date +'%H:%H:%S' >> split.log
 
 
 # Obtains and appends the host machine and payload size to the log file
+echo "::group::Collect Metrics"
 {
   date +'%H:%M:%S'
   echo "Starting job"
   hostname
   du DAOD_TRUTH3.TRUTH3.root
 } >> split.log
+echo "::endgroup::"

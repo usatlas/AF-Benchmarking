@@ -14,7 +14,9 @@ source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c el9 -m /data -r "ls
   pip3 install atlas_schema &&\
 python3.9 ${GITHUB_WORKSPACE}/NTuple_Hist/coffea/UC/example.py  2>&1 | tee coffea_hist.log"
 
+echo "::group::Collect Metrics"
 {
   date +'%H:%M:%S'
   hostname
 } >> split.log
+echo "::endgroup::"
