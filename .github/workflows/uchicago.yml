@@ -48,7 +48,7 @@ jobs:
           containerized: "false"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
@@ -88,7 +88,7 @@ jobs:
           containerized: "false"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
@@ -128,7 +128,7 @@ jobs:
           containerized: "true"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
@@ -168,7 +168,7 @@ jobs:
           containerized: "true"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
@@ -208,7 +208,7 @@ jobs:
           containerized: "false"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
@@ -248,7 +248,7 @@ jobs:
           containerized: "true"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
@@ -288,7 +288,7 @@ jobs:
           containerized: "true"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
@@ -329,7 +329,7 @@ jobs:
           containerized: "true"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
@@ -369,7 +369,7 @@ jobs:
           containerized: "false"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
@@ -409,7 +409,7 @@ jobs:
           containerized: "false"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
@@ -456,7 +456,7 @@ jobs:
           containerized: "false"
 
       - name: upload to kibana
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         uses: ./.github/actions/upload
         with:
           payload-file: payload.json
