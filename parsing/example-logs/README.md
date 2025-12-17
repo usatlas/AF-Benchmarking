@@ -14,10 +14,17 @@ execution time and event processing rate (~57.6 kHz).
 
 ### eventloop_arrays.log
 
-Event loop processing log from an ATLAS analysis reading `.ANALYSIS.root` files.
-Processes Wmunugamma (DSID 700402) Monte Carlo samples file-by-file, reporting
-progress every 50,000 events. Output is written to
-`event_loop_output_hist.root`.
+Event loop processing log using columnar (array-based) data access. Processes
+Wmunugamma (DSID 700402) Monte Carlo samples from `.ANALYSIS.root` files,
+reporting progress every 50,000 events. Achieves ~37.8 kHz event processing
+rate. Output is written to `event_loop_output_hist.root`.
+
+### eventloop_noarrays.log
+
+Event loop processing log using scalar (non-array) data access. Processes the
+same Wmunugamma (DSID 700402) Monte Carlo samples as `eventloop_arrays.log` but
+without columnar optimizations, resulting in ~20.2 kHz event processing rate.
+Useful for comparing array vs scalar performance in event loop analyses.
 
 ### ff.log
 
