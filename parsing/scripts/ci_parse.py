@@ -177,6 +177,9 @@ def main():
             args.kind,
             args.host,
             args.payload_file,
+            args.os,
+            args.mode,
+            args.containerized,
         )
 
         # Validate payload against schema

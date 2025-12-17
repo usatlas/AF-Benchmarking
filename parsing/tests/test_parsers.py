@@ -72,7 +72,7 @@ class TestFastFramesParser:
 
     def test_parse_fastframes_example_log(self):
         """Test parsing of example FastFrames log."""
-        log_file = EXAMPLE_LOGS / "ff.log"
+        log_file = EXAMPLE_LOGS / "fastframes.log"
         result = parse_fastframes_log(log_file)
 
         # Check actual parsed values including frequency
