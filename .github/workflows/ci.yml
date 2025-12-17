@@ -52,7 +52,7 @@ jobs:
             log-type: "eventloop"
           - log-file: "log.generate"
             log-type: "evnt"
-          - log-file: "ff.log"
+          - log-file: "fastframes.log"
             log-type: "fastframes"
           - log-file: "rucio.log"
             log-type: "rucio"
