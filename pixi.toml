@@ -50,6 +50,7 @@ elasticsearch = ">=8.0.0,<9"
 jsonschema = ">=4.25.1,<5"
 idna = ">=3.11,<4"
 rich = ">=14.2.0,<15"
+pytest = ">=9.0.2,<10"
 
 [environments]
 docs = ["docs"]
