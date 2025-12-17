@@ -88,16 +88,15 @@ class TestFastFramesParser:
 class TestCoffeaParser:
     """Tests for Coffea analysis log parser."""
 
-    @pytest.mark.skip(
-        reason="Coffea parser depends on split.log which is not in example-logs"
-    )
     def test_parse_coffea_example_log(self):
         """Test parsing of example Coffea log."""
         log_file = EXAMPLE_LOGS / "coffea_hist.log"
         result = parse_coffea_log(log_file)
 
-        # Placeholder - to be filled when split.log dependency is resolved
-        assert "submitTime" in result
-        assert "runTime" in result
-        assert "status" in result
-        assert "frequency" in result
+        # Check actual parsed values including frequency
+        # Timestamps are in UTC (parsed from ISO 8601 format with Z suffix)
+        assert result["submitTime"] == 1765932487953, "Submit time mismatch"
+        assert result["queueTime"] == 0, "Queue time should be 0"
+        assert result["runTime"] == 205, "Runtime should be 205 seconds"
+        assert result["frequency"] == 89, "Frequency should be 89 kHz"
+        assert result["status"] == 0, "Status should be 0 (success)"

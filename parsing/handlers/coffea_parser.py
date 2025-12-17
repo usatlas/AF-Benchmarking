@@ -1,48 +1,52 @@
-from pathlib import Path
 import datetime as dt
-
-MONTH_DICT = {
-    "Jan": "01",
-    "Feb": "02",
-    "Mar": "03",
-    "Apr": "04",
-    "May": "05",
-    "Jun": "06",
-    "Jul": "07",
-    "Aug": "08",
-    "Sep": "09",
-    "Oct": "10",
-    "Nov": "11",
-    "Dec": "12",
-}
 
 
 def parse_coffea_log(path):
+    """Parse Coffea analysis log file for timing information.
+
+    Args:
+        path: Path to coffea_hist.log file
+
+    Returns:
+        dict: Parsed timing data with keys:
+            - submitTime: UTC timestamp in milliseconds
+            - queueTime: Queue time in seconds (always 0)
+            - runTime: Execution time in seconds
+            - frequency: Processing frequency in kHz
+            - status: Exit status (0 = success)
+    """
     print(f"[Coffea NTuple->Hist] Parsing {path.name}")
+
     with open(path) as f:
         file_lines = f.readlines()
-    line_list = file_lines[1].split(" ")
 
+    # Parse execution time and frequency from line 2
+    # Format: "... execution time: 205.45 s ( 89.10 kHz)"
+    line_list = file_lines[1].split(" ")
     run_time = round(float(line_list[3]))
     frequency = round(float(line_list[-2]))
-    new_path = str(path).replace("coffea_hist.log", "split.log")
-    new_path = Path(new_path)
-    with open(new_path) as g:
-        file_lines = g.readlines()
-        start_datetime_list = file_lines[0].split(" ")
-    year = int(start_datetime_list[-1])
-    month = int(MONTH_DICT[start_datetime_list[1]])
-    if len(start_datetime_list) == 6:
-        day = int(start_datetime_list[2])
-        start_time = start_datetime_list[3]
-        start_time = dt.datetime.strptime(start_time, "%H:%M:%S").time()
-    else:
-        day = int(start_datetime_list[3])
-        start_time = start_datetime_list[4]
-        start_time = dt.datetime.strptime(start_time, "%H:%M:%S").time()
-    start_date_object = dt.date(year, month, day)
-    start_datetime_object = dt.datetime.combine(start_date_object, start_time)
-    utc_timestamp = int(start_datetime_object.timestamp()) * 1000
+
+    # Parse UTC timestamps from end of file
+    # Format: "start_time_utc=2025-12-17T00:48:07.953454Z"
+    start_time_line = None
+    end_time_line = None
+
+    for line in file_lines:
+        if line.startswith("start_time_utc="):
+            start_time_line = line.strip()
+        elif line.startswith("end_time_utc="):
+            end_time_line = line.strip()
+
+    if not start_time_line:
+        raise ValueError("No start_time_utc found in log file")
+
+    # Extract timestamp string after the = sign
+    start_time_str = start_time_line.split("=")[1]
+
+    # Parse ISO 8601 format with Z suffix (UTC)
+    # Format: 2025-12-17T00:48:07.953454Z
+    start_dt = dt.datetime.fromisoformat(start_time_str.rstrip("Z")).replace(tzinfo=dt.timezone.utc)
+    utc_timestamp = int(start_dt.timestamp() * 1000)
 
     status = 0
 
