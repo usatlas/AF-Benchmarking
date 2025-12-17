@@ -1,19 +1,30 @@
-name: test
+name: ci
 
 on:
+  push:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
-  test:
+  test-actions:
+    runs-on: arc-runner-set-uchicago
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-globus
+        with:
+          voms-usercert: ${{ secrets.VOMS_USERCERT }}
+          voms-userkey: ${{ secrets.VOMS_USERKEY }}
+
+  test-parser:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
