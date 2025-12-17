@@ -1,7 +1,7 @@
 import datetime as dt
 
 
-def parse_eventloop_columnar_log(path):
+def parse_eventloop_log(path):
     print(f"[EventLoop] Parsing {path.name}")
 
     with open(path) as f:
@@ -34,4 +34,4 @@ def parse_eventloop_columnar_log(path):
 
 # Registers this parsing script with the Class
 def register(parser):
-    parser.register_parsers("eventloop_arrays.log", parse_eventloop_columnar_log)
+    parser.register_parsers("eventloop_arrays.log", parse_eventloop_log)
