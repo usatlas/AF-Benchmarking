@@ -13,7 +13,7 @@ date >> split.log
 
 
 # Running the script
-python3 "${GITHUB_WORKSPACE}"/NTuple_Hist/event_loop/UC/event_loop_noarrays.py 2>&1 | tee eventloop_noarrays.log
+python3 "${GITHUB_WORKSPACE}"/NTuple_Hist/event_loop/UC/standard/event_loop_noarrays.py 2>&1 | tee eventloop_noarrays.log
 
 # Getting end date
 date >> split.log
