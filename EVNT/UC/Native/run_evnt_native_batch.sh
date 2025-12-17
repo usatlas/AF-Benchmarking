@@ -20,11 +20,16 @@ date +'%H:%H:%S' >> split.log
 
 # Sets up the Ath* version
 asetup AthGeneration,23.6.34,here
+
+echo "::group::EVNT Generation"
 Gen_tf.py --ecmEnergy=13000.0 --jobConfig="${config_dir}"  --outputEVNTFile=EVNT.root --maxEvents="${max_events}" --randomSeed="${seed}" 2>&1 | tee pipe_file.log
+echo "::endgroup::"
 
 # Appends time after Gen_tf.py to a log file
+echo "::group::Collect Metrics"
 {
   date +'%H:%M:%S'
   hostname
   du EVNT.root
 } >> split.log
+echo "::endgroup::"
