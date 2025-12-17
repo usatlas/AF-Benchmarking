@@ -43,22 +43,28 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        log-file:
-          - "log.Derivation"
-          - "coffea_hist.log"
-          - "eventloop_arrays.log"
-          - "rucio.log"
-          - "log.generate"
-          - "ff.log"
-          - "eventloop_noarrays.log"
-        log-type:
-          - "truth3"
-          - "coffea"
-          - "eventloop"
-          - "rucio"
-          - "evnt"
-          - "fastframes"
-          - "eventloop"
+        include:
+          - log-file: "log.Derivation"
+            log-type: "truth3"
+            job-name: "truth3"
+          - log-file: "coffea_hist.log"
+            log-type: "coffea"
+            job-name: "coffea"
+          - log-file: "eventloop_arrays.log"
+            log-type: "eventloop"
+            job-name: "eventloop-columnar"
+          - log-file: "rucio.log"
+            log-type: "rucio"
+            job-name: "rucio"
+          - log-file: "log.generate"
+            log-type: "evnt"
+            job-name: "evnt"
+          - log-file: "ff.log"
+            log-type: "fastframes"
+            job-name: "fastframes"
+          - log-file: "eventloop_noarrays.log"
+            log-type: "eventloop"
+            job-name: "eventloop-standard"
 
     steps:
       - uses: actions/checkout@v6
@@ -73,8 +79,8 @@ jobs:
       - name: parse ${{ matrix.log-type }} log
         uses: ./.github/actions/parse
         with:
-          job: ${{ matrix.log-type }}
-          log-file: log.generate
+          job: ${{ matrix.job-name }}
+          log-file: parsing/example-logs/${{ matrix.log-file }}
           log-type: ${{ matrix.log-type }}
           cluster: UC-AF
           kibana-token: "our-token"
