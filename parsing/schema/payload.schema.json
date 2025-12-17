@@ -12,6 +12,9 @@
     "payloadSize",
     "status",
     "host",
+    "os",
+    "mode",
+    "containerized",
     "token",
     "kind"
   ],
@@ -62,6 +65,20 @@
       "description": "Hostname where the job executed",
       "format": "idn-hostname",
       "minLength": 1
+    },
+    "os": {
+      "type": "string",
+      "description": "Operating System for the job",
+      "enum": ["centos7", "alma9"]
+    },
+    "mode": {
+      "type": "string",
+      "description": "Mode of the job - batch or interactive",
+      "enum": ["batch", "interactive"]
+    },
+    "containerized": {
+      "type": "boolean",
+      "description": "Whether the job runs within a 'setupATLAS -c' container"
     },
     "token": {
       "type": "string",

@@ -43,7 +43,19 @@ def validate_payload(data):
     jsonschema.validate(instance=data, schema=PAYLOAD_SCHEMA)
 
 
-def parse_log(log_file, log_type, job, cluster, token, kind, host, payload_file):
+def parse_log(
+    log_file,
+    log_type,
+    job,
+    cluster,
+    token,
+    kind,
+    host,
+    payload_file,
+    os,
+    mode,
+    containerized,
+):
     """
     Parse log file and return data dictionary.
 
@@ -56,6 +68,9 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host, payload_file)
         kind: Kibana kind for routing
         host: Hostname where job executed
         payload_file: Path to payload file for size calculation (empty string if not provided)
+        os: Operating system (centos7 or alma9)
+        mode: Job mode (batch or interactive)
+        containerized: Whether job runs in setupATLAS -c container (boolean)
 
     Returns:
         Dictionary with benchmark data
@@ -106,6 +121,9 @@ def parse_log(log_file, log_type, job, cluster, token, kind, host, payload_file)
     data["token"] = token
     data["kind"] = kind
     data["host"] = host
+    data["os"] = os
+    data["mode"] = mode
+    data["containerized"] = containerized
 
     return data
 
@@ -125,6 +143,24 @@ def main():
         "--payload-file",
         default="",
         help="Path to payload file for size calculation (optional)",
+    )
+    parser.add_argument(
+        "--os",
+        required=True,
+        choices=["centos7", "alma9"],
+        help="Operating system",
+    )
+    parser.add_argument(
+        "--mode",
+        required=True,
+        choices=["batch", "interactive"],
+        help="Mode of job (batch or interactive)",
+    )
+    parser.add_argument(
+        "--containerized",
+        required=True,
+        type=lambda x: x.lower() == "true",
+        help="Whether job is containerized (true/false)",
     )
     parser.add_argument(
         "--output", default="payload.json", help="Output JSON file path"

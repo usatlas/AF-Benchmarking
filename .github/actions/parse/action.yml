@@ -28,6 +28,15 @@ inputs:
     description: "Path to payload file for size calculation (optional)"
     required: false
     default: ""
+  os:
+    description: "Operating system (centos7 or alma9)"
+    required: true
+  mode:
+    description: "Job mode (batch or interactive)"
+    required: true
+  containerized:
+    description: "Whether job runs in setupATLAS -c container (true/false)"
+    required: true
   output-file:
     description: "Output JSON file path"
     required: false
@@ -59,4 +68,7 @@ runs:
           --kind "${{ inputs.kibana-kind }}" \
           --host "${{ inputs.host }}" \
           --payload-file "${{ inputs.payload-file }}" \
+          --os "${{ inputs.os }}" \
+          --mode "${{ inputs.mode }}" \
+          --containerized "${{ inputs.containerized }}" \
           --output "${{ inputs.output-file }}"

@@ -36,13 +36,16 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: rucio
           log-file: rucio.log
           log-type: rucio
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          os: alma9
+          mode: batch
+          containerized: "false"
 
       - name: upload to kibana
         if: always()
@@ -73,13 +76,16 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: evnt
           log-file: log.generate
           log-type: evnt
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          os: alma9
+          mode: batch
+          containerized: "false"
 
       - name: upload to kibana
         if: always()
@@ -110,13 +116,16 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: evnt
           log-file: log.generate
           log-type: evnt
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          os: alma9
+          mode: batch
+          containerized: "true"
 
       - name: upload to kibana
         if: always()
@@ -147,13 +156,16 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: evnt
           log-file: log.generate
           log-type: evnt
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          os: centos7
+          mode: batch
+          containerized: "true"
 
       - name: upload to kibana
         if: always()
@@ -184,13 +196,16 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: truth3
           log-file: log.Derivation
           log-type: truth3
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          os: alma9
+          mode: batch
+          containerized: "false"
 
       - name: upload to kibana
         if: always()
@@ -221,13 +236,16 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: truth3
           log-file: log.Derivation
           log-type: truth3
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          os: alma9
+          mode: batch
+          containerized: "true"
 
       - name: upload to kibana
         if: always()
@@ -258,13 +276,16 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: truth3
           log-file: log.EVNTtoDAOD
           log-type: truth3
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          os: centos7
+          mode: batch
+          containerized: "true"
 
       - name: upload to kibana
         if: always()
@@ -295,7 +316,7 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: coffea
           log-file: coffea_hist.log
           log-type: coffea
           cluster: UC-AF
@@ -303,6 +324,9 @@ jobs:
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
           payload-file: coffea.root
+          os: alma9
+          mode: batch
+          containerized: "true"
 
       - name: upload to kibana
         if: always()
@@ -333,13 +357,16 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: eventloop-columnar
           log-file: eventloop_arrays.log
           log-type: eventloop
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          os: alma9
+          mode: batch
+          containerized: "false"
 
       - name: upload to kibana
         if: always()
@@ -370,13 +397,16 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: eventloop-standard
           log-file: eventloop_noarrays.log
           log-type: eventloop
           cluster: UC-AF
           kibana-token: ${{ secrets.KIBANA_TOKEN }}
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
+          os: alma9
+          mode: batch
+          containerized: "false"
 
       - name: upload to kibana
         if: always()
@@ -413,7 +443,7 @@ jobs:
         if: always()
         uses: ./.github/actions/parse
         with:
-          job: ${{ github.job }}
+          job: fastframes
           log-file: fastframes.log
           log-type: fastframes
           cluster: UC-AF
@@ -421,6 +451,9 @@ jobs:
           kibana-kind: "benchmark"
           host: ${NODE_NAME}
           payload-file: ./NTuple_Hist/fastframes/UC/example_FS.root
+          os: alma9
+          mode: batch
+          containerized: "false"
 
       - name: upload to kibana
         if: always()
