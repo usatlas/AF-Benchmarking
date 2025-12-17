@@ -26,16 +26,14 @@ def parse_coffea_log(path):
     run_time = round(float(line_list[3]))
     frequency = round(float(line_list[-2]))
 
-    # Parse UTC timestamps from end of file
+    # Parse UTC timestamp from end of file
     # Format: "start_time_utc=2025-12-17T00:48:07.953454Z"
     start_time_line = None
-    end_time_line = None
 
     for line in file_lines:
         if line.startswith("start_time_utc="):
             start_time_line = line.strip()
-        elif line.startswith("end_time_utc="):
-            end_time_line = line.strip()
+            break
 
     if not start_time_line:
         raise ValueError("No start_time_utc found in log file")
@@ -45,7 +43,9 @@ def parse_coffea_log(path):
 
     # Parse ISO 8601 format with Z suffix (UTC)
     # Format: 2025-12-17T00:48:07.953454Z
-    start_dt = dt.datetime.fromisoformat(start_time_str.rstrip("Z")).replace(tzinfo=dt.timezone.utc)
+    start_dt = dt.datetime.fromisoformat(start_time_str.rstrip("Z")).replace(
+        tzinfo=dt.timezone.utc
+    )
     utc_timestamp = int(start_dt.timestamp() * 1000)
 
     status = 0

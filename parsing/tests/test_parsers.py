@@ -5,7 +5,6 @@ they correctly extract timing and status information. These tests
 serve as a regression suite when refactoring parser code.
 """
 
-import pytest
 from pathlib import Path
 
 # Import all parsers
