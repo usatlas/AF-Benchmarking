@@ -38,9 +38,13 @@ def parse_rucio_log(path):
 
     # Creating start and end time objects (explicitly UTC to avoid local timezone interpretation)
     start_datetime_string = start_date_string + " " + start_time_string
-    start_dt = dt.datetime.strptime(start_datetime_string, date_format).replace(tzinfo=dt.timezone.utc)
+    start_dt = dt.datetime.strptime(start_datetime_string, date_format).replace(
+        tzinfo=dt.timezone.utc
+    )
     end_datetime_string = end_date_string + " " + end_time_string
-    end_dt = dt.datetime.strptime(end_datetime_string, date_format).replace(tzinfo=dt.timezone.utc)
+    end_dt = dt.datetime.strptime(end_datetime_string, date_format).replace(
+        tzinfo=dt.timezone.utc
+    )
 
     # Obtains timestamp and run_time
     utc_timestamp = int(start_dt.timestamp()) * 1000
