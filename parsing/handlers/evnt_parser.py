@@ -1,58 +1,21 @@
-import datetime as dt
+"""EVNT generation log parser.
 
+Parses logs from ATLAS Monte Carlo event generation jobs to extract timing information.
+"""
 
-MONTH_DICT = {
-    "Jan": "01",
-    "Feb": "02",
-    "Mar": "03",
-    "Apr": "04",
-    "May": "05",
-    "Jun": "06",
-    "Jul": "07",
-    "Aug": "08",
-    "Sep": "09",
-    "Oct": "10",
-    "Nov": "11",
-    "Dec": "12",
-}
+from parsing.handlers.base_parser import parse_atlas_log
 
 
 def parse_evnt_log(path):
-    print(f"[EVNT] Parsing {path.name}")
-    with open(path) as f:
-        file_lines = f.readlines()
-        N = len(file_lines)
-    start_datetime_list = file_lines[0].split(" ")
-    end_time_list = file_lines[N - 1].split(" ")
-    start_time = start_datetime_list[0]
-    month = int(MONTH_DICT[start_datetime_list[2]])
-    year = int(start_datetime_list[-1])
-    if len(start_datetime_list) == 8:
-        day = int(start_datetime_list[4])
-        submit_time = dt.datetime.strptime(start_datetime_list[5], "%H:%M:%S").time()
-    else:
-        day = int(start_datetime_list[3])
-        submit_time = dt.datetime.strptime(start_datetime_list[4], "%H:%M:%S").time()
-    start_date_object = dt.date(year, month, day)
-    start_time = dt.datetime.strptime(start_datetime_list[0], "%H:%M:%S").time()
-    start_datetime_object = dt.datetime.combine(start_date_object, start_time)
-    utc_timestamp = int(start_datetime_object.timestamp()) * 1000
+    """Parse EVNT generation log file.
 
-    submit_datetime_object = dt.datetime.combine(start_datetime_object, submit_time)
-    queue_time = int((start_datetime_object - submit_datetime_object).total_seconds())
-    end_time = dt.datetime.strptime(end_time_list[0], "%H:%M:%S").time()
-    end_datetime_object = dt.datetime.combine(start_date_object, end_time)
-    run_time = int((end_datetime_object - start_datetime_object).total_seconds())
-    status = 0
+    Args:
+        path: Path to log.generate file
 
-    dicti = {
-        "submitTime": utc_timestamp,
-        "queueTime": queue_time,
-        "runTime": run_time,
-        "status": status,
-    }
-
-    return dicti
+    Returns:
+        dict: Parsed timing data
+    """
+    return parse_atlas_log(path, log_name="EVNT")
 
 
 # Registers this parsing script with the Class
