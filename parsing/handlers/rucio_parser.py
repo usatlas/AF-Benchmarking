@@ -1,15 +1,9 @@
 from collections import deque
-import re
 import datetime as dt
 
-ANSI_ESCAPE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
+from parsing.utils.text_utils import strip_ansi
 
 date_format = "%Y-%m-%d %H:%M:%S"
-
-
-# Strips the text of its green color
-def strip_ansi(text):
-    return ANSI_ESCAPE.sub("", text)
 
 
 def parse_rucio_log(path):

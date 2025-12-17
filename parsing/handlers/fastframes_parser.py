@@ -1,7 +1,6 @@
 import datetime as dt
-import re
 
-ANSI_ESCAPE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
+from parsing.utils.text_utils import strip_ansi
 
 date_format = "%Y-%m-%d %H:%M:%S"
 
@@ -10,11 +9,6 @@ def elapsed_to_seconds(s):
     s = s.rstrip("m")
     minutes, seconds = map(int, s.split(":"))
     return minutes * 60 + seconds
-
-
-# Strips the text of its green color
-def strip_ansi(text):
-    return ANSI_ESCAPE.sub("", text)
 
 
 def parse_fastframes_log(path):
