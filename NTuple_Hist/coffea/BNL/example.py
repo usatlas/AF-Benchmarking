@@ -12,14 +12,20 @@ import warnings
 import time
 import uproot
 
-from pathlib import Path
+import Path
 from coffea.dataset_tools import apply_to_fileset
 import numpy as np
+from datetime import datetime, timezone
+
 
 warnings.filterwarnings("ignore", module="coffea.*")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore")
+
+
+def iso_utc_now():
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
 class MyFirstProcessor(processor.ProcessorABC):
@@ -91,15 +97,22 @@ def main():
                 dataset_runnable,
                 schemaclass=NtupleSchema,
             )
+
+        start_time_utc = iso_utc_now()
         start_time = time.time()
+
         (computed,) = dask.compute(out)
+        end_time_utc = iso_utc_now()
         end_time = time.time()
         execute_time = end_time - start_time
+
         print(
             f"... execution time: {end_time - start_time:6.2f} s ({(nevents / 1000.0) / execute_time:6.2f} kHz)"
         )
 
         print(computed)
+        print(f"start_time_utc={start_time_utc}")
+        print(f"end_time_utc={end_time_utc}")
 
         # Plots using 'computed'
         # this_hist = computed["700402.Wmunugamma.mc20a.v2.1"]["ph_pt"]
