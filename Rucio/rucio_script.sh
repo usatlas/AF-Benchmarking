@@ -20,7 +20,7 @@ container_el9 (){
     lsetup rucio &&\
     cat /srv/pass.txt | voms-proxy-init -voms atlas && \
     mkdir -p \"${3}\" &&\
-    rm -r \"${4:?}\"/ &&\
+    [ -d \"${4}\" ] && rm -rf \"${4}\" || true &&\
     rucio download --rses AGLT2_LOCALGROUPDISK \"${4}\"  2>&1 | tee rucio.log &&\
     hostname >> rucio.log &&\
     du \"${4}\"/ >> rucio.log &&\
@@ -32,19 +32,25 @@ native_el9 () {
   # - output_dir
   # - job_dir
   # - download_ID
+  echo "::group::setupATLAS"
   export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
   export ALRB_localConfigDir="$HOME"/localConfig
 # shellcheck disable=SC1091
   source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh
+  echo "::endgroup::"
   lsetup emi "rucio -w"
   printf "%s" "${VOMS_PASSWORD}" | voms-proxy-init -voms atlas
   mkdir -p "${1}"
   cd "${2}" || exit
   # shellcheck disable=SC2115
-  rm -r "${3:?}"/
+  rm -r "${3:?}"
+  echo "::group::Rucio Download"
   rucio download --rses AGLT2_LOCALGROUPDISK "${3}"  2>&1 | tee rucio.log
+  echo "::endgroup::"
+  echo "::group::Collect Metrics"
   hostname >> rucio.log
-  du "${3}"/ >> rucio.log
+  du "${3}" >> rucio.log
+  echo "::endgroup::"
   mv rucio.log "${1}"
 }
 
@@ -55,7 +61,7 @@ site="$1"
 if [[ -z "$site" ]]; then
     # Auto-detect
     if [[ -d /sdf ]]; then
-        site="slack"
+        site="slac"
     elif [[ -d /usatlas ]]; then
         site="uchicago"
     elif [[ -d /data ]]; then
@@ -74,24 +80,23 @@ case "$site" in
     bnl)
         job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/atlasgpfs01/usatlas/data/"
-        output_dir="${job_dir}/${curr_time}/"
+        output_dir="${job_dir}/logs/${curr_time}/"
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
-    slack)
+    slac)
         job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/sdf/data/atlas/u/selbor/benchmarks/"
-        output_dir="${job_dir}/${curr_time}/"
+        output_dir="${job_dir}/logs/${curr_time}/"
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
     uchicago)
-        job_dir="$HOME/af_benchmarking/rucio/"
-        output_dir="${job_dir}/${curr_time}/"
-        native_el9 "$output_dir" "$job_dir" "$download_ID"
+        output_dir="${PWD}"
+        native_el9 "${PWD}" "${PWD}" "$download_ID"
         ;;
     nersc)
         job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/global/cfs/cdirs/m2616/selbor/benchmarks/"
-        output_dir="${job_dir}/${curr_time}/"
+        output_dir="${job_dir}/logs/${curr_time}/"
         container_el9 "${job_dir}" "${dir_mount}" "${output_dir}" "${download_ID}"
         ;;
     *)

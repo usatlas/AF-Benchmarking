@@ -1,0 +1,113 @@
+[32;1m2025-12-08 18:00:22,858	INFO	Processing 1 item(s) for input[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,794	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,795	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,795	INFO	No preferred protocol impl in rucio.cfg: No section: 'download'[0m
+[32;1m2025-12-08 18:00:24,796	INFO	Using 3 threads to download 20 files[0m
+[32;1m2025-12-08 18:00:24,797	INFO	Thread 0/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000001.pool.root.1[0m
+[32;1m2025-12-08 18:00:24,797	INFO	Thread 1/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000002.pool.root.1[0m
+[32;1m2025-12-08 18:00:24,798	INFO	Thread 2/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000003.pool.root.1[0m
+[32;1m2025-12-08 18:00:25,148	INFO	Thread 0/3: Trying to download with root and timeout of 753s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000001.pool.root.1 [0m
+[32;1m2025-12-08 18:00:25,175	INFO	Thread 1/3: Trying to download with root and timeout of 755s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000002.pool.root.1 [0m
+[32;1m2025-12-08 18:00:25,176	INFO	Thread 2/3: Trying to download with root and timeout of 756s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000003.pool.root.1 [0m
+[32;1m2025-12-08 18:00:25,238	INFO	Thread 0/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/f4/b3/DAOD_PHYSLITE.41635253._000001.pool.root.1[0m
+[32;1m2025-12-08 18:00:25,238	INFO	Thread 2/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/04/d6/DAOD_PHYSLITE.41635253._000003.pool.root.1[0m
+[32;1m2025-12-08 18:00:25,238	INFO	Thread 1/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/d6/b5/DAOD_PHYSLITE.41635253._000002.pool.root.1[0m
+[32;1m2025-12-08 18:00:26,987	INFO	Thread 1/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000002.pool.root.1 successfully downloaded. 347.724 MB in 1.07 seconds = 324.98 MBps[0m
+[32;1m2025-12-08 18:00:26,988	INFO	Thread 1/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000004.pool.root.1[0m
+[32;1m2025-12-08 18:00:26,988	INFO	Thread 1/3: Trying to download with root and timeout of 756s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000004.pool.root.1 [0m
+[32;1m2025-12-08 18:00:26,989	INFO	Thread 1/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/72/53/DAOD_PHYSLITE.41635253._000004.pool.root.1[0m
+[32;1m2025-12-08 18:00:27,098	INFO	Thread 2/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000003.pool.root.1 successfully downloaded. 348.347 MB in 1.19 seconds = 292.73 MBps[0m
+[32;1m2025-12-08 18:00:27,098	INFO	Thread 2/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000005.pool.root.1[0m
+[32;1m2025-12-08 18:00:27,099	INFO	Thread 2/3: Trying to download with root and timeout of 756s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000005.pool.root.1 [0m
+[32;1m2025-12-08 18:00:27,101	INFO	Thread 2/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/79/3c/DAOD_PHYSLITE.41635253._000005.pool.root.1[0m
+[32;1m2025-12-08 18:00:27,159	INFO	Thread 0/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000001.pool.root.1 successfully downloaded. 346.791 MB in 1.26 seconds = 275.23 MBps[0m
+[32;1m2025-12-08 18:00:27,160	INFO	Thread 0/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000006.pool.root.1[0m
+[32;1m2025-12-08 18:00:27,160	INFO	Thread 0/3: Trying to download with root and timeout of 758s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000006.pool.root.1 [0m
+[32;1m2025-12-08 18:00:27,162	INFO	Thread 0/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/b0/6b/DAOD_PHYSLITE.41635253._000006.pool.root.1[0m
+[32;1m2025-12-08 18:00:28,832	INFO	Thread 1/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000004.pool.root.1 successfully downloaded. 348.263 MB in 1.14 seconds = 305.49 MBps[0m
+[32;1m2025-12-08 18:00:28,833	INFO	Thread 1/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000007.pool.root.1[0m
+[32;1m2025-12-08 18:00:28,833	INFO	Thread 1/3: Trying to download with root and timeout of 756s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000007.pool.root.1 [0m
+[32;1m2025-12-08 18:00:28,835	INFO	Thread 1/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/b7/18/DAOD_PHYSLITE.41635253._000007.pool.root.1[0m
+[32;1m2025-12-08 18:00:29,050	INFO	Thread 2/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000005.pool.root.1 successfully downloaded. 348.479 MB in 1.3 seconds = 268.06 MBps[0m
+[32;1m2025-12-08 18:00:29,051	INFO	Thread 2/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000008.pool.root.1[0m
+[32;1m2025-12-08 18:00:29,051	INFO	Thread 2/3: Trying to download with root and timeout of 757s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000008.pool.root.1 [0m
+[32;1m2025-12-08 18:00:29,053	INFO	Thread 2/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/7e/4a/DAOD_PHYSLITE.41635253._000008.pool.root.1[0m
+[32;1m2025-12-08 18:00:29,199	INFO	Thread 0/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000006.pool.root.1 successfully downloaded. 349.035 MB in 1.37 seconds = 254.77 MBps[0m
+[32;1m2025-12-08 18:00:29,199	INFO	Thread 0/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000009.pool.root.1[0m
+[32;1m2025-12-08 18:00:29,203	INFO	Thread 0/3: Trying to download with root and timeout of 754s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000009.pool.root.1 [0m
+[32;1m2025-12-08 18:00:29,205	INFO	Thread 0/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/02/58/DAOD_PHYSLITE.41635253._000009.pool.root.1[0m
+[32;1m2025-12-08 18:00:30,555	INFO	Thread 1/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000007.pool.root.1 successfully downloaded. 348.382 MB in 0.99 seconds = 351.9 MBps[0m
+[32;1m2025-12-08 18:00:30,556	INFO	Thread 1/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000010.pool.root.1[0m
+[32;1m2025-12-08 18:00:30,557	INFO	Thread 1/3: Trying to download with root and timeout of 759s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000010.pool.root.1 [0m
+[32;1m2025-12-08 18:00:30,559	INFO	Thread 1/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/6e/20/DAOD_PHYSLITE.41635253._000010.pool.root.1[0m
+[32;1m2025-12-08 18:00:30,879	INFO	Thread 2/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000008.pool.root.1 successfully downloaded. 348.712 MB in 1.16 seconds = 300.61 MBps[0m
+[32;1m2025-12-08 18:00:30,880	INFO	Thread 2/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000011.pool.root.1[0m
+[32;1m2025-12-08 18:00:30,883	INFO	Thread 2/3: Trying to download with root and timeout of 2428s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000011.pool.root.1 [0m
+[32;1m2025-12-08 18:00:30,885	INFO	Thread 2/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/8b/40/DAOD_PHYSLITE.41635253._000011.pool.root.1[0m
+[32;1m2025-12-08 18:00:31,020	INFO	Thread 0/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000009.pool.root.1 successfully downloaded. 347.401 MB in 1.19 seconds = 291.93 MBps[0m
+[32;1m2025-12-08 18:00:31,020	INFO	Thread 0/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000012.pool.root.1[0m
+[32;1m2025-12-08 18:00:31,024	INFO	Thread 0/3: Trying to download with root and timeout of 2903s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000012.pool.root.1 [0m
+[32;1m2025-12-08 18:00:31,025	INFO	Thread 0/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/3e/b9/DAOD_PHYSLITE.41635253._000012.pool.root.1[0m
+[32;1m2025-12-08 18:00:34,599	INFO	Thread 1/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000010.pool.root.1 successfully downloaded. 349.609 MB in 0.9 seconds = 388.45 MBps[0m
+[32;1m2025-12-08 18:00:34,599	INFO	Thread 1/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000013.pool.root.1[0m
+[32;1m2025-12-08 18:00:34,603	INFO	Thread 1/3: Trying to download with root and timeout of 2912s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000013.pool.root.1 [0m
+[32;1m2025-12-08 18:00:34,604	INFO	Thread 1/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/25/ed/DAOD_PHYSLITE.41635253._000013.pool.root.1[0m
+[32;1m2025-12-08 18:00:35,598	INFO	Thread 2/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000011.pool.root.1 successfully downloaded. 1.184 GB in 3.27 seconds = 362.11 MBps[0m
+[32;1m2025-12-08 18:00:35,598	INFO	Thread 2/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000015.pool.root.1[0m
+[32;1m2025-12-08 18:00:35,599	INFO	Thread 2/3: Trying to download with root and timeout of 2892s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000015.pool.root.1 [0m
+[32;1m2025-12-08 18:00:35,601	INFO	Thread 2/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/bf/33/DAOD_PHYSLITE.41635253._000015.pool.root.1[0m
+[32;1m2025-12-08 18:00:36,245	INFO	Thread 0/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000012.pool.root.1 successfully downloaded. 1.422 GB in 3.59 seconds = 396.03 MBps[0m
+[32;1m2025-12-08 18:00:36,246	INFO	Thread 0/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000016.pool.root.1[0m
+[32;1m2025-12-08 18:00:36,249	INFO	Thread 0/3: Trying to download with root and timeout of 2907s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000016.pool.root.1 [0m
+[32;1m2025-12-08 18:00:36,250	INFO	Thread 0/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/93/db/DAOD_PHYSLITE.41635253._000016.pool.root.1[0m
+[32;1m2025-12-08 18:00:40,124	INFO	Thread 1/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000013.pool.root.1 successfully downloaded. 1.426 GB in 3.92 seconds = 363.78 MBps[0m
+[32;1m2025-12-08 18:00:40,124	INFO	Thread 1/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000018.pool.root.1[0m
+[32;1m2025-12-08 18:00:40,127	INFO	Thread 1/3: Trying to download with root and timeout of 2909s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000018.pool.root.1 [0m
+[32;1m2025-12-08 18:00:40,129	INFO	Thread 1/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/d1/1a/DAOD_PHYSLITE.41635253._000018.pool.root.1[0m
+[32;1m2025-12-08 18:00:41,512	INFO	Thread 2/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000015.pool.root.1 successfully downloaded. 1.416 GB in 4.31 seconds = 328.61 MBps[0m
+[32;1m2025-12-08 18:00:41,513	INFO	Thread 2/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000020.pool.root.1[0m
+[32;1m2025-12-08 18:00:41,516	INFO	Thread 2/3: Trying to download with root and timeout of 2665s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000020.pool.root.1 [0m
+[32;1m2025-12-08 18:00:41,517	INFO	Thread 2/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/3e/8a/DAOD_PHYSLITE.41635253._000020.pool.root.1[0m
+[32;1m2025-12-08 18:00:42,199	INFO	Thread 0/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000016.pool.root.1 successfully downloaded. 1.424 GB in 4.36 seconds = 326.49 MBps[0m
+[32;1m2025-12-08 18:00:42,200	INFO	Thread 0/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000021.pool.root.1[0m
+[32;1m2025-12-08 18:00:42,201	INFO	Thread 0/3: Trying to download with root and timeout of 754s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000021.pool.root.1 [0m
+[32;1m2025-12-08 18:00:42,202	INFO	Thread 0/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/0d/b3/DAOD_PHYSLITE.41635253._000021.pool.root.1[0m
+[32;1m2025-12-08 18:00:44,400	INFO	Thread 0/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000021.pool.root.1 successfully downloaded. 347.448 MB in 1.51 seconds = 230.1 MBps[0m
+[32;1m2025-12-08 18:00:44,400	INFO	Thread 0/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000022.pool.root.1[0m
+[32;1m2025-12-08 18:00:44,402	INFO	Thread 0/3: Trying to download with root and timeout of 4396s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000022.pool.root.1 [0m
+[32;1m2025-12-08 18:00:44,403	INFO	Thread 0/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/74/f8/DAOD_PHYSLITE.41635253._000022.pool.root.1[0m
+[32;1m2025-12-08 18:00:45,332	INFO	Thread 1/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000018.pool.root.1 successfully downloaded. 1.425 GB in 3.58 seconds = 397.96 MBps[0m
+[32;1m2025-12-08 18:00:45,332	INFO	Thread 1/3: Preparing download of mc23_13p6TeV:DAOD_PHYSLITE.41635253._000023.pool.root.1[0m
+[32;1m2025-12-08 18:00:45,333	INFO	Thread 1/3: Trying to download with root and timeout of 4410s from AGLT2_LOCALGROUPDISK: mc23_13p6TeV:DAOD_PHYSLITE.41635253._000023.pool.root.1 [0m
+[32;1m2025-12-08 18:00:45,335	INFO	Thread 1/3: Using PFN: root://192.170.240.18:1094//root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlaslocalgroupdisk/rucio/mc23_13p6TeV/cc/4d/DAOD_PHYSLITE.41635253._000023.pool.root.1[0m
+[32;1m2025-12-08 18:00:46,441	INFO	Thread 2/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000020.pool.root.1 successfully downloaded. 1.303 GB in 3.49 seconds = 373.29 MBps[0m
+[32;1m2025-12-08 18:00:52,471	INFO	Thread 0/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000022.pool.root.1 successfully downloaded. 2.168 GB in 5.92 seconds = 366.26 MBps[0m
+[32;1m2025-12-08 18:00:53,301	INFO	Thread 1/3: File mc23_13p6TeV:DAOD_PHYSLITE.41635253._000023.pool.root.1 successfully downloaded. 2.175 GB in 6.01 seconds = 361.95 MBps[0m
+----------------------------------
+Download summary
+----------------------------------------
+DID mc23_13p6TeV:mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.DAOD_PHYSLITE.e8532_e8528_s4162_s4114_r14622_r14663_p6491
+Total files (DID):                           20
+Total files (filtered):                      20
+Downloaded files:                            20
+Files already found locally:                  0
+Files that cannot be downloaded:              0
+login01.af.uchicago.edu
+16648179	mc23_13p6TeV.700866.Sh_2214_WWW_3l3v_EW6.deriv.DAOD_PHYSLITE.e8532_e8528_s4162_s4114_r14622_r14663_p6491/

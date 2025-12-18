@@ -1,0 +1,12 @@
+Universe = vanilla
+
+
+Output = /usatlas/u/jroblesgo/batch_output_files/truth3/native/myjob.$(Cluster).$(Process).out
+Error = /usatlas/u/jroblesgo/batch_output_files/truth3/native/myjob.$(Cluster).$(Process).err
+Log = /usatlas/u/jroblesgo/batch_output_files/truth3/native/myjob.$(Cluster).$(Process).log
+
+Executable = /usatlas/u/jroblesgo/AF-Benchmarking/TRUTH3/BNL/Native/run_truth3_native_batch.sh
+
+request_memory = 3G
+
+Queue 1

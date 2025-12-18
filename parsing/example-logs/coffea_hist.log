@@ -1,0 +1,8 @@
+Applying to fileset
+... execution time: 205.45 s ( 89.10 kHz)
+{'Wmunugamma': {'entries': 18304905, 'ph_pt': Hist(
+  StrCategory(['all'], name='isEM'),
+  Regular(100, 0, 1000, name='pt', label='$pt_{\\gamma}$ [GeV]'),
+  storage=Double()) # Sum: 355190.4424758536 (355192.72241398966 with flow)}}
+start_time_utc=2025-12-17T00:48:07.953454Z
+end_time_utc=2025-12-17T00:51:33.399984Z

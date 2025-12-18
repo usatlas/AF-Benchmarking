@@ -2,8 +2,8 @@ general:
   debug_level: DEBUG
 
   # Paths
-  input_filelist_path: "/srv/ff_input/mc20e_filelist.txt"
-  input_sumweights_path: "/srv/ff_input/mc20e_sumweights.txt"
+  input_filelist_path: "/srv/fastframes_input/mc20e_filelist.txt"
+  input_sumweights_path: "/srv/fastframes_input/mc20e_sumweights.txt"
   output_path_histograms: "/srv/output/"
 
   # Weights

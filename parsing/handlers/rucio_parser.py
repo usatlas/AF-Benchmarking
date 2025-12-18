@@ -1,20 +1,13 @@
 from collections import deque
-import re
 import datetime as dt
 
-ANSI_ESCAPE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
+from parsing.utils.text_utils import strip_ansi
 
 date_format = "%Y-%m-%d %H:%M:%S"
-# Note: Update the script to contain a dictionary containing the naming schemes for the AFs.
-
-
-# Strips the text of its green color
-def strip_ansi(text):
-    return ANSI_ESCAPE.sub("", text)
 
 
 def parse_rucio_log(path):
-    print(f"[Rucio] Parsing {path.name}")
+    print(f"Rucio Parsing {path.name}")
 
     first_line = None
     last_lines = deque(maxlen=12)
@@ -26,10 +19,6 @@ def parse_rucio_log(path):
             last_lines.append(line)
 
     payload_line = last_lines[-1]
-    if payload_line:
-        exit_code = 0
-    else:
-        exit_code = 1
     last_line = last_lines[0] if len(last_lines) == 12 else None
 
     first_line = strip_ansi(first_line).split(" ")
@@ -40,38 +29,35 @@ def parse_rucio_log(path):
     end_date_string = last_line[0]
     end_time_string = last_line[1].split(",")[0]
 
-    host_name = "login01.af.uchicago.edu"
-
-    # Obtaining the payload; casted as int
+    # Obtaining the payload for status check; casted as int
     payload = int(payload_line.split("\t")[0])
+    if payload != 0:
+        status = 0
+    else:
+        status = 1
 
-    # Creating start and end time objects
+    # Creating start and end time objects (explicitly UTC to avoid local timezone interpretation)
     start_datetime_string = start_date_string + " " + start_time_string
-    start_dt = dt.datetime.strptime(start_datetime_string, date_format)
+    start_dt = dt.datetime.strptime(start_datetime_string, date_format).replace(
+        tzinfo=dt.timezone.utc
+    )
     end_datetime_string = end_date_string + " " + end_time_string
-    end_dt = dt.datetime.strptime(end_datetime_string, date_format)
+    end_dt = dt.datetime.strptime(end_datetime_string, date_format).replace(
+        tzinfo=dt.timezone.utc
+    )
 
     # Obtains timestamp and run_time
-    start_dt_utc = start_dt.astimezone(dt.timezone.utc)
-    utc_timestamp = int(start_dt_utc.timestamp()) * 1000
+    utc_timestamp = int(start_dt.timestamp()) * 1000
     run_time = int((end_dt - start_dt).total_seconds())
 
-    # Input Token
-    token = "token"
-    kind = "benchmark"
-
-    return {
-        "cluster": "UC-AF",
-        "testType": "Rucio Download",
+    dicti = {
         "submitTime": utc_timestamp,
         "queueTime": 0,
         "runTime": run_time,
-        "payloadSize": payload,
-        "status": exit_code,
-        "host": host_name,
-        "token": token,
-        "kind": kind,
+        "status": status,
     }
+
+    return dicti
 
 
 # Registers this parsing script with the Class

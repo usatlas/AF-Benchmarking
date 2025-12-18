@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Gets the current time
-
-curr_time=$(date +"%Y.%m.%dT%H")
-
 date >> split.log
 
 #cp ${GITHUB_WORKSPACE}/NTuple_Hist/coffea/UC/example.py .
@@ -18,20 +14,9 @@ source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -c el9 -m /data -r "ls
   pip3 install atlas_schema &&\
 python3.9 ${GITHUB_WORKSPACE}/NTuple_Hist/coffea/UC/example.py  2>&1 | tee coffea_hist.log"
 
-date >> split.log
-
-hostname >> split.log
-
-log_file_dir="$HOME/benchmarks/${curr_time}/Coffea_Hist/"
-
-mkdir -p "${log_file_dir}"
-
-#mv coffea_hist.log "${log_file_dir}"
-mv split.log "${log_file_dir}"
-
-# Directory that needs to be cleaned
-cleanup_dir="/home/selbor/ntuple/coffea"
-
-if [[ -d "${cleanup_dir}" && "${cleanup_dir}" == "/home/selbor/ntuple/coffea" ]]; then
-    rm -rf "${cleanup_dir:?}/"*
-fi
+echo "::group::Collect Metrics"
+{
+  date +'%H:%M:%S'
+  hostname
+} >> split.log
+echo "::endgroup::"
