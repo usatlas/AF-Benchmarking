@@ -2,9 +2,9 @@ general:
   debug_level: DEBUG
 
   # Paths
-  input_filelist_path: "/srv/input_fastframes/mc20e_filelist.txt"
-  input_sumweights_path: "/srv/input_fastframes/mc20e_sumweights.txt"
-  output_path_histograms: "/srv/output_fastframes/"
+  input_filelist_path: "/srv/input_ff/mc20e_filelist.txt"
+  input_sumweights_path: "/srv/input_ff/mc20e_sumweights.txt"
+  output_path_histograms: "/srv/output_ff/"
 
   # Weights
   default_sumweights: "NOSYS"
