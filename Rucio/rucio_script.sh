@@ -80,13 +80,13 @@ case "$site" in
     bnl)
         job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/atlasgpfs01/usatlas/data/"
-        output_dir="${job_dir}/${curr_time}/"
+        output_dir="${job_dir}/logs/${curr_time}/"
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
     slac)
         job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/sdf/data/atlas/u/selbor/benchmarks/"
-        output_dir="${job_dir}/${curr_time}/"
+        output_dir="${job_dir}/logs/${curr_time}/"
         container_el9 "$job_dir" "$dir_mount" "$output_dir" "$download_ID"
         ;;
     uchicago)
@@ -96,7 +96,7 @@ case "$site" in
     nersc)
         job_dir="$HOME/af_benchmarking/rucio/"
         dir_mount="/global/cfs/cdirs/m2616/selbor/benchmarks/"
-        output_dir="${job_dir}/${curr_time}/"
+        output_dir="${job_dir}/logs/${curr_time}/"
         container_el9 "${job_dir}" "${dir_mount}" "${output_dir}" "${download_ID}"
         ;;
     *)
