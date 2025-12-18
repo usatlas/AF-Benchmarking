@@ -8,15 +8,10 @@ seed=1001
 # Directory storing the input files
 config_dir="/sdf/data/atlas/u/selbor/EVNTJob/container_el/EVNTFiles/100xxx/100001/"
 
-# Current time used for log file storage
-
-
-user_name=$USER
-first_letter=${user_name:0:1}
 
 rm -r ./*
 
-cp -r /sdf/home/"$first_letter"/"$USER"/AF-Benchmarking/EVNT/EVNTFiles .
+cp -r "$HOME"/AF-Benchmarking/EVNT/EVNTFiles .
 
 # Current time used for log file storage
 curr_time=$(date +"%Y.%m.%dT%H")
