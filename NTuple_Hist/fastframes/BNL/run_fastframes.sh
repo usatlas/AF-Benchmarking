@@ -14,6 +14,8 @@ source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -m /atlasgpfs01/usatla
 
 hostname >> fastframes.log
 
+du example_FS.root >> fastframes.log
+
 # output directory
 output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_date/FastFrames_NTuple"
 
