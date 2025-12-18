@@ -10,9 +10,11 @@ date >> split.log
 
 python3 example.py 2>&1 | tee coffea_hist.log
 
-date >> split.log
-
-hostname >> split.log
+{
+  date
+  hostname
+  du coffea.root
+} >> split.log
 
 log_file_dir="/sdf/data/atlas/u/selbor/benchmarks/${curr_time}/Coffea_Hist/"
 

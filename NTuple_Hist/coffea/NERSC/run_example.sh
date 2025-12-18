@@ -22,6 +22,8 @@ date >> split.log
 
 hostname >> split.log
 
+du >> coffea.root
+
 log_file_dir="/global/cfs/cdirs/m2616/selbor/benchmarks/${curr_time}/Coffea_Hist/"
 
 mkdir -p "${log_file_dir}"
