@@ -4,12 +4,9 @@
 curr_time=$(date +"%Y.%m.%dT%H")
 
 
-username=$USER
-first_letter=${username:0:1}
+cd "$HOME"/TRUTH3_int/el || exit
 
-cd /sdf/home/"$first_letter"/"$USER"/TRUTH_int/el || exit
-
-cp -r /sdf/home/"$first_letter"/"$USER"/AF-Benchmarking/TRUTH3/EVNT.root .
+cp -r "$HOME"/AF-Benchmarking/TRUTH3/EVNT.root .
 
 # Sets up the environment
 export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
