@@ -11,7 +11,7 @@ source setup.sh
 
 cd - || exit
 
-python3 /srv/FastFramesTutorial/FastFrames/python/FastFrames.py -c /sdf/data/atlas/u/selbor/input_fastframes/mc20e_example_config.yml 2>&1 | tee fastframes.log
+python3 /srv/FastFramesTutorial/FastFrames/python/FastFrames.py -c /sdf/data/atlas/u/selbor/input_ff/mc20e_example_config.yml 2>&1 | tee fastframes.log
 
 hostname >> fastframes.log
 
