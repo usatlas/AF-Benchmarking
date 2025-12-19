@@ -43,9 +43,11 @@ def photon_eventloop(f_name, h_baseline_pt, metadata):
     # name of branches in tree
     # print(tree.GetListOfBranches())
 
+    processed = 0
     # Event loop
     numevents = tree.GetEntriesFast()
     for i in range(numevents):
+        processed += 1
         if (i + 1) % 50000 == 0:
             print(f"    Processed {i + 1:6d}/{totalevents}")
 
@@ -62,6 +64,7 @@ def photon_eventloop(f_name, h_baseline_pt, metadata):
             break  # only fill with first passing photon
 
     fp.Close()
+    return processed
 
 
 def main():
