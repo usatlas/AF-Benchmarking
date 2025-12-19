@@ -15,11 +15,17 @@ import uproot
 from pathlib import Path
 from coffea.dataset_tools import apply_to_fileset
 import numpy as np
+from datetime import datetime, timezone
+
 
 warnings.filterwarnings("ignore", module="coffea.*")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore")
+
+
+def iso_utc_now():
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
 class MyFirstProcessor(processor.ProcessorABC):
@@ -76,6 +82,7 @@ def main():
     # client = Client()
     # Limit to 4 total CPU cores, across 2 workers with 2 threads each
     cluster = LocalCluster(n_workers=2, threads_per_worker=2)
+    # local_directory = f"/tmp/dask-scratch-space-{os.getuid()}"
     with Client(cluster):
         dataset_runnable = json.loads(
             Path(
@@ -85,25 +92,32 @@ def main():
         nevents = 0
         for f in dataset_runnable["Wmunugamma"]["files"]:
             nevents += int(dataset_runnable["Wmunugamma"]["files"][f]["num_entries"])
-            print("Applying to fileset")
-            out = apply_to_fileset(
-                p,
-                dataset_runnable,
-                schemaclass=NtupleSchema,
-            )
+        print("Applying to fileset")
+        out = apply_to_fileset(
+            p,
+            dataset_runnable,
+            schemaclass=NtupleSchema,
+        )
+
+        start_time_utc = iso_utc_now()
         start_time = time.time()
-        (computed,) = dask.compute(out)
+
+        (computed,) = dask.compute(out["Wmunugamma"])
+        end_time_utc = iso_utc_now()
         end_time = time.time()
         execute_time = end_time - start_time
+
         print(
             f"... execution time: {end_time - start_time:6.2f} s ({(nevents / 1000.0) / execute_time:6.2f} kHz)"
         )
 
         print(computed)
+        print(f"start_time_utc={start_time_utc}")
+        print(f"end_time_utc={end_time_utc}")
 
         # Plots using 'computed'
         # this_hist = computed["700402.Wmunugamma.mc20a.v2.1"]["ph_pt"]
-        this_hist = computed["Wmunugamma"]["Wmunugamma"]["ph_pt"]
+        this_hist = computed["Wmunugamma"]["ph_pt"]
         with uproot.recreate("coffea.root") as fp:
             for i in np.arange(len(this_hist.axes[0])):
                 fp[this_hist.axes[0].bin(i)] = this_hist[{0: i}].to_numpy()
