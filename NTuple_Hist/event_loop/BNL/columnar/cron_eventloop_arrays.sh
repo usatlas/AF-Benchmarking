@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd /atlasgpfs01/usatlas/data/jroblesgo/eventloopJob_arrays || exit
+cd /atlasgpfs01/usatlas/scratch/jroblesgo/ntuple/eventloop_arrays || exit
 
-condor_submit /usatlas/u/jroblesgo/AF-Benchmarking/NTuple_Hist/event_loop/BNL/event_loop_arrays.sub
+condor_submit ~/AF-Benchmarking/NTuple_Hist/event_loop/BNL/columnar/eventloop_arrays.sub
