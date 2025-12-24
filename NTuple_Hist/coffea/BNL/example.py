@@ -12,7 +12,7 @@ import warnings
 import time
 import uproot
 
-import Path
+from pathlib import Path
 from coffea.dataset_tools import apply_to_fileset
 import numpy as np
 from datetime import datetime, timezone

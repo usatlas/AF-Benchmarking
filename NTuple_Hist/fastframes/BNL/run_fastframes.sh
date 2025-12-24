@@ -12,7 +12,11 @@ source "${ATLAS_LOCAL_ROOT_BASE}"/user/atlasLocalSetup.sh -m /atlasgpfs01/usatla
   source /srv/FastFramesTutorial/TutorialClass/build/setup.sh &&\
   python3 /srv/FastFramesTutorial/FastFrames/python/FastFrames.py -c /srv/input/mc20e_example_config.yml 2>&1 | tee fastframes.log"
 
-hostname >> fastframes.log
+{
+  hostname
+  du example_FS
+} >> fastframes.log
+
 
 # output directory
 output_dir="/atlasgpfs01/usatlas/data/jroblesgo/benchmarks/$curr_date/FastFrames_NTuple"
