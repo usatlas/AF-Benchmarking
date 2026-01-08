@@ -108,7 +108,7 @@ def main():
         execute_time = end_time - start_time
 
         print(
-            f"... execution time: {end_time - start_time:6.2f} s ({(nevents / 1000.0) / execute_time:6.2f} kHz)"
+            f"... execution time: {end_time - start_time:6.2f} s ( {(nevents / 1000.0) / execute_time:6.2f} kHz)"
         )
 
         print(computed)
